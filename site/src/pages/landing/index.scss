@@ -1,0 +1,79 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+@font-face {
+    font-family: 'abster';
+    src: url('../../../public/assets/fonts/abster-500.otf');
+}
+
+@font-face {
+    font-family: 'adam';
+    src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+}
+
+.landing-page{
+    width: 100vw;
+    height: 50rem;
+    background-color: #171921;
+
+    .faixa-1{
+        background-image: url('../../../public/assets/images/Capturar2\ 1_auto_x2\ 1.png');
+        width: 100vw;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+
+
+        .introdução{
+            
+            h1{
+                color: #fff;
+                font-family: 'abster';
+                line-height: 2.2rem;
+                font-size: 2rem;
+            }
+
+            width: 40vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+
+
+            .b{
+                border: none;
+                background-color: #3EACDA;
+                font-family: 'adam';
+                color: #fff;
+                width: 10rem;
+                height: 4rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 0.3rem;
+                border-radius: 1rem;
+                font-size: 1.5rem;
+                
+            };
+
+
+        }
+
+        
+        
+    }
+
+    .foto-fone{
+        width: 100vw;
+    }
+
+}

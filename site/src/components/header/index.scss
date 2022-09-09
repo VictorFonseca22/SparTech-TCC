@@ -1,0 +1,75 @@
+
+.cabecalho{
+
+    header{
+        width: 100vw;
+        height: 12vh;
+        justify-content: space-around;
+        background: #171921;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        input{
+            width: 25rem;
+            height: 2rem;
+            font-family: 'Inter', sans-serif;
+            border: none;
+
+        }
+
+        .jobseeker{
+            width: 1.8rem;
+            height: 1.8rem;
+            cursor: pointer;
+        }
+
+        .logo-spartan{
+            width: 3.8rem;
+            height: 5rem;
+            cursor: pointer;
+
+        }
+                
+        .logo{
+            width: 11rem;
+            height: 4rem;
+        }
+
+        .logo-menu{
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .buscar{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 2.2rem;
+            width: 30rem;
+            background-color: #FFFFFF;
+            border-radius: 0.5rem;
+        }
+
+        .a{
+            width: 13vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 6rem;
+        }
+        }
+
+
+    @media(max-width:1280px) {
+        
+        header{
+            height: 12vh;
+            width: 100vw;
+        }
+
+    }  
+    
+    
+} 
