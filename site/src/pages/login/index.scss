@@ -1,0 +1,85 @@
+
+.Login-page{
+
+    display: flex;
+    background-image: url('../../../public/assets/images/espaço.png');
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100%;
+
+    .logar{
+    width: 27rem;
+    height: 44rem;
+    background: rgba(40, 44, 59, 0.6);
+    border-radius: 44px 220px;
+    }
+    
+    .ola{
+    width: 500.31px;
+    height: 600.33px;
+    left: 717.94px;
+    top: 148.11px;
+    }
+    
+    .terra{
+    width: 110.18px;
+    height: 110.18px;
+    left: 799.05px;
+    top: 263.83px;
+    }
+
+    .foi{
+    width: 60px;
+    height: 61px;
+    left: 300px;
+    top: 505px;
+    background: #283153;
+    border-radius: 10px;
+    cursor: pointer;
+    }
+
+    @font-face {
+        font-family: 'adam';
+        src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+    }
+
+    h1{
+    font-family:'adam';
+    color: white;
+    text-align: center;
+    }
+
+    h2{
+    font-family: 'adam';
+    color: white;
+    text-align: center;
+    }
+
+    p{
+    font-family: 'adam';
+    color: white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    }
+    
+    input{
+    width: 315.33px;
+    height: 44.81px;
+    left: 170.12px;
+    top: 348.43px;
+    background: #D9D9D9;
+    border-radius: 40px;
+    }
+
+    a{
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+
+
+}
