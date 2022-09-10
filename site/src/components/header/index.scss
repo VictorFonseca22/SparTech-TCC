@@ -12,11 +12,11 @@
         align-items: center;
         
         input{
-            width: 25rem;
-            height: 2rem;
+            width: 30vw;
+            height: 2.2rem;
             font-family: 'Inter', sans-serif;
             border: none;
-
+            outline: none;
         }
 
         .jobseeker{
@@ -46,14 +46,14 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-            height: 2.2rem;
-            width: 30rem;
+            height: 2.4rem;
+            width: 35vw;
             background-color: #FFFFFF;
             border-radius: 0.5rem;
         }
 
         .a{
-            width: 13vw;
+            width: 10rem;
             display: flex;
             justify-content: space-between;
             align-items: center;

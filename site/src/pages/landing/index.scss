@@ -17,7 +17,7 @@
 
 .landing-page{
     width: 100vw;
-    height: 50rem;
+    height: 100vh;
     background-color: #171921;
 
     .faixa-1{
@@ -25,7 +25,7 @@
         width: 100vw;
         background-size: 100%;
         background-repeat: no-repeat;
-        height: 70vh;
+        height: 90vh;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -37,31 +37,33 @@
             h1{
                 color: #fff;
                 font-family: 'abster';
-                line-height: 2.2rem;
-                font-size: 2rem;
+                line-height: 2.5rem;
+                font-size: 2.5rem;
+                font-weight: 400;
+                width: 35rem;
+
             }
 
-            width: 40vw;
+            width: 46vw;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             text-align: center;
             flex-direction: column;
-
-
+            height: 15rem;
             .b{
                 border: none;
                 background-color: #3EACDA;
                 font-family: 'adam';
                 color: #fff;
-                width: 10rem;
-                height: 4rem;
+                width: 15rem;
+                height: 4.7rem;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 padding-bottom: 0.3rem;
-                border-radius: 1rem;
-                font-size: 1.5rem;
+                border-radius: 0.7rem;
+                font-size: 2rem;
                 
             };
 
@@ -72,8 +74,30 @@
         
     }
 
-    .foto-fone{
-        width: 100vw;
+    .faixa-2{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        height: 25rem;
+
+
+        .categorias{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100vw;
+        }
+
+        h4{
+            font-size: 2rem;
+            color: #41B6E6;
+            font-family: 'adam';
+        }
+
+
     }
+
+    
 
 }
