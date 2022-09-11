@@ -2,45 +2,66 @@ import './index.scss';
 
 export default function Login() {
 
-    return(
-        <main className='Login-page'> 
+    return (
+        <main className='Login-page'>
 
-        
 
-        <div className='logar'>
+            <div className='logar'>
 
-            <img src='/assets/images/teste final 1.png'/>
+                <div className='logo'>
 
-            <h1>login</h1>
+                    <a href='/'>
+                        <img src='/assets/images/teste final 1.png' />
+                    </a>
+                    
+                </div>
 
-           <input placeholder='Email' type='text'/>
+                <h1>login</h1>
 
-           <input placeholder='Senha' type='text'/>
+                <div className='fazer'>
 
-           <button className='foi'>
-            <a href='/'>
-            <img src='/assets/images/seta-direita.png' />
-            </a>
-           </button>
+                    <div className='email'>
+                        <input placeholder='Email' type='text' />
+                    </div>
 
-           <h2>Não tem uma conta?</h2>
+                    <div className='senha'>
+                        <input placeholder='Senha' type='password' />
+                    </div>
 
-           <a href='/'>
-           <h2 className='cadastra'>Cadastre-se!</h2>
-           </a>
+                </div>
 
-           <p>esqueci a senha</p>
+                <div className='entrar'>
 
-        </div>
+                    <button className='foi'>
 
-        <div className='astronauta'>
+                        <img src='/assets/images/seta-direita.png' />
 
-        <img src='/assets/images/planeta e astro.png' className='ola'/>
-        </div>
-        
+                    </button>
 
-        
+                </div>
+
+                <div className='informações'>
+                    <h2>Não tem uma conta?</h2>
+
+
+                    <h2 className='cadastra'>Cadastre-se!</h2>
+
+
+                    <p className='esqueci'>esqueci a senha</p>
+
+                </div>
+
+            </div>
+
+            <div className='astronauta'>
+
+                <img src='/assets/images/planeta e astro.png' className='ola' />
+
+            </div>
+
+
+
         </main>
     );
-    
+
 }

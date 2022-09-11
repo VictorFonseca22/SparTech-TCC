@@ -12,31 +12,42 @@
     width: 27rem;
     height: 44rem;
     background: rgba(40, 44, 59, 0.6);
-    border-radius: 44px 220px;
+    border-radius: 4rem 12rem;
+    }
+
+    .fazer{
+    margin: 2rem;
+    }
+
+    .email, .senha{
+        margin-top: 2rem;
     }
     
     .ola{
-    width: 500.31px;
-    height: 600.33px;
-    left: 717.94px;
-    top: 148.11px;
+    width: 35rem;
+    height: 45rem;
+    }
+
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2rem;
     }
     
-    .terra{
-    width: 110.18px;
-    height: 110.18px;
-    left: 799.05px;
-    top: 263.83px;
+    .entrar{
+        display: flex;
+        align-items: center;
+        justify-content: center; 
     }
 
     .foi{
-    width: 60px;
-    height: 61px;
-    left: 300px;
-    top: 505px;
+    width: 3.6rem;
+    height: 3.6rem;
     background: #283153;
-    border-radius: 10px;
+    border-radius: 1rem;
     cursor: pointer;
+    border: none;
     }
 
     @font-face {
@@ -60,26 +71,31 @@
     font-family: 'adam';
     color: white;
     font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 14px;
+    font-weight: 4rem;
+    font-size: 1rem;
+    line-height: 1rem;
     text-align: center;
     }
     
     input{
-    width: 315.33px;
-    height: 44.81px;
-    left: 170.12px;
-    top: 348.43px;
+    width: 22rem;
+    height: 3.5rem;
     background: #D9D9D9;
-    border-radius: 40px;
+    border-radius: 4rem;
+    }   
+
+    .informações{
+        margin-top: 2rem;
     }
 
-    a{
+    .cadastra{
         cursor: pointer;
-        text-decoration: none;
+        padding-top: 1rem;
     }
 
-
+    .esqueci{
+        cursor: pointer;
+        margin-top: 8rem;
+    }
 
 }
