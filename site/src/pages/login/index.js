@@ -13,7 +13,7 @@ export default function Login() {
                     <a href='/'>
                         <img src='/assets/images/teste final 1.png' />
                     </a>
-                    
+
                 </div>
 
                 <h1>login</h1>
@@ -44,14 +44,14 @@ export default function Login() {
                     <h2>Não tem uma conta?</h2>
 
 
-                    <h2 className='cadastra'>Cadastre-se!</h2>
+                    <h2 className='cadastra'> <a href='/cadastro-cliente'>Cadastre-se!</a> </h2>
 
 
                     <p className='esqueci'>esqueci a senha</p>
 
                 </div>
 
-            </div>
+                </div>
 
             <div className='astronauta'>
 

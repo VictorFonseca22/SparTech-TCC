@@ -1,0 +1,60 @@
+.page-CadasCliente{
+    display: flex;
+    background-image: url('../../../public/assets/images/espaço.png');
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+
+    .cadastra{
+        width: 682px;
+        height: 732px;
+        background: rgba(40, 44, 59, 0.6);
+        border-radius: 44px 220px;
+    }
+
+    @font-face {
+        font-family: 'adam';
+        src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+    }
+
+    a{
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+    }
+
+    h1{
+        font-family:'adam';
+        color: white;
+        text-align: center;
+    }
+
+    .foi{
+        width: 3.6rem;
+        height: 3.6rem;
+        background: #283153;
+        border-radius: 1rem;
+        cursor: pointer;
+        border: none;
+    }
+
+    h2{
+        color: white;
+        font-family: 'adam';
+    }
+
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2rem;
+    }
+
+    .ola{
+        width: 35rem;
+        height: 45rem;
+        }
+
+
+}
