@@ -17,7 +17,9 @@ const Header = () => {
               </div>
 
               <div className='a'>
+                <a href='/login'>
                 <img className='logo-spartan' src='/assets/images/spartan 5.png'/>
+                </a>
 
                 <img className='logo-menu' src='/assets/images/botao-de-menu-de-tres-linhas-horizontais.png'/>
 

@@ -1,5 +1,15 @@
 
-.Login-page{
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'adam';
+    src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+}
+
+.Login-page {
 
     display: flex;
     background-image: url('../../../public/assets/images/espaço.png');
@@ -8,100 +18,108 @@
     width: 100vw;
     height: 100vh;
 
-    .logar{
-    width: 27rem;
-    height: 44rem;
-    background: rgba(40, 44, 59, 0.6);
-    border-radius: 4rem 12rem;
-    }
-
-    .fazer{
-    margin: 2rem;
-    }
-
-    .email, .senha{
-        margin-top: 2rem;
-    }
-    
-    .ola{
-    width: 35rem;
-    height: 45rem;
-    }
-
-    .logo{
+    .logar {
+        width: 27rem;
+        height: 44rem;
+        background: rgba(40, 44, 59, 0.6);
+        border-radius: 4rem 12rem;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        padding-top: 2rem;
+        justify-content: space-evenly;
+    
+        .fazer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 10rem;
+        }
+    
+        .informações {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            height: 7rem;
+            justify-content: space-between;
+        }
+    
+        .cadastra {
+            cursor: pointer;
+        }
+    
+        .esqueci {
+            cursor: pointer;
+        }
+    
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+
+        .entrar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .foi {
+            width: 3.6rem;
+            height: 3.6rem;
+            background: #283153;
+            border-radius: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+    
+        
+    
+        h1 {
+            font-family: 'adam';
+            color: white;
+            text-align: center;
+        }
+    
+        h2 {
+            font-family: 'adam';
+            color: white;
+            text-align: center;
+        }
+    
+        p {
+            font-family: 'adam';
+            color: white;
+            font-style: normal;
+            font-weight: 4rem;
+            font-size: 1rem;
+            line-height: 1rem;
+            text-align: center;
+        }
+    
+        input {
+            width: 22rem;
+            height: 3.5rem;
+            background: #D9D9D9;
+            border-radius: 4rem;
+            border: none;
+            padding-left: 1rem;
+    
+            .logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+    
     }
     
-    .entrar{
-        display: flex;
-        align-items: center;
-        justify-content: center; 
+
     }
 
-    .foi{
-    width: 3.6rem;
-    height: 3.6rem;
-    background: #283153;
-    border-radius: 1rem;
-    cursor: pointer;
-    border: none;
-    }
-
-    @font-face {
-        font-family: 'adam';
-        src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
-    }
-
-    h1{
-    font-family:'adam';
-    color: white;
-    text-align: center;
-    }
-
-    h2{
-    font-family: 'adam';
-    color: white;
-    text-align: center;
-    }
-
-    p{
-    font-family: 'adam';
-    color: white;
-    font-style: normal;
-    font-weight: 4rem;
-    font-size: 1rem;
-    line-height: 1rem;
-    text-align: center;
-    }
-    
-    input{
-    width: 22rem;
-    height: 3.5rem;
-    background: #D9D9D9;
-    border-radius: 4rem;
-    border: none;
-    }   
-
-    .informações{
-        margin-top: 2rem;
-    }
-
-    .cadastra{
-        cursor: pointer;
-        padding-top: 1rem;
-    }
-
-    .esqueci{
-        cursor: pointer;
-        margin-top: 8rem;
-    }
-    a{
-        cursor: pointer;
-        text-decoration: none;
-        color: white;
+    .astronauta{
+        width: 35rem;
+        height: 42rem;
     }
 
 }

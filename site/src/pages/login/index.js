@@ -6,7 +6,7 @@ export default function Login() {
         <main className='Login-page'>
 
 
-            <div className='logar'>
+            <section className='logar'>
 
                 <div className='logo'>
 
@@ -41,23 +41,24 @@ export default function Login() {
                 </div>
 
                 <div className='informações'>
-                    <h2>Não tem uma conta?</h2>
+                    <div>
+                        <h2>Não tem uma conta?</h2>
 
 
-                    <h2 className='cadastra'> <a href='/cadastro-cliente'>Cadastre-se!</a> </h2>
-
+                        <h2 className='cadastra'> <a href='/cadastro-cliente'>Cadastre-se!</a> </h2>
+                    </div>
 
                     <p className='esqueci'>esqueci a senha</p>
 
                 </div>
 
-                </div>
+            </section>
 
-            <div className='astronauta'>
+            
 
-                <img src='/assets/images/planeta e astro.png' className='ola' />
+            <img src='/assets/images/planeta e astro.png' className='astronauta' />
 
-            </div>
+        
 
 
 

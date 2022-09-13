@@ -7,7 +7,7 @@ export default function Landing(){
 
     return(
         <main className='landing-page'>
-            <Header/>
+            <Header />
             <section className='faixa-1'>
                 
                 <div className='introdução'>
