@@ -1,4 +1,23 @@
-.page-CadasCliente{
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px green solid;
+}
+
+
+ @font-face {
+    font-family: 'adam';
+    src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+}
+
+
+@font-face {
+    font-family: 'League';
+    src: url('../../../public/assets/fonts/LeagueSpartan-Bold.otf');
+}
+
+.page-CadasCliente {
     display: flex;
     background-image: url('../../../public/assets/images/espaço.png');
     align-items: center;
@@ -6,55 +25,107 @@
     width: 100vw;
     height: 100vh;
 
-    .cadastra{
+    .cadastra {
         width: 682px;
         height: 732px;
         background: rgba(40, 44, 59, 0.6);
         border-radius: 44px 220px;
-    }
-
-    @font-face {
-        font-family: 'adam';
-        src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
-    }
-
-    a{
-        cursor: pointer;
-        text-decoration: none;
-        color: white;
-    }
-
-    h1{
-        font-family:'adam';
-        color: white;
-        text-align: center;
-    }
-
-    .foi{
-        width: 3.6rem;
-        height: 3.6rem;
-        background: #283153;
-        border-radius: 1rem;
-        cursor: pointer;
-        border: none;
-    }
-
-    h2{
-        color: white;
-        font-family: 'adam';
-    }
-
-    .logo{
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        padding-top: 2rem;
-    }
+        justify-content: space-around;
 
-    .ola{
-        width: 35rem;
-        height: 45rem;
+        .text{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 15rem;
+
+            input{
+                width: 100%;
+                height: 2rem;
+                
+            }
+
         }
 
+        .dois{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
 
+        }
+        
+
+        .tipo{
+            display: flex;
+            justify-content: space-between;
+            width: 20rem;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-family: 'League';
+        }
+
+        h1 {
+            font-family: 'adam';
+            color: white;
+            text-align: center;
+        }
+
+        .foi {
+            width: 3.6rem;
+            height: 3.6rem;
+            background: #283153;
+            border-radius: 1rem;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            color: white;
+            font-family: 'adam';
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 2rem;
+        }
+
+        .ola {
+            width: 35rem;
+            height: 45rem;
+        }
+
+        label{
+            color: white;
+            font-family: 'adam';
+        }
+
+        button{
+            width: 9rem;
+            height: 3rem;
+            background: #41B6E6;
+            border-radius: 1rem;
+            border: none;
+        }
+
+        p{
+            font-family: 'adam';
+            color: white;
+        }
+
+        .informações{
+            height: 5rem;
+        }
+    }
 }

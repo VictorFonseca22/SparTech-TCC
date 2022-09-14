@@ -7,7 +7,7 @@ export default function CadastroCliente() {
     return (
         <main className="page-CadasCliente">
 
-            <div className='cadastra'>
+            <section className='cadastra'>
 
                 <div className='logo'>
 
@@ -19,44 +19,45 @@ export default function CadastroCliente() {
 
                 <h1>Cadastrar</h1>
 
-                <div className='cadastro'>
-
-                    <div className='nome'>
+                <div className='dois'>                    
+                    <div className='text'>
                         <label>Nome</label>
                         <input type='text' />
                     </div>
 
-                    <div className='cpf'>
+                    <div className='text'>
                         <label>cpf</label>
-                        <input type='text' placeholder='Apenas Números' />
+                        <input type='text' />
                     </div>
-
-                    <div className='email'>
+                </div>
+                <div className='dois'>
+                    <div className='text'>
                         <label>Email</label>
                         <input type='text' />
                     </div>
-
-                    <div className='senha'>
+            
+                    <div className='text'>
                         <label>Senha</label>
                         <input type='password' />
                     </div>
-
-                    <div className='idade'>
+                </div>
+                <div className='dois'>
+                    <div className='text'>
                         <label>Idade</label>
                         <input type='number' />
                     </div>
 
-                    <div className='nascimento'>
+                    <div className='text'>
                         <label>Nascimento</label>
                         <input type='date' />
                     </div>
-
-                    <div className='telefone'>
+                </div>
+                    <div className='text'>
                         <label>Telefone</label>
                         <input type='number' />
                     </div>
 
-
+                <div className='tipo'>
                     <button className='cliente'>
                         <p>quero ser cliente</p>
                     </button>
@@ -64,23 +65,15 @@ export default function CadastroCliente() {
                     <button className='profissional'>
                         <p>quero ser um profissional</p>
                     </button>
+                </div>
 
-                    <button className='foi'>
-                        <img src='/assets/images/seta-direita.png' />
-                    </button>
+                <button className='foi'>
+                    <img src='/assets/images/seta-direita.png' />
+                </button>
 
-                    <div className='informações'>
+                <div className='informações'>
 
-                        <h2>Já tem uma conta? <a href='/login'>Conecte-se</a> </h2>
-
-                    </div>
-
-                    <div className='astronauta'>
-
-                        <img src='/assets/images/planeta e astro.png' className='ola' />
-
-                    </div>
-
+                    <h2>Já tem uma conta? <a href='/login'>Conecte-se</a> </h2>
 
                 </div>
 
@@ -90,9 +83,17 @@ export default function CadastroCliente() {
 
 
 
+
+
+
+            </section>
+
+
+            <div className='astronauta'>
+
+                <img src='/assets/images/planeta e astro.png' className='ola' />
+
             </div>
-
-
 
 
 

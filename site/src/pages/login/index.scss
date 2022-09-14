@@ -9,6 +9,11 @@
     src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
 }
 
+@font-face {
+    font-family: 'League';
+    src: url('../../../public/assets/fonts/LeagueSpartan-Bold.otf');
+}
+
 .Login-page {
 
     display: flex;
@@ -45,6 +50,8 @@
     
         .cadastra {
             cursor: pointer;
+            font-family: 'League';
+            font-size: 1.5rem;
         }
     
         .esqueci {
@@ -71,6 +78,7 @@
             border-radius: 1rem;
             cursor: pointer;
             border: none;
+            align-items: center;
         }
     
         
@@ -79,12 +87,14 @@
             font-family: 'adam';
             color: white;
             text-align: center;
+            font-size:xx-large;
         }
     
         h2 {
             font-family: 'adam';
             color: white;
             text-align: center;
+            font-size:large;
         }
     
         p {
@@ -92,7 +102,7 @@
             color: white;
             font-style: normal;
             font-weight: 4rem;
-            font-size: 1rem;
+            font-size:small;
             line-height: 1rem;
             text-align: center;
         }
