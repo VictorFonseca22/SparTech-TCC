@@ -5,6 +5,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import LandingPage from './pages/landing'
 import Login from './pages/login'
 import CadastraCliente from './pages/cadastro-cliente'
+import PerfilProfissional from './pages/perfil-profissional'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +15,7 @@ root.render(
          <Route path='/' element={<LandingPage />} />
          <Route path='/login' element={<Login />} />
          <Route path='/cadastro-cliente' element={<CadastraCliente />} />
+         <Route path='/perfil-profissional' element={<PerfilProfissional />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

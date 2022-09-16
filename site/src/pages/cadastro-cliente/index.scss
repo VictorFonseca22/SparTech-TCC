@@ -1,9 +1,4 @@
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    border: 1px green solid;
-}
 
 
  @font-face {
@@ -26,8 +21,8 @@
     height: 100vh;
 
     .cadastra {
-        width: 682px;
-        height: 732px;
+        width: 68rem;
+        height: 48rem;
         background: rgba(40, 44, 59, 0.6);
         border-radius: 44px 220px;
         display: flex;
@@ -44,7 +39,8 @@
             input{
                 width: 100%;
                 height: 2rem;
-                
+                border-radius: 10rem;
+                border: none;
             }
 
         }
