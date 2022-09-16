@@ -9,7 +9,7 @@
     src: url('../../../public/assets/fonts/LeagueSpartan-Bold.otf');
 }
 
-.page-CadasCliente {
+.page-CadasProf {
     display: flex;
     background-image: url('../../../public/assets/images/espaço.png');
     align-items: center;
@@ -33,11 +33,13 @@
             align-items: flex-start;
             width: 15rem;
 
-            input {
+            input, select {
                 width: 100%;
                 height: 2rem;
                 border-radius: 10rem;
                 border: none;
+                font-size: 1.2rem;
+                padding: 0rem 1rem;
             }
 
         }
@@ -55,6 +57,27 @@
             display: flex;
             justify-content: space-between;
             width: 20rem;
+
+            .cliente{
+                width: 9rem;
+                height: 3rem;
+                background: #41b7e642;
+                border-radius: 1rem;
+                border: none;
+                font-family: 'adam';
+                color: #ffffff54;
+                padding: 0rem 1rem;
+            }
+            .profissional{
+                width: 9rem;
+                height: 3rem;
+                background: #41B6E6;
+                border-radius: 1rem;
+                border: none;
+                font-family: 'adam';
+                color: white;
+            }
+    
         }
 
         a {
@@ -104,18 +127,8 @@
             font-family: 'adam';
         }
 
-        button {
-            width: 9rem;
-            height: 3rem;
-            background: #41B6E6;
-            border-radius: 1rem;
-            border: none;
-        }
-
-        p {
-            font-family: 'adam';
-            color: white;
-        }
+        
+        
 
         .informações {
             height: 5rem;

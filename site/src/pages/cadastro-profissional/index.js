@@ -1,11 +1,30 @@
 import './index.scss';
+import {useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
+import storage from 'local-storage'
 
-export default function CadastroCliente() {
+export default function Index() {
+    const [Nome, SetNome] = useState ('');
+    const [Email, SetEmail] = useState ('');
+    const [Cpf, SetCpf] = useState ('');
+    const [Senha, SetSenha] = useState ('');
+    const [Idade, SetIdade] = useState('');
+    const [Nascimento, SetNascimento] = useState('');
+    const [Telefone, SetTelefone] = useState ('');
+    const [Erro, SetErro] = useState ('');
+    const [Carregando, SetCarregando] = useState(false);
+
+    useEffect(() =>{
+        if (storage('usuario-cadastrado')) {
+            navigate('/perfil-profissional')
+            
+        }
+    })
 
 
 
     return (
-        <main className="page-CadasCliente">
+        <main className="page-CadasProf">
 
             <section className='cadastra'>
 
@@ -52,11 +71,16 @@ export default function CadastroCliente() {
                         <input type='date' />
                     </div>
                 </div>
-                <div className='text'>
-                    <label>Telefone</label>
-                    <input type='number' />
+                <div className='dois'>
+                    <div className='text'>
+                        <label>Telefone</label>
+                        <input type='number' />
+                    </div>
+                    <div className='text'>
+                    <label>Tipo de Serviço</label>
+                        <select></select>
+                    </div>
                 </div>
-
                 <div className='tipo'>
                     <button className='cliente'>
                         <p>quero ser cliente</p>

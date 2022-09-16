@@ -5,6 +5,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import LandingPage from './pages/landing'
 import Login from './pages/login'
 import CadastraCliente from './pages/cadastro-cliente'
+import CadastraProfissional from './pages/cadastro-profissional'
 import PerfilProfissional from './pages/perfil-profissional'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,6 +16,7 @@ root.render(
          <Route path='/' element={<LandingPage />} />
          <Route path='/login' element={<Login />} />
          <Route path='/cadastro-cliente' element={<CadastraCliente />} />
+         <Route path='/cadastro-profissional' element={<CadastraProfissional />} />
          <Route path='/perfil-profissional' element={<PerfilProfissional />} />
       </Routes>
     </BrowserRouter>
