@@ -1,6 +1,15 @@
+import axios from 'axios'
+import { useState } from 'react';
 import './index.scss';
 
 export default function Login() {
+    const [Email, SetEmail] = useState ('');
+    const [Senha, SetSenha] = useState ('');
+
+    async function Entra() {
+        const j = await axios.get('') 
+    }
+
 
     return (
         <main className='Login-page'>
@@ -21,18 +30,18 @@ export default function Login() {
                 <div className='fazer'>
 
                     <div className='email'>
-                        <input placeholder='Email' type='text' />
+                        <input placeholder='Email' type='text' value={Email} onChange={e => SetEmail (e.target.value) } />
                     </div>
 
                     <div className='senha'>
-                        <input placeholder='Senha' type='password' />
+                        <input placeholder='Senha' type='password' value={Senha} onChange={e => SetSenha (e.target.value) } />
                     </div>
 
                 </div>
 
                 <div className='entrar'>
 
-                    <button className='foi'>
+                    <button className='foi' onClick={Entra}>
 
                         <img src='/assets/images/seta-direita.png' />
 

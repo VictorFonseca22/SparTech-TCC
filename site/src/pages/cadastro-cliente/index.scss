@@ -55,6 +55,27 @@
             display: flex;
             justify-content: space-between;
             width: 20rem;
+
+            .cliente{
+            width: 9rem;
+            height: 3rem;
+            background: #41B6E6;
+            border-radius: 1rem;
+            border: none;
+            color: white;
+            }
+    
+            .profissional{
+                width: 9rem;
+                height: 3rem;
+                background: #41b7e642;
+                border-radius: 1rem;
+                border: none;
+                font-family: 'adam';
+                color: #ffffff54;
+                padding: 0rem 1rem;
+            }
+
         }
 
         a {
@@ -104,14 +125,7 @@
             font-family: 'adam';
         }
 
-        button {
-            width: 9rem;
-            height: 3rem;
-            background: #41B6E6;
-            border-radius: 1rem;
-            border: none;
-        }
-
+       
         p {
             font-family: 'adam';
             color: white;
@@ -120,6 +134,8 @@
         .informações {
             height: 5rem;
         }
+
+ 
     }
 
     h1 {
@@ -127,6 +143,8 @@
         color: white;
         text-align: center;
     }
+
+   
 
 
 }

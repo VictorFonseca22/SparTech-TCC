@@ -1,26 +1,8 @@
 import './index.scss';
 import {useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
-import storage from 'local-storage'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Index() {
-    const [Nome, SetNome] = useState ('');
-    const [Email, SetEmail] = useState ('');
-    const [Cpf, SetCpf] = useState ('');
-    const [Senha, SetSenha] = useState ('');
-    const [Idade, SetIdade] = useState('');
-    const [Nascimento, SetNascimento] = useState('');
-    const [Telefone, SetTelefone] = useState ('');
-    const [Erro, SetErro] = useState ('');
-    const [Carregando, SetCarregando] = useState(false);
-
-    useEffect(() =>{
-        if (storage('usuario-cadastrado')) {
-            navigate('/perfil-profissional')
-            
-        }
-    })
-
 
 
     return (
@@ -82,13 +64,18 @@ export default function Index() {
                     </div>
                 </div>
                 <div className='tipo'>
+                    <Link to='/cadastro-cliente' >
                     <button className='cliente'>
                         <p>quero ser cliente</p>
                     </button>
+                    </Link>
 
+                    <Link to='/cadastro-profissional' >
                     <button className='profissional'>
                         <p>quero ser um profissional</p>
                     </button>
+                    </Link>
+
                 </div>
 
                 <button className='foi'>
