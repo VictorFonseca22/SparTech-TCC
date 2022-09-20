@@ -1,12 +1,24 @@
 import './index.scss';
 import {useEffect, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function Index() {
+export default function CadastroProfissional() {
+    const [Nome, SetNome] = useState ('');
+    const [Email, SetEmail] = useState ('');
+    const [Cpf, SetCpf] = useState ('');
+    const [Senha, SetSenha] = useState ('');
+    const [Idade, SetIdade] = useState('');
+    const [Nascimento, SetNascimento] = useState('');
+    const [Telefone, SetTelefone] = useState ('');
+
 
 
     return (
         <main className="page-CadasProf">
+            <ToastContainer />
+
 
             <section className='cadastra'>
 

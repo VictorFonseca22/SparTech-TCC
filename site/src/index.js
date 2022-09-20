@@ -7,6 +7,7 @@ import Login from './pages/login'
 import CadastraCliente from './pages/cadastro-cliente'
 import CadastraProfissional from './pages/cadastro-profissional'
 import PerfilProfissional from './pages/perfil-profissional'
+import BuscaProf from './pages/page-busca'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
          <Route path='/cadastro-cliente' element={<CadastraCliente />} />
          <Route path='/cadastro-profissional' element={<CadastraProfissional />} />
          <Route path='/perfil-profissional' element={<PerfilProfissional />} />
+         <Route path='/busca-profissional' element={<BuscaProf />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
