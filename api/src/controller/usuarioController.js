@@ -1,7 +1,7 @@
 
 import { Router } from "express";
 import multer from 'multer'
-import {cadastroCliente, cadastroProfissional, listarCategorias} from '../repository/usuarioRepository.js'
+import {cadastroCliente, cadastroProfissional, listarCategorias, LoginCliente, LoginProfissional} from '../repository/usuarioRepository.js'
 
 const uploadCliente = multer({ dest: 'storage/FotosCliente'})
 const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
@@ -86,6 +86,29 @@ server.post('/cadastrarProfissional', async (req, resp) => {
             erro:err.message
         })
 
+    }
+})
+
+//Login
+server.post('/login' , async (req,resp) => {
+    try{
+        const {email, senha} = req.body;
+
+        let resposta = await LoginCliente(email,senha)
+        if(resposta) {
+            resposta = await LoginProfissional(email,senha)
+        }
+
+        if(!resposta){
+            throw new Error('Credenciais Inválidas')
+        }
+        resp.send(resposta)
+
+    }
+    catch(err){
+        resp.status(401).send({
+            erro:err.message
+        })
     }
 })
 // Listar Categorias

@@ -28,6 +28,34 @@ export async function cadastroProfissional (profissional){
     return profissional;
 }
 
+export async function LoginCliente (email, senha){
+
+    const comando = `
+    select id_cliente  as    id,
+    nm_cliente         as    nome
+    from tb_cliente
+    where ds_email = ?
+    and ds_senha = ?
+    `
+
+    const [linhas] = await con.query(comando, [email,senha])
+    return linhas[0];
+}
+
+export async function LoginProfissional (email, senha){
+
+    const comando = `
+    select id_profissional  as    id,
+    nm_profissional         as    nome
+    from tb_profissional
+    where ds_email = ?
+    and ds_senha = ?
+    `
+
+    const [linhas] = await con.query(comando, [email,senha])
+    return linhas[0];
+}
+
 export async function listarCategorias() {
     const comando = `
         select id_tipo_serv         as id,
@@ -38,3 +66,5 @@ export async function listarCategorias() {
     const [linhas] = await con.query(comando);
     return linhas;
 }
+
+
