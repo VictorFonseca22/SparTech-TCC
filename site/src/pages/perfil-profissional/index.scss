@@ -1,4 +1,11 @@
+@font-face {
+    font-family: 'adam';
+    src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+}
+
+
 .Perfil-Profissional {
+    background-color: #171921;
 
     .barra {
         background: #293040;
@@ -9,9 +16,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 19rem;
-            height: 6rem;
+            width: 10rem;
+            height: 5rem;
         }
+
+        h1 {
+            font-family: 'adam';
+            color: black;
+        }
+
+        .denunciar,
+        .servico {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: row;
+        }
+
+
+        
 
     }
 
