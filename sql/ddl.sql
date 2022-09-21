@@ -3,7 +3,7 @@ use Spartech;
 
 create table tb_tipo_serv  (
   id_tipo_serv         int primary key auto_increment,
-  nm_nome              varchar(100),
+  nm_servico              varchar(100),
   ds_carga_hr          varchar(100)
 );
 
