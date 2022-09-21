@@ -59,7 +59,7 @@ export async function LoginProfissional (email, senha){
 export async function listarCategorias() {
     const comando = `
         select id_tipo_serv         as id,
-               nm_servico           as servico
+               nm_nome           as nome
           from tb_tipo_serv
     `
 

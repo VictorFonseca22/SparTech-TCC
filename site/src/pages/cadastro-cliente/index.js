@@ -19,7 +19,7 @@ export default function CadastroCliente() {
     async function SalvarPerfil() {
         try {
             const j = await CadastrarCliente(Nome,Email,Cpf,Senha,Idade,Nascimento,Telefone)
-            toast.dark('cliente cadastrado');
+            toast.dark('✅cliente cadastrado');
         } catch (err) {
             if(err.response)
             toast.error(err.response.data.erro);
