@@ -47,3 +47,21 @@ select id_comentario    id,
        ds_comentario    comentário,
        DATE_FORMAT (dt_comentario,'%d/%m/%Y %H:%i:%S') AS 'data'
     from tb_comentario_prof;
+    
+    
+    insert into tb_avaliacao (id_profissional, vl_avaliacao)
+       values (1, 4.5);
+       
+       
+    select p.nm_profissional    nome,
+       p.id_tipo_serv           serviço,
+       p.nr_servicos            n°servicos,
+       p.dq_espartech           destaque,
+       p.arq_foto               foto,
+       tb_avaliacao.vl_avaliacao 		avaliacao
+       from tb_profissional   as   p
+       inner join tb_avaliacao on p.id_profissional = tb_avaliacao.id_profissional
+       inner join tb_tipo_serv on p.id_tipo_serv = tb_tipo_serv.id_tipo_serv
+       where nm_servico like '%Manu%';
+       
+       

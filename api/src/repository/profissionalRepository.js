@@ -1,18 +1,21 @@
-import { createPool } from "mysql2";
 import { con } from "./connection.js";
 
-export async function ConsultarTodos(){
+export async function BuscaProfissional(nome){
     const comando =
     `
-    select nm_profissional    nome,
-       id_tipo_serv           serviço,
-       nr_servicos            n°servicos,
-       dq_espartech           destaque,
-       arq_foto               foto
-       from tb_profissional;
+    select p.nm_profissional    nome,
+       p.id_tipo_serv           serviço,
+       p.nr_servicos            n°servicos,
+       p.dq_espartech           destaque,
+       p.arq_foto               foto,
+       tb_avaliacao.vl_avaliacao 		avaliacao
+       from tb_profissional   as   p
+       inner join tb_avaliacao on p.id_profissional = tb_avaliacao.id_profissional
+       inner join tb_tipo_serv on p.id_tipo_serv = tb_tipo_serv.id_tipo_serv
+       where nm_servico like ?;
     `
 
-    const [linhas] = await con.query(comando)
+    const [linhas] = await con.query(comando, [`%${nome}%`])
     return linhas
 }
 
@@ -67,3 +70,44 @@ export async function verComentarios (){
     const [linhas] = await con.query(comando)
     return linhas
 }
+
+export async function inserirAtuacao (area) {
+    const comando = `
+    update tb_profissional
+    set   ar_atuacao = ?
+    where id_profissional = ?
+    `
+    const [resposta] = await con.query (comando, [area.atuacao, area.IDprofissional])
+
+    return area;
+}
+
+export async function inserirLicencas (certificado) {
+    const comando = `
+    update tb_profissional
+    set   ds_licencas = ?
+    where id_profissional = ?
+    `
+    const [resposta] = await con.query (comando, [certificado.licenca, certificado.IDprofissional])
+
+    return certificado;
+}
+
+export async function PerfilProfissional (id){
+    const comando = `
+    select  arq_foto            	 		foto,
+            nm_profissional    			    nome,
+            ds_telefone        			    telefone,
+            ds_email            		 	email,
+            ar_atuacao        			    area,
+            ds_licencas						licencas,
+			tb_avaliacao.vl_avaliacao 		avaliacao
+            from tb_profissional
+            inner join tb_avaliacao on tb_profissional.id_profissional = tb_avaliacao.id_profissional
+            where tb_profissional.id_profissional = ?;
+    `
+    const [linhas] = await con.query(comando, [id]);
+        return linhas[0];
+
+}
+

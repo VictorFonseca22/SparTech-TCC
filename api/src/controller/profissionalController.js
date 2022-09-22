@@ -1,19 +1,25 @@
 import { Router } from "express";
 import multer from 'multer'
-import {ConsultarTodos, enviarFotoCliente, enviarFotoProfissional, fazerComentario, verComentarios} from '../repository/profissionalRepository.js'
+import {BuscaProfissional,enviarFotoCliente, enviarFotoProfissional, fazerComentario, inserirAtuacao, inserirLicencas, PerfilProfissional, verComentarios} from '../repository/profissionalRepository.js'
 
 const uploadCliente = multer({ dest: 'storage/FotosCliente'})
 const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
 const server = Router();
 
 //Consultar Profissionais
-server.get('/consultarProfissionais', async (req, resp) => {
+server.get('/profissional/buscar/nome', async(req, resp) => {
     try{
-        const resposta = await ConsultarTodos();
-        resp.send(resposta) 
+    const {nm} = req.query;
+
+    const resposta = await BuscaProfissional(nm)
+    if(!resposta){
+        resp.status(404).send([])
     }
-    catch(err){
-        resp.status(401).send({
+    else{
+    resp.send(resposta)
+}
+    } catch(err){
+        resp.send({
             erro: err.message
         })
     }
@@ -89,6 +95,75 @@ server.get('/verComentario', async (req, resp) => {
     }
     catch(err){
         resp.status(401).send({
+            erro: err.message
+        })
+    }
+})
+//Inserir Área de Atuação
+server.post('/profissional/area', async (req, resp) => {
+    try{
+        const novaArea = req.body;
+        if(!novaArea.atuacao){
+                    throw new Error('Área de atuação é obrigatória!');
+        }
+
+        if(!novaArea.IDprofissional){
+            throw new Error('É necessário estar logado!')
+        }
+       
+
+        const area = await inserirAtuacao(novaArea);
+
+        resp.send(area)
+    } 
+    catch(err){
+        resp.status(401).send({
+            erro:err.message
+        })
+
+    }
+})
+//Inserir Licença / Certificado
+server.post('/profissional/licenca', async (req, resp) => {
+    try{
+        const novoCertificado = req.body;
+        if(!novoCertificado.licenca){
+                    throw new Error('Certificado ou Licença são obrigatórios!');
+        }
+        
+        if(!novoCertificado.IDprofissional){
+            throw new Error('É necessário estar logado!')
+        }
+       
+
+        const licenca = await inserirLicencas(novoCertificado);
+
+        resp.send(licenca)
+    } 
+    catch(err){
+        resp.status(401).send({
+            erro:err.message
+        })
+
+    }
+})
+//Perfil
+server.get('/perfil/profissional/:id', async (req, resp) =>{
+    try
+    {
+        const id = Number(req.params.id);
+
+        const resposta = await PerfilProfissional(id);
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+
+    catch(err)
+    {
+        resp.status(400).send({
             erro: err.message
         })
     }

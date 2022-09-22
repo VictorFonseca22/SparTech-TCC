@@ -21,6 +21,8 @@ create table tb_profissional (
   dt_nasc               date,
   nr_servicos  		    int,
   dq_espartech          boolean,
+  ar_atuacao 			varchar(60),
+  ds_licencas			varchar(100),
   foreign key (id_tipo_serv) references tb_tipo_serv (id_tipo_serv)
 );
 
