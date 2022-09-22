@@ -6,35 +6,222 @@
 
 .Perfil-Profissional {
     background-color: #171921;
+    display: flex;
+    flex-direction: column;
+
+    *{
+        margin: 0;
+        box-sizing: border-box;
+    }
 
     .barra {
         background: #293040;
-        width: 100vw;
+        width: 100%;
         height: 6.5rem;
-
-        .Logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 10rem;
-            height: 5rem;
-        }
-
-        h1 {
-            font-family: 'adam';
-            color: black;
-        }
-
-        .denunciar,
-        .servico {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0rem 2rem;
+        
+        .c{
             display: flex;
             justify-content: flex-end;
+            width: 100%;
+            max-width: 25rem;
+
+
+            .Logo {
+                width: 10rem;
+                height: 4rem;
+            }
+
+
+        }
+        .voltar{
+            display: flex;
             flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 10rem;
+
+            h1 {
+                font-family: 'adam';
+                color: #FFF;
+                font-size: 1.6rem;
+            }
+
         }
 
+
+        .acoes{
+            width: 100%;
+            max-width: 25rem;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+
+            
+            h1 {
+                font-family: 'adam';
+                color: #FFF;
+                font-size: 1.6rem;
+            }
+        }
 
         
 
+    }
+
+    .fundo{
+        width: 100%;
+
+        .cinza{
+            width:100%;
+        }
+
+        .foto{
+            position: absolute ;
+            margin: 4% 0rem 0rem 2%;
+            width: 14%;
+            min-width: 10rem;
+        }
+
+
+    }
+
+    .informacoes{
+        display: flex;
+        flex-direction: column;
+
+        p{
+            font-family: 'adam';
+            color: #FFF;
+            font-size: 2rem;
+
+        }
+
+        h1{
+            color: #41b6e6;
+            font-family: 'adam';
+            font-size: 2.5rem;
+        }
+
+        .op{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        
+            .ip{
+                
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                height: 22em;
+
+                padding: 4rem 0rem 0rem 2rem;
+                width: 100%;
+                max-width: 30rem;
+    
+                .nome{
+                    color: #FFF !important;
+                }
+    
+                .tel{
+                    font-size: 1.6rem;
+                    font-family: 'adam';
+                    padding-left: 0.5rem;
+                }
+    
+                .email{
+                    font-size: 1.6rem;
+                    font-family: 'adam';
+                    padding-left: 0.5rem;
+
+    
+                }
+
+
+                .avaliacao{
+                    display: flex;
+                    width: 100%;
+                    max-width: 25.5rem;
+                    align-items: flex-start;
+                    justify-content: space-between;
+
+                    .estrelas{
+                        display: flex;
+                    }
+                    
+                    p{
+                        font-size: 1.4rem;
+                        text-align: center;
+                        align-self: center;
+                    }
+                }
+            }
+
+            .editar{
+                display: flex;
+                align-items: center;
+                width: 20.5rem;
+                margin-right: 2rem;
+                justify-content: space-between;
+    
+                .perfil{
+                    font-size: 2.5rem;
+                    color: #FFF;
+                }
+    
+                img{
+                    width: 3rem;
+                }
+    
+            }
+
+        }
+        
+       
+        .experiencia{
+            padding: 0rem 0rem 0rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 35rem;
+
+
+            .area-de-atuacao{
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;                
+            
+            }
+
+            .licenca{
+                padding-top: 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;                
+            }
+
+        }
+
+        
+
+
+
+    }
+
+
+    .comentes{
+        padding: 2rem 0rem 0rem 2rem;
+        
+        height: 40rem;
+
+        h1{
+            color: #FFF;
+        }
     }
 
 
