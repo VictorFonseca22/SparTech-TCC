@@ -71,21 +71,21 @@ export default function CadastroProfissional() {
                         <input type='number' />
                     </div>
                     <div className='text'>
-                    <label>Tipo de Serviço</label>
+                        <label>Tipo de Serviço</label>
                         <select></select>
                     </div>
                 </div>
                 <div className='tipo'>
                     <Link to='/cadastro-cliente' >
-                    <button className='cliente'>
-                        <p>quero ser cliente</p>
-                    </button>
+                        <button className='cliente'>
+                            <p>quero ser cliente</p>
+                        </button>
                     </Link>
 
                     <Link to='/cadastro-profissional' >
-                    <button className='profissional'>
-                        <p>quero ser um profissional</p>
-                    </button>
+                        <button className='profissional'>
+                            <p>quero ser um profissional</p>
+                        </button>
                     </Link>
 
                 </div>
