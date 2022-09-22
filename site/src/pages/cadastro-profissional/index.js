@@ -98,15 +98,8 @@ export default function CadastroProfissional() {
                     </div>
 
                     <div className='text'>
-                        <label>Tipo de Serviço</label>
-
-                        <select value={IdServico} onChange={e => SetIdServico(e.target.value)}>
-                            <option selected disabled hidden>Selecione</option>
-                            {Categoria.map(item =>
-                                <option value={item.id}> {item.Categoria}</option>
-                            )}
-
-                        </select>
+                    <label>Tipo de Serviço</label>
+                        <select></select>
                     </div>
 
                 </div>
