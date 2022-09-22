@@ -1,9 +1,17 @@
 .Busca-prof{
 
-    background-color: #171921;
 
-    .pesquisa{
-        color: #293040;
+    .barra{
+        background-color: #293040;
+    }
+
+    .resultado{
+        background-color: #171921;
+
+        .pessoa{
+        background: linear-gradient(180deg, rgba(58, 108, 131, 0) 0%, rgba(58, 108, 131, 0.5904) 46.35%);
+        border-radius: 2rem;
+        }
     }
 
 }

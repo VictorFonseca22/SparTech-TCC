@@ -1,17 +1,43 @@
 import './index.scss';
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CadastrarProfissional, ListaCategoria } from '../../api/usuarioApi';
 
 export default function CadastroProfissional() {
-    const [Nome, SetNome] = useState ('');
-    const [Email, SetEmail] = useState ('');
-    const [Cpf, SetCpf] = useState ('');
-    const [Senha, SetSenha] = useState ('');
-    const [Idade, SetIdade] = useState('');
+    const [Nome, SetNome] = useState('');
+    const [Email, SetEmail] = useState('');
+    const [Cpf, SetCpf] = useState('');
+    const [Senha, SetSenha] = useState('');
     const [Nascimento, SetNascimento] = useState('');
-    const [Telefone, SetTelefone] = useState ('');
+    const [Telefone, SetTelefone] = useState('');
+    const [Categoria, SetCategoria] = useState([]);
+    const [IdServico, SetIdServico] = useState()
+
+
+
+    async function SalvarProf() {
+        try {
+            const j = await CadastrarProfissional(Nome, Email, Cpf, Senha, Nascimento, Telefone, Categoria)
+            toast.dark('✅profissional cadastrado');
+        } catch (err) {
+            if (err.response)
+                toast.error(err.response.data.erro);
+            else {
+                toast.error(err.message)
+            }
+        }
+    }
+
+    async function CarregarServico() {
+        const r = await ListaCategoria();
+        SetCategoria(r);
+    }
+
+    useEffect(() => {
+        CarregarServico();
+    }, [])
 
 
 
@@ -35,23 +61,23 @@ export default function CadastroProfissional() {
                 <div className='dois'>
                     <div className='text'>
                         <label>Nome</label>
-                        <input type='text' />
+                        <input type='text' value={Nome} onChange={e => SetNome(e.target.value)} />
                     </div>
 
                     <div className='text'>
                         <label>cpf</label>
-                        <input type='text' />
+                        <input type='text' value={Cpf} onChange={e => SetCpf(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
                     <div className='text'>
                         <label>Email</label>
-                        <input type='text' />
+                        <input type='text' value={Email} onChange={e => SetEmail(e.target.value)} />
                     </div>
 
                     <div className='text'>
                         <label>Senha</label>
-                        <input type='password' />
+                        <input type='password' value={Senha} onChange={e => SetSenha(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
@@ -62,18 +88,20 @@ export default function CadastroProfissional() {
 
                     <div className='text'>
                         <label>Nascimento</label>
-                        <input type='date' />
+                        <input type='date' value={Nascimento} onChange={e => SetNascimento(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
                     <div className='text'>
                         <label>Telefone</label>
-                        <input type='number' />
+                        <input type='number' value={Telefone} onChange={e => SetTelefone(e.target.value)} />
                     </div>
+
                     <div className='text'>
-                        <label>Tipo de Serviço</label>
+                    <label>Tipo de Serviço</label>
                         <select></select>
                     </div>
+
                 </div>
                 <div className='tipo'>
                     <Link to='/cadastro-cliente' >
@@ -90,7 +118,7 @@ export default function CadastroProfissional() {
 
                 </div>
 
-                <button className='foi'>
+                <button className='foi' onClick={SalvarProf}>
                     <img src='/assets/images/seta-direita.png' />
                 </button>
 

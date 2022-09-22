@@ -93,15 +93,15 @@ server.post('/cadastrarProfissional', async (req, resp) => {
 server.post('/login' , async (req,resp) => {
     try{
         const {email, senha} = req.body;
-
-        let resposta = await LoginCliente(email,senha)
-        if(resposta) {
-            resposta = await LoginProfissional(email,senha)
-        }
-
-        if(!resposta){
+    
+        let resposta = await LoginCliente(email, senha);
+        if (!resposta) {
+          resposta = await LoginProfissional(email, senha);
+          if(!resposta){
             throw new Error('Credenciais Inválidas')
         }
+        }
+        
         resp.send(resposta)
 
     }

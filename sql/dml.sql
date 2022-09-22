@@ -1,5 +1,5 @@
 -- Inserir tipo de serviço
-insert into tb_tipo_serv (nm_nome, ds_carga_hr)
+insert into tb_tipo_serv (nm_servico, ds_carga_hr)
      values('Manutenção de computadores', '13:00 às 19:00');
      
 -- Cadastro
