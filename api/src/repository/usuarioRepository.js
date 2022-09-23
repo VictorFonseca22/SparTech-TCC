@@ -17,13 +17,13 @@ export async function cadastroCliente (cliente){
 export async function cadastroProfissional (profissional){
     const comando = 
     `
-    insert into tb_profissional (nm_profissional, ds_email, ds_senha, ds_cpf, ds_telefone, dt_nasc, id_tipo_serv)
+    insert into tb_profissional (id_tipo_serv, nm_profissional, ds_email, ds_cpf, ds_senha, dt_nasc, ds_telefone )
      values(?, ?, ?, ?, ?, ?, ?);
     `
 
-    const [resposta] = await con.query(comando, [profissional.nome, profissional.email, profissional.senha, profissional.cpf, profissional.telefone, profissional.nascimento, profissional.servico]);
+    const [resposta] = await con.query(comando, [profissional.servico,profissional.nome, profissional.email,profissional.cpf, profissional.senha,  profissional.nascimento, profissional.telefone ]);
  
-    profissional.id = resposta.insertId;
+    profissional.IdCadastro = resposta.insertId;
 
     return profissional;
 }
@@ -58,8 +58,8 @@ export async function LoginProfissional (email, senha){
 
 export async function listarCategorias() {
     const comando = `
-        select id_tipo_serv         as id,
-               nm_servico           as nome
+        select id_tipo_serv         as IdCategoria,
+               nm_servico           as servico
           from tb_tipo_serv
     `
 

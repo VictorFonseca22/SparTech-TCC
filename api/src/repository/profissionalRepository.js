@@ -95,19 +95,20 @@ export async function inserirLicencas (certificado) {
 
 export async function PerfilProfissional (id){
     const comando = `
-    select  arq_foto            	 		foto,
+    select  tb_profissional.id_profissional id,
+            arq_foto            	 		foto,
             nm_profissional    			    nome,
             ds_telefone        			    telefone,
             ds_email            		 	email,
             ar_atuacao        			    area,
-            ds_licencas						licencas,
+            ds_licencas						licenca,
 			tb_avaliacao.vl_avaliacao 		avaliacao
             from tb_profissional
             inner join tb_avaliacao on tb_profissional.id_profissional = tb_avaliacao.id_profissional
             where tb_profissional.id_profissional = ?;
     `
     const [linhas] = await con.query(comando, [id]);
-        return linhas[0];
+        return linhas;
 
 }
 

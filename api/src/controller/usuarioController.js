@@ -3,8 +3,6 @@ import { Router } from "express";
 import multer from 'multer'
 import {cadastroCliente, cadastroProfissional, listarCategorias, LoginCliente, LoginProfissional} from '../repository/usuarioRepository.js'
 
-const uploadCliente = multer({ dest: 'storage/FotosCliente'})
-const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
 const server = Router();
 // Cadastrar Cliente
 server.post('/cadastrarCliente', async (req, resp) => {
@@ -14,15 +12,13 @@ server.post('/cadastrarCliente', async (req, resp) => {
         if(!novoCadastro.nome){
             throw new Error('Nome é obrigatório!');
         }
-
         if(!novoCadastro.email){
             throw new Error('Email é obrigatório!');
         }
-
-        if(!novoCadastro.telefone){
-            throw new Error('Telefone é obrigatório!');
+        if(!novoCadastro.cpf){
+            throw new Error('CPF é obrigatório!');
         }
-
+        
         if(!novoCadastro.senha){
             throw new Error('Senha é obrigatória!');
         }
@@ -30,10 +26,12 @@ server.post('/cadastrarCliente', async (req, resp) => {
         if(!novoCadastro.nascimento){
             throw new Error('Data de nascimento é obrigatória!');
         }
-     
-        if(!novoCadastro.cpf){
-            throw new Error('CPF é obrigatório!');
+
+        if(!novoCadastro.telefone){
+            throw new Error('Telefone é obrigatório!');
         }
+
+        
 
         const cadastro =  await cadastroCliente(novoCadastro);
         resp.send(cadastro)
@@ -58,8 +56,8 @@ server.post('/cadastrarProfissional', async (req, resp) => {
             throw new Error('Email é obrigatório!');
         }
 
-        if(!novoCadastro.telefone){
-            throw new Error('Telefone é obrigatório!');
+        if(!novoCadastro.cpf){
+            throw new Error('CPF é obrigatório!');
         }
 
         if(!novoCadastro.senha){
@@ -69,14 +67,11 @@ server.post('/cadastrarProfissional', async (req, resp) => {
         if(!novoCadastro.nascimento){
             throw new Error('Data de nascimento é obrigatória!');
         }
-     
-        if(!novoCadastro.cpf){
-            throw new Error('CPF é obrigatório!');
+        if(!novoCadastro.telefone){
+            throw new Error('Telefone é obrigatório!');
         }
+    
         
-        if(!novoCadastro.servico){
-            throw new Error('Tipo de serviço é obrigatório')
-        }
 
         const cadastro =  await cadastroProfissional(novoCadastro);
         resp.send(cadastro)

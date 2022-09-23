@@ -19,22 +19,22 @@ export async function CadastrarCliente(nome, cpf, email, senha,idade, nascimento
 }
 
 
-export async function CadastrarProfissional(nome,cpf,email,senha,nascimento,telefone,servico) {
-    const Resp = await api.post ('/cadastrarProfissional',{
+export async function CadastrarProfissional(nome, email, cpf, senha, nascimento, telefone, servico) {
+    const resp = await api.post ('/cadastrarProfissional',{
         nome:nome,
-        cpf:cpf,
         email:email,
+        cpf:cpf,
         senha:senha,
         nascimento:nascimento,
         telefone:telefone,
-        servico:servico
+        servico:servico,
     })
-    return Resp.data;
+    return resp.data;
 }
 
 export async function ListaCategoria() {
-    const Resp = await api.get('/api/categoria')
-    return Resp.data;
+    const resp = await api.get('/api/categoria')
+    return resp.data;
     
 }
 

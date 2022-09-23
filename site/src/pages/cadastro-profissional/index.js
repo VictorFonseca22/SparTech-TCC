@@ -1,25 +1,27 @@
 import './index.scss';
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CadastrarProfissional, ListaCategoria } from '../../api/usuarioApi';
 
 export default function CadastroProfissional() {
-    const [Nome, SetNome] = useState('');
-    const [Email, SetEmail] = useState('');
-    const [Cpf, SetCpf] = useState('');
-    const [Senha, SetSenha] = useState('');
-    const [Nascimento, SetNascimento] = useState('');
-    const [Telefone, SetTelefone] = useState('');
-    const [Categoria, SetCategoria] = useState([]);
+    const [nome, SetNome] = useState('');
+    const [email, SetEmail] = useState('');
+    const [cpf, SetCpf] = useState('');
+    const [senha, SetSenha] = useState('');
+    const [nascimento, SetNascimento] = useState('');
+    const [telefone, SetTelefone] = useState('');
+    const [servico, SetServico] = useState([]);
     const [IdServico, SetIdServico] = useState()
 
 
 
     async function SalvarProf() {
-        try {
-            const j = await CadastrarProfissional(Nome, Email, Cpf, Senha, Nascimento, Telefone, Categoria)
+        console.log(servico) 
+        console.log(IdServico)
+       try {
+            await CadastrarProfissional(nome, email, cpf, senha, nascimento, telefone, IdServico)
             toast.dark('✅profissional cadastrado');
         } catch (err) {
             if (err.response)
@@ -32,14 +34,14 @@ export default function CadastroProfissional() {
 
     async function CarregarServico() {
         const r = await ListaCategoria();
-        SetCategoria(r);
+        SetServico(r);
     }
 
     useEffect(() => {
         CarregarServico();
     }, [])
 
-
+   
 
     return (
         <main className="page-CadasProf">
@@ -61,23 +63,23 @@ export default function CadastroProfissional() {
                 <div className='dois'>
                     <div className='text'>
                         <label>Nome</label>
-                        <input type='text' value={Nome} onChange={e => SetNome(e.target.value)} />
+                        <input type='text' value={nome} onChange={e => SetNome(e.target.value)} />
                     </div>
 
                     <div className='text'>
                         <label>cpf</label>
-                        <input type='text' value={Cpf} onChange={e => SetCpf(e.target.value)} />
+                        <input type='text' value={cpf} onChange={e => SetCpf(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
                     <div className='text'>
                         <label>Email</label>
-                        <input type='text' value={Email} onChange={e => SetEmail(e.target.value)} />
+                        <input type='text' value={email} onChange={e => SetEmail(e.target.value)} />
                     </div>
 
                     <div className='text'>
                         <label>Senha</label>
-                        <input type='password' value={Senha} onChange={e => SetSenha(e.target.value)} />
+                        <input type='password' value={senha} onChange={e => SetSenha(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
@@ -88,31 +90,37 @@ export default function CadastroProfissional() {
 
                     <div className='text'>
                         <label>Nascimento</label>
-                        <input type='date' value={Nascimento} onChange={e => SetNascimento(e.target.value)} />
+                        <input type='date' value={nascimento} onChange={e => SetNascimento(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
                     <div className='text'>
                         <label>Telefone</label>
-                        <input type='number' value={Telefone} onChange={e => SetTelefone(e.target.value)} />
+                        <input type='number' value={telefone} onChange={e => SetTelefone(e.target.value)} />
                     </div>
 
                     <div className='text'>
                     <label>Tipo de Serviço</label>
-                        <select></select>
+                    <select value={IdServico} onChange={e => SetIdServico(e.target.value)} >
+                            <option selected disabled hidden>Selecione</option>
+
+                            {servico.map(item =>
+                                <option value={item.IdCategoria}> {item.servico} </option>
+                            )}
+                        </select>
                     </div>
 
                 </div>
                 <div className='tipo'>
                     <Link to='/cadastro-cliente' >
                         <button className='cliente'>
-                            <p>quero ser cliente</p>
+                            <p>Quero ser cliente</p>
                         </button>
                     </Link>
 
                     <Link to='/cadastro-profissional' >
                         <button className='profissional'>
-                            <p>quero ser um profissional</p>
+                            <p>Quero ser um profissional</p>
                         </button>
                     </Link>
 
@@ -127,15 +135,6 @@ export default function CadastroProfissional() {
                     <h2>Já tem uma conta? <a href='/login'>Conecte-se</a> </h2>
 
                 </div>
-
-
-
-
-
-
-
-
-
 
             </section>
 

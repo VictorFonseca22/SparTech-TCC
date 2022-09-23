@@ -1,9 +1,9 @@
 import { Logar } from '../../api/usuarioApi';
 import {useNavigate} from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './index.scss';
-
+import storage from 'local-storage'
 export default function Login() {
     const [Email, SetEmail] = useState ('');
     const [Senha, SetSenha] = useState ('');
@@ -17,10 +17,10 @@ export default function Login() {
         ref.current.continuousStart();
         SetCarregando(true);
         try {
-            const Resp = await Logar(Email , Senha);
-
+            const resp = await Logar(Email , Senha);
+            storage('usuario-logado', resp)
             setTimeout(() =>{
-                navigate('/perfil-profissional')
+                navigate(`/perfil-profissional/${resp.id}`)
             }, 3000);
             
 
@@ -31,8 +31,24 @@ export default function Login() {
                 SetErro(err.response.data.erro);
             }
         }
+
+        
     }
 
+    useEffect(() => {
+        if(storage('usuario-logado')) {
+            navigate(`/perfil-profissional/1`)
+        }
+    }, [])
+    document.addEventListener("keypress", function  (e) {
+            if(e.key === "Enter"){
+                const btn = document.querySelector("#send");
+                btn.click();
+            }
+        })
+
+
+        
     return (
         <main className='Login-page'>
 
@@ -64,7 +80,7 @@ export default function Login() {
 
                 <div className='entrar'>
 
-                    <button className='foi' onClick={Click} disabled={Carregando} >
+                    <button id='send' className='foi' onClick={Click} disabled={Carregando} >
 
                         <img src='/assets/images/seta-direita.png'  />
 

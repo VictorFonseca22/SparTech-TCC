@@ -19,6 +19,7 @@ root.render(
          <Route path='/cadastro-cliente' element={<CadastraCliente />} />
          <Route path='/cadastro-profissional' element={<CadastraProfissional />} />
          <Route path='/perfil-profissional' element={<PerfilProfissional />} />
+         <Route path='/perfil-profissional/:idParam' element={<PerfilProfissional />} />
          <Route path='/busca-profissional' element={<BuscaProf />} />
       </Routes>
     </BrowserRouter>

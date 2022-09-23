@@ -168,4 +168,5 @@ server.get('/perfil/profissional/:id', async (req, resp) =>{
         })
     }
 })
+
 export default server;
