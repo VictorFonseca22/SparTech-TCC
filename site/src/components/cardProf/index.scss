@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'adam';
+    src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+}
+.CardProf{
+
+    width: 100%;
+    max-width: 27rem;
+    border-radius: 1.5rem;
+    height: 100%;
+    max-height: 10rem;
+    background-color: #41b7eb63;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    .img{
+        width: 100%;
+        max-width: 8rem;
+        height: 100%;
+        max-height: 8rem;
+
+    }
+    
+    .info{
+
+
+        .nome{
+            color: #fff;
+            font-family: 'adam';
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .tipo{
+            font-family: 'adam';
+            color: #707079;
+            font-size: 1rem;
+        }
+
+        .avaliacao{
+            font-family: 'adam';
+            font-size: 1.1rem;
+            text-align: end;
+            color: #fff;
+        }
+
+        .realizado{
+            font-family: 'adam';
+            font-size: 1rem;
+            color: #707079;
+        }
+        
+        .destaque{
+            color: #fff;
+            font-family: 'adam';
+        }
+    }
+
+}
