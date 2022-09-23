@@ -27,3 +27,13 @@ export async function mostrarComentarios(){
     const resposta = await api.get('/verComentario');
     return resposta.data;
 } 
+
+export async function listarTodosProfissionais(){
+    const resposta = await api.get('/consultarTodos');
+    return resposta.data;
+} 
+
+export async function listarPorNome(nome){
+    const resposta = await api.get(`/profissional/buscar/nome?nm=${nome}`);
+    return resposta.data;
+} 

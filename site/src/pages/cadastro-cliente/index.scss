@@ -18,7 +18,7 @@
     height: 100vh;
 
     .cadastra {
-        width: 68rem;
+        width: 100%;
         height: 48rem;
         background: rgba(40, 44, 59, 0.6);
         border-radius: 3rem 15rem;
@@ -26,18 +26,34 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        max-width: 43rem;
+
+        .a {
+            width: 43% !important;
+        }
 
         .text {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            width: 15rem;
+            align-items: center;
+            width: 100%;
+            max-width: 35rem;
+            gap: 0.6rem;
 
-            input {
-                width: 100%;
+            label{
+                align-self: flex-start;
+                padding-left: 1rem;
+            }
+
+
+            input,
+            select {
+                width: 94%;
                 height: 2rem;
                 border-radius: 10rem;
                 border: none;
+                padding: 0rem 1rem;
+                outline: none;
             }
 
         }
@@ -46,26 +62,19 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-
+            width: 100%;
+            max-width: 38rem;
 
         }
 
 
         .tipo {
             display: flex;
-            justify-content: space-between;
-            width: 20rem;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 25rem;
 
-            .cliente{
-            width: 9rem;
-            height: 3rem;
-            background: #41B6E6;
-            border-radius: 1rem;
-            border: none;
-            color: white;
-            }
-    
-            .profissional{
+            .profissional {
                 width: 9rem;
                 height: 3rem;
                 background: #41b7e642;
@@ -74,6 +83,23 @@
                 font-family: 'adam';
                 color: #ffffff54;
                 padding: 0rem 1rem;
+            }
+
+            .cliente {
+                width: 9rem;
+                height: 3rem;
+                background: #41B6E6;
+                border-radius: 1rem;
+                border: none;
+                color: white;
+                font-weight: 700;
+
+            }
+
+            .cliente:hover, .profissional:hover{
+                cursor: pointer;
+                scale: 1.1;
+                transition: 0.3s;
             }
 
         }
@@ -115,17 +141,14 @@
             padding-top: 2rem;
         }
 
-        .ola {
-            width: 35rem;
-            height: 45rem;
-        }
+
 
         label {
             color: white;
             font-family: 'adam';
         }
 
-       
+
         p {
             font-family: 'adam';
             color: white;
@@ -135,13 +158,25 @@
             height: 5rem;
         }
 
- 
+
     }
 
-    h1 {
-        font-family: 'adam';
-        color: white;
-        text-align: center;
+    .astronauta {
+
+
+        .ola {
+            width: 100%;
+            height: 100%;
+            max-width: 40rem;
+            max-height: 40rem;
+        }
+
+        h1 {
+            font-family: 'adam';
+            color: white;
+            text-align: center;
+        }
+
     }
 
    

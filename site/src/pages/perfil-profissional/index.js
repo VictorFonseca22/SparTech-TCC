@@ -112,7 +112,8 @@ export default function Perfilprofissional() {
                                 <img src='/assets/images/estrela.png' />
                                 <img src='/assets/images/estrela.png' />
                                 <img src='/assets/images/estrela.png' />
-                                <img src='/assets/images/estrela-metade.png' />
+                                <img src='/assets/images/estrela.png' />
+                                
                             </div>
                             <p>{item.avaliacao}</p>
                         </div>
@@ -149,33 +150,29 @@ export default function Perfilprofissional() {
 
         <div className='informacoes'>
                 <hr/>
+            <div className="comentes">
+                    <h1>comentários sobre você</h1>     
+               
             {comentario.map(item =>
                 
-                <div className="comentes">
-                    <h1>comentários sobre você</h1>
+                
 
-                    <div className='comentario'>
-                    <p>{item.cliente}</p>
-                    <p>{item.comentário}</p>
-                    <p>{item.data}</p>
+                <div className='comentario'>
+                    <p className='nome-cliente'>{item.cliente}
+                    </p>
+                    <div class="v-line">
                     </div>
-                    </div>
+                    <p className='desc-comentario'>{item.comentário}</p>
+                    <p className='data-comentario'>{item.data}</p>
+                    
+                
+                </div>
 
                 
                 )}
-                
+        </div>
 
             </div>
-        
-
-            
-
-
-
-
-
-
-
 
 
 

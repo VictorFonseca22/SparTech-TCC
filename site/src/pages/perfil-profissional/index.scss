@@ -243,6 +243,35 @@
 
         .comentario{
             margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 3rem;
+
+            .nome-cliente{
+                font-family: 'adam';
+                color: #41B6E6;
+                font-size: 18px;
+                margin-top: 2rem;
+            }
+            .v-line{
+                border-left: thick solid rgb(255, 255, 255);
+                margin-top: 1rem;
+                height:8%;
+                left: 10.5%;
+                position: absolute;
+               }
+               .desc-comentario{
+                font-size: 18px;
+                margin-top: 2rem;
+                margin-left: 2rem;
+               }
+               .data-comentario{
+                font-size: 18px;
+                color: #41B6E6;
+                right: 60%;
+                margin-top: 2rem;
+                margin-left: 2rem;
+               }
         }
     }
 

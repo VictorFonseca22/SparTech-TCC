@@ -1,10 +1,13 @@
 import { con } from "./connection.js";
 
+
+
+
 export async function BuscaProfissional(nome){
     const comando =
     `
     select p.nm_profissional    nome,
-       p.id_tipo_serv           serviço,
+       tb_tipo_serv.nm_servico  serviço,
        p.nr_servicos            n°servicos,
        p.dq_espartech           destaque,
        p.arq_foto               foto,
@@ -16,6 +19,24 @@ export async function BuscaProfissional(nome){
     `
 
     const [linhas] = await con.query(comando, [`%${nome}%`])
+    return linhas
+}
+
+export async function ConsultarTodos(){
+    const comando =
+    `
+    select p.nm_profissional    nome,
+    tb_tipo_serv.nm_servico           serviço,
+       p.nr_servicos            Num_servicos,
+       p.dq_espartech           destaque,
+       p.arq_foto               foto,
+       tb_avaliacao.vl_avaliacao 		avaliacao
+       from tb_profissional   as   p
+       inner join tb_avaliacao on p.id_profissional = tb_avaliacao.id_profissional
+       inner join tb_tipo_serv on p.id_tipo_serv = tb_tipo_serv.id_tipo_serv
+    `
+
+    const [linhas] = await con.query(comando)
     return linhas
 }
 

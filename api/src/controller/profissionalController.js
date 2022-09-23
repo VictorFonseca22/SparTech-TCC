@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {BuscaProfissional,enviarFotoCliente, enviarFotoProfissional, fazerComentario, inserirAtuacao, inserirLicencas, PerfilProfissional, verComentarios} from '../repository/profissionalRepository.js'
+import {BuscaProfissional,enviarFotoCliente, enviarFotoProfissional, fazerComentario, inserirAtuacao, inserirLicencas, PerfilProfissional, verComentarios, ConsultarTodos} from '../repository/profissionalRepository.js'
 
 const uploadCliente = multer({ dest: 'storage/FotosCliente'})
 const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
@@ -164,6 +164,18 @@ server.get('/perfil/profissional/:id', async (req, resp) =>{
     catch(err)
     {
         resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/consultarTodos', async (req, resp) => {
+    try{
+        const resposta = await ConsultarTodos();
+        resp.send(resposta) 
+    }
+    catch(err){
+        resp.status(401).send({
             erro: err.message
         })
     }
