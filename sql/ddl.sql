@@ -55,3 +55,25 @@ create table tb_avaliacao (
   foreign key (id_cliente) references tb_cliente (id_cliente),
   foreign key (id_profissional) references tb_profissional (id_profissional)
 );
+
+create table tb_pagamento  (
+  id_pagamento         int primary key auto_increment,
+  nm_tp_pagt              varchar(100) 
+);
+
+create table tb_servico (
+  id_servico			int primary key auto_increment,
+  id_cliente			int,
+  id_profissional		int,
+  id_tipo_serv			int,
+  id_pagamento			int,
+  dt_limite				date,
+  vl_pagt				decimal(10,2),
+  ds_carga_hr			varchar(100),
+  ds_detalhes			varchar(200),
+  ds_situacao			varchar(20),
+  foreign key (id_cliente) references tb_cliente (id_cliente),
+  foreign key (id_profissional) references tb_profissional (id_profissional),
+  foreign key (id_tipo_serv) references tb_tipo_serv (id_tipo_serv),
+  foreign key (id_pagamento) references tb_pagamento (id_pagamento)
+);
