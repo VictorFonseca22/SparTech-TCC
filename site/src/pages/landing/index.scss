@@ -1,9 +1,4 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 
-}
 
 @font-face {
     font-family: 'abster';
@@ -20,12 +15,19 @@
     height: 100vh;
     background-color: #171921;
 
+
+
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
     .faixa-1{
         background-image: url('../../../public/assets/images/Capturar2\ 1_auto_x2\ 1.png');
         width: 100vw;
         background-size: 100%;
         background-repeat: no-repeat;
-        height: 90vh;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -47,10 +49,12 @@
             width: 46vw;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
             text-align: center;
             flex-direction: column;
-            height: 15rem;
+            height: 40rem;
+            padding: 10rem 0rem;
+            
             .b{
                 border: none;
                 background-color: #3EACDA;
@@ -80,6 +84,7 @@
         align-items: flex-start;
         justify-content: space-around;
         height: 25rem;
+        background-color: #171921;
 
 
         .categorias{
