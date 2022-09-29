@@ -1,6 +1,7 @@
 import { Router } from "express";
 import multer from 'multer'
-import {} from '../repository/servicoRepository.js'
+import {cadastroServico} from '../repository/servicoRepository.js'
+import server from "./usuarioController.js";
 
 server.post('/cadastrarServico', async (req, resp) => {
     try{
@@ -22,17 +23,20 @@ server.post('/cadastrarServico', async (req, resp) => {
             throw new Error('Tipo de pagamento é obrigatório!');
         }
 
+        if(!novoCadastro.endereco){
+            throw new Error('Endereço do serviço é obrigatório!');
+        }
+
         if(!novoCadastro.limite){
             throw new Error('Data limite é obrigatória!');
         }
-        if(!novoCadastro.telefone){
-            throw new Error('Telefone é obrigatório!');
+
+        if(!novoCadastro.detalhes){
+            throw new Error('Detalhes do serviços são obrigatórios!');
         }
     
-        
-
-        const cadastro =  await cadastroProfissional(novoCadastro);
-        resp.send(cadastro)
+        const servico =  await cadastroServico(novoCadastro);
+        resp.send(servico)
     } 
     catch(err){
         resp.status(401).send({
@@ -42,3 +46,4 @@ server.post('/cadastrarServico', async (req, resp) => {
     }
 })
 
+export default server;
