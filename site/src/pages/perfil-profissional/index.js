@@ -74,19 +74,16 @@ export default function Perfilprofissional() {
         <div>
         
             <div className='fundo'>
-
-                <div className='upload-foto' onClick={escolherFoto}>
                 
                 <img src='/assets/images/pessoa.png' className="foto"/>
                 
                 <input type='file' id='imagemPerfil'/>
-                </div>
+                
 
 
                 <img src='/assets/images/fundo.png' className="cinza"/>
 
             </div>
-        
             
             <div className='informacoes'>
 

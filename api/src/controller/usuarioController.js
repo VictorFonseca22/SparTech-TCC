@@ -1,4 +1,3 @@
-
 import { Router } from "express";
 import multer from 'multer'
 import {cadastroCliente, cadastroProfissional, listarCategorias, LoginCliente, LoginProfissional} from '../repository/usuarioRepository.js'

@@ -1,0 +1,56 @@
+.page-solicitar {
+    background-color: #171921;
+    width: 100vw;
+    height: 100vh;
+
+    .barra {
+        background-color: #293040;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0rem 2rem;
+
+        .ativos {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            font-family: 'adam';
+            color: #41B6E6;
+        }
+
+        .volta {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-family: 'adam';
+        }
+    }
+
+    .contratar {
+        background: linear-gradient(180deg, rgba(58, 108, 131, 0.0576) 0%, rgba(58, 108, 131, 0.72) 37.5%);
+        border-radius: 1rem;
+
+        .esquerda {
+
+            .prof {
+                display: flex;
+                align-items: center;
+                justify-content: baseline;
+                font-family: 'adam';
+                color: #41B6E6;
+            }
+
+        }
+    }
+
+    .botao {
+        background: #293040;
+        border-radius: 1rem;
+        font-family: 'adam';
+        color: #41B6E6;
+        width: 10rem;
+        height: 3rem;
+    }
+}
