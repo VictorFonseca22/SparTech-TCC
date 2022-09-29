@@ -1,12 +1,6 @@
 import './index.scss';
 
 
-
-
-
-
-
-
 export default function SolicitarServ() {
 
     return (
@@ -34,7 +28,7 @@ export default function SolicitarServ() {
 
                 <div className='esquerda'>
 
-                    <h1>profissional a ser contratado</h1>
+                    <h1 className="prof">profissional a ser contratado</h1>
 
                     <h4>Jonas Cunha</h4>
 
@@ -67,10 +61,6 @@ export default function SolicitarServ() {
                     </div>
 
 
-
-
-                    
-
                     <div className='linha-tex'>
 
                         <div className='tex-2'>
@@ -82,7 +72,7 @@ export default function SolicitarServ() {
                         </div>
 
                         <div className='radio-1'>
-                            
+
                             <input type='radio'></input>
 
                             <input type='radio'></input>
@@ -90,11 +80,28 @@ export default function SolicitarServ() {
                         </div>
                     </div>
 
+                    <div className='pagamento'>
+
+                        <p>entrada necessária para solicitar o serviço</p>
+
+                        <p>valor da entrada: R$25,00</p>
+
+                    </div>
+
+                    <div className='metodo'>
+
+                        <p>método de pagamento:</p>
+                        <input type='text' />
+
+                    </div>
+
 
 
                 </div>
 
             </div>
+
+            <button className='botao'>contratar serviço</button>
 
 
 
