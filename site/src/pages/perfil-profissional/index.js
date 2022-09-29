@@ -5,12 +5,6 @@ import { mostrarComentarios, MostrarPerfil } from '../../api/profissionalApi';
 import storage from 'local-storage'
 export default function Perfilprofissional() {
 
-    const [nome, setNome] = useState('');  
-    const [email, setEmail] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [avaliacao, setAvaliacao] = useState(0);
-    const [atuacao, setAtuacao] = useState('');
-    const [licenca, setLicenca] = useState('');
     const [perfil, setPerfil] = useState([])
     const [comentario, setComentario] = useState([])
 
