@@ -73,13 +73,16 @@ export default function Perfilprofissional() {
 
     const customStyles = {
         content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
+            display:'flex',
+            alignItens:'center',
+            justifyContent:'center',
+            border:'none',
+            margin:'none',
+            backgroundColor:'#00000000'
         },
+        overlay: {
+            backgroundColor: '#000000ce'
+        }
     };
 
 
@@ -151,13 +154,15 @@ export default function Perfilprofissional() {
                                     <img src='/assets/images/caneta.png' />
                                 </button>
                                 
-                                <Modal
+                                <Modal 
                                     isOpen={modalIsOpen}
                                     onRequestClose={closeModal}
                                     style={customStyles}
                                 >
                                     <Editar onClick={closeModal} />
+                                    
                                 </Modal>
+
                                 
 
                             </div>

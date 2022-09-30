@@ -16,27 +16,27 @@ export default function Editar() {
             </div>
 
             <div className='text'>
-                <p>nome de perfil:</p>
+                <p>nome de perfil</p>
 
-                <input type='text' />
+                <input type='text' maxLength={100} className="a" />
             </div>
 
             <div className='text'>
-                <p>telefone:</p>
+                <p>telefone</p>
 
-                <input type="text" />
+                <input type="text" maxLength={20} className="a" />
             </div>
 
             <div className='text'>
-                <p>áreas de atuação:</p>
+                <p>áreas de atuação</p>
 
-                <input type='text' />
+                <textarea type='text' maxLength={100} className="b" />
             </div>
 
             <div className='text'>
                 <p>licenças e certificados</p>
 
-                <input type='text' />
+                <textarea type='text' maxLength={300} className="b" />
             </div>
 
             <button>salvar</button>

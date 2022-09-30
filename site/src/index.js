@@ -10,7 +10,7 @@ import PerfilProfissional from './pages/perfil-profissional'
 import BuscaProf from './pages/page-busca'
 import ServicosAtivos from './pages/servicos-ativos';
 import SolicitarServ from './pages/solicitar-servico';
-import Editar from './pages/editar-perfil';
+
 
 
 
