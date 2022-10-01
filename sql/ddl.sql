@@ -61,12 +61,19 @@ create table tb_pagamento  (
   nm_tp_pagt              varchar(100) 
 );
 
+create table tb_endereco  (
+  id_endereco         int primary key auto_increment,
+  ds_endereco              varchar(150) 
+);
+
+
 create table tb_servico (
   id_servico			int primary key auto_increment,
   id_cliente			int,
   id_profissional		int,
   id_tipo_serv			int,
   id_pagamento			int,
+  id_endereco			int,
   dt_limite				date,
   vl_pagt				decimal(10,2),
   ds_carga_hr			varchar(100),
@@ -75,5 +82,6 @@ create table tb_servico (
   foreign key (id_cliente) references tb_cliente (id_cliente),
   foreign key (id_profissional) references tb_profissional (id_profissional),
   foreign key (id_tipo_serv) references tb_tipo_serv (id_tipo_serv),
-  foreign key (id_pagamento) references tb_pagamento (id_pagamento)
+  foreign key (id_pagamento) references tb_pagamento (id_pagamento),
+  foreign key (id_endereco) references tb_endereco (id_endereco)
 );
