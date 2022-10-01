@@ -11,16 +11,6 @@ export default function Perfilprofissional() {
     const [perfil, setPerfil] = useState([])
     const [comentario, setComentario] = useState([])
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [contratar, setContratar] = useState(false);
-
-
-
-
-
-
-    function exibirContratar() {
-        setContratar(true);
-    }
 
     
     const { idParam } = useParams();
@@ -105,14 +95,7 @@ export default function Perfilprofissional() {
                 <div className="acoes">
                     <h1 className='denunciar'>denunciar</h1>
 
-
-                    {contratar === false && 
-                    <h1 className='servico' onClick={exibirContratar}>Serviços</h1>
-                }
-
-                    {contratar === true && 
-                    <h1 className='servico' onClick={exibirContratar}>Contratar</h1>
-                }
+                    <h1 className='servico'>Serviços</h1>
                 </div>
 
 
