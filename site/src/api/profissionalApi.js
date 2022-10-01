@@ -37,3 +37,16 @@ export async function listarPorNome(nome){
     const resposta = await api.get(`/profissional/buscar/nome?nm=${nome}`);
     return resposta.data;
 } 
+
+export async function alterarPerfil(id, nome, telefone, atuacao, licenca){
+
+    const resposta = await api.put(`/perfil/profissional/${id}`, {
+       
+        nome: nome,
+        telefone: telefone,
+        atuacao: atuacao,
+        licenca: licenca
+    })
+    return resposta.data;
+
+}

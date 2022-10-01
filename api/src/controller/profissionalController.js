@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {BuscaProfissional,enviarFotoCliente, enviarFotoProfissional, fazerComentario, inserirAtuacao, inserirLicencas, PerfilProfissional, verComentarios, ConsultarTodos} from '../repository/profissionalRepository.js'
+import {BuscaProfissional,enviarFotoCliente, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil} from '../repository/profissionalRepository.js'
 
 const uploadCliente = multer({ dest: 'storage/FotosCliente'})
 const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
@@ -45,6 +45,7 @@ server.put(`/cliente/:id/foto`,uploadCliente.single('foto'), async(req, resp)=> 
         })
     }
 })
+
 //Inserir Foto no Perfil - Profissional
 server.put(`/profissional/:id/foto`,uploadProfissional.single('foto'), async(req, resp)=> {
     try {
@@ -65,6 +66,7 @@ server.put(`/profissional/:id/foto`,uploadProfissional.single('foto'), async(req
         })
     }
 })
+
 //Inserir Comentário
 server.post('/comentario', async (req, resp) => {
     try{
@@ -87,6 +89,7 @@ server.post('/comentario', async (req, resp) => {
 
     }
 })
+
 //Ver Comentários
 server.get('/verComentario', async (req, resp) => {
     try{
@@ -99,54 +102,20 @@ server.get('/verComentario', async (req, resp) => {
         })
     }
 })
-//Inserir Área de Atuação
-server.post('/profissional/area', async (req, resp) => {
+
+// Consultar todos profissionais
+server.get('/consultarTodos', async (req, resp) => {
     try{
-        const novaArea = req.body;
-        if(!novaArea.atuacao){
-                    throw new Error('Área de atuação é obrigatória!');
-        }
-
-        if(!novaArea.IDprofissional){
-            throw new Error('É necessário estar logado!')
-        }
-       
-
-        const area = await inserirAtuacao(novaArea);
-
-        resp.send(area)
-    } 
+        const resposta = await ConsultarTodos();
+        resp.send(resposta) 
+    }
     catch(err){
         resp.status(401).send({
-            erro:err.message
+            erro: err.message
         })
-
     }
 })
-//Inserir Licença / Certificado
-server.post('/profissional/licenca', async (req, resp) => {
-    try{
-        const novoCertificado = req.body;
-        if(!novoCertificado.licenca){
-                    throw new Error('Certificado ou Licença são obrigatórios!');
-        }
-        
-        if(!novoCertificado.IDprofissional){
-            throw new Error('É necessário estar logado!')
-        }
-       
 
-        const licenca = await inserirLicencas(novoCertificado);
-
-        resp.send(licenca)
-    } 
-    catch(err){
-        resp.status(401).send({
-            erro:err.message
-        })
-
-    }
-})
 //Perfil
 server.get('/perfil/profissional/:id', async (req, resp) =>{
     try
@@ -169,16 +138,39 @@ server.get('/perfil/profissional/:id', async (req, resp) =>{
     }
 })
 
-server.get('/consultarTodos', async (req, resp) => {
+//Editar Perfil
+server.put('/perfil/profissional/:id', async (req, resp) => {
     try{
-        const resposta = await ConsultarTodos();
-        resp.send(resposta) 
-    }
+        const perfil = req.body
+        const {id} = req.params;
+
+        if(!perfil.nome){
+            throw new Error('Nome é obrigatório!');
+        }
+
+        if(!perfil.telefone){
+            throw new Error('Telefone é obrigatório!');
+        }
+        if(!perfil.atuacao) {
+            throw new Error('Atuação é obrigatória')
+        }
+        if(!perfil.licenca) {
+            throw new Error('Licença é obrigatória')
+        }
+
+
+        const resposta =  await editarPerfil(id, perfil );
+        
+        if(resposta != 1)
+            throw new Error('Perfil não pode ser alterado')
+        else
+            resp.sendStatus(204)
+    } 
     catch(err){
-        resp.status(401).send({
-            erro: err.message
+        resp.status(400).send({
+            erro:err.message
         })
+
     }
 })
-
 export default server;

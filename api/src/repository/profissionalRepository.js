@@ -92,26 +92,18 @@ export async function verComentarios (){
     return linhas
 }
 
-export async function inserirAtuacao (area) {
+export async function editarPerfil (id, perfil) {
     const comando = `
     update tb_profissional
-    set   ar_atuacao = ?
-    where id_profissional = ?
+    set   nm_profissional = ?,
+          ds_telefone     = ?,
+          ar_atuacao      = ?,
+          ds_licencas     = ?
+    where id_profissional = ?;
     `
-    const [resposta] = await con.query (comando, [area.atuacao, area.IDprofissional])
+    const [resp] = await con.query (comando, [perfil.nome, perfil.telefone, perfil.atuacao, perfil.licenca, id]);
 
-    return area;
-}
-
-export async function inserirLicencas (certificado) {
-    const comando = `
-    update tb_profissional
-    set   ds_licencas = ?
-    where id_profissional = ?
-    `
-    const [resposta] = await con.query (comando, [certificado.licenca, certificado.IDprofissional])
-
-    return certificado;
+    return resp.affectedRows;
 }
 
 export async function PerfilProfissional (id){
