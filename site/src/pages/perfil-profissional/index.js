@@ -67,6 +67,10 @@ export default function Perfilprofissional() {
         setIsOpen(false);
     }
 
+    function recarregarAPagina(){
+        window.location.reload();
+    } 
+
 
     const customStyles = {
         content: {
@@ -147,10 +151,23 @@ export default function Perfilprofissional() {
                             </div>
                             <div className='editar'>
 
+                            <div className='botoes-perfil'>
+                                
+                                <button className='botao-refresh' onClick={recarregarAPagina}>
+                               <h1 className="perfil-refresh">atualizar informações</h1>
+                               <img class="spinner is-animating" src='/assets/images/atualizar.png' />
+                               </button>
+                               
+                
                                 <button onClick={openModal} className="botao-editar">
                                     <h1 className="perfil">editar perfil</h1>
                                     <img src='/assets/images/caneta.png' />
                                 </button>
+                                
+                               
+
+                                </div>
+
                                 
                                 <Modal 
                                     isOpen={modalIsOpen}
@@ -161,7 +178,7 @@ export default function Perfilprofissional() {
                                     
                                     <Editar />
 
-                                    <img src={'/assets/images/cancelar.png'} alt="" height={'30'}  onClick={closeModal} />
+                                    <img src={'/assets/images/cancelar.png'} alt=""  height={'30'}  onClick={closeModal} />
                                   
                                     
                                 </Modal>

@@ -8,6 +8,15 @@
     background-color: #171921;
     display: flex;
     flex-direction: column;
+    
+    @keyframes loading {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 
     *{
         margin: 0;
@@ -147,6 +156,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 94%;
         
             .ip{
                 
@@ -199,11 +209,7 @@
                 }
             }
 
-            .editar:hover{
-                scale: 1.02;
-                transition: 0.4s;
-                cursor: pointer;
-            }
+            
 
             .editar{
                 display: flex;
@@ -212,27 +218,65 @@
                 margin-right: 2rem;
                 justify-content: space-between;
 
-                
-                
-                .botao-editar{
-                    cursor: pointer;
-                    background-color: rgba(255, 0, 0, 0);
-                    border:none;
+                .botoes-perfil{
+
                     display: flex;
-                    align-items: center;
-                    width: 25rem;
-                    margin-right: 2rem;
-                    justify-content: space-between;
+                    flex-direction: column;
+                    gap: 1em;
+
+                         .botao-editar{
+                            cursor: pointer;
+                            background-color: rgba(255, 0, 0, 0);
+                            border:none;
+                            display: flex;
+                            align-items: center;
+                            width: 25rem;
+                            margin-right: 2rem;
+                        }
+                        .botao-refresh{
+                            cursor: pointer;
+                            background-color: rgba(255, 0, 0, 0);
+                            border:none;
+                            display: flex;
+                            align-items: center;
+                            width: 25rem;
+                            margin-right: 2rem;
+                            margin-top: 1em;
+                        }
+
                 }
+                
+                
     
                 .perfil{
                     font-size: 2.1rem;
                     color: #FFF;
+                    word-break: keep-all;
+                }
+                .perfil-refresh{
+                    font-size: 1.6rem;
+                    color: #FFF;
+                    word-break:break-all;
+                    
                 }
     
                 img{
                     width: 3rem;
+                    margin-left: 1em;
+                    
                 }
+                button:hover{
+                    scale: 1.02;
+                    transition: 0.4s;
+                    cursor: pointer;
+
+                .spinner.is-animating {
+                        animation: loading 0.9s;
+                        animation-timing-function: cubic-bezier(0.5, 0.4,0.2 0.1);
+                    }
+
+                }
+                
              
 
     
