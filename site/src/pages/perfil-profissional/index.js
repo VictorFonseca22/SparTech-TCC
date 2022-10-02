@@ -13,10 +13,15 @@ export default function Perfilprofissional() {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     
+    
     const { idParam } = useParams();
 
     const navigate = useNavigate()
 
+
+    function home() {
+        navigate('/')
+    }
     useEffect(() => {
         if (idParam) {
             carregarPerfil();
@@ -90,7 +95,7 @@ export default function Perfilprofissional() {
                 </div>
 
                 <div className="c">
-                    <img className='Logo' src='/assets/images/teste final 1.png' />
+                    <img className='Logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
                 <div className="acoes">
                     <h1 className='denunciar'>denunciar</h1>
