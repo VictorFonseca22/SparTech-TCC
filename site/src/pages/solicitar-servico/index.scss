@@ -3,6 +3,13 @@
     width: 100vw;
     height: 100vh;
 
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        //border: 1px green solid;
+    }
+
+
     .barra {
         background-color: #293040;
         display: flex;
@@ -11,46 +18,253 @@
         align-items: center;
         justify-content: space-between;
         padding: 0rem 2rem;
+        height: 7rem;
 
-        .ativos {
-            display: flex;
-            align-items: center;
-            text-align: center;
+        .logo {
+            width: 10rem;
+            height: 4rem;
+            cursor: pointer;
+        }
+
+        .logo:hover, .volta:hover{
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+
+        h1 {
             font-family: 'adam';
             color: #41B6E6;
+            font-size: 1.7rem;
+            font-weight: 500;
         }
 
         .volta {
             display: flex;
             align-items: center;
             color: #fff;
+            font-size: 1.2rem;
             font-family: 'adam';
+            cursor: pointer;
+
         }
+
+        .menu {
+            width: 2.4rem;
+        }
+
     }
 
-    .contratar {
-        background: linear-gradient(180deg, rgba(58, 108, 131, 0.0576) 0%, rgba(58, 108, 131, 0.72) 37.5%);
-        border-radius: 1rem;
+    .vizinho {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        height: 87vh;
 
-        .esquerda {
+        .contratar {
+            background: linear-gradient(180deg, rgba(58, 108, 131, 0.0576) 0%, rgba(58, 108, 131, 0.72) 37.5%);
+            border-radius: 1rem;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 90%;
+            height: 80%;
+            max-width: 80rem;
 
-            .prof {
-                display: flex;
-                align-items: center;
-                justify-content: baseline;
+            input,
+            select {
+                width: 94%;
+                height: 1.7rem;
+                border-radius: 10rem;
+                border: none;
+                padding: 0rem 0.5rem;
+                outline: none;
+                background-color: #AEABAB;
+                color: #4E4E4E;
+                appearance: none;
                 font-family: 'adam';
-                color: #41B6E6;
             }
 
+            select:hover{
+                cursor: pointer;
+            }
+
+            
+
+            .esquerda {
+
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: column;
+                height: 40em;
+                width: 35rem;
+
+                .prof {
+                    font-weight: 100;
+                    font-size: 1.5rem;
+                    font-family: 'adam';
+                    color: #41B6E6;
+                }
+
+                .nome {
+                    font-family: 'adam';
+                    font-size: 1.2rem;
+                    color: #fff;
+                    font-weight: 100;
+                }
+
+
+                .textarea {
+                    height: 13rem;
+                    border-radius: 1rem;
+                    width: 94%;
+                    border: none;
+                    padding: 0.3rem 0.5rem;
+                    outline: none;
+                    background-color: #AEABAB;
+                    font-family: inter;
+                    font-size: 1.2rem;
+                    resize: none;
+                    color: #4E4E4E;
+                }
+
+                .jota {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 14.5rem;
+
+                    img {
+                        width: 10rem;
+                        height: 10rem;
+                    }
+
+                    p {
+                        font-size: 0.8rem;
+                        font-family: 'adam';
+                        color: #AEABAB;
+                        width: 13rem;
+                        text-align: center;
+                    }
+                }
+            }
+
+
+            .direita {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-around;
+                flex-direction: column;
+                height: 40em;
+                width: 40rem;
+
+                p{
+                    font-family: 'adam';
+                    color: #fff;
+                    font-size: 1.1rem;
+                    padding-left: 0.7rem;
+                }
+
+                .texts{
+                    height: 12rem;
+                    margin-bottom: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                }
+                
+
+
+                .linha-tex{
+                    display: flex;
+                    flex-direction: row;
+                    width: 35rem;
+
+
+                    .tex-1 {
+                        display: flex;
+                        height: 3.2rem;
+                        justify-content: space-between;
+                        flex-direction: column;
+                        width: 18rem;
+                    }
+
+                    .tex-2{
+                        display: flex;
+                        height: 3.2rem;
+                        justify-content: space-between;
+                        width: 12rem;
+                        flex-direction: column;
+                    }
+
+                    
+                }
+
+                .pagamento{
+                    width: 30rem;
+                    display: flex;
+                    flex-direction: column;
+                    height: 11rem;
+                    padding-bottom: 2.4rem;
+                    justify-content: space-between;
+
+                    .text{
+                        color: #41B6E6;
+
+                    }
+
+                    
+
+                    .abc{
+                        max-width: 20rem;
+                    }
+
+                    .metodo{
+                        height: 3.2rem;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                    }
+
+
+                }
+                
+
+
+
+
+            }
+
+
+
+
+
+
+
+
         }
+
     }
 
     .botao {
         background: #293040;
         border-radius: 1rem;
+        border: none;
         font-family: 'adam';
         color: #41B6E6;
-        width: 10rem;
-        height: 3rem;
+        width: 17rem;
+        font-size: 1.5rem;
+        padding-bottom: 0.5rem;
+        height: 3.5rem;
+    }
+
+    .botao:hover{
+        scale: 1.02;
+        transition: 0.4s;
+        cursor: pointer;
     }
 }
