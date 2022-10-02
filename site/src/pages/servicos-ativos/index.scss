@@ -47,6 +47,18 @@
             
         }
 
+        .logo:hover{
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .volta:hover{
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
         .menu{
             width: 2.4rem;
         }
@@ -188,6 +200,12 @@
                     font-family: 'adam';
                     border-radius: 2rem;
                     background-color: #41B6E6;
+                }
+
+                button:hover{
+                    scale: 1.02;
+                    transition: 0.4s;
+                    cursor: pointer;
                 }
 
                 hr{

@@ -36,6 +36,14 @@
                 height: 4rem;
             }
 
+            .Logo:hover{
+                scale: 1.02;
+                transition: 0.3s;
+                cursor: pointer;
+            }
+    
+
+
 
         }
         .voltar{
@@ -44,8 +52,8 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            max-width: 10rem;
-            cursor: pointer;
+            max-width: 7rem;
+            
 
             h1 {
                 font-family: 'adam';
@@ -53,6 +61,12 @@
                 font-size: 1.6rem;
             }
 
+        }
+
+        .voltar:hover{
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
         }
 
 
@@ -68,6 +82,12 @@
                 font-family: 'adam';
                 color: #FFF;
                 font-size: 1.6rem;
+            }
+
+            h1:hover{
+                scale: 1.02;
+                transition: 0.3s;
+                cursor: pointer;
             }
         }
 
@@ -177,6 +197,12 @@
                         align-self: center;
                     }
                 }
+            }
+
+            .editar:hover{
+                scale: 1.02;
+                transition: 0.4s;
+                cursor: pointer;
             }
 
             .editar{
