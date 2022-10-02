@@ -16,8 +16,6 @@ export default function Editar() {
     const navigate = useNavigate();
     const  id= storage('usuario-logado').id;
 
-
-    
     async function salvarEditar() {
         try{
         await alterarPerfil(id, nome, telefone, atuacao, licenca)
@@ -32,6 +30,9 @@ export default function Editar() {
         }
     }
 
+    
+
+
     async function carregarPerfil() {
         const resposta = await MostrarPerfil(idParam);
         setPerfil(resposta)
@@ -43,7 +44,7 @@ export default function Editar() {
     }, [])
 
     
-
+    
 
     
     return (

@@ -75,6 +75,7 @@ export default function Perfilprofissional() {
         overlay: {
             backgroundColor: '#000000ce'
         },
+        
     };
 
 
@@ -153,7 +154,6 @@ export default function Perfilprofissional() {
                                     
                                 >
                                     <Editar />
-                                    <button onClick={closeModal}>sair</button>
 
                                   
                                     
