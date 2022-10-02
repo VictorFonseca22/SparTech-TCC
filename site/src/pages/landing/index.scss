@@ -10,6 +10,18 @@
     src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
 }
 
+*::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+*::-webkit-scrollbar-track{
+    background-color: #11111f;
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: #3EACDA;
+}
+
 .landing-page{
     width: 100vw;
     height: 100vh;
