@@ -157,9 +157,10 @@ export default function Perfilprofissional() {
                                     style={customStyles}
                                     
                                 >
+                                    
                                     <Editar />
-                                    <button onClick={closeModal}>sair</button>
 
+                                    <img src={'/assets/images/cancelar.png'} alt="" height={'30'}  onClick={closeModal} />
                                   
                                     
                                 </Modal>
