@@ -9,6 +9,9 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
+server.use("/storage/FotosProfissional", express.static("storage/FotosProfissional"))
+server.use("/storage/FotosCliente", express.static("storage/FotosCliente"))
+
 server.use(usuarioController);
 server.use(profissionalController);
 server.use(servicoController);

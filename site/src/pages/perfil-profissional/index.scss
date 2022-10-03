@@ -119,15 +119,12 @@
         .foto{
             position: absolute ;
             margin: 4% 0rem 0rem 2%;
-            width: 14%;
+            width: 15%;
+            height: 30%;
+            min-height: 10rem;
             min-width: 10rem;
+            border-radius: 50%;
         }
-        foto:hover{
-         mask-image: url('../../../public/assets/images/foto.png');
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         }
  
 
     }

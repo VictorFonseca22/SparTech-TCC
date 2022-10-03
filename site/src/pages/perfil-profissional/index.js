@@ -1,7 +1,7 @@
 import './index.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { mostrarComentarios, MostrarPerfil } from '../../api/profissionalApi';
+import { mostrarComentarios, MostrarPerfil, buscarImagem } from '../../api/profissionalApi';
 import storage from 'local-storage'
 import Modal from 'react-modal'
 import Editar from '../../components/editar-perfil'
@@ -31,14 +31,12 @@ export default function Perfilprofissional() {
 
     async function carregarPerfil() {
         const resposta = await MostrarPerfil(idParam);
-        console.log(resposta)
         setPerfil(resposta)
     }
 
 
     async function carregarTodosComentarios() {
         const resposta = await mostrarComentarios();
-        console.log(resposta)
         setComentario(resposta);
     }
     useEffect(() => {
@@ -88,6 +86,8 @@ export default function Perfilprofissional() {
     };
 
 
+
+
     return (
         <main className='Perfil-Profissional'>
 
@@ -115,11 +115,7 @@ export default function Perfilprofissional() {
 
                     <div className='fundo'>
 
-                        <img src='/assets/images/pessoa.png' className="foto" />
-
-                        <input type='file' id='imagemPerfil' />
-
-
+                        <img src={buscarImagem(item.foto)} className="foto"/>
 
                         <img src='/assets/images/fundo.png' className="cinza" />
 

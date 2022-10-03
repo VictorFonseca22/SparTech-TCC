@@ -1,6 +1,6 @@
 import './index.scss';
 import { useEffect, useState } from 'react';
-import { listarPorNome, listarTodosProfissionais } from '../../api/profissionalApi';
+import { listarPorNome, listarTodosProfissionais, buscarImagem } from '../../api/profissionalApi';
 export default function Busca() {
 
 
@@ -10,6 +10,7 @@ export default function Busca() {
 
     async function carregarTodosProfissionais(){
         const resposta = await listarTodosProfissionais();
+        console.log(resposta)
         setProfissional(resposta);
     }
     useEffect(() => {
@@ -25,6 +26,7 @@ export default function Busca() {
     useEffect(() => {
         filtrarPorNome()
     }, [listarPorNome])
+
 
     return (
         <main className='Busca-prof'>
@@ -67,7 +69,7 @@ export default function Busca() {
             
         <div className='CardProf'>
 
-            <img className="foto" src='/assets/images/moça.png'/>
+            <img className="foto" src={buscarImagem(item.foto)}/>
             <div className='info'>
 
                 <h4 className="nome">{item.nome}</h4>
@@ -82,7 +84,7 @@ export default function Busca() {
                     
                    <div className='numero-avaliacao'> {item.avaliacao} </div>
                     </div>
-                <h4 className='realizado'>{item.Num_servicos} serviços</h4>
+                <h4 className='realizado'> {item.nr_servicos} serviços</h4>
                 {item.destaque &&
                 <div className='div-destaque'>
                 <img className='estrela-destaque' src='/assets/images/destaque.png'/>

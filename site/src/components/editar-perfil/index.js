@@ -1,5 +1,5 @@
 import './index.scss'
-import {alterarPerfil, MostrarPerfil} from '../../api/profissionalApi.js'
+import {alterarPerfil, MostrarPerfil, AdicionarImagem, buscarImagem} from '../../api/profissionalApi.js'
 import {useState, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,14 +11,43 @@ export default function Editar() {
     const [licenca, setLicenca] = useState('');
     const [perfil, setPerfil] = useState('');
     const [modalIsOpen, setIsOpen] = useState(false);
-     
+    const [foto, setFoto] = useState();
+
+
     const idParam = useParams();
     const navigate = useNavigate();
-    const  id= storage('usuario-logado').id;
+    const idPerfil= storage('usuario-logado').id;
+
+
+
+useEffect(() => {
+    carregarInfos();
+    }, [])
+
+    async function carregarInfos(){
+        const resposta = await MostrarPerfil(idPerfil);
+
+        setNome(resposta[0].nome);
+        setTelefone(resposta[0].telefone);
+        setAtuacao(resposta[0].area)
+        setLicenca(resposta[0].licenca)
+        setFoto(resposta[0].foto)
+    }
+
 
     async function salvarEditar() {
         try{
-        await alterarPerfil(id, nome, telefone, atuacao, licenca)
+
+        await alterarPerfil(idPerfil, nome, telefone, atuacao, licenca)
+
+        if(!foto) {
+            throw new Error ("A foto não pôde ser salva")
+        }
+
+        if(typeof(foto) == 'object'){
+            await AdicionarImagem(idPerfil, foto)
+        }
+
         toast.success('Perfil alterado com sucesso 🚀')
         }
         catch (err) {
@@ -43,6 +72,20 @@ export default function Editar() {
     
     }, [])
 
+    function EscolherFoto() {
+        document.getElementById('ClickFoto').click();
+     }
+    
+     function MostrarFoto() {
+         if(typeof (foto) === 'object'){
+        return URL.createObjectURL(foto)
+         }
+         else{
+             return buscarImagem(foto)
+         }
+
+      }
+
     
     
 
@@ -53,12 +96,21 @@ export default function Editar() {
 
             <h1>edição de perfil</h1>
 
-            <div className='img'>
+            <div className='img' >
 
-                <img src='/assets/images/pessoa.png' />
+
+                {!foto &&
+                 <img onClick={EscolherFoto} src='/assets/images/foto.png' />
+
+                }
+
+                {foto &&
+                <img className="foto-editar" onClick={EscolherFoto} src={MostrarFoto()} />
+                }
+                
 
                 <h4>alterar imagem</h4>
-
+                <input type="file" id='ClickFoto' onChange={e  => setFoto(e.target.files[0])}/>
             </div>
 
             <div className='text'>

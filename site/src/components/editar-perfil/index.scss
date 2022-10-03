@@ -64,6 +64,15 @@
         align-items: center;
         justify-content: space-around;
         width: 50%;
+        img{
+            cursor: pointer;
+            height: 6em;
+        }
+        input{
+            visibility: hidden;
+            display: none;
+
+        }
 
 
         h4{

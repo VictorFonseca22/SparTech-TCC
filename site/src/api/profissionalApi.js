@@ -11,17 +11,7 @@ export async function MostrarPerfil(id) {
     return resp.data;
 }
 
-export async function AdicionarImagem (id, foto){
-    const formData= new FormData();
-    FormData.append('foto', foto);
-    const r = await api.put(`/profissional/${id}/foto`, 
-    formData, {
-        headers: {
-            "Content-Type": "multipart/form-data"
-        },
-    });
-    return r.status;
-}
+
 
 export async function mostrarComentarios(){
     const resposta = await api.get('/verComentario');
@@ -49,4 +39,20 @@ export async function alterarPerfil(id, nome, telefone, atuacao, licenca){
     })
     return resposta.data;
 
+}
+export async function AdicionarImagem (id, foto){
+    const formData= new FormData();
+    formData.append('foto', foto);
+    const r = await api.put(`/profissional/${id}/foto`, 
+    formData, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        },
+    });
+    return r.status;
+}
+
+export function buscarImagem(foto){
+    console.log(`${api.getUri()}/${foto}`)
+    return `${api.getUri()}/${foto}`
 }
