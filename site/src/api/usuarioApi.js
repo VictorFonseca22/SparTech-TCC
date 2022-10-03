@@ -38,8 +38,16 @@ export async function ListaCategoria() {
     
 }
 
-export async function Logar(email,senha) {
-    const Resp = await api.post('/login', {
+export async function LogarProfissional(email,senha) {
+    const Resp = await api.post('/loginProfissional', {
+        email:email,
+        senha:senha
+    });
+    return Resp.data;
+}
+
+export async function LogarCliente(email,senha) {
+    const Resp = await api.post('/loginCliente', {
         email:email,
         senha:senha
     });

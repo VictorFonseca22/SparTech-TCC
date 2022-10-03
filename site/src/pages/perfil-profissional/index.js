@@ -45,12 +45,12 @@ export default function Perfilprofissional() {
 
 
     function sairClick() {
-        storage.remove('usuario-logado')
+        storage.remove('profissional-logado')
         navigate('/login')
     }
 
     useEffect(() => {
-        if (!storage('usuario-logado')) {
+        if (!storage('profissional-logado')) {
             navigate('/login')
         }
     }, [])
@@ -157,7 +157,7 @@ export default function Perfilprofissional() {
                 
                                 <button onClick={openModal} className="botao-editar">
                                     <h1 className="perfil">editar perfil</h1>
-                                    <img src='/assets/images/caneta.png' />
+                                    <img className='editar-animation' src='/assets/images/caneta.png' />
                                 </button>
                                 
                                

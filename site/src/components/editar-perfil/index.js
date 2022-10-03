@@ -16,7 +16,7 @@ export default function Editar() {
 
     const idParam = useParams();
     const navigate = useNavigate();
-    const idPerfil= storage('usuario-logado').id;
+    const idPerfil= storage('profissional-logado').id;
 
 
 

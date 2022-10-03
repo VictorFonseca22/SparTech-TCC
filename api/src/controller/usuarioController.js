@@ -84,16 +84,14 @@ server.post('/cadastrarProfissional', async (req, resp) => {
 })
 
 //Login
-server.post('/login' , async (req,resp) => {
+server.post('/loginProfissional' , async (req,resp) => {
     try{
         const {email, senha} = req.body;
     
-        let resposta = await LoginCliente(email, senha);
-        if (!resposta) {
-          resposta = await LoginProfissional(email, senha);
+        let resposta = await LoginProfissional(email, senha);
+        
           if(!resposta){
             throw new Error('Credenciais Inválidas')
-        }
         }
         
         resp.send(resposta)
@@ -105,6 +103,31 @@ server.post('/login' , async (req,resp) => {
         })
     }
 })
+
+server.post('/loginCliente' , async (req,resp) => {
+    try{
+        const {email, senha} = req.body;
+    
+        let resposta = await LoginCliente(email, senha);
+        
+          if(!resposta){
+            throw new Error('Credenciais Inválidas')
+        }
+        
+        resp.send(resposta)
+
+    }
+    catch(err){
+        resp.status(401).send({
+            erro:err.message
+        })
+    }
+})
+
+
+
+
+
 // Listar Categorias
 server.get('/api/categoria', async (req, resp) => {
     try {

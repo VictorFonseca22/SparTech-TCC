@@ -1,4 +1,4 @@
-import { Logar } from '../../api/usuarioApi';
+import { LogarCliente, LogarProfissional } from '../../api/usuarioApi';
 import {useNavigate} from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 import { useState, useRef, useEffect } from 'react';
@@ -16,14 +16,25 @@ export default function Login() {
     async function Click() {
         ref.current.continuousStart();
         SetCarregando(true);
+
         try {
-            const resp = await Logar(Email , Senha);
-            storage('usuario-logado', resp)
+            const resp = await LogarProfissional(Email, Senha);
+            if(!resp) {
+                resp =  await LogarCliente(Email,Senha)
+                storage('cliente-logado', resp)
+                setTimeout(() =>{
+                    navigate(`/busca-profissional`)
+                }, 3000);
+            }
+
+        else {
+            storage('profissional-logado', resp)
             setTimeout(() =>{
                 navigate(`/perfil-profissional/${resp.id}`)
             }, 3000);
+        }
+    console.log(resp)
             
-
         } catch (err) {
             ref.current.complete();
             SetCarregando(false);
@@ -36,10 +47,15 @@ export default function Login() {
     }
 
     useEffect(() => {
-        if(storage('usuario-logado')) {
+        if(storage('profissional-logado')) {
             navigate(`/perfil-profissional/1`)
         }
+        if(storage('cliente-logado')) {
+            navigate(`/busca-profissional`)
+        }
+        
     }, [])
+
     document.addEventListener("keypress", function  (e) {
             if(e.key === "Enter"){
                 const btn = document.querySelector("#send");
