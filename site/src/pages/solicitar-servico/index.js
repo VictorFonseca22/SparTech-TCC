@@ -1,7 +1,8 @@
 import './index.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CadastrarServico } from '../../api/servico';
 import { ListaCategoria } from '../../api/usuarioApi';
+import { MostrarPerfil, buscarImagem } from '../../api/profissionalApi';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -9,19 +10,28 @@ import { toast } from 'react-toastify';
 export default function SolicitarServ() {
     const [cliente, Setcliente] = useState('');
     const [profissional, Setprofissional] = useState('');
-    const [tipo, Settipo] = useState('');
     const [pagamento, Setpagamento] = useState('');
     const [endereco, Setendereco] = useState('');
     const [complemento, Setcomplemento] = useState('');
     const [limite, Setlimite] = useState('');
     const [detalhes, Setdetalhes] = useState('');
     const [servico, SetServico] = useState([]);
-    const [IdServico, SetIdServico] = useState()
+    const [IdServico, SetIdServico] = useState();
+    const [perfil, setPerfil] = useState([]);
 
+    const { idParam } = useParams();
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        CarregarServico();
+    }, [])
 
+    useEffect(() => {
+        if (idParam) {
+            carregarPerfil();
+        }
+    }, [])
 
-    const navigate = useNavigate()
 
     function home() {
         navigate('/')
@@ -33,13 +43,13 @@ export default function SolicitarServ() {
 
     async function cadastrarServico() {
         try {
-            await CadastrarServico(cliente, profissional, tipo, pagamento, endereco, limite, detalhes, IdServico)
+            await CadastrarServico(cliente, profissional, IdServico, pagamento, endereco, limite, detalhes)
             toast.dark('✅Serviço Cadastrado')
         } catch (err) {
 
             if (err.response) {
                 alert(err.response.data.erro);
-            }  
+            }
         }
 
     }
@@ -49,9 +59,11 @@ export default function SolicitarServ() {
         SetServico(r);
     }
 
-    useEffect(() => {
-        CarregarServico();
-    }, [])
+
+    async function carregarPerfil() {
+        const Resp = await MostrarPerfil(idParam);
+        setPerfil(Resp)
+    }
 
     return (
 
@@ -77,20 +89,27 @@ export default function SolicitarServ() {
             <div className='vizinho'>
                 <div className="contratar">
 
-                    <div className='esquerda'>
+                    {perfil.map(item =>
+                        <div>
 
-                        <h1 className="prof">profissional a ser contratado</h1>
+                            <div className='esquerda'>
 
-                        <div className="jota">
-                            <h4 className="nome">Jonas Cunha</h4>
+                                <h1 className="prof">profissional a ser contratado</h1>
 
-                            <img src='/assets/images/japones.png' />
+                                <div className="jota">
+                                    <h4 className="nome">{item.nome}</h4>
 
-                            <p>especialista em front-end suporte técnico</p>
+                                    <img src={buscarImagem(item.foto)} />
+
+                                    <p>{item.area}</p>
+                                </div>
+                                <textarea className='textarea' placeholder='Descreva o serviço a ser feito' type='text' />
+
+                            </div>
+
                         </div>
-                        <textarea className='textarea' placeholder='Descreva o serviço a ser feito' type='text' />
+                    )}
 
-                    </div>
 
                     <div className='direita'>
 
