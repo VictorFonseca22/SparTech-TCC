@@ -1,36 +1,23 @@
 import './index.scss';
 import { useNavigate, useParams } from 'react-router-dom';
-import { CadastrarServico } from '../../api/servico';
 import { ListaCategoria } from '../../api/usuarioApi';
-import { MostrarPerfil, buscarImagem } from '../../api/profissionalApi';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 
 export default function SolicitarServ() {
-    const [cliente, Setcliente] = useState('');
-    const [profissional, Setprofissional] = useState('');
-    const [pagamento, Setpagamento] = useState('');
-    const [endereco, Setendereco] = useState('');
-    const [complemento, Setcomplemento] = useState('');
-    const [limite, Setlimite] = useState('');
-    const [detalhes, Setdetalhes] = useState('');
     const [servico, SetServico] = useState([]);
     const [IdServico, SetIdServico] = useState();
-    const [perfil, setPerfil] = useState([]);
 
-    const { idParam } = useParams();
+
+
     const navigate = useNavigate();
 
     useEffect(() => {
         CarregarServico();
     }, [])
 
-    useEffect(() => {
-        if (idParam) {
-            carregarPerfil();
-        }
-    }, [])
+
 
 
     function home() {
@@ -41,18 +28,7 @@ export default function SolicitarServ() {
         navigate('/servicos-ativos')
     }
 
-    async function cadastrarServico() {
-        try {
-            await CadastrarServico(cliente, profissional, IdServico, pagamento, endereco, limite, detalhes)
-            toast.dark('✅Serviço Cadastrado')
-        } catch (err) {
 
-            if (err.response) {
-                alert(err.response.data.erro);
-            }
-        }
-
-    }
 
     async function CarregarServico() {
         const r = await ListaCategoria();
@@ -60,10 +36,7 @@ export default function SolicitarServ() {
     }
 
 
-    async function carregarPerfil() {
-        const Resp = await MostrarPerfil(idParam);
-        setPerfil(Resp)
-    }
+
 
     return (
 
@@ -89,26 +62,26 @@ export default function SolicitarServ() {
             <div className='vizinho'>
                 <div className="contratar">
 
-                    {perfil.map(item =>
-                        <div>
 
-                            <div className='esquerda'>
 
-                                <h1 className="prof">profissional a ser contratado</h1>
 
-                                <div className="jota">
-                                    <h4 className="nome">{item.nome}</h4>
+                    <div className='esquerda'>
 
-                                    <img src={buscarImagem(item.foto)} />
+                        <h1 className="prof">profissional a ser contratado</h1>
 
-                                    <p>{item.area}</p>
-                                </div>
-                                <textarea className='textarea' placeholder='Descreva o serviço a ser feito' type='text' />
+                        <div className="jota">
+                            <h4 className="nome">jonas da cunha</h4>
 
-                            </div>
+                            <img src='./assets/images/japones.png' />
 
+                            <p>especialista em front-end suporte técnico</p>
                         </div>
-                    )}
+                        <textarea className='textarea' placeholder='Descreva o serviço a ser feito' type='text' />
+
+                    </div>
+
+
+
 
 
                     <div className='direita'>
@@ -121,14 +94,14 @@ export default function SolicitarServ() {
 
                                     <p>endereço do serviço:</p>
 
-                                    <input type='text' placeholder='rua joa...' value={endereco} onChange={e => Setendereco(e.target.value)} />
+                                    <input type='text' placeholder='rua joa...' />
 
                                 </div>
 
                                 <div className='tex-2'>
                                     <p>complemento:</p>
 
-                                    <input type='text' placeholder='nº/apto...' value={complemento} onChange={e => Setcomplemento(e.target.value)} />
+                                    <input type='text' placeholder='nº/apto...' />
 
                                 </div>
                             </div>
@@ -201,7 +174,7 @@ export default function SolicitarServ() {
 
                                     <p>data limite:</p>
 
-                                    <input type='date' className="data" value={limite} onChange={e => Setlimite(e.target.value)} />
+                                    <input type='date' className="data" />
 
                                 </div>
 
@@ -237,7 +210,7 @@ export default function SolicitarServ() {
 
                     </div>
                 </div>
-                <button className='botao' onClick={cadastrarServico}>contratar serviço</button>
+                <button className='botao' onClick={contratar}>contratar serviço</button>
 
 
             </div>

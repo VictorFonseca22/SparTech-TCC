@@ -1,5 +1,3 @@
-
-
 @font-face {
     font-family: 'abster';
     src: url('../../../public/assets/fonts/abster-500.otf');
@@ -10,32 +8,32 @@
     src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
     width: 0.5rem;
 }
 
-*::-webkit-scrollbar-track{
+*::-webkit-scrollbar-track {
     background-color: #11111f;
 }
 
-*::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb {
     background-color: #3EACDA;
 }
 
-.landing-page{
+.landing-page {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: #171921;
 
 
 
-    *{
+    * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
 
-    .faixa-1{
+    .faixa-1 {
         background-image: url('../../../public/assets/images/Capturar2\ 1_auto_x2\ 1.png');
         width: 100vw;
         background-size: 100%;
@@ -46,9 +44,9 @@
 
 
 
-        .introdução{
-            
-            h1{
+        .introdução {
+
+            h1 {
                 color: #fff;
                 font-family: 'abster';
                 line-height: 2.5rem;
@@ -66,8 +64,8 @@
             flex-direction: column;
             height: 40rem;
             padding: 10rem 0rem;
-            
-            .b{
+
+            .b {
                 border: none;
                 background-color: #3EACDA;
                 font-family: 'adam';
@@ -80,17 +78,19 @@
                 padding-bottom: 0.3rem;
                 border-radius: 0.7rem;
                 font-size: 2rem;
-                
-            };
+
+            }
+
+            ;
 
 
         }
 
-        
-        
+
+
     }
 
-    .faixa-2{
+    .faixa-2 {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -99,14 +99,14 @@
         background-color: #171921;
 
 
-        .categorias{
+        .categorias {
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             width: 100vw;
         }
 
-        h4{
+        h4 {
             font-size: 2rem;
             color: #41B6E6;
             font-family: 'adam';
@@ -115,7 +115,91 @@
 
     }
 
-    
+
+    .destaques {
+
+        h1 {
+            font-size: 2rem;
+            color: #41B6E6;
+            font-family: 'adam';
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            font-family: 'adam';
+        }
+
+        p {
+            font-size: 1rem;
+            color: #fff;
+            font-family: 'adam';
+        }
+
+        h4 {
+            font-size: 1rem;
+            color: #fff;
+            font-family: 'adam';
+        }
+
+        .foto {
+            width: 23.8rem;
+            border-radius: 1.6rem;
+            background: linear-gradient(180deg, rgba(58, 108, 131, 0) 0%, rgba(58, 108, 131, 0.72) 100%);
+        }
+
+    }
+
+    .historia {
+
+        .centro {
+            text-align: center;
+
+            h1 {
+                font-size: 2rem;
+                color: #41B6E6;
+                font-family: 'adam';
+            }
+
+            p {
+                font-size: 1rem;
+                color: #fff;
+                font-family: 'adam';
+            }
+        }
+
+        .esquerda {
+
+            h1 {
+                font-size: 2rem;
+                color: #41B6E6;
+                font-family: 'adam';
+            }
+
+            p {
+                font-size: 1rem;
+                color: #fff;
+                font-family: 'adam';
+            }
+
+        }
+
+        .imagen {
+            background: linear-gradient(180deg, rgba(58, 108, 131, 0) 0%, rgba(58, 108, 131, 0.72) 100%);
+            border-radius: 1.6rem;
+            width: 23.8rem;
+        }
+
+    }
+
+    .profissionais {
+
+        .prof{
+            border: 0.1rem solid #FFFFFF;
+            border-radius: 54rem;
+        }
+
+    }
 
 
 
@@ -128,14 +212,13 @@
 
 
 
+    @media(max-width: 1280px) {
 
-    @media(max-width: 1280px){
+        .faixa-1 {
 
-        .faixa-1{
+            .introdução {
 
-            .introdução{
-                
-                h1{
+                h1 {
                     font-size: 2rem;
                     width: 30rem;
                 }
