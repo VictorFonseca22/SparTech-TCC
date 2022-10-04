@@ -1,8 +1,26 @@
 import './index.scss';
 import { useNavigate } from 'react-router-dom';
+import { CadastrarServico } from '../../api/servico';
+import { ListaCategoria } from '../../api/usuarioApi';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 
 export default function SolicitarServ() {
+    const [cliente, Setcliente] = useState('');
+    const [profissional, Setprofissional] = useState('');
+    const [tipo, Settipo] = useState('');
+    const [pagamento, Setpagamento] = useState('');
+    const [endereco, Setendereco] = useState('');
+    const [complemento, Setcomplemento] = useState('');
+    const [limite, Setlimite] = useState('');
+    const [detalhes, Setdetalhes] = useState('');
+    const [servico, SetServico] = useState([]);
+    const [IdServico, SetIdServico] = useState()
+
+
+
+
     const navigate = useNavigate()
 
     function home() {
@@ -13,6 +31,28 @@ export default function SolicitarServ() {
         navigate('/servicos-ativos')
     }
 
+    async function cadastrarServico() {
+        try {
+            await CadastrarServico(cliente, profissional, tipo, pagamento, endereco, limite, detalhes, IdServico)
+            toast.dark('✅Serviço Cadastrado')
+        } catch (err) {
+
+            if (err.response) {
+                alert(err.response.data.erro);
+            }  
+        }
+
+    }
+
+    async function CarregarServico() {
+        const r = await ListaCategoria();
+        SetServico(r);
+    }
+
+    useEffect(() => {
+        CarregarServico();
+    }, [])
+
     return (
 
         <main className='page-solicitar'>
@@ -20,7 +60,7 @@ export default function SolicitarServ() {
             <header className='barra'>
 
                 <div>
-                    <img className='logo' src='/assets/images/teste final 1.png'  onClick={home}/>
+                    <img className='logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
 
                 <h1 className="ativos">detalhes do serviço</h1>
@@ -62,14 +102,14 @@ export default function SolicitarServ() {
 
                                     <p>endereço do serviço:</p>
 
-                                    <input type='text' placeholder='rua joa...' />
+                                    <input type='text' placeholder='rua joa...' value={endereco} onChange={e => Setendereco(e.target.value)} />
 
                                 </div>
 
                                 <div className='tex-2'>
                                     <p>complemento:</p>
 
-                                    <input type='text' placeholder='nº/apto...' />
+                                    <input type='text' placeholder='nº/apto...' value={complemento} onChange={e => Setcomplemento(e.target.value)} />
 
                                 </div>
                             </div>
@@ -127,11 +167,12 @@ export default function SolicitarServ() {
 
                                     <p>tipo de serviço:</p>
 
-                                    <select>
+                                    <select value={IdServico} onChange={e => SetIdServico(e.target.value)}>
                                         <option selected disabled hidden>Selecione</option>
-                                        <option>Manutenção de Computador</option>
-                                        <option>Limpeza de Wletrônico</option>
-                                        <option>Confecçãode Website</option>
+
+                                        {servico.map(item =>
+                                            <option value={item.IdCategoria}> {item.servico} </option>
+                                        )}
 
                                     </select>
 
@@ -141,7 +182,7 @@ export default function SolicitarServ() {
 
                                     <p>data limite:</p>
 
-                                    <input type='date' className="data"  />
+                                    <input type='date' className="data" value={limite} onChange={e => Setlimite(e.target.value)} />
 
                                 </div>
 
@@ -177,7 +218,7 @@ export default function SolicitarServ() {
 
                     </div>
                 </div>
-                <button className='botao' onClick={contratar}>contratar serviço</button>
+                <button className='botao' onClick={cadastrarServico}>contratar serviço</button>
 
 
             </div>
