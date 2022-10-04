@@ -1,12 +1,16 @@
 import './index.scss';
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom'
 import { listarPorNome, listarTodosProfissionais, buscarImagem } from '../../api/profissionalApi';
+import storage from 'local-storage'
+
 export default function Busca() {
 
 
     const [profissional, setProfissional] = useState([]);
     const [filtroNome, setFiltroNome] = useState('');
 
+    const navigate = useNavigate()
 
     async function carregarTodosProfissionais(){
         const resposta = await listarTodosProfissionais();
@@ -25,8 +29,17 @@ export default function Busca() {
 
     useEffect(() => {
         filtrarPorNome()
-    }, [listarPorNome])
+    }, [listarPorNome]);
 
+    function sairClick() {
+        storage.remove('profissional-logado')
+        storage.remove('cliente-logado')
+        navigate('/login')
+    }
+
+    function clickProfissional () {
+        navigate (`/perfil-profissional/${profissional.id}`)
+    }
 
     return (
         <main className='Busca-prof'>
@@ -49,7 +62,7 @@ export default function Busca() {
                         <img className='logo-spartan' src='/assets/images/spartan 5.png' />
                     </a>
 
-                    <div className='voltar'>
+                    <div className='voltar' onClick={sairClick}>
                         <img className='logo-menu' src='/assets/images/voltar.png' />
                         <h1>voltar</h1>
                     </div>
@@ -67,7 +80,7 @@ export default function Busca() {
             
             
             
-        <div className='CardProf'>
+        <div className='CardProf' onClick={clickProfissional}>
 
             <img className="foto" src={buscarImagem(item.foto)}/>
             <div className='info'>
