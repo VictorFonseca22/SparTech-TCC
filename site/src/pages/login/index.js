@@ -19,7 +19,7 @@ export default function Login() {
 
         try {
             const resp = await LogarProfissional(Email, Senha);
-            if(!resp) {
+            if(resp.status != 201) {
                 resp =  await LogarCliente(Email,Senha)
                 storage('cliente-logado', resp)
                 setTimeout(() =>{
@@ -33,7 +33,6 @@ export default function Login() {
                 navigate(`/perfil-profissional/${resp.id}`)
             }, 3000);
         }
-    console.log(resp)
             
         } catch (err) {
             ref.current.complete();

@@ -23,6 +23,15 @@
     width: 100vw;
     height: 100vh;
 
+    @keyframes flutuacao {
+        0%, 100%{
+            transform: translateY(0px)
+        }
+        50%{
+            transform: translateY(-60px)
+        }
+    }
+
     .logar {
         width: 27rem;
         height: 44rem;
@@ -133,6 +142,9 @@
     .astronauta{
         width: 35rem;
         height: 42rem;
+        animation: flutuacao 8s ease-in-out infinite;
     }
+
+    
 
 }
