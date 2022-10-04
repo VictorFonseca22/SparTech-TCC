@@ -114,7 +114,7 @@ server.post('/loginCliente' , async (req,resp) => {
             throw new Error('Credenciais Inválidas')
         }
         
-        resp.send(resposta)
+        resp.status(201).send(resposta)
 
     }
     catch(err){
