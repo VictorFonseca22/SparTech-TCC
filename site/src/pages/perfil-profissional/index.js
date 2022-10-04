@@ -46,11 +46,12 @@ export default function Perfilprofissional() {
 
     function sairClick() {
         storage.remove('profissional-logado')
+        storage.remove('cliente-logado')
         navigate('/login')
     }
 
     useEffect(() => {
-        if (!storage('profissional-logado')) {
+        if (!storage('profissional-logado'), !storage('cliente-logado')) {
             navigate('/login')
         }
     }, [])
