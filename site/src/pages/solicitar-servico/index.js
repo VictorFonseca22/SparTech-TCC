@@ -1,9 +1,24 @@
 import './index.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ListaCategoria } from '../../api/usuarioApi';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 
 export default function SolicitarServ() {
-    const navigate = useNavigate()
+    const [servico, SetServico] = useState([]);
+    const [IdServico, SetIdServico] = useState();
+
+
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        CarregarServico();
+    }, [])
+
+
+
 
     function home() {
         navigate('/')
@@ -13,6 +28,16 @@ export default function SolicitarServ() {
         navigate('/servicos-ativos')
     }
 
+
+
+    async function CarregarServico() {
+        const r = await ListaCategoria();
+        SetServico(r);
+    }
+
+
+
+
     return (
 
         <main className='page-solicitar'>
@@ -20,7 +45,7 @@ export default function SolicitarServ() {
             <header className='barra'>
 
                 <div>
-                    <img className='logo' src='/assets/images/teste final 1.png'  onClick={home}/>
+                    <img className='logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
 
                 <h1 className="ativos">detalhes do serviço</h1>
@@ -37,20 +62,27 @@ export default function SolicitarServ() {
             <div className='vizinho'>
                 <div className="contratar">
 
+
+
+
                     <div className='esquerda'>
 
                         <h1 className="prof">profissional a ser contratado</h1>
 
                         <div className="jota">
-                            <h4 className="nome">Jonas Cunha</h4>
+                            <h4 className="nome">jonas da cunha</h4>
 
-                            <img src='/assets/images/japones.png' />
+                            <img src='./assets/images/japones.png' />
 
                             <p>especialista em front-end suporte técnico</p>
                         </div>
                         <textarea className='textarea' placeholder='Descreva o serviço a ser feito' type='text' />
 
                     </div>
+
+
+
+
 
                     <div className='direita'>
 
@@ -127,11 +159,12 @@ export default function SolicitarServ() {
 
                                     <p>tipo de serviço:</p>
 
-                                    <select>
+                                    <select value={IdServico} onChange={e => SetIdServico(e.target.value)}>
                                         <option selected disabled hidden>Selecione</option>
-                                        <option>Manutenção de Computador</option>
-                                        <option>Limpeza de Wletrônico</option>
-                                        <option>Confecçãode Website</option>
+
+                                        {servico.map(item =>
+                                            <option value={item.IdCategoria}> {item.servico} </option>
+                                        )}
 
                                     </select>
 
@@ -141,7 +174,7 @@ export default function SolicitarServ() {
 
                                     <p>data limite:</p>
 
-                                    <input type='date' className="data"  />
+                                    <input type='date' className="data" />
 
                                 </div>
 

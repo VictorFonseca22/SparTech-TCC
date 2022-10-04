@@ -15,6 +15,15 @@
         box-sizing: border-box;
     }
 
+    @keyframes flutuacao {
+        0%, 100%{
+            transform: translateY(0px)
+        }
+        50%{
+            transform: translateY(-60px)
+        }
+    }
+
     display: flex;
     background-image: url('../../../public/assets/images/espaço.png');
     align-items: center;
@@ -176,6 +185,7 @@
             height: 100%;
             max-width: 40rem;
             max-height: 40rem;
+            animation: flutuacao 8s ease-in-out infinite;
         }
 
         h1 {

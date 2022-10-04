@@ -1,14 +1,14 @@
 import { LogarCliente, LogarProfissional } from '../../api/usuarioApi';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 import { useState, useRef, useEffect } from 'react';
 import './index.scss';
 import storage from 'local-storage'
 export default function Login() {
-    const [Email, SetEmail] = useState ('');
-    const [Senha, SetSenha] = useState ('');
-    const [erro, SetErro] = useState ('');
-    const [Carregando, SetCarregando] = useState (false);
+    const [Email, SetEmail] = useState('');
+    const [Senha, SetSenha] = useState('');
+    const [erro, SetErro] = useState('');
+    const [Carregando, SetCarregando] = useState(false);
 
     const navigate = useNavigate();
     const ref = useRef();
@@ -19,52 +19,53 @@ export default function Login() {
 
         try {
             const resp = await LogarProfissional(Email, Senha);
-            if(!resp) {
-                resp =  await LogarCliente(Email,Senha)
-                storage('cliente-logado', resp)
-                setTimeout(() =>{
-                    navigate(`/busca-profissional`)
-                }, 3000);
-            }
-
-        else {
             storage('profissional-logado', resp)
-            setTimeout(() =>{
+            setTimeout(() => {
                 navigate(`/perfil-profissional/${resp.id}`)
             }, 3000);
-        }
-    console.log(resp)
-            
-        } catch (err) {
-            ref.current.complete();
-            SetCarregando(false);
-            if (err.response.status === 401) {
-                SetErro(err.response.data.erro);
-            }
-        }
 
+
+        } catch (err) {
+
+            try {
+                const r = await LogarCliente(Email, Senha)
+                storage('cliente-logado', r)
+                setTimeout(() => {
+                    navigate(`/busca-profissional`)
+                }, 3000);
+
+            } 
+            catch (err2) {
+                if (err2.response.status === 401) {
+                    ref.current.complete();
+                    SetCarregando(false);
+                    SetErro(err2.response.data.erro);
+                }
+            }  
         
+        }
     }
 
+
     useEffect(() => {
-        if(storage('profissional-logado')) {
+        if (storage('profissional-logado')) {
             navigate(`/perfil-profissional/1`)
         }
-        if(storage('cliente-logado')) {
+        if (storage('cliente-logado')) {
             navigate(`/busca-profissional`)
         }
-        
+
     }, [])
 
-    document.addEventListener("keypress", function  (e) {
-            if(e.key === "Enter"){
-                const btn = document.querySelector("#send");
-                btn.click();
-            }
-        })
+    document.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            const btn = document.querySelector("#send");
+            btn.click();
+        }
+    })
 
 
-        
+
     return (
         <main className='Login-page'>
 
@@ -85,11 +86,11 @@ export default function Login() {
                 <div className='fazer'>
 
                     <div className='email'>
-                        <input placeholder='Email' type='text' value={Email} onChange={e => SetEmail (e.target.value) } />
+                        <input placeholder='Email' type='text' value={Email} onChange={e => SetEmail(e.target.value)} />
                     </div>
 
                     <div className='senha'>
-                        <input placeholder='Senha' type='password' value={Senha} onChange={e => SetSenha (e.target.value) } />
+                        <input placeholder='Senha' type='password' value={Senha} onChange={e => SetSenha(e.target.value)} />
                     </div>
 
                 </div>
@@ -98,7 +99,7 @@ export default function Login() {
 
                     <button id='send' className='foi' onClick={Click} disabled={Carregando} >
 
-                        <img src='/assets/images/seta-direita.png'  />
+                        <img src='/assets/images/seta-direita.png' />
 
                     </button>
 
@@ -122,11 +123,11 @@ export default function Login() {
 
             </section>
 
-            
+
 
             <img src='/assets/images/planeta e astro.png' className='astronauta' />
 
-        
+
 
 
 
