@@ -14,7 +14,6 @@ export default function Busca() {
 
     async function carregarTodosProfissionais(){
         const resposta = await listarTodosProfissionais();
-        console.log(resposta)
         setProfissional(resposta);
     }
     useEffect(() => {

@@ -9,6 +9,7 @@ export async function BuscaProfissional(nome) {
     select p.nm_profissional    nome,
        tb_tipo_serv.nm_servico  serviço,
        p.nr_servicos            n°servicos,
+       p.id_profissional        id,
        p.dq_espartech           destaque,
        p.arq_foto               foto,
        tb_avaliacao.vl_avaliacao 		avaliacao

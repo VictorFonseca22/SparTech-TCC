@@ -80,6 +80,9 @@ export default function Perfilprofissional() {
         toast.success('Comentário realizado!')
     }
 
+    function NavegarParaServico() {
+        navigate(`/solicitar-servico/${idParam}`)
+    }
 
     const customStyles = {
         content: {
@@ -118,7 +121,7 @@ export default function Perfilprofissional() {
                         <h1 className='servico'>Serviços</h1>
                     }
                     {storage('cliente-logado') &&
-                        <h1 className='servico'>Contratar</h1>
+                        <h1 className='servico' onClick={NavegarParaServico}>Contratar</h1>
                     }
                 </div>
 

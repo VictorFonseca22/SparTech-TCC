@@ -27,7 +27,7 @@ root.render(
          <Route path='/perfil-profissional/:idParam' element={<PerfilProfissional />} />
          <Route path='/busca-profissional' element={<BuscaProf />} />
          <Route path='/servicos-ativos' element={<ServicosAtivos />} />
-         <Route path='/solicitar-servico' element={<SolicitarServ />} />
+         <Route path='/solicitar-servico/:idParam' element={<SolicitarServ />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
