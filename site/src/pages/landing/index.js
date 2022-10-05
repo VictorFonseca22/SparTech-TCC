@@ -18,6 +18,7 @@ export default function Landing() {
             </section>
 
             <section className='faixa-2'>
+
                 <h4>serviços mais solicitados</h4>
                 <div className='categorias'>
                     <Categoria nome='Montagem e Manutenção de Computadores' />
@@ -25,6 +26,7 @@ export default function Landing() {
                     <Categoria nome='Cabeamento de Redes' />
                     <Categoria nome='Desenvolvimento de Website' />
                 </div>
+                
             </section>
 
             <div className='destaques'>
@@ -134,18 +136,20 @@ export default function Landing() {
 
                 <div className="logo">
                     <img src="./assets/images/teste final 1.png" />
+
+                    <div className="patro">
+
+                        <h1>patrocinadores:</h1>
+                        <img src="./assets/images/frei.png" />
+
+                    </div>
+
                 </div>
 
-                <div className="patro">
-
-                    <h1>patrocinadores:</h1>
-                    <img src="./assets/images/frei.png" />
-
-                </div>
 
                 <div className="formas">
 
-                    <h1>Formas de pagamento:</h1>
+                    <h1 className='pagamento'>Formas de pagamento:</h1>
 
                     <div className="primeiro">
 
@@ -176,9 +180,7 @@ export default function Landing() {
                     <h1>contrate já um profissional</h1>
                     <button>login</button>
 
-                </div>
 
-                <div className="fale">
 
                     <h1>Fale conosco:</h1>
 
