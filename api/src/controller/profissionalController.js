@@ -75,6 +75,9 @@ server.post('/comentario', async (req, resp) => {
         if(!novoComentario.IDcliente){
             throw new Error('É necessário estar logado para comentar!')
         }
+        if(!novoComentario.IDprofissional) {
+            throw new Error('É necessário selecionar um profissional!')
+        }
         if(!novoComentario.comentario){
             throw new Error('Comentário é obrigatório!');
         }

@@ -49,29 +49,29 @@ export default function CadastroCliente() {
                 <div className='dois'>
                     <div className='text'>
                         <label>Nome</label>
-                        <input type='text' value={Nome} onChange={e => SetNome(e.target.value)} />
+                        <input placeholder='insira seu nome' type='text' value={Nome} onChange={e => SetNome(e.target.value)} />
                     </div>
 
                     <div className='text'>
                         <label>cpf</label>
-                        <input type='text' value={Cpf} onChange={e => SetCpf(e.target.value)} />
+                        <input placeholder='insira seu cpf' type='text' value={Cpf} onChange={e => SetCpf(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
                     <div className='text'>
                         <label>Email</label>
-                        <input type='text' value={Email} onChange={e => SetEmail(e.target.value)} />
+                        <input placeholder='insira seu email' type='text' value={Email} onChange={e => SetEmail(e.target.value)} />
                     </div>
 
                     <div className='text'>
                         <label>Senha</label>
-                        <input type='password' value={Senha} onChange={e => SetSenha(e.target.value)} />
+                        <input placeholder='insira sua senha' type='password' value={Senha} onChange={e => SetSenha(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
                     <div className='text'>
                         <label>Idade</label>
-                        <input type='number' value={Idade} onChange={e => SetIdade(e.target.value)} />
+                        <input placeholder='insira sua idade' type='number' value={Idade} onChange={e => SetIdade(e.target.value)} />
                     </div>
 
                     <div className='text'>
@@ -79,9 +79,9 @@ export default function CadastroCliente() {
                         <input type='date' value={Nascimento} onChange={e => SetNascimento(e.target.value)} />
                     </div>
                 </div>
-                <div className='text'>
+                <div className='text-telefone'>
                     <label>Telefone</label>
-                    <input type='number' value={Telefone} onChange={e => SetTelefone(e.target.value)} />
+                    <input placeholder='insira seu telefone' type='number' value={Telefone} onChange={e => SetTelefone(e.target.value)} />
                 </div>
 
                 <div className='tipo'>

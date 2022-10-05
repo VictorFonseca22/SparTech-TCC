@@ -1,20 +1,23 @@
 import './index.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { mostrarComentarios, MostrarPerfil, buscarImagem } from '../../api/profissionalApi';
+import { mostrarComentarios, MostrarPerfil, buscarImagem, inserirComentario } from '../../api/profissionalApi';
 import storage from 'local-storage'
 import Modal from 'react-modal'
 import Editar from '../../components/editar-perfil'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Perfilprofissional() {
 
     const [perfil, setPerfil] = useState([])
     const [comentario, setComentario] = useState([])
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [comentar, setComentar] = useState('')
 
-    
-    
+
     const { idParam } = useParams();
+
 
     const navigate = useNavigate()
 
@@ -51,7 +54,7 @@ export default function Perfilprofissional() {
     }
 
     useEffect(() => {
-        if (!storage('profissional-logado'), !storage('cliente-logado')) {
+        if (!storage('profissional-logado'), !storage('cliente-logado'), !storage('undefined')) {
             navigate('/login')
         }
     }, [])
@@ -66,32 +69,38 @@ export default function Perfilprofissional() {
         setIsOpen(false);
     }
 
-    function recarregarAPagina(){
+    function recarregarAPagina() {
         window.location.reload();
-    } 
+    }
+
+    async function fazerComentario() {
+        const IDcliente = storage('cliente-logado').id
+        const resposta = await inserirComentario(IDcliente, idParam, comentar)
+        setComentar('')
+        toast.success('Comentário realizado!')
+    }
 
 
     const customStyles = {
         content: {
-            display:'flex',
-            alignItens:'center',
-            justifyContent:'center',
-            border:'none',
-            margin:'none',
-            backgroundColor:'#00000000'
+            display: 'flex',
+            alignItens: 'center',
+            justifyContent: 'center',
+            border: 'none',
+            margin: 'none',
+            backgroundColor: '#00000000'
         },
         overlay: {
             backgroundColor: '#000000ce'
         },
-        
-    };
 
+    };
 
 
 
     return (
         <main className='Perfil-Profissional'>
-
+            <ToastContainer />
 
             <div className='barra'>
 
@@ -105,8 +114,12 @@ export default function Perfilprofissional() {
                 </div>
                 <div className="acoes">
                     <h1 className='denunciar'>denunciar</h1>
-
-                    <h1 className='servico'>Serviços</h1>
+                    {storage('profissional-logado') &&
+                        <h1 className='servico'>Serviços</h1>
+                    }
+                    {storage('cliente-logado') &&
+                        <h1 className='servico'>Contratar</h1>
+                    }
                 </div>
 
 
@@ -116,7 +129,7 @@ export default function Perfilprofissional() {
 
                     <div className='fundo'>
 
-                        <img src={buscarImagem(item.foto)} className="foto"/>
+                        <img src={buscarImagem(item.foto)} className="foto" />
 
                         <img src='/assets/images/fundo.png' className="cinza" />
 
@@ -147,40 +160,37 @@ export default function Perfilprofissional() {
                                 </div>
                             </div>
                             <div className='editar'>
+                                {storage('profissional-logado') &&
+                                    <div className='botoes-perfil'>
 
-                            <div className='botoes-perfil'>
-                                
-                                <button className='botao-refresh' onClick={recarregarAPagina}>
-                               <h1 className="perfil-refresh">atualizar informações</h1>
-                               <img class="spinner is-animating" src='/assets/images/atualizar.png' />
-                               </button>
-                               
-                
-                                <button onClick={openModal} className="botao-editar">
-                                    <h1 className="perfil">editar perfil</h1>
-                                    <img className='editar-animation' src='/assets/images/caneta.png' />
-                                </button>
-                                
-                               
+                                        <button className='botao-refresh' onClick={recarregarAPagina}>
+                                            <h1 className="perfil-refresh">atualizar informações</h1>
+                                            <img class="spinner is-animating" src='/assets/images/atualizar.png' />
+                                        </button>
 
-                                </div>
 
-                                
-                                <Modal 
+                                        <button onClick={openModal} className="botao-editar">
+                                            <h1 className="perfil">editar perfil</h1>
+                                            <img className='editar-animation' src='/assets/images/caneta.png' />
+                                        </button>
+
+                                    </div>
+                                }
+                                <Modal
                                     isOpen={modalIsOpen}
                                     onRequestClose={closeModal}
                                     style={customStyles}
-                                    
+
                                 >
-                                    
+
                                     <Editar />
 
-                                    <img src={'/assets/images/cancelar.png'} alt=""  height={'30'}  onClick={closeModal} />
-                                  
-                                    
+                                    <img src={'/assets/images/cancelar.png'} alt="" height={'30'} onClick={closeModal} />
+
+
                                 </Modal>
 
-                                
+
 
                             </div>
                         </div>
@@ -210,7 +220,19 @@ export default function Perfilprofissional() {
             <div className='informacoes'>
                 <hr />
                 <div className="comentes">
-                    <h1>comentários sobre você</h1>
+                    {storage('profissional-logado') &&
+                        <h1>comentários sobre você</h1>
+                    }
+                    {storage('cliente-logado') &&
+                        <div>
+                            <h1>avalie este profissional</h1>
+                            <div className='input-comentario'>
+                                <input placeholder='Digite sobre o profissional' className='inserir-comentario' type='text' value={comentar} onChange={e => setComentar(e.target.value)} />
+                                <img className='enviar-comentario' id='send' src={'/assets/images/enviar-mensagem 1.png'} onClick={fazerComentario} />
+                            </div>
+                        </div>
+                    }
+
 
                     {comentario.map(item =>
 

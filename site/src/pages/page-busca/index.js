@@ -38,7 +38,8 @@ export default function Busca() {
     }
 
     function clickProfissional () {
-        navigate (`/perfil-profissional/${profissional.id}`)
+        console.log(profissional)
+        navigate (`/perfil-profissional/${profissional[0].id}`)
     }
 
     return (

@@ -53,6 +53,15 @@ export async function AdicionarImagem (id, foto){
 }
 
 export function buscarImagem(foto){
-    console.log(`${api.getUri()}/${foto}`)
     return `${api.getUri()}/${foto}`
+}
+
+export async function inserirComentario(IDcliente, IDprofissional, comentario){
+    const resposta = await api.post(`/comentario`, {
+       
+        IDcliente:  IDcliente,
+        IDprofissional:IDprofissional,
+        comentario: comentario
+    })
+    return resposta.data;
 }

@@ -3,9 +3,10 @@
     src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
 }
 
-
-.Perfil-Profissional {
+body{
     background-color: #171921;
+}
+.Perfil-Profissional {
     display: flex;
     flex-direction: column;
     
@@ -163,6 +164,7 @@
     .informacoes{
         display: flex;
         flex-direction: column;
+        background-color: #171921;
 
         
 
@@ -353,11 +355,36 @@
 
     .comentes{
         padding: 2rem 0rem 0rem 2rem;
-        
         height: 40rem;
+        
 
         h1{
             color: #FFF;
+        }
+
+        .input-comentario {
+
+            .inserir-comentario{
+                background: #D9D9D9;
+                border-radius: 15px;
+                outline: none;      
+                margin-top: 1.5rem;
+                width: 70%;
+                max-width: 70%;
+                font-family: 'adam';
+                height: 2rem;
+                border: none;
+                padding: 1em;
+               }
+            
+            .enviar-comentario{
+                height: 2rem;
+                margin-left: 1rem;
+                margin-bottom: -8px;
+                cursor: pointer;
+                
+            }
+
         }
 
         .comentario{
@@ -391,6 +418,7 @@
                 margin-top: 2rem;
                 margin-left: 2rem;
                }
+               
         }
     }
 

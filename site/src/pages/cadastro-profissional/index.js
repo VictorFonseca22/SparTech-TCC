@@ -63,29 +63,29 @@ export default function CadastroProfissional() {
                 <div className='dois'>
                     <div className='text'>
                         <label>Nome</label>
-                        <input type='text' value={nome} onChange={e => SetNome(e.target.value)} />
+                        <input placeholder='Insira seu nome' type='text' value={nome} onChange={e => SetNome(e.target.value)} />
                     </div>
 
                     <div className='text'>
                         <label>cpf</label>
-                        <input type='text' value={cpf} onChange={e => SetCpf(e.target.value)} />
+                        <input placeholder='insira seu cpf' type='text' value={cpf} onChange={e => SetCpf(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
                     <div className='text'>
                         <label>Email</label>
-                        <input type='text' value={email} onChange={e => SetEmail(e.target.value)} />
+                        <input placeholder='insira seu email' type='text' value={email} onChange={e => SetEmail(e.target.value)} />
                     </div>
 
                     <div className='text'>
                         <label>Senha</label>
-                        <input type='password' value={senha} onChange={e => SetSenha(e.target.value)} />
+                        <input placeholder='insira sua senha' type='password' value={senha} onChange={e => SetSenha(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
                     <div className='text'>
                         <label>Idade</label>
-                        <input type='number' />
+                        <input placeholder='insira sua idade' type='number' />
                     </div>
 
                     <div className='text'>
@@ -96,7 +96,7 @@ export default function CadastroProfissional() {
                 <div className='dois'>
                     <div className='text'>
                         <label>Telefone</label>
-                        <input type='number' value={telefone} onChange={e => SetTelefone(e.target.value)} />
+                        <input placeholder='insira seu telefone' type='number' value={telefone} onChange={e => SetTelefone(e.target.value)} />
                     </div>
 
                     <div className='text'>
