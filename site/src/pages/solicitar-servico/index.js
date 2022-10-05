@@ -1,9 +1,9 @@
 import './index.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ListaCategoria } from '../../api/usuarioApi';
-import { buscarImagem, MostrarPerfil} from '../../api/profissionalApi.js'
+import { buscarImagem, MostrarPerfil } from '../../api/profissionalApi.js'
 import { useEffect, useState } from 'react';
-import {useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 
@@ -11,9 +11,9 @@ export default function SolicitarServ() {
     const [servico, SetServico] = useState([]);
     const [infoperfil, setInfoPerfil] = useState([])
     const [IdServico, SetIdServico] = useState();
-    const {register, handleSubmit, setValue, setFocus} = useForm();
+    const { register, handleSubmit, setValue, setFocus } = useForm();
 
-    const {idParam} = useParams();
+    const { idParam } = useParams();
 
     const navigate = useNavigate();
 
@@ -34,19 +34,19 @@ export default function SolicitarServ() {
 
     const onSubmit = (e) => {
         console.log(e);
-      }
+    }
 
     const checkCEP = (e) => {
         const cep = e.target.value.replace(/\D/g, '');
         console.log(cep);
         fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
-          console.log(data);
-          // register({ name: 'address', value: data.logradouro });
-          setValue('address', data.logradouro);
-          setValue('neighborhood', data.bairro);
-          setValue('city', data.localidade);
-          setValue('uf', data.uf);
-          setFocus('addressNumber');
+            console.log(data);
+            // register({ name: 'address', value: data.logradouro });
+            setValue('address', data.logradouro);
+            setValue('neighborhood', data.bairro);
+            setValue('city', data.localidade);
+            setValue('uf', data.uf);
+            setFocus('addressNumber');
         });
     }
 
@@ -101,17 +101,17 @@ export default function SolicitarServ() {
                     <div className='esquerda'>
 
                         <h1 className="prof">profissional a ser contratado</h1>
-                    {infoperfil.map (item => 
-                        <div className="jota">
-                        <h4 className="nome">{item.nome}</h4>
+                        {infoperfil.map(item =>
+                            <div className="jota">
+                                <h4 className="nome">{item.nome}</h4>
 
-                        <img src={buscarImagem(item.foto)} />
+                                <img src={buscarImagem(item.foto)} />
 
-                        <p>{item.area}</p>
-                    </div>
-                        
+                                <p>{item.area}</p>
+                            </div>
+
                         )}
-                        
+
                         <textarea className='textarea' placeholder='Descreva o serviço a ser feito' type='text' />
 
                     </div>
@@ -123,52 +123,60 @@ export default function SolicitarServ() {
                     <div className='direita'>
 
                         <div className="texts">
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className='linha-tex'>
-                            <div className='tex-2'>
-                                    <p>CEP:</p>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className='linha-tex'>
 
-                                    <input type='text' {...register("cep")} onBlur={checkCEP}/>
-                                </div>
-                                <div className='tex-1'>
+                                    <div className='tex-1'>
 
-                                    <p>endereço do serviço:</p>
+                                        <p>endereço do serviço:</p>
 
-                                    <input type='text' {...register("address")} placeholder='rua joa...' />
+                                        <input type='text' {...register("address")} placeholder='rua joa...' />
 
-                                </div>
+                                    </div>
 
-                                
-                            </div>
+                                    <div className='tex-2'>
+                                        <p>CEP:</p>
 
-                            <div className='linha-tex'>
-                                <div className='tex-2'>
-                                    <p>complemento:</p>
+                                        <input type='text' placeholder='00000-000' {...register("cep")} onBlur={checkCEP} />
+                                    </div>
 
-                                    <input type='text' placeholder='nº/apto...' />
 
                                 </div>
+
+                                <div className='linha-tex'>
 
                                 <div className='tex-1'>
-                                    <p>Bairro:</p>
+                                        <p>Bairro:</p>
 
-                                    <input type='text' {...register("neighborhood")}/>
+                                        <input type='text' placeholder='val-fl...' {...register("neighborhood")} />
+                                    </div>
+                                    <div className='tex-2'>
+                                        <p>complemento:</p>
+
+                                        <input type='text' placeholder='nº/apto...' />
+
+                                    </div>
+
+                                    
                                 </div>
-                                <div className='tex-1'>
+                                <div className='linha-tex'>
 
-                                    <p>Cidade:</p>
 
-                                    <input type='text' {...register("city")} placeholder='embú-gua...' />
+                                    <div className='tex-1'>
 
+                                        <p>Cidade:</p>
+
+                                        <input type='text' {...register("city")} placeholder='embú-gua...' />
+
+                                    </div>
+
+                                    <div className='tex-2'>
+                                        <p>Estado:</p>
+
+                                        <input type='text' placeholder='sp' {...register("uf")} />
+                                    </div>
                                 </div>
-
-                                <div className='tex-2'>
-                                    <p>Estado:</p>
-
-                                    <input type='text' {...register("uf")}/>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
                             <div className='linha-tex'>
 
                                 <div className='tex-1'>
