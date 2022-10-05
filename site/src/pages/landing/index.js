@@ -84,11 +84,128 @@ export default function Landing() {
 
                 <div className='prof'>
 
-                                    
+                    <img src="./assets/images/moça2.png" />
+                    <h3>alessandra f.</h3>
+                    <p>Front-end</p>
+
+                </div>
+
+                <div className='prof'>
+
+                    <img src="./assets/images/lindo.png" />
+                    <h3>pedro</h3>
+                    <p>ciência de dados</p>
+
+                </div>
+
+                <div className='prof'>
+
+                    <img src="./assets/images/rafa.png" />
+                    <h3>RAFAEL J.</h3>
+                    <p>WEB-DESIGN</p>
+
+                </div>
+
+
+            </div>
+
+            <div className="profissionais">
+
+                <div className='prof'>
+
+                    <img src="./assets/images/lucas.png" />
+                    <h3>Lucas tatsuo</h3>
+                    <p>BACK-END</p>
+
+                </div>
+
+                <div className='prof'>
+
+                    <img src="./assets/images/gi.png" />
+                    <h3>giovanna</h3>
+                    <p>analista de sistemas</p>
 
                 </div>
 
             </div>
+
+
+            <section className='rodape'>
+
+                <div className="logo">
+                    <img src="./assets/images/teste final 1.png" />
+                </div>
+
+                <div className="patro">
+
+                    <h1>patrocinadores:</h1>
+                    <img src="./assets/images/frei.png" />
+
+                </div>
+
+                <div className="formas">
+
+                    <h1>Formas de pagamento:</h1>
+
+                    <div className="primeiro">
+
+                        <img src="./assets/images/visa.png" />
+                        <img src="./assets/images/MASTERCARD.png" />
+                        <img src="./assets/images/MERCADO PAGO.png" />
+
+                    </div>
+
+                    <div className="segundo">
+
+                        <img src="./assets/images/boleto.png" />
+                        <img src="./assets/images/PIX.png" />
+                        <img src="./assets/images/PIC PAY.png" />
+
+                    </div>
+
+                    <div className="terceiro">
+
+                        <img src="./assets/images/paypal.png" />
+
+                    </div>
+
+                </div>
+
+                <div className="login">
+
+                    <h1>contrate já um profissional</h1>
+                    <button>login</button>
+
+                </div>
+
+                <div className="fale">
+
+                    <h1>Fale conosco:</h1>
+
+                    <div className="insta">
+
+                        <img src="./assets/images/insta.png" />
+                        <p>@espartech_oficial</p>
+
+                    </div>
+
+                    <div className="twi">
+
+                        <img src="./assets/images/tt.png" />
+                        <p>@espartech</p>
+
+                    </div>
+
+                    <div className="email">
+
+                        <img src="./assets/images/email.png" />
+                        <p>espartech@gmail.com</p>
+
+                    </div>
+
+                </div>
+
+            </section>
 
         </main>
     )

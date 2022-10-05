@@ -194,10 +194,37 @@
 
     .profissionais {
 
-        .prof{
+        .prof {
             border: 0.1rem solid #FFFFFF;
-            border-radius: 54rem;
+            border-radius: 3.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        h1 {
+            font-size: 2rem;
+            color: #41B6E6;
+            font-family: 'adam';
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 2rem;
+            color: #fff;
+            font-family: 'adam';
+        }
+        
+        p {
+            font-size: 1rem;
+            color: #fff;
+            font-family: 'adam';
+        }
+
+    }
+
+    .rodape{
+        background-color: #293040;
 
     }
 
