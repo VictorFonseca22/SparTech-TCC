@@ -23,8 +23,24 @@ server.post('/cadastrarServico', async (req, resp) => {
             throw new Error('Tipo de pagamento é obrigatório!');
         }
 
-        if(!novoCadastro.endereco){
-            throw new Error('Endereço do serviço é obrigatório!');
+        if(!novoCadastro.rua){
+            throw new Error('Rua do serviço é obrigatório!');
+        }
+
+        if(!novoCadastro.complemento){
+            throw new Error('N° da casa é obrigatório!');
+        }
+
+        if(!novoCadastro.bairro){
+            throw new Error('Bairro do serviço é obrigatório!');
+        }
+
+        if(!novoCadastro.cidade){
+            throw new Error('Cidade do serviço é obrigatório!');
+        }
+
+        if(!novoCadastro.uf){
+            throw new Error('Estado do serviço é obrigatório!');
         }
 
         if(!novoCadastro.limite){
