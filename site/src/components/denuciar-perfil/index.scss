@@ -1,0 +1,53 @@
+.denunciar {
+
+    .conteiner {
+        h1 {
+            font-family: 'adam';
+            color: #fff;
+        }
+
+        p {
+            font-family: 'adam';
+            color: #fff;
+        }
+
+        .classificar {
+
+            .sele {
+                max-width: 20rem;
+            }
+            
+        }
+
+        .data {
+
+            .date {
+                width: 14rem;
+                height: 2.9rem;
+                background: #FFFFFF;
+                border-radius: 4.3rem;
+                border: none;
+            }
+
+        }
+
+        .descreva {
+
+            .textarea {
+                height: 16rem;
+                border-radius: 1rem;
+                width: 42rem;
+                border: none;
+                padding: 0.3rem 0.5rem;
+                outline: none;
+                background-color: #D9D9D9;
+                font-family: 'adam';
+                font-size: 1.2rem;
+                resize: none;
+                color: #4E4E4E;
+            }
+
+        }
+
+    }
+}

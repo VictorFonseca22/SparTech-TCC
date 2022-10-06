@@ -10,6 +10,7 @@ import PerfilProfissional from './pages/perfil-profissional'
 import BuscaProf from './pages/page-busca'
 import ServicosAtivos from './pages/servicos-ativos';
 import SolicitarServ from './pages/solicitar-servico';
+import Denunciar from './components/denuciar-perfil';
 
 
 
@@ -28,6 +29,7 @@ root.render(
          <Route path='/busca-profissional' element={<BuscaProf />} />
          <Route path='/servicos-ativos' element={<ServicosAtivos />} />
          <Route path='/solicitar-servico/:idParam' element={<SolicitarServ />} />
+         <Route path='/denunciar' element={<Denunciar />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
