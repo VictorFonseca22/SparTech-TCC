@@ -15,10 +15,6 @@ server.post('/cadastrarServico', async (req, resp) => {
             throw new Error('Nome do(a) profissional é obrigatório!');
         }
 
-        if(!novoCadastro.tipo){
-            throw new Error('Tipo de serviço é obrigatório!');
-        }
-
         if(!novoCadastro.pagamento){
             throw new Error('Tipo de pagamento é obrigatório!');
         }
