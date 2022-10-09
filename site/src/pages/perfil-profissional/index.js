@@ -7,12 +7,15 @@ import Modal from 'react-modal'
 import Editar from '../../components/editar-perfil'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Denunciar from '../../components/denuciar-perfil';
+import ReactModal from 'react-modal';
 
 export default function Perfilprofissional() {
 
     const [perfil, setPerfil] = useState([])
     const [comentario, setComentario] = useState([])
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [ModalIsOpen, SetIsOpen] = useState(false);
     const [comentar, setComentar] = useState('')
 
 
@@ -99,6 +102,30 @@ export default function Perfilprofissional() {
 
     };
 
+    function openModal() {
+        SetIsOpen(true);
+    }
+
+    function closeModal() {
+        SetIsOpen(false);
+    }
+
+    const Css = {
+        content: {
+            display: 'flex',
+            alignItens: 'center',
+            justifyContent: 'center',
+            border: 'none',
+            margin: 'none',
+            backgroundColor: '#00000000'
+        },
+        overlay: {
+            backgroundColor: '#000000ce'
+        },
+
+    };
+
+
 
 
     return (
@@ -115,8 +142,21 @@ export default function Perfilprofissional() {
                 <div className="c">
                     <img className='Logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
-                <div className="acoes">
+                <div className="acoes" onClick={openModal}>
                     <h1 className='denunciar'>denunciar</h1>
+                    <Modal
+                        isOpen={ModalIsOpen}
+                        onRequestClose={closeModal}
+                        style={Css}
+                    >
+
+                        <img src={'/assets/images/cancelar.png'} onClick={closeModal} height={'30'} />
+
+                        <Denunciar />
+
+
+
+                    </Modal>
                     {storage('profissional-logado') &&
                         <h1 className='servico'>Serviços</h1>
                     }
