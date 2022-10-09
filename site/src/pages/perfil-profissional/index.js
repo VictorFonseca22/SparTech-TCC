@@ -142,8 +142,8 @@ export default function Perfilprofissional() {
                 <div className="c">
                     <img className='Logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
-                <div className="acoes" onClick={openModal}>
-                    <h1 className='denunciar'>denunciar</h1>
+                <div className="acoes">
+                    <h1 className='denunciar' onClick={openModal}>denunciar</h1>
                     <Modal
                         isOpen={ModalIsOpen}
                         onRequestClose={closeModal}
