@@ -27,7 +27,7 @@ root.render(
          <Route path='/perfil-profissional' element={<PerfilProfissional />} />
          <Route path='/perfil-profissional/:idParam' element={<PerfilProfissional />} />
          <Route path='/busca-profissional' element={<BuscaProf />} />
-         <Route path='/servicos-ativos' element={<ServicosAtivos />} />
+         <Route path='/servicos-ativos/:idParam' element={<ServicosAtivos />} />
          <Route path='/solicitar-servico/:idParam' element={<SolicitarServ />} />
       </Routes>
     </BrowserRouter>

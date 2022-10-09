@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {cadastroServico} from '../repository/servicoRepository.js'
+import {cadastroServico, listarPagamentos, ServicosAtivos} from '../repository/servicoRepository.js'
 import server from "./usuarioController.js";
 
 server.post('/cadastrarServico', async (req, resp) => {
@@ -17,6 +17,9 @@ server.post('/cadastrarServico', async (req, resp) => {
 
         if(!novoCadastro.pagamento){
             throw new Error('Tipo de pagamento é obrigatório!');
+        }
+        if(!novoCadastro.tipo){
+            throw new Error('Tipo de serviço é obrigatório!');
         }
 
         if(!novoCadastro.rua){
@@ -57,5 +60,35 @@ server.post('/cadastrarServico', async (req, resp) => {
 
     }
 })
+server.get('/api/pagamento', async (req, resp) => {
+    try {
+        const linhas = await listarPagamentos();
+        resp.send(linhas);
+    }
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+server.get('/servicosAtivos/:id', async (req, resp) =>{
+    try
+    {
+        const id = Number(req.params.id);
 
+        const resposta = await ServicosAtivos(id);
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
 export default server;

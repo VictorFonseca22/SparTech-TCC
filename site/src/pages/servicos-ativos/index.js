@@ -1,15 +1,30 @@
 import './index.scss'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { buscarImagem, MostrarPerfil } from '../../api/profissionalApi.js'
+import { ServicosAtivos } from '../../api/servico';
 
 
 export default function Serviços() {
+    const [infoServico, setInfoServico] = useState([])
 
     const navigate = useNavigate()
+    const {idParam} = useParams()
 
 
     function home() {
         navigate('/')
     }
+
+    async function carregarServico() {
+        const resposta = await ServicosAtivos(idParam);
+        setInfoServico(resposta)
+    }
+
+    useEffect(() => {
+            carregarServico();
+
+    }, [])
 
     return (
         <main className='servicos'>
@@ -29,31 +44,41 @@ export default function Serviços() {
 
             </header>
 
-            <section className="ordem">
 
+            <section className="ordem">
+                
+                
                 <section className="ajuste">
+            {infoServico.map(item =>
 
                     <div className='informacoes'>
 
-                        <img src='./assets/images/japones.png' />
+                    
+                        <div className='mapeamento-perfil'>
+                            <img src={buscarImagem(item.foto)} />
+                            <div className='ramo'>
+                                <h1>{item.cliente}</h1>
 
-                        <div className='ramo'>
-                            <h1>Jonas Madeira</h1>
-
-                            <p>especialista em front-end suporte técnico</p>
+                                <p>{item.area}</p>
+                            </div>
                         </div>
+     
+                        
+
+
+
 
                         <div className="dois">
                             <div className='info'>
                                 <h2>serviço a realizar</h2>
 
-                                <p>reparar computador do cliente. possível troca de fonte de alimentação.</p>
+                                <p>{item.detalhes}</p>
                             </div>
 
                             <div className='info'>
                                 <h2>valor a ser pago</h2>
 
-                                <p>R$ 150,00</p>
+                                <p>R${item.valor}</p>
                             </div>
 
                         </div>
@@ -63,7 +88,7 @@ export default function Serviços() {
                             <div className='endeinforeco'>
                                 <h2>endereço do serviço</h2>
 
-                                <p>rua joaquim mendes feliz, 349 - embu-guaçú - são paulo</p>
+                                <p>{item.rua}, {item.complemento} - {item.cidade} - {item.estado}</p>
                             </div>
 
                             <div className='info'>
@@ -79,18 +104,19 @@ export default function Serviços() {
                             <div className='info'>
                                 <h2>data limite</h2>
 
-                                <p>11-09-2022</p>
+                                <p>{item.data}</p>
                             </div>
 
                             <div className='info'>
                                 <h2>situação do serviço</h2>
 
-                                <p>concluído</p>
+                                <p>Pendente</p>
                             </div>
 
                         </div>
 
                     </div>
+                    )}
 
                     <div className='resumo'>
 
@@ -125,8 +151,9 @@ export default function Serviços() {
 
 
 
-                </section>
-            </section>
+
+    </section>
+    </section>
 
 
 

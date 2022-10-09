@@ -2,7 +2,7 @@ import './index.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ListaCategoria } from '../../api/usuarioApi';
 import { buscarImagem, MostrarPerfil } from '../../api/profissionalApi.js'
-import { CadastrarServico} from '../../api/servico.js'
+import { CadastrarServico, ListaPagamento} from '../../api/servico.js'
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
@@ -15,7 +15,6 @@ export default function SolicitarServ() {
     const [infoperfil, setInfoPerfil] = useState([])
     const [IdServico, SetIdServico] = useState();
 
-    const [pagamento, setPagamento] = useState('');
     const [rua, setRua] = useState('');
     const [complemento, setComplemento] = useState('');
     const [bairro, setBairro] = useState('');
@@ -23,6 +22,11 @@ export default function SolicitarServ() {
     const [uf, setUf] = useState('');
     const [limite, setLimite] = useState('');
     const [detalhes, setDetalhes] = useState('');
+    
+    const [pagamento, setPagamento] = useState([]);
+    const [idPagamento, setIdPagamento] = useState();
+
+    
 
     const { register, handleSubmit, setValue, setFocus } = useForm();
 
@@ -34,7 +38,7 @@ export default function SolicitarServ() {
 
     async function SalvarServico() {
         try {
-            await CadastrarServico(idCliente, idParam, IdServico, pagamento, rua, complemento, bairro, cidade, uf, limite, detalhes)
+            await CadastrarServico(idCliente, idParam, IdServico, idPagamento, rua, complemento, bairro, cidade, uf, limite, detalhes)
             toast.success('Serviço cadastrado! ✅');
         } catch (err) {
             if (err.response)
@@ -54,6 +58,9 @@ export default function SolicitarServ() {
 
     function home() {
         navigate('/')
+    }
+    function servicosAtivos() {
+        navigate(`/servicos-ativos/${idParam}`)
     }
 
 
@@ -89,6 +96,15 @@ export default function SolicitarServ() {
             carregarPerfil();
         }
 
+    }, [])
+
+    async function CarregarPagamentos() {
+        const r = await ListaPagamento();
+        setPagamento(r);
+    }
+
+    useEffect(() => {
+        CarregarPagamentos();
     }, [])
 
 
@@ -240,13 +256,13 @@ export default function SolicitarServ() {
 
                                 <p>método de pagamento:</p>
 
-                                <select className="abc" value={pagamento} onChange={e => setPagamento(e.target.value)}>
+                                <select className="abc" value={idPagamento} onChange={e => setIdPagamento(e.target.value)}>
                                     <option selected  hidden>Selecione</option>
-                                    <option>cartão de debito/crédito</option>
-                                    <option>pix</option>
-                                    <option>boleto</option>
-                                    <option>pic pay</option>
-                                    <option>mercado pago</option>
+
+                                    {pagamento.map(item =>
+                                <option value={item.idPagamento}> {item.pagamento} </option>
+                            )}
+                                    
 
                                 </select>
 
@@ -258,8 +274,10 @@ export default function SolicitarServ() {
 
                     </div>
                 </div>
-                
+                <div>
                 <button className='botao' onClick={SalvarServico}>contratar serviço</button>
+                <button className='botao' onClick={servicosAtivos}>serviços ativos</button>
+                </div>
 
             </div>
 

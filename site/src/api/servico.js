@@ -21,3 +21,13 @@ export async function CadastrarServico(cliente, profissional, tipo, pagamento, r
     })
     return Resp.data;
 }
+export async function ListaPagamento() {
+    const resp = await api.get('/api/pagamento')
+    return resp.data;
+    
+}
+
+export async function ServicosAtivos(id) {
+    const resp = await api.get(`/servicosAtivos/${id}`)
+    return resp.data;
+}
