@@ -8,7 +8,6 @@ import Editar from '../../components/editar-perfil'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Denunciar from '../../components/denuciar-perfil';
-import ReactModal from 'react-modal';
 
 export default function Perfilprofissional() {
 
@@ -64,11 +63,11 @@ export default function Perfilprofissional() {
 
     Modal.setAppElement('#root');
 
-    function openModal() {
+    function openModalEditar() {
         setIsOpen(true);
     }
 
-    function closeModal() {
+    function closeModalEditar() {
         setIsOpen(false);
     }
 
@@ -102,11 +101,11 @@ export default function Perfilprofissional() {
 
     };
 
-    function openModal() {
+    function openModalDenunciar() {
         SetIsOpen(true);
     }
 
-    function closeModal() {
+    function closeModalDenunciar() {
         SetIsOpen(false);
     }
 
@@ -143,20 +142,21 @@ export default function Perfilprofissional() {
                     <img className='Logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
                 <div className="acoes">
-                    <h1 className='denunciar' onClick={openModal}>denunciar</h1>
+                    <h1 className='denunciar' onClick={openModalDenunciar}>denunciar</h1>
                     <Modal
                         isOpen={ModalIsOpen}
-                        onRequestClose={closeModal}
+                        onRequestClose={closeModalDenunciar}
                         style={Css}
                     >
 
-                        <img src={'/assets/images/cancelar.png'} onClick={closeModal} height={'30'} />
+                        <img src={'/assets/images/cancelar.png'} onClick={closeModalDenunciar} height={'30'} />
 
                         <Denunciar />
 
 
 
                     </Modal>
+                        
                     {storage('profissional-logado') &&
                         <h1 className='servico'>Serviços</h1>
                     }
@@ -212,7 +212,7 @@ export default function Perfilprofissional() {
                                         </button>
 
 
-                                        <button onClick={openModal} className="botao-editar">
+                                        <button onClick={openModalEditar} className="botao-editar">
                                             <h1 className="perfil">editar perfil</h1>
                                             <img className='editar-animation' src='/assets/images/caneta.png' />
                                         </button>
@@ -221,14 +221,14 @@ export default function Perfilprofissional() {
                                 }
                                 <Modal
                                     isOpen={modalIsOpen}
-                                    onRequestClose={closeModal}
+                                    onRequestClose={closeModalEditar}
                                     style={customStyles}
 
                                 >
 
                                     <Editar />
 
-                                    <img src={'/assets/images/cancelar.png'} alt="" height={'30'} onClick={closeModal} />
+                                    <img src={'/assets/images/cancelar.png'} alt="" height={'30'} onClick={closeModalEditar} />
 
 
                                 </Modal>
