@@ -3,11 +3,13 @@ import Header from '../../components/header';
 import Categoria from '../../components/categoria';
 
 
+
 export default function Landing() {
 
     return (
         <main className='landing-page'>
             <Header />
+
             <section className='faixa-1'>
 
                 <div className='introdução'>
