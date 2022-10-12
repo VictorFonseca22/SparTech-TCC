@@ -12,7 +12,7 @@ import ServicosAtivos from './pages/servicos-ativos';
 import SolicitarServ from './pages/solicitar-servico';
 import MeusServicos from './pages/meus-servicos';
 import MenuADM from './pages/menu-adm';
-
+import RemocaoCli from './pages/remocaoCliente';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -31,6 +31,7 @@ root.render(
          <Route path='/solicitar-servico/:idParam' element={<SolicitarServ />} />
          <Route path='/meus-servicos' element={<MeusServicos />} />
          <Route path='/menu-adm' element={<MenuADM />} />
+         <Route path='/remover-cliente' element={<RemocaoCli />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

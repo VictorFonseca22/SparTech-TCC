@@ -23,11 +23,11 @@ export default function MenuADM() {
     }
 
     function remocaoCli() {
-        navigate('/remocao-cliente')
+        navigate('/remover-cliente')
     }
 
     function remocaoProf() {
-        navigate('/remocao-profissional')
+        navigate('/remover-profissional')
     }
 
 

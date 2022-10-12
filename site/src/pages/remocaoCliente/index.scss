@@ -1,0 +1,133 @@
+.remocao {
+    .barra {
+        background-color: #293040;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0rem 4rem;
+        height: 7rem;
+
+        .logo {
+            width: 12rem;
+            height: 4.5rem;
+            cursor: pointer;
+        }
+
+
+        h1 {
+            font-family: 'adam';
+            color: #41B6E6;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .volta {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 1.7rem;
+            font-family: 'adam';
+            cursor: pointer;
+
+        }
+
+        .logo:hover {
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .volta:hover {
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .menu {
+            width: 2.4rem;
+        }
+
+    }
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        // border: 1px solid green;
+    }
+
+    section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding-top: 4rem;
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            font-family: 'adam';
+
+
+            img {
+                width: 2.5rem;
+            }
+
+            .inicio  {
+                border-bottom-left-radius: 1.3rem;
+                border-top-left-radius: 0.3rem;
+
+            }
+
+            .fim {
+                border-bottom-right-radius: 1.3rem;
+                border-top-right-radius: 0.3rem;
+            }
+
+            background-color: #293040;
+
+            thead {
+
+                th {
+                    height: 3.5rem;
+                    font-size: 1.2rem;
+                    font-weight: 100;
+                    text-align: center;
+                    background-color: #41b7e6a9;
+                    padding-bottom: 0.5rem;
+                }
+
+            }
+
+            tbody {
+                background-color: #293040;
+
+
+                td {
+                    font-size: 1.1rem;
+                    font-weight: 100;
+                    text-align: center;
+                    color: #fff;
+                    height: 4rem;
+                    padding-bottom: 0.3rem;
+
+
+                }
+            }
+
+            tbody tr:nth-child(even) {
+                background-color: #191B23;
+            }
+
+            button {
+                appearance: none;
+                background-color: #191b2300;
+                border: none;
+
+            }
+
+
+        }
+    }
+}
