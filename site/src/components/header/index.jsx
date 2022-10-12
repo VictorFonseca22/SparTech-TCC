@@ -1,5 +1,6 @@
 
 import './index.scss'
+import Menu from '../../components/Menu';
 
 const Header = () => {
   
@@ -21,7 +22,7 @@ const Header = () => {
                 <img className='logo-spartan' src='/assets/images/spartan 5.png'/>
                 </a>
 
-                <img className='logo-menu' src='/assets/images/botao-de-menu-de-tres-linhas-horizontais.png'/>
+                <Menu />
 
               </div>
             </header>
