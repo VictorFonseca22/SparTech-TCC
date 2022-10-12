@@ -5,9 +5,9 @@ export const Container = styled.div`
   position: fixed;
   height: 100%;
   top: 0px;
-  left: 0px;
+  right: 0px;
   width: 300px;
-  left: ${props => props.sidebar ? '0' : '-100%'};
+  right: ${props => props.sidebar ? '50' : '50%'};
   animation: showSidebar .4s;
   > svg {
     position: fixed;
