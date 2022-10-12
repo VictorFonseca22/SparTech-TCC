@@ -13,6 +13,11 @@ import SolicitarServ from './pages/solicitar-servico';
 import MeusServicos from './pages/meus-servicos';
 import MenuADM from './pages/menu-adm';
 import RemocaoCli from './pages/remocaoCliente';
+import RemocaoProf from './pages/remocaoProf';
+import DenunCliente from './pages/denuncias-cliente';
+import DenunProfissional from './pages/denuncias-profissional';
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -32,6 +37,10 @@ root.render(
          <Route path='/meus-servicos' element={<MeusServicos />} />
          <Route path='/menu-adm' element={<MenuADM />} />
          <Route path='/remover-cliente' element={<RemocaoCli />} />
+         <Route path='/remover-profissional' element={<RemocaoProf />} />
+         <Route path='/remover-profissional' element={<RemocaoProf />} />
+         <Route path='/denuncias-cliente' element={<DenunCliente />} />
+         <Route path='/denuncias-profissional' element={<DenunProfissional />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

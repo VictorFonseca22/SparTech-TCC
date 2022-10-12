@@ -4,8 +4,8 @@ import './index.scss';
 
 
 
-export default function RemocaoCli() {
-    const [clientes, setClientes] = useState([])
+export default function DenunCliente() {
+    const [denuncias, setDenuncias] = useState([])
 
     const navigate = useNavigate();
 
@@ -18,14 +18,14 @@ export default function RemocaoCli() {
     }
 
     return (
-        <main className="remocao">
+        <main className="denuncias">
             <header className="barra">
 
                 <div>
                     <img onClick={home} className='logo' src='/assets/images/teste final 1.png' />
                 </div>
 
-                <h1>Remover conta de cliente</h1>
+                <h1>denúncias dos clientes</h1>
 
                 <div className='volta' onClick={menu}>
                     <img className='menu' src='/assets/images/voltar.png' />
@@ -38,25 +38,30 @@ export default function RemocaoCli() {
                 <table>
                     <thead>
                         <tr>
-                            <th className="inicio">nome cliente</th>
-                            <th>telefone</th>
-                            <th>cpf</th>
-                            <th>idade</th>
-                            <th className="fim">excluir</th>
+                            <th className="inicio">emissor</th>
+                            <th>tipo de denúncia</th>
+                            <th>data de emissão</th>
+                            <th>nome do profissional</th>
+                            <th className="fim">visualizar</th>
                         </tr>
 
                     </thead>
                     <tbody>
-                       
-                        {clientes.map(item =>
+
+                        
+
+
+                        {denuncias.map(item =>
                             <tr>
-                                <td>{item.nome}</td>
-                                <td>{item.telefone}</td>
-                                <td>{item.cpf}</td>
-                                <td>{item.idade}</td>
+                                <td>{item.emissor}</td>
+                                <td>{item.tipo}</td>
+                                <td>{item.reserva.substr(0, 10)}</td>
+                                <td>{item.prof}</td>
                                 <td><button><img src="/assets/images/lixeira.png" alt="" /></button></td>
                             </tr>
                         )}
+
+
 
                     </tbody>
                 </table>

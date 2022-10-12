@@ -4,8 +4,8 @@ import './index.scss';
 
 
 
-export default function RemocaoCli() {
-    const [clientes, setClientes] = useState([])
+export default function RemocaoProf() {
+    const[profissionais, setProfissionais] = useState([])
 
     const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export default function RemocaoCli() {
                     <img onClick={home} className='logo' src='/assets/images/teste final 1.png' />
                 </div>
 
-                <h1>Remover conta de cliente</h1>
+                <h1>Remover conta de profissional</h1>
 
                 <div className='volta' onClick={menu}>
                     <img className='menu' src='/assets/images/voltar.png' />
@@ -38,7 +38,7 @@ export default function RemocaoCli() {
                 <table>
                     <thead>
                         <tr>
-                            <th className="inicio">nome cliente</th>
+                            <th className="inicio">nome profissional</th>
                             <th>telefone</th>
                             <th>cpf</th>
                             <th>idade</th>
@@ -47,16 +47,20 @@ export default function RemocaoCli() {
 
                     </thead>
                     <tbody>
-                       
-                        {clientes.map(item =>
-                            <tr>
-                                <td>{item.nome}</td>
-                                <td>{item.telefone}</td>
-                                <td>{item.cpf}</td>
-                                <td>{item.idade}</td>
-                                <td><button><img src="/assets/images/lixeira.png" alt="" /></button></td>
-                            </tr>
-                        )}
+
+                        
+
+                        {profissionais.map(item => 
+                                <tr>
+                                    <td>{item.nome}</td>
+                                    <td>{item.telefone}</td>
+                                    <td>{item.cpf}</td>
+                                    <td>{item.idade}</td>
+                                    <td><button><img src="/assets/images/lixeira.png" alt="" /></button></td>
+                                </tr>
+                            )}
+
+
 
                     </tbody>
                 </table>
