@@ -11,7 +11,7 @@ import BuscaProf from './pages/page-busca'
 import ServicosAtivos from './pages/servicos-ativos';
 import SolicitarServ from './pages/solicitar-servico';
 import MeusServicos from './pages/meus-servicos';
-
+import MenuADM from './pages/menu-adm';
 
 
 
@@ -30,6 +30,7 @@ root.render(
          <Route path='/servicos-ativos/:idParam' element={<ServicosAtivos />} />
          <Route path='/solicitar-servico/:idParam' element={<SolicitarServ />} />
          <Route path='/meus-servicos' element={<MeusServicos />} />
+         <Route path='/menu-adm' element={<MenuADM />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
