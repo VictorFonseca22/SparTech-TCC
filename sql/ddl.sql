@@ -89,3 +89,35 @@ create table tb_servico (
   foreign key (id_pagamento) references tb_pagamento (id_pagamento),
   foreign key (id_endereco) references tb_endereco (id_endereco)
 );
+
+create table  tb_denuncia_prof(
+  id_denuncia_prof      int primary key auto_increment,
+  id_cliente         	int,
+  id_profissional   	int,
+  ds_classificacao      varchar(50),
+  ds_detalhes			varchar(200),
+  dt_ocorrencia      	datetime,
+  foreign key (id_cliente) references tb_cliente (id_cliente),
+  foreign key (id_profissional) references tb_profissional (id_profissional)
+);
+
+create table  tb_denuncia_cliente(
+  id_denuncia_cliente   int primary key auto_increment,
+  id_profissional   	int,
+  id_cliente         	int,
+  ds_classificacao      varchar(50),
+  ds_detalhes			varchar(200),
+  dt_ocorrencia      	datetime,
+  foreign key (id_cliente) references tb_cliente (id_cliente),
+  foreign key (id_profissional) references tb_profissional (id_profissional)
+);
+
+create table tb_chat(
+  id_mensagem		int primary key auto_increment,
+  id_profissional	int,
+  id_cliente		int,
+  ds_conteudo		varchar(1000),
+  dt_mensagem      	datetime,
+  foreign key (id_cliente) references tb_cliente (id_cliente),
+  foreign key (id_profissional) references tb_profissional (id_profissional)
+);

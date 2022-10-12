@@ -2,6 +2,10 @@
 insert into tb_tipo_serv (nm_servico, ds_carga_hr)
      values('Manutenção de computadores', '13:00 às 19:00');
      
+-- Inserir Admin
+insert into tb_adm (nm_nome, ds_email, ds_senha)
+	values('Vitor Fonseca', 'adm@adm.com', '1234');
+    
 -- Inserir tipo de pagamento
 insert into tb_pagamento (nm_tp_pagt)
      values('Débito');
@@ -13,9 +17,19 @@ insert into tb_profissional (nm_profissional, ds_email, ds_senha, ds_cpf, ds_tel
      values('Gabriel', 'gabriel@gmail.com', '1234', '123.456.789-00', '99999-9999', '1995-08-23', 1, 72, true);
  
 -- Criação de serviço
-insert into tb_servico (id_cliente, id_profissional, id_tipo_serv, id_pagamento, id_endereco, dt_limite, vl_pagt, ds_carga_hr, ds_detalhes, ds_situacao)
-	values(1, 1, 1, 1, 1, '2022-10-25', '100.00', '3 horas', 'Notebook só liga conectado na fonte', 'Feito mas não pago');
+insert into tb_servico (id_cliente, id_profissional, id_tipo_serv, id_pagamento, ds_logradouro, ds_complemento, ds_bairro, ds_cidade, ds_uf, dt_limite, vl_pagt, ds_carga_hr, ds_detalhes, ds_situacao)
+	values(1, 1, 1, 1, 'Rua Baldassare Ferri', 'N°70', 'Jardim Progresso', 'São Paulo', 'São Paulo', '2022-10-25', '100.00', '3 horas', 'Notebook só liga conectado na fonte', 'Feito mas não pago');
 
+-- Denúncia
+insert into tb_denuncia_prof (id_cliente, id_profissional, ds_classificacao, ds_detalhes, dt_ocorrencia)
+	values(1, 1, 'assédio', 'profissional assoviou para mim', '2022-10-12');
+    
+insert into tb_denuncia_cliente (id_cliente, id_profissional, ds_classificacao, ds_detalhes, dt_ocorrencia)
+	values(1, 1, 'arrogância/xingamentos', 'cliente me xingou', '2022-10-12');
+    
+-- Mensagem
+insert into tb_chat(id_cliente, id_profissional, ds_conteudo, dt_mensagem)
+	values(1,1, 'boa tarde', '2022-10-12 19:43');
 
 -- Login, Validar ifnull por meio da api
 
@@ -65,6 +79,8 @@ insert into tb_avaliacao (id_profissional, vl_avaliacao)
     
 	select * from tb_servico;
        
+	select * from tb_chat;
+       
     select p.nm_profissional    nome,
        p.id_tipo_serv           serviço,
        p.nr_servicos            n°servicos,
@@ -75,7 +91,3 @@ insert into tb_avaliacao (id_profissional, vl_avaliacao)
        inner join tb_avaliacao on p.id_profissional = tb_avaliacao.id_profissional
        inner join tb_tipo_serv on p.id_tipo_serv = tb_tipo_serv.id_tipo_serv
        where nm_servico like '%Manu%';
-       
-insert into tb_endereco (id_endereco, ds_endereco)
-values (1, "Rua xique xique, 47");
-
