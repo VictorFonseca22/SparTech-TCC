@@ -1,53 +1,135 @@
 .denunciar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    max-width: 60rem;
+    background-color: #293040;
+    border: none;
+    border-radius: 4rem;
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        // border: 1px green solid;
+    }
 
     .conteiner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 50rem;
+        width: 80%;
+
         h1 {
+            text-transform: uppercase;
+            font-size: 2rem;
             font-family: 'adam';
             color: #fff;
+            font-weight: 100;
         }
 
         p {
             font-family: 'adam';
             color: #fff;
+            display: flex;
+            text-align: center;
+            font-size: 1.8rem;
+            max-width: 80%;
+
+
         }
 
-        .classificar {
+        .dois {
+            display: flex;
+            justify-content: space-evenly;
+            width: 80%;
 
-            .sele {
-                max-width: 20rem;
-            }
-            
-        }
-
-        .data {
-
-            .date {
-                width: 14rem;
-                height: 2.9rem;
-                background: #FFFFFF;
-                border-radius: 4.3rem;
-                border: none;
+            label {
+                font-family: 'adam';
+                font-size: 1rem;
+                color: #fff;
             }
 
+
+            .classificar {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                height: 5rem;
+                width: 39%;
+
+
+                input,
+                select {
+                    
+                    background-color: #fff;
+                    height: 2.5rem;
+                    text-align: center;
+                    width: 97%;
+                    border-radius: 2rem;
+                    padding: 0rem 0.7rem 0.3rem 0rem;
+                    appearance: none;
+                    font-family: 'adam';
+                    font-size: 1.4rem;
+                    background-color: #D9D9D9;
+                    border: none;
+
+                }
+
+            }
         }
 
         .descreva {
+            max-width: 15rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
 
-            .textarea {
-                height: 16rem;
-                border-radius: 1rem;
-                width: 42rem;
-                border: none;
-                padding: 0.3rem 0.5rem;
-                outline: none;
-                background-color: #D9D9D9;
-                font-family: 'adam';
-                font-size: 1.2rem;
-                resize: none;
-                color: #4E4E4E;
-            }
+        textarea {
+            width: 80%;
+            height: 15rem;
+            border-radius: 1.5rem;
+            padding: 0.6rem 0rem 0rem 0.5rem;
+            font-family: 'adam';
+            font-size: 1.2rem;
+            background-color: #D9D9D9;
+            resize: none;
+        }
+
+        button {
+            width: 12rem;
+            height: 3.5rem;
+            padding-bottom: 0.4rem;
+            background-color: #41b6e6;
+            color: #fff;
+            border-radius: 1rem;
+            font-size: 2rem;
+            text-align: center;
+            font-family: 'adam';
+            border: none;
+
+
+        }
+
+
+
+        button:hover {
+            cursor: pointer;
+            scale: 1.05;
+            transition: 0.5s;
 
         }
 
     }
+
+
+
+
+
+
+
+
 }

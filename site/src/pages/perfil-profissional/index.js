@@ -148,10 +148,10 @@ export default function Perfilprofissional() {
                         onRequestClose={closeModalDenunciar}
                         style={Css}
                     >
+                        <Denunciar />
 
                         <img src={'/assets/images/cancelar.png'} onClick={closeModalDenunciar} height={'30'} />
 
-                        <Denunciar />
 
 
 

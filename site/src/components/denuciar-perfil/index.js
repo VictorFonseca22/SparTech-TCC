@@ -9,29 +9,30 @@ export default function Denunciar() {
                 <h1>denunciar</h1>
                 <p>deseja denunciar janete gonçalves por:</p>
 
-                <div className='classificar'>
-                    <label>classificação da denúncia</label>
-                    <select className='sele'>
-                        <option selected hidden>Selecione</option>
-                        <option>assédio</option>
-                        <option>serviço mal feito</option>
-                        <option>estrupo</option>
-                        <option>palavras feias</option>
-                        <option>pagamento invalido</option>
-                    </select>
+                <div className="dois">
+                    <div className='classificar'>
+                        <label>classificação da denúncia</label>
+                        <select className='sele'>
+                            <option selected hidden>Selecione</option>
+                            <option>assédio</option>
+                            <option>serviço mal feito</option>
+                            <option>estrupo</option>
+                            <option>palavras feias</option>
+                            <option>pagamento invalido</option>
+                        </select>
+                    </div>
+
+                    <div className='classificar'>
+                        <label>data da ocorrência</label>
+                        <input type='date' className="date" />
+                    </div>
                 </div>
 
-                <div className='data'>
-                    <label>data da ocorrência</label>
-                    <input type='date' className="date" />
-                </div>
+                <h1 className="descreva">descreva a situação:</h1>
 
-                <div className='descreva'>
-                    <h1>descreva a situação:</h1>
-                    <textarea  className="textarea"  placeholder='a denuncia...' />
+                <textarea className="textarea" placeholder='a denuncia...' />
 
-                </div>
-
+                <button>enviar</button>
             </div>
         </main>
     );
