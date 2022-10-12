@@ -15,11 +15,11 @@ export default function MenuADM() {
     
 
     function denunciaCliente() {
-        navigate('/denuncias-clientes')
+        navigate('/denuncias-cliente')
     }
 
     function denunciaProf() {
-        navigate('/denuncias-prof')
+        navigate('/denuncias-profissional')
     }
 
     function remocaoCli() {
