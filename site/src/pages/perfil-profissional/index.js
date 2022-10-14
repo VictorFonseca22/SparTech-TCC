@@ -56,7 +56,7 @@ export default function Perfilprofissional() {
     }
 
     useEffect(() => {
-        if (!storage('profissional-logado'), !storage('cliente-logado'), !storage('undefined')) {
+        if (!storage('profissional-logado') && !storage('cliente-logado')) {
             navigate('/login')
         }
     }, [])
@@ -271,7 +271,7 @@ export default function Perfilprofissional() {
                             <h1>avalie este profissional</h1>
                             <div className='input-comentario'>
                                 <input placeholder='Digite sobre o profissional' className='inserir-comentario' type='text' value={comentar} onChange={e => setComentar(e.target.value)} />
-                                <img className='enviar-comentario' id='send' src={'/assets/images/enviar-mensagem 1.png'} onClick={fazerComentario} />
+                                <img className='enviar-comentario' src={'/assets/images/enviar-mensagem 1.png'} onClick={fazerComentario} />
                             </div>
                         </div>
                     }

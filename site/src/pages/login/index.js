@@ -13,13 +13,20 @@ export default function Login() {
     const navigate = useNavigate();
     const ref = useRef();
 
+    const newStorageProfissional = (usuarioprofissional) => {
+        storage('profissional-logado', usuarioprofissional)
+    }
+    const newStorageCliente = (usuariocliente) => {
+        storage('cliente-logado', usuariocliente)
+    }
+
     async function Click() {
         ref.current.continuousStart();
         SetCarregando(true);
 
         try {
             const resp = await LogarProfissional(Email, Senha);
-            storage('profissional-logado', resp)
+            newStorageProfissional(resp)
             setTimeout(() => {
                 navigate(`/perfil-profissional/${resp.id}`)
             }, 3000);
@@ -29,20 +36,20 @@ export default function Login() {
 
             try {
                 const r = await LogarCliente(Email, Senha)
-                storage('cliente-logado', r)
+                newStorageCliente(r)
                 setTimeout(() => {
                     navigate(`/busca-profissional`)
                 }, 3000);
 
-            } 
+            }
             catch (err2) {
                 if (err2.response.status === 401) {
                     ref.current.complete();
                     SetCarregando(false);
                     SetErro(err2.response.data.erro);
                 }
-            }  
-        
+            }
+
         }
     }
 
