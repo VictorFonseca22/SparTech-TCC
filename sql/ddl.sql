@@ -121,3 +121,10 @@ create table tb_chat(
   foreign key (id_cliente) references tb_cliente (id_cliente),
   foreign key (id_profissional) references tb_profissional (id_profissional)
 );
+
+create table tb_adm (
+  id_adm			  int primary key auto_increment,
+  nm_nome			  varchar(100),
+  ds_email			  varchar(100),
+  ds_senha			  varchar(20)
+);

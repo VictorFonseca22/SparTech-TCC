@@ -8,11 +8,9 @@ export default function MenuADM() {
     const navigate = useNavigate()
 
 
-    function home() {
+    function voltarLP() {
         navigate('/')
     }
-
-    
 
     function denunciaCliente() {
         navigate('/denuncias-cliente')
@@ -36,12 +34,12 @@ export default function MenuADM() {
             <header className="barra">
 
                 <div>
-                    <img onClick={home} className='logo' src='/assets/images/teste final 1.png' />
+                    <img onClick={voltarLP} className='logo' src='/assets/images/teste final 1.png' />
                 </div>
 
                 <h1 className="meus">Funções do administrador</h1>
 
-                <div className='volta'>
+                <div className='volta' onClick={voltarLP}>
                     <img className='menu' src='/assets/images/voltar.png' />
                     <p>voltar</p>
                 </div>

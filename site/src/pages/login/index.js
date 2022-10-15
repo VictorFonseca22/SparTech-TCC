@@ -4,6 +4,7 @@ import LoadingBar from 'react-top-loading-bar'
 import { useState, useRef, useEffect } from 'react';
 import './index.scss';
 import storage from 'local-storage'
+import { LogarAdmin } from '../../api/admApi';
 export default function Login() {
     const [Email, SetEmail] = useState('');
     const [Senha, SetSenha] = useState('');
@@ -18,6 +19,9 @@ export default function Login() {
     }
     const newStorageCliente = (usuariocliente) => {
         storage('cliente-logado', usuariocliente)
+    }
+    const newStorageAdm = (adm) => {
+        storage('adm-logado', adm)
     }
 
     async function Click() {
@@ -43,10 +47,18 @@ export default function Login() {
 
             }
             catch (err2) {
-                if (err2.response.status === 401) {
-                    ref.current.complete();
-                    SetCarregando(false);
-                    SetErro(err2.response.data.erro);
+                try {
+                    const r = await LogarAdmin(Email, Senha)
+                    newStorageAdm(r)
+                    setTimeout(() => {
+                    navigate(`/menu-adm`)
+                }, 3000);
+                } catch (err3) {
+                    if (err3.response.status === 401) {
+                        ref.current.complete();
+                        SetCarregando(false);
+                        SetErro(err3.response.data.erro);
+                    }
                 }
             }
 

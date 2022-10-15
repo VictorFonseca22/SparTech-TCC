@@ -1,7 +1,7 @@
 import './index.scss';
 import { useEffect, useState } from 'react'
 import { Link} from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
+import {toast, Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import { CadastrarProfissional, ListaCategoria } from '../../api/usuarioApi';
 
@@ -45,7 +45,6 @@ export default function CadastroProfissional() {
 
     return (
         <main className="page-CadasProf">
-            <ToastContainer />
 
 
             <section className='cadastra'>
@@ -125,10 +124,12 @@ export default function CadastroProfissional() {
                     </Link>
 
                 </div>
-
+            <div>
                 <button className='foi' onClick={SalvarProf}>
                     <img src='/assets/images/seta-direita.png' />
                 </button>
+                <Toaster/>
+                </div>
 
                 <div className='informações'>
 

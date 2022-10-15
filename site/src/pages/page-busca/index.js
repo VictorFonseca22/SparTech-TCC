@@ -31,9 +31,7 @@ export default function Busca() {
     }, [listarPorNome]);
 
     function sairClick() {
-        storage.remove('profissional-logado')
-        storage.remove('cliente-logado')
-        navigate('/login')
+        navigate('/')
     }
 
     function clickProfissional () {

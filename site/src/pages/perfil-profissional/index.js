@@ -49,14 +49,12 @@ export default function Perfilprofissional() {
     }, [])
 
 
-    function sairClick() {
-        storage.remove('profissional-logado')
-        storage.remove('cliente-logado')
-        navigate('/login')
+    function voltarLP() {
+        navigate('/')
     }
 
     useEffect(() => {
-        if (!storage('profissional-logado') && !storage('cliente-logado')) {
+        if (!storage('profissional-logado') && !storage('cliente-logado') && !storage('adm-logado')) {
             navigate('/login')
         }
     }, [])
@@ -133,7 +131,7 @@ export default function Perfilprofissional() {
 
             <div className='barra'>
 
-                <div className="voltar" onClick={sairClick}>
+                <div className="voltar" onClick={voltarLP}>
                     <img src='/assets/images/voltar.png' />
                     <h1>sair</h1>
                 </div>
@@ -158,6 +156,9 @@ export default function Perfilprofissional() {
                     </Modal>
                         
                     {storage('profissional-logado') &&
+                        <h1 className='servico'>Serviços</h1>
+                    }
+                    {storage('adm-logado') &&
                         <h1 className='servico'>Serviços</h1>
                     }
                     {storage('cliente-logado') &&
@@ -204,6 +205,22 @@ export default function Perfilprofissional() {
                             </div>
                             <div className='editar'>
                                 {storage('profissional-logado') &&
+                                    <div className='botoes-perfil'>
+
+                                        <button className='botao-refresh' onClick={recarregarAPagina}>
+                                            <h1 className="perfil-refresh">atualizar informações</h1>
+                                            <img class="spinner is-animating" src='/assets/images/atualizar.png' />
+                                        </button>
+
+
+                                        <button onClick={openModalEditar} className="botao-editar">
+                                            <h1 className="perfil">editar perfil</h1>
+                                            <img className='editar-animation' src='/assets/images/caneta.png' />
+                                        </button>
+
+                                    </div>
+                                }
+                                {storage('adm-logado') &&
                                     <div className='botoes-perfil'>
 
                                         <button className='botao-refresh' onClick={recarregarAPagina}>
@@ -266,6 +283,10 @@ export default function Perfilprofissional() {
                     {storage('profissional-logado') &&
                         <h1>comentários sobre você</h1>
                     }
+                    {storage('adm-logado') &&
+                        <h1>comentários sobre esse profissional</h1>
+                    }
+                    
                     {storage('cliente-logado') &&
                         <div>
                             <h1>avalie este profissional</h1>

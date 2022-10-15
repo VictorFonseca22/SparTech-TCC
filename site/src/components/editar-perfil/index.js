@@ -2,7 +2,7 @@ import './index.scss'
 import {alterarPerfil, MostrarPerfil, AdicionarImagem, buscarImagem} from '../../api/profissionalApi.js'
 import {useState, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import storage from 'local-storage'
 export default function Editar() {
     const [nome, setNome] = useState('');
@@ -14,9 +14,8 @@ export default function Editar() {
     const [foto, setFoto] = useState();
 
 
-    const idParam = useParams();
+    const {idParam} = useParams();
     const navigate = useNavigate();
-    const idPerfil= storage('profissional-logado').id;
 
 
 
@@ -25,7 +24,7 @@ useEffect(() => {
     }, [])
 
     async function carregarInfos(){
-        const resposta = await MostrarPerfil(idPerfil);
+        const resposta = await MostrarPerfil(idParam);
 
         setNome(resposta[0].nome);
         setTelefone(resposta[0].telefone);
@@ -38,17 +37,17 @@ useEffect(() => {
     async function salvarEditar() {
         try{
 
-        await alterarPerfil(idPerfil, nome, telefone, atuacao, licenca)
+        await alterarPerfil(idParam, nome, telefone, atuacao, licenca)
 
         if(!foto) {
             throw new Error ("A foto não pôde ser salva")
         }
 
         if(typeof(foto) == 'object'){
-            await AdicionarImagem(idPerfil, foto)
+            await AdicionarImagem(idParam, foto)
         }
 
-        toast.success('Perfil alterado com sucesso 🚀')
+        toast.success('Perfil alterado com sucesso!')
         }
         catch (err) {
             if(err.response)
@@ -92,7 +91,6 @@ useEffect(() => {
     
     return (
         <main className='page-editar'>
-            <ToastContainer />
 
             <h1>edição de perfil</h1>
 
@@ -136,9 +134,10 @@ useEffect(() => {
 
                 <textarea type='text' maxLength={300} className="b" value={licenca} onChange={e => setLicenca(e.target.value)}/>
             </div>
-
+            <div> 
             <button onClick={salvarEditar}>salvar</button>
-
+            <Toaster/>
+            </div>
 
         </main>
     );
