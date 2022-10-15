@@ -1,13 +1,36 @@
 import './index.scss'
+import { MostrarPerfil } from '../../api/profissionalApi';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function Denunciar() {
+    const [Perfil, SetPerfil] = useState([]);
+
+    const {idParam} = useParams ('');
+
+    async function Carregar() {
+        const resp = await MostrarPerfil(idParam);
+        SetPerfil(resp);
+        console.log(resp);
+    }
+
+    useEffect(() => {
+        if (idParam) {
+            Carregar()   
+        }
+    }, [])
+
 
     return (
         <main className='denunciar'>
             <div className='conteiner'>
-
                 <h1>denunciar</h1>
-                <p>deseja denunciar janete gonçalves por:</p>
+
+                {Perfil.map(item =>
+                <div> 
+                    <p> deseja denunciar {item.nome} por:</p>
+                </div>
+                )}
 
                 <div className="dois">
                     <div className='classificar'>
