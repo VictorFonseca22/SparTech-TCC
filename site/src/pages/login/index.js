@@ -24,6 +24,7 @@ export default function Login() {
         storage('adm-logado', adm)
     }
 
+
     async function Click() {
         ref.current.continuousStart();
         SetCarregando(true);
@@ -64,17 +65,26 @@ export default function Login() {
 
         }
     }
+    function StorageProfissional() {
+        if (storage('profissional-logado')) {
+            const idProfissional = storage('profissional-logado').id
+            navigate(`/perfil-profissional/${idProfissional}`)
+        }
+    }
 
 
     useEffect(() => {
-        if (storage('profissional-logado')) {
-            navigate(`/perfil-profissional/1`)
-        }
+        StorageProfissional()
         if (storage('cliente-logado')) {
             navigate(`/busca-profissional`)
         }
+        if(storage('adm-logado')) {
+            navigate(`/menu-adm`)
+        }
 
     }, [])
+
+
 
     document.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
