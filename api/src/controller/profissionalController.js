@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {BuscaProfissional,enviarFotoCliente, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil} from '../repository/profissionalRepository.js'
+import {BuscaProfissional,enviarFotoCliente, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil, fazerDenuncia} from '../repository/profissionalRepository.js'
 
 const uploadCliente = multer({ dest: 'storage/FotosCliente'})
 const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
@@ -171,6 +171,38 @@ server.put('/perfil/profissional/:id', async (req, resp) => {
     } 
     catch(err){
         resp.status(400).send({
+            erro:err.message
+        })
+
+    }
+})
+
+//Fazer denuncia
+server.post('/denuncia', async (req, resp) => {
+    try{
+        const novaDenuncia = req.body;
+
+        if(!novaDenuncia.IDcliente){
+            throw new Error('É necessário estar logado para comentar!')
+        }
+        if(!novaDenuncia.IDprofissional) {
+            throw new Error('É necessário selecionar um profissional!')
+        }
+        if(!novaDenuncia.classificacao){
+            throw new Error('Classificação da denúncia é obrigatório!');
+        }
+        if(!novaDenuncia.data){
+            throw new Error('Data da ocorrência é obrigatório!');
+        }
+        if(!novaDenuncia.detalhes){
+            throw new Error('Detalhes da denúncia é obrigatório!');
+        }
+
+        const denuncia = await fazerDenuncia(novaDenuncia);
+        resp.send(denuncia)
+    } 
+    catch(err){
+        resp.status(401).send({
             erro:err.message
         })
 

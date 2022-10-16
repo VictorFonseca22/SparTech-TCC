@@ -125,7 +125,7 @@ export default function SolicitarServ() {
 
                 <div className='volta'>
                     <img className='menu' src='/assets/images/voltar.png' />
-                    <p>voltar</p>
+                    <p onClick={() => [navigate(`/perfil-profissional/${idParam}`)]}>voltar</p>
                 </div>
 
 
