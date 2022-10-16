@@ -4,11 +4,10 @@ export default styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-height:250px;
+height:290px;
 width:100%;
-background-color:#683bb7;
-color:#fff;
-margin:15px;
+margin:1px;
 font-size:14em;
+border-radius: 2rem;
 
 `;

@@ -7,15 +7,16 @@ import Item from '../../components/carousel/Item';
 
 
 
+
 export default function Landing() {
 
 
     const breakPoints = [
-        { width: 1, itemToShow: 1 },
-        { width: 50, itemToShow: 2, itemToScroll: 2 },
-        { width: 68, itemToShow: 3 },
-        { width: 200, itemToShow: 4 },
-    ]
+        { width: 1, itemsToShow: 1 },
+        { width: 750, itemsToShow: 2, itemsToScroll: 2 },
+        { width: 768, itemsToShow: 3 },
+        { width: 1560, itemsToShow: 4 }
+      ];
 
 
     return (
@@ -35,11 +36,11 @@ export default function Landing() {
 
                 <h4>serviços mais solicitados</h4>
                 <div className='categorias'>
-                    <Carousel isRTL breakPoints={breakPoints}>
-                        <Categoria nome='Montagem e Manutenção de Computadores' />
-                        <Categoria nome='limpeza e higienização de computadores' />
-                        <Categoria nome='CABEAMENTO DE REDES' />
-                        <Categoria nome='DESENVOLVIMENTO de websites' />
+                    <Carousel breakPoints={breakPoints}>
+                        <Categoria nome='Montagem e Manutenção de Computadores' number="1" />
+                        <Categoria nome='limpeza e higienização de computadores'  number="2" />
+                        <Categoria nome='CABEAMENTO DE REDES'  number="3" />
+                        <Categoria nome='DESENVOLVIMENTO de websites'  number="4" />
 
                     </Carousel>
 
