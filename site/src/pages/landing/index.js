@@ -12,11 +12,11 @@ export default function Landing() {
 
 
     const breakPoints = [
-        { width: 1, itemsToShow: 1 },
-        { width: 750, itemsToShow: 2, itemsToScroll: 2 },
-        { width: 768, itemsToShow: 3 },
-        { width: 1560, itemsToShow: 4 }
-      ];
+        { width: 1, itemsToShow: 1.4 },
+        { width: 750, itemsToShow: 2.4, itemsToScroll: 2 },
+        { width: 850, itemsToShow: 3.4, itemsToScroll: 3 },
+        { width: 1560, itemsToShow: 4.4, itemsToScroll: 4 }
+    ];
 
 
     return (
@@ -38,9 +38,15 @@ export default function Landing() {
                 <div className='categorias'>
                     <Carousel breakPoints={breakPoints}>
                         <Categoria nome='Montagem e Manutenção de Computadores' number="1" />
-                        <Categoria nome='limpeza e higienização de computadores'  number="2" />
-                        <Categoria nome='CABEAMENTO DE REDES'  number="3" />
-                        <Categoria nome='DESENVOLVIMENTO de websites'  number="4" />
+                        <Categoria nome='limpeza e higienização de computadores' number="2" />
+                        <Categoria nome='CABEAMENTO DE REDES' number="3" />
+                        <Categoria nome='DESENVOLVIMENTO de websites' number="4" />
+                        <Categoria nome='2' number="4" />
+                        <Categoria nome='3' number="4" />
+                        <Categoria nome='4' number="4" />
+                        <Categoria nome='5' number="4" />
+                        <Categoria nome='5' number="4" />
+                        <Categoria nome='6' number="4" />
 
                     </Carousel>
 
@@ -48,7 +54,7 @@ export default function Landing() {
 
             </section>
 
-            <section className='destaques'>
+            <section className='destaque'>
                 <div className="meio">
                     <div className="infos">
                         <h1>PROFISSIONAIS QUE ESTÃO EM NOSSO SITE</h1>
@@ -77,7 +83,7 @@ export default function Landing() {
                         </div>
 
                     </div>
-                    <div className="foto">
+                    <div className="fogo">
                         <img src="./assets/images/bruno.png" />
                     </div>
                 </div>
@@ -95,17 +101,16 @@ export default function Landing() {
                 </div>
                 <div className='b'>
                     <div className='esquerda'>
+                        <div className="text">
+                            <h1>Como o EsparTech funciona para o cliente?</h1>
 
-                        <h1>Como o EsparTech funciona para o cliente?</h1>
+                            <p className='p2'>O cliente da EsparTech, terá o melhor serviço dos nossos profissionais. Caso o profissional não tenha cumprido o trabalho corretamente, você será reembolsado! pois para solicitar um serviço é necessário um entrada no pagamento no valor de 25 reais.</p>
+                        </div>
+                        <div className='text2'>
+                            <h1>como a espartech beneficia o profissional?</h1>
 
-                        <p>O cliente da EsparTech, terá o melhor serviço dos nossos profissionais. Caso o profissional não tenha cumprido com o trabalho, você será reembolsado!
-                            pois para solicitar um serviço é necessário um entrada no pagamento no valor de 25 reais. </p>
-
-                        <h1>como a espartech beneficia o profissional?</h1>
-
-                        <p>O profissional da EsparTech, terá o reconhecimento REGIONAL pelo seu trabalho.
-                            quanto mais avaliações positivas no site você tiver, mais será recomendado aos serviços</p>
-
+                            <p className="p1">O profissional da EsparTech, terá o reconhecimento REGIONAL pelo seu trabalho. quanto mais avaliações positivas no site você tiver, mais será recomendado aos serviços.</p>
+                        </div>
                     </div>
 
                     <div className="direita">
@@ -118,51 +123,53 @@ export default function Landing() {
 
             <section className="profissionais">
 
-                <h1>profissionais de</h1>
+                <h1>PROFISSIONAIS especializados</h1>
 
-                <div className='prof'>
-
-                    <img src="./assets/images/moça2.png" />
-                    <h3>alessandra f.</h3>
-                    <p>Front-end</p>
-
-                </div>
-
-                <div className='prof'>
-
-                    <img src="./assets/images/lindo.png" />
-                    <h3>pedro</h3>
-                    <p>ciência de dados</p>
-
-                </div>
-
-                <div className='prof'>
-
-                    <img src="./assets/images/rafa.png" />
-                    <h3>RAFAEL J.</h3>
-                    <p>WEB-DESIGN</p>
-
-                </div>
+                <div className='profs1'>
 
 
-            </section>
 
-            <section className="profissionais">
+                    <div className='prof'>
 
-                <div className='prof'>
+                        <img src="./assets/images/moça2.png" />
+                        <h3>maria fernanda </h3>
+                        <p>Front-end</p>
 
-                    <img src="./assets/images/lucas.png" />
-                    <h3>Lucas tatsuo</h3>
-                    <p>BACK-END</p>
+                    </div>
+
+                    <div className='prof'>
+
+                        <img src="./assets/images/lindo.png" />
+                        <h3>pedro Soares</h3>
+                        <p>ciência de dados</p>
+
+                    </div>
+
+                    <div className='prof'>
+                        <img src="./assets/images/rafa.png" />
+                        <h3>RAFAEL oliveira</h3>
+                        <p>WEB-DESIGN</p>
+
+                    </div>
 
                 </div>
 
-                <div className='prof'>
+                <div className='profs2'>
+                    <div className='prof'>
 
-                    <img src="./assets/images/gi.png" />
-                    <h3>giovanna</h3>
-                    <p>analista de sistemas</p>
+                        <img src="./assets/images/lucas.png" />
+                        <h3>Lucas tatsuo</h3>
+                        <p>BACK-END</p>
 
+                    </div>
+
+                    <div className='prof'>
+
+                        <img src="./assets/images/gi.png" />
+                        <h3>giovanna silva</h3>
+                        <p>analista de sistemas</p>
+
+                    </div>
                 </div>
 
             </section>
@@ -170,8 +177,8 @@ export default function Landing() {
 
             <section className='rodape'>
 
-                <div className="logo">
-                    <img src="./assets/images/teste final 1.png" />
+                <div className="logos">
+                    <img src="./assets/images/teste final 1.png" className="logo" />
 
                     <div className="patro">
 
@@ -213,34 +220,35 @@ export default function Landing() {
 
                 <div className="login">
 
-                    <h1>contrate já um profissional</h1>
-                    <button>login</button>
-
-
-
-                    <h1>Fale conosco:</h1>
-
-                    <div className="insta">
-
-                        <img src="./assets/images/insta.png" />
-                        <p>@espartech_oficial</p>
-
+                    <div className='contrate'>
+                        <h1>contrate já um profissional</h1>
+                        <button>login</button>
                     </div>
 
-                    <div className="twi">
+                    <div className="fale">
+                        <h1>Fale conosco:</h1>
 
-                        <img src="./assets/images/tt.png" />
-                        <p>@espartech</p>
+                        <div className="insta">
 
+                            <img src="./assets/images/insta.png" />
+                            <p>@espartech_oficial</p>
+
+                        </div>
+
+                        <div className="twi">
+
+                            <img src="./assets/images/tt.png" />
+                            <p>@espartech</p>
+
+                        </div>
+
+                        <div className="email">
+
+                            <img src="./assets/images/email.png" />
+                            <p>espartech@gmail.com</p>
+
+                        </div>
                     </div>
-
-                    <div className="email">
-
-                        <img src="./assets/images/email.png" />
-                        <p>espartech@gmail.com</p>
-
-                    </div>
-
                 </div>
 
             </section>
