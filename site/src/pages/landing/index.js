@@ -11,11 +11,11 @@ export default function Landing() {
 
 
     const breakPoints = [
-        { width: 1, itemToShow: 1 },
-        { width: 50, itemToShow: 2, itemToScroll: 2 },
-        { width: 68, itemToShow: 3 },
-        { width: 200, itemToShow: 4 },
-    ]
+        { width: 1, itemsToShow: 1 },
+        { width: 750, itemsToShow: 2, itemsToScroll: 2 },
+        { width: 768, itemsToShow: 3 },
+        { width: 1560, itemsToShow: 4 }
+      ];
 
 
     return (
@@ -35,11 +35,11 @@ export default function Landing() {
 
                 <h4>serviços mais solicitados</h4>
                 <div className='categorias'>
-                    <Carousel isRTL breakPoints={breakPoints}>
-                        <Categoria nome='Montagem e Manutenção de Computadores' />
-                        <Categoria nome='limpeza e higienização de computadores' />
-                        <Categoria nome='CABEAMENTO DE REDES' />
-                        <Categoria nome='DESENVOLVIMENTO de websites' />
+                    <Carousel breakPoints={breakPoints}>
+                        <Categoria nome='Montagem e Manutenção de Computadores' number="1" />
+                        <Categoria nome='limpeza e higienização de computadores'  number="2" />
+                        <Categoria nome='CABEAMENTO DE REDES'  number="3" />
+                        <Categoria nome='DESENVOLVIMENTO de websites'  number="4" />
 
                     </Carousel>
 
@@ -47,26 +47,43 @@ export default function Landing() {
 
             </section>
 
-            <div className='destaques'>
+            <section className='destaques'>
+                <div className="meio">
+                    <div className="infos">
+                        <h1>PROFISSIONAIS QUE ESTÃO EM NOSSO SITE</h1>
+                        <div className='texts'>
+                            <div className="a">
+                                <h2>Bruno oliveira</h2>
+                                <p>PROFISSIONAL ESPARTECH DESDE 2021</p>
+                            </div>
+                            <ul>
+                                <li>DEV SÊNIOR</li>
+                                <li>PROFESSOR</li>
+                                <li>GESTOR DE EMPRESAS</li>
+                            </ul>
+                            <div className="avaliacao">
+                                <div className="estrelas">
+                                    <img src='/assets/images/estrela.png' />
+                                    <img src='/assets/images/estrela.png' />
+                                    <img src='/assets/images/estrela.png' />
+                                    <img src='/assets/images/estrela.png' />
+                                    <img src='/assets/images/estrela.png' />
 
-                <h1>PROFISSIONAIS QUE ESTÃO EM NOSSO SITE</h1>
+                                </div>
+                                <p>5.0</p>
+                            </div>
 
-                <h2>Bruno oliveira</h2>
+                        </div>
 
-                <p>PROFISSIONAL ESPARTECH DESDE 2021</p>
-
-                <h4>DEV SÊNIOR</h4>
-                <h4>PROFESSOR</h4>
-                <h4>GESTOR DE EMPRESAS</h4>
-
-                <div className="foto">
-                    <img src="./assets/images/bruno.png" />
+                    </div>
+                    <div className="foto">
+                        <img src="./assets/images/bruno.png" />
+                    </div>
                 </div>
 
+            </section>
 
-            </div>
-
-            <div className='historia'>
+            <section className='historia'>
 
                 <div className="centro">
 
@@ -75,30 +92,30 @@ export default function Landing() {
                     <p>O EsparTech nasceu em 2021, com o propósito de conectar quem precisa com quem sabe fazer. Somos um plataforma que conecta clientes e profissionais.</p>
 
                 </div>
+                <div className='b'>
+                    <div className='esquerda'>
 
-                <div className='esquerda'>
+                        <h1>Como o EsparTech funciona para o cliente?</h1>
 
-                    <h1>Como o EsparTech funciona para o cliente?</h1>
+                        <p>O cliente da EsparTech, terá o melhor serviço dos nossos profissionais. Caso o profissional não tenha cumprido com o trabalho, você será reembolsado!
+                            pois para solicitar um serviço é necessário um entrada no pagamento no valor de 25 reais. </p>
 
-                    <p>O cliente da EsparTech, terá o melhor serviço dos nossos profissionais. Caso o profissional não tenha cumprido com o trabalho, você será reembolsado!
-                        pois para solicitar um serviço é necessário um entrada no pagamento no valor de 25 reais. </p>
+                        <h1>como a espartech beneficia o profissional?</h1>
 
-                    <h1>como a espartech beneficia o profissional?</h1>
+                        <p>O profissional da EsparTech, terá o reconhecimento REGIONAL pelo seu trabalho.
+                            quanto mais avaliações positivas no site você tiver, mais será recomendado aos serviços</p>
 
-                    <p>O profissional da EsparTech, terá o reconhecimento REGIONAL pelo seu trabalho.
-                        quanto mais avaliações positivas no site você tiver, mais será recomendado aos serviços</p>
+                    </div>
 
+                    <div className="direita">
+
+                        <img src="./assets/images/oculos.png" />
+
+                    </div>
                 </div>
+            </section>
 
-                <div className="imagen">
-
-                    <img src="./assets/images/oculos.png" />
-
-                </div>
-
-            </div>
-
-            <div className="profissionais">
+            <section className="profissionais">
 
                 <h1>profissionais de</h1>
 
@@ -127,9 +144,9 @@ export default function Landing() {
                 </div>
 
 
-            </div>
+            </section>
 
-            <div className="profissionais">
+            <section className="profissionais">
 
                 <div className='prof'>
 
@@ -147,7 +164,7 @@ export default function Landing() {
 
                 </div>
 
-            </div>
+            </section>
 
 
             <section className='rodape'>

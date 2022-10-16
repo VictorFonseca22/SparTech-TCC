@@ -31,6 +31,7 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        border: 1px green solid;
     }
 
     .faixa-1 {
@@ -117,6 +118,64 @@
 
 
     .destaques {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40rem;
+        width: 100%;
+        flex-direction: column;
+
+        .meio{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            width: 80%;
+            height: 40rem;
+
+            .infos{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+                height: 35rem;
+                width: 60%;
+                
+                .texts{
+                    padding-left: 2rem;
+                    height: 30rem;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    .avaliacao{
+                        display: flex;
+                        align-items: center;
+
+                        p{
+                            font-size: 1.5rem;
+                        }
+
+                        img{
+                            width: 5rem;
+                        }
+
+                    }
+
+                    .a{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        height: 5rem;
+                    }
+
+                }
+
+            }
+
+        }
+        
+
 
         h1 {
             font-size: 2rem;
@@ -131,13 +190,14 @@
         }
 
         p {
-            font-size: 1rem;
+            font-size: 1.3rem;
             color: #fff;
             font-family: 'adam';
         }
 
-        h4 {
-            font-size: 1rem;
+        li {
+            margin-left: 1.3rem;
+            font-size: 1.3rem;
             color: #fff;
             font-family: 'adam';
         }
@@ -151,7 +211,10 @@
     }
 
     .historia {
-
+        height: 40rem;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
         .centro {
             text-align: center;
 
@@ -184,7 +247,12 @@
 
         }
 
-        .imagen {
+        .b{
+            display: flex;
+
+        }
+
+        .direita {
             background: linear-gradient(180deg, rgba(58, 108, 131, 0) 0%, rgba(58, 108, 131, 0.72) 100%);
             border-radius: 1.6rem;
             width: 23.8rem;
@@ -193,7 +261,7 @@
     }
 
     .profissionais {
-
+        display: flex;
         .prof {
             border: 0.1rem solid #FFFFFF;
             border-radius: 3.3rem;
