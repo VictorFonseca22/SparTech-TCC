@@ -1,10 +1,22 @@
 import './index.scss';
 import Header from '../../components/header';
 import Categoria from '../../components/categoria';
+import Carousel from 'react-elastic-carousel';
+import Item from '../../components/carousel/Item';
+
 
 
 
 export default function Landing() {
+
+
+    const breakPoints = [
+        { width: 1, itemToShow: 1 },
+        { width: 50, itemToShow: 2, itemToScroll: 2 },
+        { width: 68, itemToShow: 3 },
+        { width: 200, itemToShow: 4 },
+    ]
+
 
     return (
         <main className='landing-page'>
@@ -23,12 +35,16 @@ export default function Landing() {
 
                 <h4>serviços mais solicitados</h4>
                 <div className='categorias'>
-                    <Categoria nome='Montagem e Manutenção de Computadores' />
-                    <Categoria nome='Limpeza e Higienização de Computadores' />
-                    <Categoria nome='Cabeamento de Redes' />
-                    <Categoria nome='Desenvolvimento de Website' />
+                    <Carousel isRTL breakPoints={breakPoints}>
+                        <Categoria nome='Montagem e Manutenção de Computadores' />
+                        <Categoria nome='limpeza e higienização de computadores' />
+                        <Categoria nome='CABEAMENTO DE REDES' />
+                        <Categoria nome='DESENVOLVIMENTO de websites' />
+
+                    </Carousel>
+
                 </div>
-                
+
             </section>
 
             <div className='destaques'>
