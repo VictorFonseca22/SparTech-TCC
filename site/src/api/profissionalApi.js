@@ -65,3 +65,15 @@ export async function inserirComentario(IDcliente, IDprofissional, comentario){
     })
     return resposta.data;
 }
+
+export async function inserirDenuncia(IDcliente, IDprofissional, classificacao, data, detalhes){
+    const resposta = await api.post(`/denuncia`, {
+       
+        IDcliente:  IDcliente,
+        IDprofissional:IDprofissional,
+        classificacao: classificacao,
+        data:data,
+        detalhes:detalhes
+    })
+    return resposta.data;
+}

@@ -140,7 +140,11 @@ export default function Perfilprofissional() {
                     <img className='Logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
                 <div className="acoes">
+                    {storage('cliente-logado') &&
+                    
                     <h1 className='denunciar' onClick={openModalDenunciar}>denunciar</h1>
+                    
+                    }
                     <Modal
                         isOpen={ModalIsOpen}
                         onRequestClose={closeModalDenunciar}
@@ -154,9 +158,10 @@ export default function Perfilprofissional() {
 
 
                     </Modal>
+                    
                         
                     {storage('profissional-logado') &&
-                        <h1 className='servico'>Serviços</h1>
+                    <h1 className='denunciar'>meus serviços</h1>
                     }
                     {storage('adm-logado') &&
                         <h1 className='servico'>Serviços</h1>
