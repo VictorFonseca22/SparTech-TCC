@@ -12,4 +12,21 @@ export async function LogarAdmin(email,senha) {
     });
     return Resp.data;
 }
+export async function denunciaProf() {
+    const resp = await api.get ('/adm/denuncia/cliente')
+    return resp.data
+}
+
+export async function DenunciaClienteporId (id){
+    const resposta = await api.get(`/adm/denuncia/cliente/${id}`);
+    return resposta.data
+}
+export async function listarCliente() {
+    const resp = await api.get ('/adm/profissional')
+    return resp.data
+}
+export async function deletarProfissional(id){
+    const resposta = await api.delete(`/adm/profissional/${id}`);
+    return resposta.status;
+}
 

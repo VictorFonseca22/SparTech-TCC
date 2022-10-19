@@ -1,13 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
-
-
+import { deletarProfissional, listarCliente } from '../../api/admApi';
+import {toast, Toaster } from 'react-hot-toast';
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function RemocaoProf() {
     const[profissionais, setProfissionais] = useState([])
 
     const navigate = useNavigate();
+
+    async function ListarClientesAdm() {
+        const r = await listarCliente()
+        setProfissionais(r)
+    }
+
+    useEffect(() => {
+        ListarClientesAdm()
+    }, [])
 
     function home() {
         navigate('/')
@@ -15,6 +26,36 @@ export default function RemocaoProf() {
 
     function menu() {
         navigate('/menu-adm')
+    }
+    async function removerProfissionalClick(id, nome) {
+
+        confirmAlert({
+            title:'Remover profissional',
+            message:`Deseja remover o profissional ${nome} ?`,
+            buttons:[
+                {
+                    label:'Sim',
+                    onClick: async () => {
+                    const resposta = await deletarProfissional(id, nome);
+
+                    toast.loading("Excluindo...")
+
+                    setTimeout(() => {
+                    toast.dismiss();
+                    ListarClientesAdm();
+                    toast.success(`Você removeu ${nome}`)
+                    }, 600);
+                    }
+                    
+                },
+                {
+                    label:'Não'
+                }
+            ]
+
+
+        })
+
     }
 
     return (
@@ -56,14 +97,17 @@ export default function RemocaoProf() {
                                     <td>{item.telefone}</td>
                                     <td>{item.cpf}</td>
                                     <td>{item.idade}</td>
-                                    <td><button><img src="/assets/images/lixeira.png" alt="" /></button></td>
-                                </tr>
+                                    <td><button onClick={() => removerProfissionalClick(item.id, item.nome)}><img src="/assets/images/lixeira.png" alt="" /></button>
+                                    </td>
+                                    
+                                    </tr>
                             )}
 
 
 
                     </tbody>
                 </table>
+                    <Toaster/>
             </section>
 
         </main>

@@ -14,4 +14,64 @@ export async function LoginAdm (email, senha){
     const [linhas] = await con.query(comando, [email,senha])
     return linhas[0];
 }
+export async function DenunciasCliente (){
+
+    const comando = `
+     select tb_denuncia_cliente.id_denuncia_cliente		    id,
+			  tb_profissional.nm_profissional				profissional,
+              tb_cliente.nm_cliente							cliente,
+              tb_denuncia_cliente.ds_classificacao			classificacao,
+              tb_denuncia_cliente.ds_detalhes				detalhes,
+              DATE_FORMAT (tb_denuncia_cliente.dt_ocorrencia,'%d/%m/%Y') AS 'data'
+              from tb_denuncia_cliente
+              inner join tb_cliente on tb_cliente.id_cliente = tb_denuncia_cliente.id_cliente
+			  inner join tb_profissional on tb_profissional.id_profissional = tb_denuncia_cliente.id_profissional;
+    `
+
+    const [linhas] = await con.query(comando)
+    return linhas;
+}
+export async function DenunciasClienteId (id){
+
+    const comando = `
+     select tb_denuncia_cliente.id_denuncia_cliente		    id,
+			  tb_profissional.nm_profissional				profissional,
+              tb_cliente.nm_cliente							cliente,
+              tb_denuncia_cliente.ds_classificacao			classificacao,
+              tb_denuncia_cliente.ds_detalhes				detalhes,
+              DATE_FORMAT (tb_denuncia_cliente.dt_ocorrencia,'%d/%m/%Y') AS 'data'
+              from tb_denuncia_cliente
+              inner join tb_cliente on tb_cliente.id_cliente = tb_denuncia_cliente.id_cliente
+			  inner join tb_profissional on tb_profissional.id_profissional = tb_denuncia_cliente.id_profissional
+              where id_denuncia_cliente = ?
+    `
+
+    const [linhas] = await con.query(comando, [id])
+    return linhas[0];
+}
+export async function listarProfissionais (){
+
+    const comando = `
+    select id_profissional	id,
+    nm_profissional	nome,
+    ds_telefone		telefone,
+    ds_cpf			cpf,
+    ceiling(datediff(curdate(), dt_nasc) / 365) as 'idade'
+    from tb_profissional
+    `
+
+    const [linhas] = await con.query(comando)
+    return linhas;
+}
+
+export async function removerProfissional(id){
+    const comando = 
+    `
+    DELETE FROM tb_profissional 
+    WHERE id_profissional = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
+}
 

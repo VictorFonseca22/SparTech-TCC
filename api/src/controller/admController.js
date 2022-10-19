@@ -1,7 +1,7 @@
 import { Router } from "express";
 import multer from 'multer'
 import server from "./usuarioController.js";
-import {LoginAdm} from '../repository/admRepository.js'
+import {DenunciasCliente, DenunciasClienteId, listarProfissionais, LoginAdm, removerProfissional} from '../repository/admRepository.js'
 
 
 server.post('/loginAdm' , async (req,resp) => {
@@ -23,6 +23,101 @@ server.post('/loginAdm' , async (req,resp) => {
         })
     }
 })
+server.get('/perfil/profissional/:id', async (req, resp) =>{
+    try
+    {
+        const id = Number(req.params.id);
+
+        const resposta = await PerfilProfissional(id);
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+server.get('/adm/denuncia/cliente', async (req, resp) =>{
+    try
+    {
+
+        const resposta = await DenunciasCliente();
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/adm/denuncia/cliente/:id', async (req, resp) =>{
+    try
+    {
+        const id = Number(req.params.id);
+
+        const resposta = await DenunciasClienteId(id);
+
+        if(!resposta)
+            resp.status(404).send( [] );
+        else
+        resp.send(resposta);
+    }
+
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/adm/profissional', async (req, resp) =>{
+    try
+    {
+        const resposta = await listarProfissionais();
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.delete('/adm/profissional/:id', async (req,resp) =>{
+    try{
+        const {id} = req.params;
+        const resposta = await removerProfissional(id)
+
+        if(resposta != 1){
+            throw new Error('Profissional não pode ser removido')
+        }
+        resp.status(204).send();
+    } 
+    catch(err){
+        resp.status(404).send({
+            erro: err.message
+        })
+    }
+})
+
 
 
 

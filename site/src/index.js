@@ -29,7 +29,6 @@ root.render(
          <Route path='/login' element={<Login />} />
          <Route path='/cadastro-cliente' element={<CadastraCliente />} />
          <Route path='/cadastro-profissional' element={<CadastraProfissional />} />
-         <Route path='/perfil-profissional' element={<PerfilProfissional />} />
          <Route path='/perfil-profissional/:idParam' element={<PerfilProfissional />} />
          <Route path='/busca-profissional' element={<BuscaProf />} />
          <Route path='/servicos-ativos/:idParam' element={<ServicosAtivos />} />
@@ -40,6 +39,7 @@ root.render(
          <Route path='/remover-profissional' element={<RemocaoProf />} />
          <Route path='/remover-profissional' element={<RemocaoProf />} />
          <Route path='/denuncias-cliente' element={<DenunCliente />} />
+         <Route path='/denuncias-cliente/:idParam' element={<DenunCliente />} />
          <Route path='/denuncias-profissional' element={<DenunProfissional />} />
       </Routes>
     </BrowserRouter>
