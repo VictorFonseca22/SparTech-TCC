@@ -49,6 +49,7 @@ export async function DenunciasClienteId (id){
     const [linhas] = await con.query(comando, [id])
     return linhas[0];
 }
+
 export async function listarProfissionais (){
 
     const comando = `
@@ -75,3 +76,28 @@ export async function removerProfissional(id){
     return resposta.affectedRows
 }
 
+export async function listarClientes (){
+
+    const comando = `
+    select id_cliente	id,
+    nm_cliente	nome,
+    ds_telefone		telefone,
+    ds_cpf			cpf,
+    ceiling(datediff(curdate(), dt_nasc) / 365) as 'idade'
+    from tb_cliente
+    `
+
+    const [linhas] = await con.query(comando)
+    return linhas;
+}
+
+export async function removerCliente(id){
+    const comando = 
+    `
+    DELETE FROM tb_cliente 
+    WHERE id_cliente = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
+}

@@ -20,6 +20,7 @@ const Header = () => {
               <div className='a'>
                 <a href='/login'>
                 <img className='logo-spartan' src='/assets/images/spartan 5.png'/>
+                <p className='login'>LOGIN</p>
                 </a>
 
                 <Menu />

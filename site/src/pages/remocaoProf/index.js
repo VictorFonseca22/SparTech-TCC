@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
-import { deletarProfissional, listarCliente } from '../../api/admApi';
+import { deletarProfissional, listarProfissionais } from '../../api/admApi.js'
 import {toast, Toaster } from 'react-hot-toast';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -11,13 +11,13 @@ export default function RemocaoProf() {
 
     const navigate = useNavigate();
 
-    async function ListarClientesAdm() {
-        const r = await listarCliente()
+    async function ListarProfissionalAdm() {
+        const r = await listarProfissionais()
         setProfissionais(r)
     }
 
     useEffect(() => {
-        ListarClientesAdm()
+        ListarProfissionalAdm()
     }, [])
 
     function home() {
@@ -42,7 +42,7 @@ export default function RemocaoProf() {
 
                     setTimeout(() => {
                     toast.dismiss();
-                    ListarClientesAdm();
+                    ListarProfissionalAdm();
                     toast.success(`Você removeu ${nome}`)
                     }, 600);
                     }

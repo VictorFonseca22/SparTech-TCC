@@ -21,7 +21,7 @@ export async function DenunciaClienteporId (id){
     const resposta = await api.get(`/adm/denuncia/cliente/${id}`);
     return resposta.data
 }
-export async function listarCliente() {
+export async function listarProfissionais() {
     const resp = await api.get ('/adm/profissional')
     return resp.data
 }
@@ -30,3 +30,12 @@ export async function deletarProfissional(id){
     return resposta.status;
 }
 
+export async function listarCliente() {
+    const resp = await api.get ('/adm/cliente')
+    return resp.data
+}
+
+export async function deletarCliente(id){
+    const resposta = await api.delete(`/adm/cliente/${id}`);
+    return resposta.status;
+}
