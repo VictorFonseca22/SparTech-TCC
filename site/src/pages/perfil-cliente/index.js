@@ -141,12 +141,9 @@ export default function PerfilCliente() {
                     <img className='Logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
                 <div className="acoes">
-                    {storage('cliente-logado') &&
 
-                        <h1 className='denunciar' onClick={openModalDenunciar}>denunciar</h1>
-
-                    }
-                    <Modal
+                    <h1 className='denunciar' onClick={openModalDenunciar}>denunciar</h1>
+                    {/* <Modal
                         isOpen={ModalIsOpen}
                         onRequestClose={closeModalDenunciar}
                         style={Css}
@@ -158,117 +155,110 @@ export default function PerfilCliente() {
 
 
 
-                    </Modal>
+                    </Modal> */}
 
-
-
-                    {storage('adm-logado') &&
-                        <h1 className='servico'>Serviços</h1>
-                    }
-                    {storage('cliente-logado') &&
-                        <h1 className='servico' onClick={meusServicos}>Meus Serviços</h1>
-                    }
+                    <h1 className='servico' onClick={meusServicos}>Meus Serviços</h1>
                 </div>
 
 
             </div>
             {/* {perfil.map(item => */}
-                <div>
+            <div>
 
-                    <div className='fundo'>
+                <div className='fundo'>
 
-                        <img src={'/assets/images/moça.png'} className="foto" />
+                    <img src={'/assets/images/moça.png'} className="foto" />
 
-                        <img src='/assets/images/fundo.png' className="cinza" />
+                    <img src='/assets/images/fundo.png' className="cinza" />
 
-                    </div>
+                </div>
 
-                    <div className='informacoes'>
+                <div className='informacoes'>
 
-                        <div className="op">
-                            <div className="ip">
+                    <div className="op">
+                        <div className="ip">
 
-                                {/* <h1 className='nome'>{item.nome}</h1>
+                            {/* <h1 className='nome'>{item.nome}</h1>
 
                                 <p className="tel">{item.telefone}</p>
 
                                 <p className="email">{item.email}</p> */}
 
-                                <h1 className='nome'>José medeiros</h1>
+                            <h1 className='nome'>José medeiros</h1>
 
-                                <p className="tel">(11)91124-1129</p>
+                            <p className="tel">(11)91124-1129</p>
 
-                                <p className="email">ZéMed@gmail.com</p>
+                            <p className="email">ZéMed@gmail.com</p>
 
-                            </div>
-                            <div className='editar'>
-                                {storage('profissional-logado') &&
-                                    <div className='botoes-perfil'>
-
-                                        <button className='botao-refresh' onClick={recarregarAPagina}>
-                                            <h1 className="perfil-refresh">atualizar informações</h1>
-                                            <img class="spinner is-animating" src='/assets/images/atualizar.png' />
-                                        </button>
-
-
-                                        <button onClick={openModalEditar} className="botao-editar">
-                                            <h1 className="perfil">editar perfil</h1>
-                                            <img className='editar-animation' src='/assets/images/caneta.png' />
-                                        </button>
-
-                                    </div>
-                                }
-                                {storage('adm-logado') &&
-                                    <div className='botoes-perfil'>
-
-                                        <button className='botao-refresh' onClick={recarregarAPagina}>
-                                            <h1 className="perfil-refresh">atualizar informações</h1>
-                                            <img class="spinner is-animating" src='/assets/images/atualizar.png' />
-                                        </button>
-
-
-                                        <button onClick={openModalEditar} className="botao-editar">
-                                            <h1 className="perfil">editar perfil</h1>
-                                            <img className='editar-animation' src='/assets/images/caneta.png' />
-                                        </button>
-
-                                    </div>
-                                }
-                                <Modal
-                                    isOpen={modalIsOpen}
-                                    onRequestClose={closeModalEditar}
-                                    style={customStyles}
-
-                                >
-
-                                    <Editar />
-
-                                    <img src={'/assets/images/cancelar.png'} alt="" height={'30'} onClick={closeModalEditar} />
-
-
-                                </Modal>
-
-
-
-                            </div>
                         </div>
-                        <hr />
+                        <div className='editar'>
+                            {storage('profissional-logado') &&
+                                <div className='botoes-perfil'>
 
-                        <div className='experiencia'>
+                                    <button className='botao-refresh' onClick={recarregarAPagina}>
+                                        <h1 className="perfil-refresh">atualizar informações</h1>
+                                        <img class="spinner is-animating" src='/assets/images/atualizar.png' />
+                                    </button>
 
-                            <div className="area-de-atuacao">
-                                <h1>Bio/Descrição</h1>
 
-                                <p>Zé do Picolé</p>
+                                    <button onClick={openModalEditar} className="botao-editar">
+                                        <h1 className="perfil">editar perfil</h1>
+                                        <img className='editar-animation' src='/assets/images/caneta.png' />
+                                    </button>
 
-                            </div>
-                            
+                                </div>
+                            }
+                            {storage('adm-logado') &&
+                                <div className='botoes-perfil'>
+
+                                    <button className='botao-refresh' onClick={recarregarAPagina}>
+                                        <h1 className="perfil-refresh">atualizar informações</h1>
+                                        <img class="spinner is-animating" src='/assets/images/atualizar.png' />
+                                    </button>
+
+
+                                    <button onClick={openModalEditar} className="botao-editar">
+                                        <h1 className="perfil">editar perfil</h1>
+                                        <img className='editar-animation' src='/assets/images/caneta.png' />
+                                    </button>
+
+                                </div>
+                            }
+                            <Modal
+                                isOpen={modalIsOpen}
+                                onRequestClose={closeModalEditar}
+                                style={customStyles}
+
+                            >
+
+                                <Editar />
+
+                                <img src={'/assets/images/cancelar.png'} alt="" height={'30'} onClick={closeModalEditar} />
+
+
+                            </Modal>
+
+
+
                         </div>
+                    </div>
+                    <hr />
 
+                    <div className='experiencia'>
+
+                        <div className="area-de-atuacao">
+                            <h1>Bio/Descrição</h1>
+
+                            <p>Zé do Picolé</p>
+
+                        </div>
 
                     </div>
+
+
                 </div>
-             {/* )} */}
+            </div>
+            {/* )} */}
 
             <div className='informacoes'>
                 <hr />
