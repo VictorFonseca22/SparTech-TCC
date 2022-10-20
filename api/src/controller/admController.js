@@ -23,26 +23,7 @@ server.post('/loginAdm' , async (req,resp) => {
         })
     }
 })
-server.get('/perfil/profissional/:id', async (req, resp) =>{
-    try
-    {
-        const id = Number(req.params.id);
 
-        const resposta = await PerfilProfissional(id);
-
-        if(!resposta)
-            resp.status(404).send([]);
-        else
-        resp.send(resposta);
-    }
-
-    catch(err)
-    {
-        resp.status(400).send({
-            erro: err.message
-        })
-    }
-})
 server.get('/adm/denuncia/cliente', async (req, resp) =>{
     try
     {

@@ -14,8 +14,8 @@ server.use("/storage/FotosProfissional", express.static("storage/FotosProfission
 server.use("/storage/FotosCliente", express.static("storage/FotosCliente"))
 
 server.use(usuarioController);
-server.use(profissionalController);
 server.use(servicoController);
 server.use(admController);
+server.use(profissionalController);
 
 server.listen(process.env.PORT, () => console.log(`Api conectada na porta: ${process.env.PORT}`));

@@ -120,12 +120,50 @@ server.get('/consultarTodos', async (req, resp) => {
 })
 
 //Perfil
+
+//Editar Perfil
+server.put('/perfil/profissional/:id', async (req, resp) => {
+    try{
+        const perfil = req.body
+        const {id} = req.params;
+        
+        if(!perfil.nome){
+            throw new Error('Nome é obrigatório!');
+        }
+        
+        if(!perfil.telefone){
+            throw new Error('Telefone é obrigatório!');
+        }
+        if(!perfil.atuacao) {
+            throw new Error('Atuação é obrigatória')
+        }
+        if(!perfil.licenca) {
+            throw new Error('Licença é obrigatória')
+        }
+        
+        
+        const resposta =  await editarPerfil(id, perfil );
+        
+        if(resposta != 1)
+        throw new Error('Perfil não pode ser alterado')
+        else
+        resp.sendStatus(204)
+    } 
+    catch(err){
+        resp.status(400).send({
+            erro:err.message
+        })
+        
+    }
+})
+
 server.get('/perfil/profissional/:id', async (req, resp) =>{
     try
     {
         const id = Number(req.params.id);
 
         const resposta = await PerfilProfissional(id);
+        console.log(resposta)
 
         if(!resposta)
             resp.status(404).send([]);
@@ -140,43 +178,6 @@ server.get('/perfil/profissional/:id', async (req, resp) =>{
         })
     }
 })
-
-//Editar Perfil
-server.put('/perfil/profissional/:id', async (req, resp) => {
-    try{
-        const perfil = req.body
-        const {id} = req.params;
-
-        if(!perfil.nome){
-            throw new Error('Nome é obrigatório!');
-        }
-
-        if(!perfil.telefone){
-            throw new Error('Telefone é obrigatório!');
-        }
-        if(!perfil.atuacao) {
-            throw new Error('Atuação é obrigatória')
-        }
-        if(!perfil.licenca) {
-            throw new Error('Licença é obrigatória')
-        }
-
-
-        const resposta =  await editarPerfil(id, perfil );
-        
-        if(resposta != 1)
-            throw new Error('Perfil não pode ser alterado')
-        else
-            resp.sendStatus(204)
-    } 
-    catch(err){
-        resp.status(400).send({
-            erro:err.message
-        })
-
-    }
-})
-
 //Fazer denuncia
 server.post('/denuncia', async (req, resp) => {
     try{
