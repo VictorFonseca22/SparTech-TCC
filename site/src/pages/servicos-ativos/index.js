@@ -16,6 +16,10 @@ export default function Serviços() {
         navigate('/')
     }
 
+    function voltar() {
+        navigate('/meus-servicos')
+    }
+
     async function carregarServico() {
         const resposta = await ServicosAtivos(idParam);
         setInfoServico(resposta)
@@ -37,7 +41,7 @@ export default function Serviços() {
 
                 <h1 className="ativos">serviços ativos</h1>
 
-                <div className='volta'>
+                <div className='volta' onClick={voltar}>
                     <img className='menu' src='/assets/images/voltar.png' />
                     <p>voltar</p>
                 </div>
