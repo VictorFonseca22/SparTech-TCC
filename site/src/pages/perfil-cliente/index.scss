@@ -1,0 +1,422 @@
+@font-face {
+    font-family: 'adam';
+    src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+}
+
+body{
+    background-color: #171921;
+}
+.Perfil-Profissional {
+    display: flex;
+    flex-direction: column;
+    
+    @keyframes loading {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes editar {
+        0% {
+            transform: rotate(0);
+        }
+        20%{
+            transform: translatey(-20px)
+        }
+        30%{
+            transform: translatey(10px);
+            transform: rotate(-30deg);
+        }
+        50% {
+            transform: translatey(-14px);
+            transform: rotate(0deg);
+        }
+        60%{
+            transform: rotate(-30deg);
+        }
+        70%{
+            transform: rotate(0deg);
+        }
+        80%{
+            transform: rotate(-30deg);
+        }
+        90%{
+            transform: rotate(-0deg);
+        }
+        100%{
+            transform: rotate(-30deg)
+        }
+    }
+
+    *{
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .barra {
+        background: #293040;
+        width: 100%;
+        height: 6.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0rem 2rem;
+        
+        .c{
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            max-width: 25rem;
+
+
+            .Logo {
+                width: 10rem;
+                height: 4rem;
+            }
+
+            .Logo:hover{
+                scale: 1.02;
+                transition: 0.3s;
+                cursor: pointer;
+            }
+    
+
+
+
+        }
+        .voltar{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 7rem;
+            
+
+            h1 {
+                font-family: 'adam';
+                color: #FFF;
+                font-size: 1.6rem;
+            }
+
+        }
+
+        .voltar:hover{
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+
+        .acoes{
+            width: 100%;
+            max-width: 25rem;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+
+            
+            h1 {
+                font-family: 'adam';
+                color: #FFF;
+                font-size: 1.6rem;
+            }
+
+            h1:hover{
+                scale: 1.02;
+                transition: 0.3s;
+                cursor: pointer;
+            }
+        }
+
+        
+
+    }
+
+    .fundo{
+        width: 100%;
+
+        #imagemPerfil{
+            visibility: hidden;
+            position: absolute;
+        }
+
+        .cinza{
+            width:100%;
+        }
+
+        .foto{
+            position: absolute ;
+            margin: 4% 0rem 0rem 2%;
+            width: 15%;
+            height: 30%;
+            min-height: 10rem;
+            min-width: 10rem;
+            border-radius: 50%;
+        }
+ 
+
+    }
+
+    .informacoes{
+        display: flex;
+        flex-direction: column;
+        background-color: #171921;
+
+        
+
+        p{
+            font-family: 'adam';
+            color: #FFF;
+            font-size: 2rem;
+
+        }
+    
+
+        h1{
+            color: #41b6e6;
+            font-family: 'adam';
+            font-size: 2.5rem;
+        }
+
+        .op{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 94%;
+        
+            .ip{
+                
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                height: 22em;
+
+                padding: 4rem 0rem 0rem 2rem;
+                width: 100%;
+                max-width: 30rem;
+    
+                .nome{
+                    color: #FFF !important;
+                }
+    
+                .tel{
+                    font-size: 1.6rem;
+                    font-family: 'adam';
+                    padding-left: 0.5rem;
+                }
+    
+                .email{
+                    font-size: 1.6rem;
+                    font-family: 'adam';
+                    padding-left: 0.5rem;
+
+    
+                }
+                
+                
+
+
+                .avaliacao{
+                    display: flex;
+                    width: 100%;
+                    max-width: 25.5rem;
+                    align-items: flex-start;
+                    justify-content: space-between;
+
+                    .estrelas{
+                        display: flex;
+                    }
+                    
+                    p{
+                        font-size: 1.4rem;
+                        text-align: center;
+                        align-self: center;
+                    }
+                }
+            }
+
+            
+
+            .editar{
+                display: flex;
+                align-items: center;
+                width: 20.5rem;
+                margin-right: 2rem;
+                justify-content: space-between;
+
+                .botoes-perfil{
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1em;
+
+                         .botao-editar{
+                            cursor: pointer;
+                            background-color: rgba(255, 0, 0, 0);
+                            border:none;
+                            display: flex;
+                            align-items: center;
+                            width: 25rem;
+                            margin-right: 2rem;
+                        }
+                        .botao-refresh{
+                            cursor: pointer;
+                            background-color: rgba(255, 0, 0, 0);
+                            border:none;
+                            display: flex;
+                            align-items: center;
+                            width: 25rem;
+                            margin-right: 2rem;
+                            margin-top: 1em;
+                        }
+
+                }
+                
+                
+    
+                .perfil{
+                    font-size: 2.1rem;
+                    color: #FFF;
+                    word-break: keep-all;
+                }
+                .perfil-refresh{
+                    font-size: 1.6rem;
+                    color: #FFF;
+                    word-break:break-all;
+                    
+                }
+    
+                img{
+                    width: 3rem;
+                    margin-left: 1em;
+                    
+                }
+                button:hover{
+                    scale: 1.02;
+                    transition: 0.4s;
+                    cursor: pointer;
+
+                .spinner.is-animating {
+                        animation: loading 0.9s;
+                        animation-timing-function: cubic-bezier(0.5, 0.4,0.2 0.1);
+                    }
+                    .editar-animation{
+                        animation: editar 2s ease-in-out;
+                    }
+
+                }
+                
+             
+
+    
+            }
+
+        }
+
+        .sair{
+            width: 3rem;
+            height: 3rem;
+        }
+       
+        .experiencia{
+            padding: 1.5rem 0rem 0rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 20rem;
+
+
+            .area-de-atuacao{
+                display: flex;
+                flex-direction: column;
+            
+            }
+
+            
+
+        }
+
+        
+
+
+
+    }
+
+
+    .comentes{
+        padding: 2rem 0rem 0rem 2rem;
+        height: 40rem;
+        
+
+        h1{
+            color: #FFF;
+        }
+
+        .input-comentario {
+
+            .inserir-comentario{
+                background: #D9D9D9;
+                border-radius: 15px;
+                outline: none;      
+                margin-top: 1.5rem;
+                width: 70%;
+                max-width: 70%;
+                font-family: 'adam';
+                height: 2rem;
+                border: none;
+                padding: 1em;
+               }
+            
+            .enviar-comentario{
+                height: 2rem;
+                margin-left: 1rem;
+                margin-bottom: -8px;
+                cursor: pointer;
+                
+            }
+
+        }
+
+        .comentario{
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 3rem;
+
+            .nome-cliente{
+                font-family: 'adam';
+                color: #41B6E6;
+                font-size: 18px;
+                margin-top: 2rem;
+            }
+            .v-line{
+                border-left: thick solid rgb(255, 255, 255);
+                margin-top: 1rem;
+                height:8%;
+                left: 10.5%;
+                position: absolute;
+               }
+               .desc-comentario{
+                font-size: 18px;
+                margin-top: 2rem;
+                margin-left: 2rem;
+               }
+               .data-comentario{
+                font-size: 18px;
+                color: #41B6E6;
+                right: 60%;
+                margin-top: 2rem;
+                margin-left: 2rem;
+               }
+               
+        }
+    }
+
+
+
+
+}

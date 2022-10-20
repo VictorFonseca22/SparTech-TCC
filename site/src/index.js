@@ -16,8 +16,10 @@ import RemocaoCli from './pages/remocaoCliente';
 import RemocaoProf from './pages/remocaoProf';
 import DenunCliente from './pages/denuncias-cliente';
 import DenunProfissional from './pages/denuncias-profissional';
-
-
+import SolicitacoesServ from './pages/solicitacoesServ';
+import ServicosRealizados from './pages/servicosRealizados';
+import ServicosPendentes from './pages/servicosPendentes';
+import PerfilCliente from './pages/perfil-cliente';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -29,7 +31,9 @@ root.render(
          <Route path='/login' element={<Login />} />
          <Route path='/cadastro-cliente' element={<CadastraCliente />} />
          <Route path='/cadastro-profissional' element={<CadastraProfissional />} />
+         <Route path='/perfil-profissional' element={<PerfilProfissional />} />
          <Route path='/perfil-profissional/:idParam' element={<PerfilProfissional />} />
+         <Route path='/perfil-cliente' element={<PerfilCliente />} />
          <Route path='/busca-profissional' element={<BuscaProf />} />
          <Route path='/servicos-ativos/:idParam' element={<ServicosAtivos />} />
          <Route path='/solicitar-servico/:idParam' element={<SolicitarServ />} />
@@ -41,6 +45,9 @@ root.render(
          <Route path='/denuncias-cliente' element={<DenunCliente />} />
          <Route path='/denuncias-cliente/:idParam' element={<DenunCliente />} />
          <Route path='/denuncias-profissional' element={<DenunProfissional />} />
+         <Route path='/solicitacoes-de-servico' element={<SolicitacoesServ />} />
+         <Route path='/servicos-realizados' element={<ServicosRealizados />} />
+         <Route path='/servicos-pendentes' element={<ServicosPendentes />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

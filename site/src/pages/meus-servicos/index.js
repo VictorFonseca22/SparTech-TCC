@@ -15,7 +15,7 @@ export default function MeusServicos() {
     }
 
     function solicitacoes() {
-        navigate('/solicitacoes-de-servicos')
+        navigate('/solicitacoes-de-servico')
     }
 
     function pendentes() {

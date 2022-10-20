@@ -1,0 +1,98 @@
+.remocao {
+    .barra {
+        background-color: #293040;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0rem 4rem;
+        height: 7rem;
+
+        .logo {
+            width: 12rem;
+            height: 4.5rem;
+            cursor: pointer;
+        }
+
+
+        h1 {
+            font-family: 'adam';
+            color: #41B6E6;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+
+
+        .volta {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 1.7rem;
+            font-family: 'adam';
+            cursor: pointer;
+
+        }
+
+        .logo:hover {
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .volta:hover {
+            scale: 1.02;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .menu {
+            width: 2.4rem;
+        }
+
+    }
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        // border: 1px solid green;
+    }
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        padding-top: 4rem;
+
+
+        .externa {
+            justify-content: space-evenly;
+            display: flex;
+
+            
+
+            .wrap {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+        }
+
+
+        .wrap>.pendente {
+            margin-bottom: 70px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+
+
+
+
+
+    }
+}
