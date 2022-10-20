@@ -127,7 +127,7 @@ export default function PerfilCliente() {
 
 
     return (
-        <main className='Perfil-Profissional'>
+        <main className='Perfil-Cliente'>
             <ToastContainer />
 
             <div className='barra'>

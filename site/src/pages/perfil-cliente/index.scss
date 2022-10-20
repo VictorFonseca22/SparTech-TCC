@@ -6,7 +6,7 @@
 body{
     background-color: #171921;
 }
-.Perfil-Profissional {
+.Perfil-Cliente {
     display: flex;
     flex-direction: column;
     
@@ -150,9 +150,8 @@ body{
 
         .foto{
             position: absolute ;
-            margin: 4% 0rem 0rem 2%;
+            margin: 3.8% 0rem 0rem 2%;
             width: 15%;
-            height: 30%;
             min-height: 10rem;
             min-width: 10rem;
             border-radius: 50%;
@@ -269,7 +268,7 @@ body{
                             border:none;
                             display: flex;
                             align-items: center;
-                            width: 25rem;
+                            width: 26rem;
                             margin-right: 2rem;
                             margin-top: 1em;
                         }
@@ -287,7 +286,6 @@ body{
                     font-size: 1.6rem;
                     color: #FFF;
                     word-break:break-all;
-                    
                 }
     
                 img{
