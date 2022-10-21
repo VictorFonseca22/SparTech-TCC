@@ -27,8 +27,12 @@ export async function ListaPagamento() {
     
 }
 
-export async function ServicosAtivos(id) {
-    const resp = await api.get(`/servicosAtivos/${id}`)
+export async function ServicosAtivosCliente(id) {
+    const resp = await api.get(`/servicosAtivosCliente/${id}`)
+    return resp.data;
+}
+export async function ServicosAtivosProfissional(id) {
+    const resp = await api.get(`/servicosAtivosProfissional/${id}`)
     return resp.data;
 }
 export async function SolicitacoesServicos(id) {

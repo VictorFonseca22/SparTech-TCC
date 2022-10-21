@@ -2,19 +2,20 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { aceitarServiço, SolicitacoesServicos } from '../../api/servico';
 import './index.scss';
+import { toast, Toaster } from 'react-hot-toast'
 
 export default function SolicitacoesServ() {
     const [clientes, setClientes] = useState([])
 
     const navigate = useNavigate();
-    const {idParam} = useParams()
+    const { idParam } = useParams()
 
     function home() {
         navigate('/')
     }
 
     function perfil() {
-        navigate('/meus-servicos')
+        navigate(`/meus-servicos/${idParam}`)
     }
 
     async function carregarSolicitacoes() {
@@ -24,12 +25,28 @@ export default function SolicitacoesServ() {
 
     useEffect(() => {
         carregarSolicitacoes()
-    })
+    }, [])
 
     async function AceitarSolicitacao(id) {
-        const resposta = await aceitarServiço(id);
-        
+        try {
+            const resposta = await aceitarServiço(id);
+            toast.loading('Aceitando...');
+
+            setTimeout(() => {
+                toast.dismiss();
+                toast.success('Serviço aceito!')
+            }, 600);
+        }
+        catch (err) {
+            if (err.response)
+                toast.error(err.response.data.erro);
+            else {
+                toast.error(err.message)
+            }
+        }
     }
+
+
 
 
 
@@ -63,7 +80,7 @@ export default function SolicitacoesServ() {
 
                     </thead>
                     <tbody>
-                    
+
                         {clientes.map(item =>
                             <tr>
                                 <td>{item.cliente}</td>
@@ -71,7 +88,7 @@ export default function SolicitacoesServ() {
                                 <td>{item.data}</td>
                                 <td>{item.rua + ', ' + item.complemento + '- ' + item.bairro}</td>
                                 <td>
-                                    <button onClick={''}><img src="/assets/images/aceitar.png" alt="" /></button>
+                                    <button onClick={() => AceitarSolicitacao(item.id)}><img src="/assets/images/aceitar.png" alt="" /></button>
                                     <button onClick={''}><img src="/assets/images/recusar.png" alt="" /></button>
                                 </td>
                             </tr>
@@ -79,6 +96,7 @@ export default function SolicitacoesServ() {
 
                     </tbody>
                 </table>
+                        <Toaster/>
             </section>
 
         </main>

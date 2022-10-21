@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivos, SolicitacoesServicos} from '../repository/servicoRepository.js'
+import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivosCliente, ServicosAtivosProfissional, SolicitacoesServicos} from '../repository/servicoRepository.js'
 import server from "./usuarioController.js";
 
 server.post('/cadastrarServico', async (req, resp) => {
@@ -71,12 +71,33 @@ server.get('/api/pagamento', async (req, resp) => {
         })
     }
 })
-server.get('/servicosAtivos/:id', async (req, resp) =>{
+server.get('/servicosAtivosCliente/:id', async (req, resp) =>{
     try
     {
         const id = Number(req.params.id);
 
-        const resposta = await ServicosAtivos(id);
+        const resposta = await ServicosAtivosCliente(id);
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/servicosAtivosProfissional/:id', async (req, resp) =>{
+    try
+    {
+        const id = Number(req.params.id);
+
+        const resposta = await ServicosAtivosProfissional(id);
 
         if(!resposta)
             resp.status(404).send([]);

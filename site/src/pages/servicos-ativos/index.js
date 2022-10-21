@@ -2,7 +2,7 @@ import './index.scss'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { buscarImagem, MostrarPerfil } from '../../api/profissionalApi.js'
-import { ServicosAtivos } from '../../api/servico';
+import {ServicosAtivosCliente } from '../../api/servico';
 
 
 export default function Serviços() {
@@ -21,7 +21,7 @@ export default function Serviços() {
     }
 
     async function carregarServico() {
-        const resposta = await ServicosAtivos(idParam);
+        const resposta = await ServicosAtivosCliente(idParam);
         setInfoServico(resposta)
     }
 

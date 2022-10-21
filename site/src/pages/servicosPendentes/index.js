@@ -1,14 +1,21 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './index.scss';
 import Pendente from '../../components/pendentes';
-
+import { ServicosAtivosProfissional } from '../../api/servico';
 export default function ServicosPendentes() {
     const [servico, setServico] = useState([])
 
     const navigate = useNavigate();
+    const {idParam} = useParams()
 
-
+    async function carregarServicosPendentes() {
+        const resposta = await ServicosAtivosProfissional(idParam);
+        setServico(resposta)
+    }
+    useEffect(() => {
+        carregarServicosPendentes()
+    }, [])
 
 
 
@@ -45,12 +52,15 @@ export default function ServicosPendentes() {
                 <div className='externa'>
 
                     <div className='wrap'>
-                        <Pendente/>
-                        <Pendente />
-                        <Pendente />
-                        <Pendente />
-                        <Pendente />
-                        <Pendente />
+                        {servico.map(item => 
+                        <Pendente nome={item.cliente} 
+                        tiposerv={item.tipo_servico} 
+                        datalimite={item.data} 
+                        localizacao={item.rua + ', ' + item.complemento + '- ' + item.bairro}
+                        telefone={item.tel_cliente}
+                        profissional={item.profissional}/>
+                            
+                            )}
 
                     </div>
                 
