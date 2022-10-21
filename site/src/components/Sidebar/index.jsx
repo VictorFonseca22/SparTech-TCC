@@ -55,7 +55,7 @@ const Sidebar = ({ active }) => {
 
         <SidebarItem Icon={FaMapMarkedAlt} Text="Buscar serviços" onClick={() => [navigate('/busca-profissional')]}/>
 
-        <SidebarItem Icon={FaSuitcaseRolling} Text="Meus serviços" onClick={() => [navigate('/meus-servicos')]} />
+        <SidebarItem Icon={FaSuitcaseRolling} Text="Meus serviços" onClick={() => [navigate(`/meus-servicos/${storage('cliente-logado').id}`)]} />
 
         {!storage('profissional-logado') && !storage('cliente-logado') && !storage('adm-logado') &&
           <div>

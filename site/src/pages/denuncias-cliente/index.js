@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { denunciaProf } from '../../api/admApi';
+import { denunciaCli } from '../../api/admApi';
 import Modal from 'react-modal'
 import Denunciar from '../../components/denuciar-perfil';
 import './index.scss';
@@ -14,7 +14,7 @@ export default function DenunCliente() {
     const navigate = useNavigate();
 
     async function carregarDenuncia() {
-        const resposta = await denunciaProf();
+        const resposta = await denunciaCli();
         setDenuncias(resposta)
     }
 

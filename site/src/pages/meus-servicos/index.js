@@ -36,7 +36,7 @@ export default function MeusServicos() {
     }
 
     function voltar() {
-        navigate(`/perfil-profissional/${idParam}`)
+        window.history.back()
     }
 
 

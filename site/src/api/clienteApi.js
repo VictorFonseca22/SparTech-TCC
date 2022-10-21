@@ -53,7 +53,7 @@ export async function inserirComentario(IDcliente, IDprofissional, comentario){
     return resposta.data;
 }
 
-export async function inserirDenuncia(IDprofissional, IDcliente,  classificacao, data, detalhes){
+export async function inserirDenunciaCliente(IDprofissional, IDcliente,  classificacao, data, detalhes){
     const resposta = await api.post(`/denunciaC`, {
        
         IDprofissional:IDprofissional,
