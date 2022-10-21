@@ -150,9 +150,8 @@ body{
 
         .foto{
             position: absolute ;
-            margin: 4% 0rem 0rem 2%;
+            margin: 3.8% 0rem 0rem 2%;
             width: 15%;
-            height: 30%;
             min-height: 10rem;
             min-width: 10rem;
             border-radius: 50%;
@@ -290,11 +289,7 @@ body{
                     
                 }
     
-                img{
-                    width: 3rem;
-                    margin-left: 1em;
-                    
-                }
+                
                 button:hover{
                     scale: 1.02;
                     transition: 0.4s;
