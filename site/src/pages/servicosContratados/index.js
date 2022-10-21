@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
 
-export default function ServicosRealizados() {
+export default function ServicosContratados() {
     const [servico, setServico] = useState([])
 
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function ServicosRealizados() {
                     <img onClick={home} className='logo' src='/assets/images/teste final 1.png' />
                 </div>
 
-                <h1>Serviços Realizados</h1>
+                <h1>Serviços Contratados</h1>
 
                 <div className='volta' onClick={perfil}>
                     <img className='menu' src='/assets/images/voltar.png' />
@@ -43,7 +43,7 @@ export default function ServicosRealizados() {
                 <table>
                     <thead>
                         <tr>
-                            <th className="inicio">nome do cliente</th>
+                            <th className="inicio">nome do profissional</th>
                             <th>tipo de serviço</th>
                             <th>data do serviço</th>
                             <th>chat</th>
@@ -52,7 +52,15 @@ export default function ServicosRealizados() {
 
                     </thead>
                     <tbody>
-                    
+                    <tr>
+                                <td>jose</td>
+                                <td>limpeza</td>
+                                <td>21/10/2022</td>
+                                <td><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></td>
+                                <td>
+                                    <img src="/assets/images/aceitar.png" className='ok' alt="" />
+                                </td>
+                            </tr>
                     
                         {servico.map(item =>
                             <tr>
@@ -60,7 +68,6 @@ export default function ServicosRealizados() {
                                 <td>{item.tiposerv}</td>
                                 <td>{item.dataserv}</td>
                                 <td>{item.localização}</td>
-                                <td><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></td>
                                 <td>
                                     <img onClick={''}><img src="/assets/images/aceitar.png" alt="" /></img>
                                 </td>

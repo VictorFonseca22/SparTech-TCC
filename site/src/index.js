@@ -20,7 +20,7 @@ import SolicitacoesServ from './pages/solicitacoesServ';
 import ServicosRealizados from './pages/servicosRealizados';
 import ServicosPendentes from './pages/servicosPendentes';
 import PerfilCliente from './pages/perfil-cliente';
-
+import ServicosContratados from './pages/servicosContratados';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
