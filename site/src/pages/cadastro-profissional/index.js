@@ -22,7 +22,7 @@ export default function CadastroProfissional() {
         console.log(IdServico)
        try {
             await CadastrarProfissional(nome, email, cpf, senha, nascimento, telefone, IdServico)
-            toast.dark('✅profissional cadastrado');
+            toast('✅profissional cadastrado');
         } catch (err) {
             if (err.response)
                 toast.error(err.response.data.erro);

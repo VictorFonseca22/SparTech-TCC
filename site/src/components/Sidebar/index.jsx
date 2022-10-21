@@ -44,10 +44,10 @@ const Sidebar = ({ active }) => {
       <FaTimes onClick={closeSidebar} />
       <Content>
         {storage('profissional-logado') &&
-          <SidebarItem Icon={FaUserAlt} Text="Meu perfil" onClick={() => [navigate('/perfil-profissional/1')]} />
+          <SidebarItem Icon={FaUserAlt} Text="Meu perfil" onClick={() => [navigate(`/perfil-profissional/${storage('profissional-logado').id}`)]} />
         }
         {storage('cliente-logado') &&
-          <SidebarItem Icon={FaUserAlt} Text="Meu perfil" onClick={() => [navigate('/perfil-profissional/1')]} />
+          <SidebarItem Icon={FaUserAlt} Text="Meu perfil" onClick={() => [navigate(`/perfil-cliente/${storage('cliente-logado').id}`)]}/>
         }
         {storage('adm-logado') &&
           <SidebarItem Icon={FaUserAlt} Text="Menu ADM" onClick={() => [navigate('/menu-adm')]} />
@@ -55,7 +55,7 @@ const Sidebar = ({ active }) => {
 
         <SidebarItem Icon={FaMapMarkedAlt} Text="Buscar serviços" onClick={() => [navigate('/busca-profissional')]}/>
 
-        <SidebarItem Icon={FaSuitcaseRolling} Text="Meus serviços" />
+        <SidebarItem Icon={FaSuitcaseRolling} Text="Meus serviços" onClick={() => [navigate('/meus-servicos')]} />
 
         {!storage('profissional-logado') && !storage('cliente-logado') && !storage('adm-logado') &&
           <div>

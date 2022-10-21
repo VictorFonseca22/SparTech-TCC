@@ -46,7 +46,7 @@ export default function MeusServicos() {
 
                 <h1 className="meus">meus serviços</h1>
 
-                <div className='volta'>
+                <div className='volta' onClick={() => [navigate ('/')]}>
                     <img className='menu' src='/assets/images/voltar.png' />
                     <p>voltar</p>
                 </div>

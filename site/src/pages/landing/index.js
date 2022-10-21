@@ -3,13 +3,14 @@ import Header from '../../components/header';
 import Categoria from '../../components/categoria';
 import Carousel from 'react-elastic-carousel';
 import Item from '../../components/carousel/Item';
-
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 export default function Landing() {
-
+    
+    const navigate = useNavigate()
 
     const breakPoints = [
         { width: 1, itemsToShow: 1.4 },
@@ -222,7 +223,7 @@ export default function Landing() {
 
                     <div className='contrate'>
                         <h1>contrate já um profissional</h1>
-                        <button>login</button>
+                        <button onClick={() => [navigate ('/login')]}>login</button>
                     </div>
 
                     <div className="fale">
