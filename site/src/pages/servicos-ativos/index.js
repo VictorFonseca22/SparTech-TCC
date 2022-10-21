@@ -17,7 +17,7 @@ export default function Serviços() {
     }
 
     function voltar() {
-        navigate('/meus-servicos')
+        navigate(`/meus-servicos/${idParam}`)
     }
 
     async function carregarServico() {
@@ -61,7 +61,7 @@ export default function Serviços() {
                         <div className='mapeamento-perfil'>
                             <img src={buscarImagem(item.foto)} />
                             <div className='ramo'>
-                                <h1>{item.cliente}</h1>
+                                <h1>{item.profissional}</h1>
 
                                 <p>{item.area}</p>
                             </div>

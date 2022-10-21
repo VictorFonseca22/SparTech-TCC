@@ -134,9 +134,9 @@ export default function PerfilCliente() {
                     <img className='Logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
                 <div className="acoes">
-            {storage('adm-logado') &&
+            {!storage('cliente-logado') &&
             <div>
-                    <h1 className='denunciar' onClick={openModalDenunciar}>denunciar</h1>
+                    <h1 onClick={openModalDenunciar}>denunciar</h1>
                      <Modal
                         isOpen={ModalIsOpen}
                         onRequestClose={closeModalDenunciar}
@@ -154,7 +154,7 @@ export default function PerfilCliente() {
             
             }
 
-                    <h1 className='denunciar' onClick={meusServicos}>Meus Serviços</h1>
+                    <h1 onClick={meusServicos}>Meus Serviços</h1>
                 </div>
 
 

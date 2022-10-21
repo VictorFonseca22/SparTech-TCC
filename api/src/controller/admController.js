@@ -1,7 +1,7 @@
 import { Router } from "express";
 import multer from 'multer'
 import server from "./usuarioController.js";
-import {DenunciasCliente, DenunciasClienteId, LoginAdm, removerProfissional, listarClientes, removerCliente, listarProfissionais} from '../repository/admRepository.js'
+import {DenunciasCliente, DenunciasClienteId, DenunciasProfissionalId, LoginAdm, removerProfissional, listarClientes, removerCliente, listarProfissionais, DenunciasProfissionais} from '../repository/admRepository.js'
 
 
 server.post('/loginAdm' , async (req,resp) => {
@@ -42,6 +42,24 @@ server.get('/adm/denuncia/cliente', async (req, resp) =>{
         })
     }
 })
+server.get('/adm/denuncia/profissional', async (req, resp) =>{
+    try
+    {
+
+        const resposta = await DenunciasProfissionais();
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
 
 server.get('/adm/denuncia/cliente/:id', async (req, resp) =>{
     try
@@ -49,6 +67,26 @@ server.get('/adm/denuncia/cliente/:id', async (req, resp) =>{
         const id = Number(req.params.id);
 
         const resposta = await DenunciasClienteId(id);
+
+        if(!resposta)
+            resp.status(404).send( [] );
+        else
+        resp.send(resposta);
+    }
+
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+server.get('/adm/denuncia/profissional/:id', async (req, resp) =>{
+    try
+    {
+        const id = Number(req.params.id);
+
+        const resposta = await DenunciasProfissionalId(id);
 
         if(!resposta)
             resp.status(404).send( [] );

@@ -4,7 +4,6 @@ import './index.scss'
 
 const Pendente = (props) => {
 
-
   return (
     <main className='pendente'>
       

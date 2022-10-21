@@ -45,9 +45,11 @@ root.render(
          <Route path='/denuncias-cliente' element={<DenunCliente />} />
          <Route path='/denuncias-cliente/:idParam' element={<DenunCliente />} />
          <Route path='/denuncias-profissional' element={<DenunProfissional />} />
+         <Route path='/denuncias-profissional/:idParam' element={<DenunProfissional />} />
          <Route path='/solicitacoes-de-servico/:idParam' element={<SolicitacoesServ />} />
          <Route path='/servicos-realizados/:idParam' element={<ServicosRealizados />} />
          <Route path='/servicos-pendentes/:idParam' element={<ServicosPendentes />} />
+         <Route path='/servicos-contratados' element={<ServicosContratados />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

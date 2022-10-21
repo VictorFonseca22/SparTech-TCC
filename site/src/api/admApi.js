@@ -12,13 +12,21 @@ export async function LogarAdmin(email,senha) {
     });
     return Resp.data;
 }
-export async function denunciaProf() {
+export async function denunciaCli() {
     const resp = await api.get ('/adm/denuncia/cliente')
+    return resp.data
+}
+export async function denunciaProf() {
+    const resp = await api.get ('/adm/denuncia/profissional')
     return resp.data
 }
 
 export async function DenunciaClienteporId (id){
     const resposta = await api.get(`/adm/denuncia/cliente/${id}`);
+    return resposta.data
+}
+export async function DenunciaProfissionalporId (id){
+    const resposta = await api.get(`/adm/denuncia/profissional/${id}`);
     return resposta.data
 }
 export async function listarProfissionais() {
