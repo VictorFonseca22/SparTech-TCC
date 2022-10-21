@@ -1,5 +1,5 @@
 import './index.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import storage from 'local-storage'
 
@@ -8,22 +8,22 @@ export default function MeusServicos() {
 
 
     const navigate = useNavigate()
-
+    const {idParam} = useParams()
 
     function home() {
         navigate('/')
     }
 
     function solicitacoes() {
-        navigate('/solicitacoes-de-servico')
+        navigate(`/solicitacoes-de-servico/${idParam}`)
     }
 
     function pendentes() {
-        navigate('/servicos-pendentes')
+        navigate(`/servicos-pendentes/${idParam}`)
     }
 
     function realizados() {
-        navigate('/servicos-realizados')
+        navigate(`/servicos-realizados/${idParam}`)
     }
 
     //O navigate do ativos possivelmente precisa de um endpoint

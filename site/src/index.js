@@ -37,7 +37,7 @@ root.render(
          <Route path='/busca-profissional' element={<BuscaProf />} />
          <Route path='/servicos-ativos/:idParam' element={<ServicosAtivos />} />
          <Route path='/solicitar-servico/:idParam' element={<SolicitarServ />} />
-         <Route path='/meus-servicos' element={<MeusServicos />} />
+         <Route path='/meus-servicos/:idParam' element={<MeusServicos />} />
          <Route path='/menu-adm' element={<MenuADM />} />
          <Route path='/remover-cliente' element={<RemocaoCli />} />
          <Route path='/remover-profissional' element={<RemocaoProf />} />
@@ -45,9 +45,9 @@ root.render(
          <Route path='/denuncias-cliente' element={<DenunCliente />} />
          <Route path='/denuncias-cliente/:idParam' element={<DenunCliente />} />
          <Route path='/denuncias-profissional' element={<DenunProfissional />} />
-         <Route path='/solicitacoes-de-servico' element={<SolicitacoesServ />} />
-         <Route path='/servicos-realizados' element={<ServicosRealizados />} />
-         <Route path='/servicos-pendentes' element={<ServicosPendentes />} />
+         <Route path='/solicitacoes-de-servico/:idParam' element={<SolicitacoesServ />} />
+         <Route path='/servicos-realizados/:idParam' element={<ServicosRealizados />} />
+         <Route path='/servicos-pendentes/:idParam' element={<ServicosPendentes />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

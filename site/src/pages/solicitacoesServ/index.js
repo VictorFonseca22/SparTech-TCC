@@ -1,15 +1,13 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { aceitarServiço, SolicitacoesServicos } from '../../api/servico';
 import './index.scss';
 
 export default function SolicitacoesServ() {
     const [clientes, setClientes] = useState([])
 
     const navigate = useNavigate();
-
-    
-
-   
+    const {idParam} = useParams()
 
     function home() {
         navigate('/')
@@ -19,7 +17,20 @@ export default function SolicitacoesServ() {
         navigate('/meus-servicos')
     }
 
-    
+    async function carregarSolicitacoes() {
+        const resposta = await SolicitacoesServicos(idParam);
+        setClientes(resposta)
+    }
+
+    useEffect(() => {
+        carregarSolicitacoes()
+    })
+
+    async function AceitarSolicitacao(id) {
+        const resposta = await aceitarServiço(id);
+        
+    }
+
 
 
     return (
@@ -55,10 +66,10 @@ export default function SolicitacoesServ() {
                     
                         {clientes.map(item =>
                             <tr>
-                                <td>{item.nome}</td>
-                                <td>{item.tiposerv}</td>
-                                <td>{item.dataserv}</td>
-                                <td>{item.localização}</td>
+                                <td>{item.cliente}</td>
+                                <td>{item.tipo_servico}</td>
+                                <td>{item.data}</td>
+                                <td>{item.rua + ', ' + item.complemento + '- ' + item.bairro}</td>
                                 <td>
                                     <button onClick={''}><img src="/assets/images/aceitar.png" alt="" /></button>
                                     <button onClick={''}><img src="/assets/images/recusar.png" alt="" /></button>

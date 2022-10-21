@@ -161,7 +161,7 @@ export default function Perfilprofissional() {
                     
                         
                     {storage('profissional-logado') &&
-                    <h1 className='denunciar'>meus serviços</h1>
+                    <h1 className='denunciar' onClick={() => [navigate(`/meus-servicos/${idParam}`)]}>meus serviços</h1>
                     }
                     {storage('adm-logado') &&
                         <h1 className='servico'>Serviços</h1>

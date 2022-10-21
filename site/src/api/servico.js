@@ -31,3 +31,14 @@ export async function ServicosAtivos(id) {
     const resp = await api.get(`/servicosAtivos/${id}`)
     return resp.data;
 }
+export async function SolicitacoesServicos(id) {
+    const resp = await api.get(`/solicitacoesServicos/${id}`)
+    return resp.data;
+}
+
+export async function aceitarServiço(id){
+
+    const resposta = await api.put(`/aceitarServico/${id}`)
+    return resposta.status;
+
+}

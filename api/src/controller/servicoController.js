@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {cadastroServico, listarPagamentos, ServicosAtivos} from '../repository/servicoRepository.js'
+import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivos, SolicitacoesServicos} from '../repository/servicoRepository.js'
 import server from "./usuarioController.js";
 
 server.post('/cadastrarServico', async (req, resp) => {
@@ -88,6 +88,43 @@ server.get('/servicosAtivos/:id', async (req, resp) =>{
     {
         resp.status(400).send({
             erro: err.message
+        })
+    }
+})
+
+server.get('/solicitacoesServicos/:id', async (req, resp) =>{
+    try
+    {
+        const id = Number(req.params.id);
+        const resposta = await SolicitacoesServicos(id);
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.put('/aceitarServico/:id', async (req, resp) => {
+    try {
+        const { id } = req.params;
+        
+        const resposta = await aceitarServiço(id);
+        if (resposta != 1)
+            throw new Error("Serviço não pôde ser aceito!")
+        else
+            resp.status(204).send();
+        
+    } catch (err) {
+        resp.status(400).send({
+            erro:err.message
         })
     }
 })

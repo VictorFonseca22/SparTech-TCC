@@ -163,7 +163,6 @@ server.get('/perfil/profissional/:id', async (req, resp) =>{
         const id = Number(req.params.id);
 
         const resposta = await PerfilProfissional(id);
-        console.log(resposta)
 
         if(!resposta)
             resp.status(404).send([]);

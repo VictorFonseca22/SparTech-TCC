@@ -45,7 +45,7 @@ export default function ServicosPendentes() {
                 <div className='externa'>
 
                     <div className='wrap'>
-                        <Pendente />
+                        <Pendente/>
                         <Pendente />
                         <Pendente />
                         <Pendente />
@@ -56,17 +56,6 @@ export default function ServicosPendentes() {
                 
                 </div>
 
-                {/* {servico.map(item =>
-                    <tr>
-                        <td>{item.nome}</td>
-                        <td>{item.tiposerv}</td>
-                        <td>{item.dataserv}</td>
-                        <td>{item.localização}</td>
-                        <td>
-                            <img onClick={''}><img src="/assets/images/aceitar.png" alt="" /></img>
-                        </td>
-                    </tr>
-                )} */}
             </section>
 
         </main>
