@@ -43,18 +43,6 @@ export async function ConsultarTodos() {
     return linhas
 }
 
-
-export async function enviarFotoCliente(foto, id) {
-    const comando =
-        `
-    update tb_cliente
-    set   arq_foto = ?
-    where id_cliente = ?
-    `
-    const [resposta] = await con.query(comando, [foto, id])
-    return resposta.affectedRows
-}
-
 export async function enviarFotoProfissional(foto, id) {
     const comando =
         `

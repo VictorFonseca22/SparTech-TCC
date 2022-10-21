@@ -140,7 +140,4 @@ server.delete('/adm/cliente/:id', async (req,resp) =>{
 
 
 
-
-
-
 export default server;

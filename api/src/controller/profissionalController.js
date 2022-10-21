@@ -1,8 +1,7 @@
 import { Router } from "express";
 import multer from 'multer'
-import {BuscaProfissional,enviarFotoCliente, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil, fazerDenuncia} from '../repository/profissionalRepository.js'
+import {BuscaProfissional, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil, fazerDenuncia} from '../repository/profissionalRepository.js'
 
-const uploadCliente = multer({ dest: 'storage/FotosCliente'})
 const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
 const server = Router();
 
@@ -26,25 +25,7 @@ server.get('/profissional/buscar/nome', async(req, resp) => {
 })
 
 //Inserir Foto no Perfil - Cliente
-server.put(`/cliente/:id/foto`,uploadCliente.single('foto'), async(req, resp)=> {
-    try {
-        if(!req.file){
-            throw new Error('A foto é obrigatória')
-        }
-        const {id} = req.params;
-        const foto = req.file.path;
 
-        const resposta = await enviarFotoCliente(foto, id);
-        if(resposta != 1){
-            throw new Error('A foto não pode ser salva.')
-        }
-        resp.status(204).send();
-    } catch (err) {
-        resp.status(400).send({
-            error: err.message
-        })
-    }
-})
 
 //Inserir Foto no Perfil - Profissional
 server.put(`/profissional/:id/foto`,uploadProfissional.single('foto'), async(req, resp)=> {
@@ -183,7 +164,7 @@ server.post('/denuncia', async (req, resp) => {
         const novaDenuncia = req.body;
 
         if(!novaDenuncia.IDcliente){
-            throw new Error('É necessário estar logado para comentar!')
+            throw new Error('É necessário estar logado para denunciar!')
         }
         if(!novaDenuncia.IDprofissional) {
             throw new Error('É necessário selecionar um profissional!')
