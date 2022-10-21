@@ -17,7 +17,7 @@ export default function Serviços() {
     }
 
     function voltar() {
-        navigate('/meus-servicos')
+        navigate(`/meus-servicos/${idParam}`)
     }
 
     async function carregarServico() {

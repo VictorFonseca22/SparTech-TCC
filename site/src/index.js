@@ -48,6 +48,7 @@ root.render(
          <Route path='/solicitacoes-de-servico/:idParam' element={<SolicitacoesServ />} />
          <Route path='/servicos-realizados/:idParam' element={<ServicosRealizados />} />
          <Route path='/servicos-pendentes/:idParam' element={<ServicosPendentes />} />
+         <Route path='/servicos-contratados' element={<ServicosContratados />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
