@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './index.scss';
 import Pendente from '../../components/pendentes';
-import { ServicosAtivosProfissional } from '../../api/servico';
+import { ServicosAtivosProfissional, concluirServico } from '../../api/servico';
+import { toast, Toaster } from 'react-hot-toast'
 export default function ServicosPendentes() {
     const [servico, setServico] = useState([])
 
@@ -27,7 +28,24 @@ export default function ServicosPendentes() {
         navigate(`/meus-servicos/${idParam}`)
     }
 
+    async function ConcluiSolicitacao(id) {
+        try {
+            const resposta = await concluirServico(id);
+            toast.loading('Concluindo...');
 
+            setTimeout(() => {
+                toast.dismiss();
+                toast.success('Serviço Concluido!')
+            }, 600);
+        }
+        catch (err) {
+            if (err.response)
+                toast.error(err.response.data.erro);
+            else {
+                toast.error(err.message)
+            }
+        }
+    }
 
 
     return (
@@ -58,9 +76,11 @@ export default function ServicosPendentes() {
                         datalimite={item.data} 
                         localizacao={item.rua + ', ' + item.complemento + '- ' + item.bairro}
                         telefone={item.tel_cliente}
-                        profissional={item.profissional}/>
-                            
-                            )}
+                        profissional={item.profissional}
+                        funcao={ConcluiSolicitacao}
+                        conclui={item.id}/>
+                        )}
+                        <Toaster/>
 
                     </div>
                 

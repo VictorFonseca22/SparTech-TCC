@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivosCliente, ServicosAtivosProfissional, SolicitacoesServicos} from '../repository/servicoRepository.js'
+import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivosCliente, ServicosAtivosProfissional, SolicitacoesServicos, concluirServico, ServicoConcluido} from '../repository/servicoRepository.js'
 import server from "./usuarioController.js";
 
 server.post('/cadastrarServico', async (req, resp) => {
@@ -146,6 +146,43 @@ server.put('/aceitarServico/:id', async (req, resp) => {
     } catch (err) {
         resp.status(400).send({
             erro:err.message
+        })
+    }
+})
+
+server.put('/concluirServico/:id', async (req, resp) => {
+    try {
+        const { id } = req.params;
+        
+        const resposta = await concluirServico(id);
+        if (resposta != 1)
+            throw new Error("Serviço não pôde ser concluido!")
+        else
+            resp.status(204).send();
+        
+    } catch (err) {
+        resp.status(400).send({
+            erro:err.message
+        })
+    }
+})
+
+server.get('/conclusoesServicos/:id', async (req, resp) =>{
+    try
+    {
+        const id = Number(req.params.id);
+        const resposta = await ServicoConcluido(id);
+
+        if(!resposta)
+            resp.status(404).send([]);
+        else
+        resp.send(resposta);
+    }
+
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
         })
     }
 })

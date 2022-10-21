@@ -46,3 +46,15 @@ export async function aceitarServiço(id){
     return resposta.status;
 
 }
+
+export async function concluirServico(id){
+
+    const resposta = await api.put(`/concluirServico/${id}`)
+    return resposta.status;
+
+}
+
+export async function ServicoConcluido(id) {
+    const resp = await api.get(`/conclusoesServicos/${id}`)
+    return resp.data;
+}
