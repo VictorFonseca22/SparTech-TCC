@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Content } from './styles'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
 import storage from 'local-storage'
 import {
@@ -14,6 +14,9 @@ import {
 import SidebarItem from '../SidebarItem'
 
 const Sidebar = ({ active }) => {
+
+  const {idParam} = useParams()
+
 
   const closeSidebar = () => {
     active(false)

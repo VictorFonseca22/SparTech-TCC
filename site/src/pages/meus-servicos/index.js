@@ -50,7 +50,10 @@ export default function MeusServicos() {
 
                 <h1 className="meus">meus serviços</h1>
 
-                <div className='volta' onClick={voltar}>
+                <div className='volta' onClick={
+                    storage
+                }>
+
                     <img className='menu' src='/assets/images/voltar.png' />
                     <p>voltar</p>
                 </div>

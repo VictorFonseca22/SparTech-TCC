@@ -29,7 +29,7 @@ export default function Landing() {
                 <div className='introdução'>
                     <h1>A UM ANO LIGANDO O CLIENTE AOS MELHORES PROFISSIONAIS</h1>
 
-                    <button className='b'>SAIBA MAIS</button>
+                    <a className='b' href='#SaibaMais'>SAIBA MAIS</a>
                 </div>
             </section>
 
@@ -91,7 +91,7 @@ export default function Landing() {
 
             </section>
 
-            <section className='historia'>
+            <section className='historia' id='SaibaMais'>
 
                 <div className="centro">
 
