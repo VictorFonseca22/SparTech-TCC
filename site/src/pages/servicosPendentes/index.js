@@ -24,7 +24,7 @@ export default function ServicosPendentes() {
     }
 
     function perfil() {
-        navigate('/meus-servicos')
+        navigate(`/meus-servicos/${idParam}`)
     }
 
 

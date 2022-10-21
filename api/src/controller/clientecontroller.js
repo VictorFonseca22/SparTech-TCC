@@ -1,7 +1,7 @@
 import { Router } from "express";
 import multer from 'multer'
 import {enviarFotoCliente, editarPerfilCliente, PerfilCliente, verComentarioscliente, fazerComentariocliente, DenunciaCliente } from '../repository/clienterepository.js'
-
+import server from "./usuarioController.js";
 const uploadCliente = multer({ dest: 'storage/FotosCliente'})
 
 server.put(`/cliente/:id/foto`,uploadCliente.single('foto'), async(req, resp)=> {
@@ -24,33 +24,7 @@ server.put(`/cliente/:id/foto`,uploadCliente.single('foto'), async(req, resp)=> 
     }
 })
 
-server.put('/perfil/cliente/:id', async (req, resp) => {
-    try{
-        const perfil = req.body
-        const {id} = req.params;
-        
-        if(!perfil.nome){
-            throw new Error('Nome é obrigatório!');
-        }
-        
-        if(!perfil.telefone){
-            throw new Error('Telefone é obrigatório!');
-        }
-        
-        const resposta =  await editarPerfilCliente(id, perfil );
-        
-        if(resposta != 1)
-        throw new Error('Perfil não pode ser alterado')
-        else
-        resp.sendStatus(204)
-    } 
-    catch(err){
-        resp.status(400).send({
-            erro:err.message
-        })
-        
-    }
-})
+
 
 server.get('/perfil/cliente/:id', async (req, resp) =>{
     try
@@ -70,6 +44,40 @@ server.get('/perfil/cliente/:id', async (req, resp) =>{
         resp.status(400).send({
             erro: err.message
         })
+    }
+})
+
+server.put('/perfil/cliente/:id', async (req, resp) => {
+    try{
+        const perfil = req.body
+        const {id} = req.params;
+        
+        
+        if(!perfil.nome){
+            throw new Error('Nome é obrigatório!');
+        }
+        
+        if(!perfil.telefone){
+            throw new Error('Telefone é obrigatório!');
+        }
+        if(!perfil.biografia) {
+            throw new Error('Biografia é obrigatória')
+        }
+        
+        
+        const resposta =  await editarPerfilCliente(id, perfil );
+        
+        if(resposta != 1)
+        throw new Error('Perfil não pode ser alterado')
+        else {
+        resp.sendStatus(204)
+        }
+    } 
+    catch(err){
+        resp.status(400).send({
+            erro:err.message
+        })
+        
     }
 })
 

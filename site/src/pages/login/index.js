@@ -43,7 +43,7 @@ export default function Login() {
                 const r = await LogarCliente(Email, Senha)
                 newStorageCliente(r)
                 setTimeout(() => {
-                    navigate(`/busca-profissional`)
+                    navigate(`/perfil-cliente/${r.id}`)
                 }, 3000);
 
             }
@@ -72,12 +72,18 @@ export default function Login() {
         }
     }
 
+    function StorageCliente() {
+        if (storage('cliente-logado')) {
+            const idCliente = storage('cliente-logado').id
+            navigate(`/perfil-cliente/${idCliente}`)
+        }
+        }
+    
+
 
     useEffect(() => {
         StorageProfissional()
-        if (storage('cliente-logado')) {
-            navigate(`/busca-profissional`)
-        }
+        StorageCliente()
         if(storage('adm-logado')) {
             navigate(`/menu-adm`)
         }

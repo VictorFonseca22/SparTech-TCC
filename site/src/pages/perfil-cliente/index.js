@@ -1,7 +1,7 @@
 import './index.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { mostrarComentarios, MostrarPerfil, buscarImagem, inserirComentario } from '../../api/profissionalApi';
+import { buscarImagem, MostrarPerfilCliente } from '../../api/clienteApi';
 import storage from 'local-storage'
 import Modal from 'react-modal'
 import Editar from '../../components/editar-perfil'
@@ -36,18 +36,18 @@ export default function PerfilCliente() {
     }, [])
 
     async function carregarPerfil() {
-        const resposta = await MostrarPerfil(idParam);
+        const resposta = await MostrarPerfilCliente(idParam);
         setPerfil(resposta)
     }
 
 
-    async function carregarTodosComentarios() {
+    /*async function carregarTodosComentarios() {
         const resposta = await mostrarComentarios();
         setComentario(resposta);
     }
     useEffect(() => {
         carregarTodosComentarios()
-    }, [])
+    }, []) */
 
 
     function voltarLP() {
@@ -74,15 +74,8 @@ export default function PerfilCliente() {
         window.location.reload();
     }
 
-    async function fazerComentario() {
-        const IDcliente = storage('cliente-logado').id
-        const resposta = await inserirComentario(IDcliente, idParam, comentar)
-        setComentar('')
-        toast.success('Comentário realizado!')
-    }
-
     function meusServicos() {
-        navigate('/meus-servicos')
+        navigate(`/meus-servicos/${idParam}`)
     }
 
     const customStyles = {
@@ -141,9 +134,10 @@ export default function PerfilCliente() {
                     <img className='Logo' src='/assets/images/teste final 1.png' onClick={home} />
                 </div>
                 <div className="acoes">
-
+            {storage('adm-logado') &&
+            <div>
                     <h1 className='denunciar' onClick={openModalDenunciar}>denunciar</h1>
-                    {/* <Modal
+                     <Modal
                         isOpen={ModalIsOpen}
                         onRequestClose={closeModalDenunciar}
                         style={Css}
@@ -155,24 +149,27 @@ export default function PerfilCliente() {
 
 
 
-                    </Modal> */}
+                    </Modal> 
+                    </div>
+            
+            }
 
-                    <h1 className='servico' onClick={meusServicos}>Meus Serviços</h1>
+                    <h1 className='denunciar' onClick={meusServicos}>Meus Serviços</h1>
                 </div>
 
 
             </div>
             {/* {perfil.map(item => */}
+        {perfil.map(item => 
             <div>
 
                 <div className='fundo'>
 
-                    <img src={'/assets/images/moça.png'} className="foto" />
+                    <img src={buscarImagem(item.foto)} className="foto" />
 
                     <img src='/assets/images/fundo.png' className="cinza" />
 
                 </div>
-
                 <div className='informacoes'>
 
                     <div className="op">
@@ -184,15 +181,15 @@ export default function PerfilCliente() {
 
                                 <p className="email">{item.email}</p> */}
 
-                            <h1 className='nome'>José medeiros</h1>
+                            <h1 className='nome'>{item.nome}</h1>
 
-                            <p className="tel">(11)91124-1129</p>
+                            <p className="tel">{item.telefone}</p>
 
-                            <p className="email">ZéMed@gmail.com</p>
+                            <p className="email">{item.email}</p>
 
                         </div>
                         <div className='editar'>
-                            {storage('profissional-logado') &&
+                            {storage('cliente-logado') &&
                                 <div className='botoes-perfil'>
 
                                     <button className='botao-refresh' onClick={recarregarAPagina}>
@@ -249,7 +246,7 @@ export default function PerfilCliente() {
                         <div className="area-de-atuacao">
                             <h1>Bio/Descrição</h1>
 
-                            <p>Zé do Picolé</p>
+                            <p>{item.biografia}</p>
 
                         </div>
 
@@ -257,7 +254,9 @@ export default function PerfilCliente() {
 
 
                 </div>
+    
             </div>
+                 )}
             {/* )} */}
 
             <div className='informacoes'>
@@ -270,15 +269,7 @@ export default function PerfilCliente() {
                         <h1>comentários sobre esse profissional</h1>
                     }
 
-                    {storage('cliente-logado') &&
-                        <div>
-                            <h1>avalie este profissional</h1>
-                            <div className='input-comentario'>
-                                <input placeholder='Digite sobre o profissional' className='inserir-comentario' type='text' value={comentar} onChange={e => setComentar(e.target.value)} />
-                                <img className='enviar-comentario' src={'/assets/images/enviar-mensagem 1.png'} onClick={fazerComentario} />
-                            </div>
-                        </div>
-                    }
+
 
 
                     {comentario.map(item =>

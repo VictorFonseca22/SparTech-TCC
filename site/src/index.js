@@ -33,7 +33,7 @@ root.render(
          <Route path='/cadastro-profissional' element={<CadastraProfissional />} />
          <Route path='/perfil-profissional' element={<PerfilProfissional />} />
          <Route path='/perfil-profissional/:idParam' element={<PerfilProfissional />} />
-         <Route path='/perfil-cliente' element={<PerfilCliente />} />
+         <Route path='/perfil-cliente/:idParam' element={<PerfilCliente />} />
          <Route path='/busca-profissional' element={<BuscaProf />} />
          <Route path='/servicos-ativos/:idParam' element={<ServicosAtivos />} />
          <Route path='/solicitar-servico/:idParam' element={<SolicitarServ />} />

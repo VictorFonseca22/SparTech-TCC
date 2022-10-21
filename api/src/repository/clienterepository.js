@@ -18,7 +18,9 @@ export async function PerfilCliente(id) {
             nm_cliente      			    nome,
             ds_telefone        			    telefone,
             ds_email            		 	email,
+            ds_bio                          biografia
             from tb_cliente
+            where id_cliente = ?
     `
     const [linhas] = await con.query(comando, [id]);
     return linhas;
@@ -42,9 +44,10 @@ export async function editarPerfilCliente(id, perfil) {
     update tb_cliente
     set   nm_cliente      = ?,
           ds_telefone     = ?,
+          ds_bio          = ?
     where id_cliente      = ?;
     `
-    const [resp] = await con.query(comando, [perfil.nome, perfil.telefone, perfil.atuacao, id]);
+    const [resp] = await con.query(comando, [perfil.nome, perfil.telefone, perfil.biografia, id]);
 
     return resp.affectedRows;
 }
