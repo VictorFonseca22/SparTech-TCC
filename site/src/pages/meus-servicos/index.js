@@ -35,6 +35,10 @@ export default function MeusServicos() {
         navigate('/servicos-contratados')
     }
 
+    function voltar() {
+        navigate(`/perfil-profissional/${idParam}`)
+    }
+
 
     return (
         <main className='meus-servicos'>
@@ -46,7 +50,7 @@ export default function MeusServicos() {
 
                 <h1 className="meus">meus serviços</h1>
 
-                <div className='volta' onClick={() => [navigate ('/')]}>
+                <div className='volta' onClick={voltar}>
                     <img className='menu' src='/assets/images/voltar.png' />
                     <p>voltar</p>
                 </div>

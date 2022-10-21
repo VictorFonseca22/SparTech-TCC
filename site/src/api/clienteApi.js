@@ -5,7 +5,7 @@ const api = axios.create({
     baseURL: URL
 })
 
-export async function MostrarPerfil(id) {
+export async function MostrarPerfilCliente(id) {
     const resp = await api.get(`/perfil/cliente/${id}`)
     return resp.data;
 }
@@ -15,18 +15,19 @@ export async function mostrarComentarios(){
     return resposta.data;
 } 
 
-export async function alterarPerfilCliente(id, nome, telefone){
+export async function alterarPerfilCliente(id, nome, telefone, biografia){
 
     const resposta = await api.put(`/perfil/cliente/${id}`, {
        
         nome: nome,
-        telefone: telefone
+        telefone: telefone,
+        biografia:biografia
     })
     return resposta.data;
 
 }
 
-export async function AdicionarImagem (id, foto){
+export async function AdicionarImagemCliente (id, foto){
     const formData= new FormData();
     formData.append('foto', foto);
     const r = await api.put(`/cliente/${id}/foto`, 

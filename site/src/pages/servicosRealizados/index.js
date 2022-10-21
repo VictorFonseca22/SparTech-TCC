@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './index.scss';
 
 export default function ServicosRealizados() {
     const [servico, setServico] = useState([])
 
     const navigate = useNavigate();
-
+    const {idParam} = useParams()
     
 
    
@@ -16,7 +16,7 @@ export default function ServicosRealizados() {
     }
 
     function perfil() {
-        navigate('/meus-servicos')
+        navigate(`/meus-servicos/${idParam}`)
     }
 
     
