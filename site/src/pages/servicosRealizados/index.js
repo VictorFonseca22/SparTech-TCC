@@ -68,8 +68,7 @@ export default function ServicosRealizados() {
                                 <td>{item.tipo_servico}</td>
                                 <td>{item.data}</td>
                                 <td>{item.rua + ', ' + item.complemento + '- ' + item.bairro}</td>
-                                <td><button><a href={'https://wa.me/55' + item.telefone + '?text=Ol%C3%A1,%20sou%20seu%20profissional!%20Meu%20nome%20%C3%A9%20' 
-         + item.cliente + '%20e%20estou%20te%20contatando%20para%20confirmar%20os%20detalhes%20do%20servi%C3%A7o'}></a><img src="/assets/images/chat.png" className='chat' alt="" /></button></td>
+                                <td><a href={'https://wa.me/55' + item.telefone_cliente}><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></a></td>
                             </tr>
                         )}
 

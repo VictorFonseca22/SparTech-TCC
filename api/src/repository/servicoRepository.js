@@ -148,6 +148,7 @@ export async function ServicoConcluido(id) {
     const comando = `
     select tb_servico.id_servico             id,
     tb_cliente.nm_cliente      cliente, 
+    tb_cliente.ds_telefone            telefone_cliente,
     tb_profissional.nm_profissional   profissional, 
     tb_profissional.arq_foto          foto,
     tb_profissional.ar_atuacao        area,
