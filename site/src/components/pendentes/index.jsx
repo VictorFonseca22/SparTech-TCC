@@ -1,4 +1,3 @@
-import { concluirServico } from '../../api/servico';
 import './index.scss'
 
 
