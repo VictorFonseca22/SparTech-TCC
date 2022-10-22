@@ -58,7 +58,12 @@ const Sidebar = ({ active }) => {
 
         <SidebarItem Icon={FaMapMarkedAlt} Text="Buscar serviços" onClick={() => [navigate('/busca-profissional')]}/>
 
+        {storage('cliente-logado') &&
         <SidebarItem Icon={FaSuitcaseRolling} Text="Meus serviços" onClick={() => [navigate(`/meus-servicos/${storage('cliente-logado').id}`)]} />
+        }
+        {storage('profissional-logado') &&
+        <SidebarItem Icon={FaSuitcaseRolling} Text="Meus serviços" onClick={() => [navigate(`/meus-servicos/${storage('profissional-logado').id}`)]} />
+        }
 
         {!storage('profissional-logado') && !storage('cliente-logado') && !storage('adm-logado') &&
           <div>
