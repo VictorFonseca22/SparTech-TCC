@@ -30,7 +30,7 @@ export default function ServicosContratados() {
                     <img onClick={home} className='logo' src='/assets/images/teste final 1.png' />
                 </div>
 
-                <h1>Serviços Contratados</h1>
+                <h1>Serviços Concluídos</h1>
 
                 <div className='volta' onClick={perfil}>
                     <img className='menu' src='/assets/images/voltar.png' />
