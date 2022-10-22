@@ -1,4 +1,9 @@
 @font-face {
+    font-family: 'poppins';
+    src: url(../../../public/assets/fonts/Poppins-Light.ttf);
+}
+
+@font-face {
     font-family: 'adam';
     src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
 }
@@ -57,7 +62,7 @@
                 border: none;
                 padding: 0rem 1rem;
                 outline: none;
-                font-family: 'adam';
+                font-family: 'poppins';
             }
 
         }
@@ -95,7 +100,7 @@
             justify-content: space-between;
             width: 100%;
             max-width: 38rem;
-
+            font-family: 'poppins';
         }
 
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 import { CadastrarCliente} from '../../api/usuarioApi'
 import { ToastContainer, toast } from 'react-toastify';
+import InputMask from 'react-input-mask';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -54,7 +55,7 @@ export default function CadastroCliente() {
 
                     <div className='text'>
                         <label>cpf</label>
-                        <input placeholder='insira seu cpf' type='text' value={Cpf} onChange={e => SetCpf(e.target.value)} />
+                        <InputMask mask='999.999.999-99' placeholder='insira seu cpf' type='text' value={Cpf} onChange={e => SetCpf(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
@@ -81,8 +82,9 @@ export default function CadastroCliente() {
                 </div>
                 <div className='text-telefone'>
                     <label>Telefone</label>
-                    <input placeholder='insira seu telefone' type='number' value={Telefone} onChange={e => SetTelefone(e.target.value)} />
+                    <InputMask mask='(99) 99999-9999' placeholder='insira seu telefone' type='tel' value={Telefone} onChange={e => SetTelefone(e.target.value)} />
                 </div>
+                
 
                 <div className='tipo'>
                     

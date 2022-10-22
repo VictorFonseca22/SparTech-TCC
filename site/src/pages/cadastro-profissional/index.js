@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link} from 'react-router-dom'
 import {toast, Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
+import InputMask from 'react-input-mask';
 import { CadastrarProfissional, ListaCategoria } from '../../api/usuarioApi';
 
 export default function CadastroProfissional() {
@@ -67,7 +68,7 @@ export default function CadastroProfissional() {
 
                     <div className='text'>
                         <label>cpf</label>
-                        <input placeholder='insira seu cpf' type='text' value={cpf} onChange={e => SetCpf(e.target.value)} />
+                        <InputMask mask='999.999.999-99' placeholder='insira seu cpf' type='text' value={cpf} onChange={e => SetCpf(e.target.value)} />
                     </div>
                 </div>
                 <div className='dois'>
@@ -93,9 +94,9 @@ export default function CadastroProfissional() {
                     </div>
                 </div>
                 <div className='dois'>
-                    <div className='text'>
+                    <div className='telefone'>
                         <label>Telefone</label>
-                        <input placeholder='insira seu telefone' type='number' value={telefone} onChange={e => SetTelefone(e.target.value)} />
+                        <InputMask mask='(99) 99999-9999' placeholder='insira seu telefone' type='tel' value={telefone} onChange={e => SetTelefone(e.target.value)} />
                     </div>
 
                     <div className='text'>

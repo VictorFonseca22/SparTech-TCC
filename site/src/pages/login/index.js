@@ -90,7 +90,14 @@ export default function Login() {
 
     }, [])
 
-
+    function mostrarOcultarSenha(){
+        const senha = document.getElementById("senha");
+        if(senha.type==="password")
+            senha.type = "text";
+        
+        else 
+        senha.type = "password"
+    }
 
     document.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
@@ -125,9 +132,10 @@ export default function Login() {
                     </div>
 
                     <div className='senha'>
-                        <input placeholder='Senha' type='password' value={Senha} onChange={e => SetSenha(e.target.value)} />
-                    </div>
+                        <input placeholder='Senha' type='password' id='senha' value={Senha} onChange={e => SetSenha(e.target.value)}/>
 
+                    </div>
+                    
                 </div>
 
                 <div className='entrar'>

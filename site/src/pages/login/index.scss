@@ -95,7 +95,12 @@
             align-items: center;
         }
     
-        
+        .mostrar{
+            width: 2.6rem;
+            height: 2.6rem;
+            background-color: transparent;
+            border: none;
+        }    
     
         h1 {
             font-family: 'adam';
@@ -151,5 +156,9 @@
     }
 
     
+    /* Botão de mostrar senha (vô esconder por enquanto)
+                <button className='mostrar' type="checkbox" onClick={mostrarOcultarSenha}><img src='/assets/images/witness.png' height="41.6" width="41.6" /> </button>
+    */
+
 
 }
