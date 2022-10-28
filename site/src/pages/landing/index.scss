@@ -129,16 +129,19 @@
         justify-content: space-around;
         height: 25rem;
         background-color: #171921;
-
+        width: 100vw;
 
         .categorias {
+            padding: 0rem 1rem;
             display: flex;
             flex-direction: row;
+            align-items: center;
             justify-content: space-evenly;
             width: 100vw;
         }
 
         h4 {
+            font-weight: 100;
             font-size: 2rem;
             color: #41B6E6;
             font-family: 'adam';
@@ -179,7 +182,6 @@
                 .texts {
                     padding-left: 2rem;
                     height: 30rem;
-                    width: 100%;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-evenly;
@@ -451,6 +453,7 @@
         justify-content: space-evenly;
         height: 25rem;
         width: 100%;
+        padding: 1.5rem;
 
         h1 {
             font-size: 1.5rem;
@@ -483,8 +486,7 @@
 
             .logo {
                 width: 13rem;
-                align-self: flex-start;
-                margin-left: 2rem;
+                margin-right: 4rem;
             }
         }
 
@@ -566,9 +568,9 @@
 
 
             p {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
                 color: #41B6E6;
-                font-family: 'adam';
+                font-family: inter;
             }
 
             .twi{
@@ -603,14 +605,462 @@
 
 
 
+    @media(max-width: 1250px){
+        
+
+        .faixa-1{
+            background-size: 130%;
+            background-position: 50% 0%;
+
+            .introdução{
+                width: 40rem;
+
+                h1{
+                    width: 80% !important;
+                    font-size: 2rem !important;
+                }
+
+                .b{
+                    font-size: 1.7rem;
+                    height: 4rem;
+                    width: 12rem !important;
+                }
+
+            }
+            
+        }
+
+        .historia{
+            height: 80rem;
+            // border: 1px green solid;
+            padding: 0;
+
+            .centro{
+                width: 90%;
+            }
+
+            .b{
+                height: 60rem !important;
+                // max-height: 100rem;
+                flex-direction: column;
+
+                .esquerda{
+                    width: 100% !important;
+                    height: 24rem;
+
+                    .text{
+                        width: 90% !important;
+                        height: 12rem;
+
+                        .p2{
+                        width: 100% !important;
+
+                        }
+                    }
+
+                    .text2{
+                        width: 90% !important;
+                        height: 10rem;
+
+                        .p1{
+                        width: 100% !important;
+
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        .rodape{
+            .login{
+
+                .contrate{
+                    height: 4.5rem;
+                    h1{
+                        font-size: 1.3rem;
+                    }
+    
+                    button{
+                        font-size: 1.5rem;
+                        width: 5em;
+                        height: 2.5rem;
+                        border-radius: 0.5rem;
+                    }
+                }
+
+               
+
+                p{
+                    font-size: 1.3rem;
+                }
+                
+            }
+        }
+
+
+    }
+
+    @media(max-width: 1050px){
+
+        *{
+            // border: 1px green solid;
+            
+        }
+
+        .faixa-1{
+            background-size: 180%;
+            height: 30rem;
+
+        }
+
+        .destaque{
+            height: 70rem;
+
+            .meio{
+                height: 53em;
+                flex-direction: column !important;
+            
+                .infos{
+                    align-items: center;
+                    height: 25rem;
+                    width: 90%;
+
+                    h1{
+                        font-size: 2.5rem;
+                    }
+                    p{
+                        font-size: 2rem;
+                    }
+
+                    .text{
+                        
+                        width: 50% !important;
+                        align-items: center !important;
+
+                    }
+
+                }
+            }
+        }
+    
+        .rodape{
+            height: 50rem;
+
+            flex-direction: column;
+            .logos{
+                flex-direction: row;
+                width: 100%;
+                height: 10rem;
+                padding-bottom: 0;
+                
+                h1{
+                    font-size: 1.7rem;
+                }
+            }
+
+            .formas{
+                width: 100%;
+                height: 15rem;
+                
+                h1{
+                    font-size: 1.7rem;
+                }
+                .responsive{
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: space-evenly;
+
+                    .terceiro{
+                        width: 10rem;
+                    }
+                }
+            }
+
+            .login{
+                width: 100%;
+                height: 18rem;
+                padding-bottom: 0;
+
+                align-items: center;
+
+                .contrate{
+
+                    align-items: center;
+                    height: 5rem;
+
+                    h1{
+                        font-size: 1.7rem;
+                    }
+                }
+
+                .fale{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center !important;
+                    h1{
+                        font-size: 1.7rem;
+                    }
+
+                    p{
+                        font-size: 1.5rem;
+                    }
+
+                    img{
+                        height: 3rem;
+                    }
+
+                    .email, .twi, .insta{
+                        width: 21rem;
+                    }
+
+                    .email{
+                        img{
+                            height: 2.3rem;
+                        }
+                    }
+
+                }
+            }
+        }
+    
+    }
+
+
+    @media(max-width: 900px){
+
+        .destaque{
+            width: 100%;
+
+            .meio{
+                width: 100%;
+                min-width: auto;
+            }
+
+            .infos{
+                height: 25rem !important;
+
+                .texts{
+                    height: 20rem !important;
+                }
+            }
+
+            h1{
+                font-size: 2rem !important;
+            }
+
+            p{
+                font-size: 1.5rem !important;
+
+
+            }
+
+            .avaliacao{
+                 p{
+                    padding-bottom: 0.5rem;
+                    padding-left: 0.5rem;
+                 }
+            }
+        }
+
+
+        .historia{
+            .centro{
+                h1{
+                    font-size: 2rem !important;
+                }
+                p{
+                    font-size: 1.5rem !important;
+                }
+            }
+
+            .b{
+                height: 80rem !important;
+            }
+
+            .esquerda{
+                height: 28rem !important;
+                h1{
+                    font-size: 2rem !important;
+                }
+                p{
+                    font-size: 1.5rem !important;
+                }
+            }
+        }
+
+        
+
+        .profissionais{
+            height: 90rem;
+            justify-content: center;
+
+            h1{
+                margin-bottom: 1.5rem;
+                font-size: 2.5rem;
+            }
+
+            .profs1{
+                flex-wrap: wrap;
+                align-items: center;
+                width: 100%;
+                height: 50rem;
+                
+                .prof{
+                    img{
+                    }
+                }
+
+            }
+
+            .profs2{
+                align-items: center;
+                width: 100%;
+                height: 25rem;
+                flex-wrap: wrap;
+
+                .prof{
+                }
+            }
+
+        }
 
 
 
+    }
+
+
+    @media(max-width: 750px){
+        *{
+            // border: 1px green solid;
+        }
+
+
+        .profissionais{
+            height: 160rem;
+            .profs1{
+                flex-direction: column !important;
+                align-items: center;
+                height: 95rem;
+                flex-wrap: nowrap;
+            }
+
+            .profs2{
+                padding-bottom: 3rem;
+                height: 62em;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column !important;
+                flex-wrap: nowrap;
+
+            }
+
+            .prof{
+                width: auto;
+                img{
+                    width: 23rem !important;
+                }
+
+
+            }
+        }
+
+        .historia{  
+            height: 100rem;
+           
+            .centro{
+                h1{
+                    font-size: 2rem !important;
+                }
+
+                p{
+                    font-size: 1.4rem !important;
+                }
+            }
+
+            .b{
+                height: 80rem !important;  
+            }
+
+
+            .esquerda{
+
+                .text{
+                    height: 17rem !important;
+                }
+
+                .text2{
+                    height: 14rem !important;
+                }
+                
+
+                height: 35rem !important;
+                h1{
+                    font-size: 2rem !important;
+                }
+
+                p{
+                    font-size: 1.4rem !important;
+                }
+            }
+        }
+        
+    
+    }
+
+
+    @media(max-width:580px) {
+        
+        *{
+            border: 1px solid green;
+        }
+
+        .historia{  
+            height: 100rem;
+           
+            .centro{
+                h1{
+                    font-size: 2rem !important;
+                }
+
+                p{
+                    font-size: 1.4rem !important;
+                }
+            }
+
+            .b{
+                height: 80rem !important;  
+            }
+
+
+            .esquerda{
+                height: 40rem !important;
+
+                .text{
+                    height: 19rem !important;
+                }
+
+                .text2{
+                    height: 16rem !important;
+                }
+                
+
+                h1{
+                    font-size: 2rem !important;
+                }
+
+                p{
+                    font-size: 1.4rem !important;
+                }
+            }
+        }
 
 
 
-
-
+    }
 
 
 }

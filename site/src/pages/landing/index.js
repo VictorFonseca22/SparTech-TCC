@@ -9,13 +9,14 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function Landing() {
-    
+
     const navigate = useNavigate()
 
     const breakPoints = [
-        { width: 1, itemsToShow: 1.4 },
+        { width: 1, itemsToShow: 1 },
+        { width: 480, itemsToShow: 1.4 },
         { width: 750, itemsToShow: 2.4, itemsToScroll: 2 },
-        { width: 850, itemsToShow: 3.4, itemsToScroll: 3 },
+        { width: 1100, itemsToShow: 3.4, itemsToScroll: 3 },
         { width: 1560, itemsToShow: 4.4, itemsToScroll: 4 }
     ];
 
@@ -195,26 +196,29 @@ export default function Landing() {
 
                     <h1 className='pagamento'>Formas de pagamento:</h1>
 
-                    <div className="primeiro">
+                    <div className='responsive'>
 
-                        <img src="./assets/images/visa.png" />
-                        <img src="./assets/images/MASTERCARD.png" />
-                        <img src="./assets/images/MERCADO PAGO.png" />
+                        <div className="primeiro">
 
-                    </div>
+                            <img src="./assets/images/visa.png" />
+                            <img src="./assets/images/MASTERCARD.png" />
+                            <img src="./assets/images/MERCADO PAGO.png" />
 
-                    <div className="segundo">
+                        </div>
 
-                        <img src="./assets/images/boleto.png" />
-                        <img src="./assets/images/PIX.png" />
-                        <img src="./assets/images/PIC PAY.png" />
+                        <div className="segundo">
 
-                    </div>
+                            <img src="./assets/images/boleto.png" />
+                            <img src="./assets/images/PIX.png" />
+                            <img src="./assets/images/PIC PAY.png" />
 
-                    <div className="terceiro">
+                        </div>
 
-                        <img src="./assets/images/paypal.png" />
+                        <div className="terceiro">
 
+                            <img src="./assets/images/paypal.png" />
+
+                        </div>
                     </div>
 
                 </div>
@@ -223,7 +227,7 @@ export default function Landing() {
 
                     <div className='contrate'>
                         <h1>contrate já um profissional</h1>
-                        <button onClick={() => [navigate ('/login')]}>login</button>
+                        <button onClick={() => [navigate('/login')]}>login</button>
                     </div>
 
                     <div className="fale">
