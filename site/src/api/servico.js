@@ -58,3 +58,8 @@ export async function ServicoConcluido(id) {
     const resp = await api.get(`/conclusoesServicos/${id}`)
     return resp.data;
 }
+
+export async function deletarServico(id){
+    const resposta = await api.delete(`/deletarservico/${id}`);
+    return resposta.status;
+}
