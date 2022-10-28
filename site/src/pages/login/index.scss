@@ -1,8 +1,3 @@
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-}
 @font-face {
     font-family: 'poppins';
     src: url(../../../public/assets/fonts/Poppins-Light.ttf);
@@ -18,20 +13,33 @@
     src: url('../../../public/assets/fonts/LeagueSpartan-Bold.otf');
 }
 
-.Login-page {
+.page-Login {
+
+    padding: 1rem;
 
     display: flex;
     background-image: url('../../../public/assets/images/espaço.png');
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 
+
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        // border: 1px solid green;
+    }
+
     @keyframes flutuacao {
-        0%, 100%{
+
+        0%,
+        100% {
             transform: translateY(0px)
         }
-        50%{
+
+        50% {
             transform: translateY(-60px)
         }
     }
@@ -39,13 +47,33 @@
     .logar {
         width: 27rem;
         height: 44rem;
-        background: rgba(40, 44, 59, 0.6);
+        background: #282c3b99;
         border-radius: 4rem 12rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-    
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+
+            a {
+                width: 80%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            img {
+                width: 80%;
+                min-width: 10rem;
+            }
+        }
+
+
         .fazer {
             display: flex;
             flex-direction: column;
@@ -53,7 +81,7 @@
             height: 10rem;
             font-family: 'poppins';
         }
-    
+
         .informações {
             display: flex;
             flex-direction: column-reverse;
@@ -61,22 +89,35 @@
             height: 7rem;
             justify-content: space-between;
         }
-    
+
         .cadastra {
             cursor: pointer;
             font-family: 'League';
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 100;
+
+            a {
+                cursor: pointer;
+                text-decoration: none;
+                color: white;
+            }
         }
-    
+
+        .cadastra:hover {
+            scale: 1.05;
+            transition: 0.2s;
+        }
+
         .esqueci {
             cursor: pointer;
         }
-    
-        a {
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
+
+        .esqueci:hover {
+            scale: 1.05;
+            transition: 0.2s;
         }
+
+
 
 
         .entrar {
@@ -84,7 +125,13 @@
             align-items: center;
             justify-content: center;
         }
-    
+
+
+        .entrar:hover {
+            scale: 1.06;
+            transition: 0.2s;
+        }
+
         .foi {
             width: 3.6rem;
             height: 3.6rem;
@@ -94,38 +141,39 @@
             border: none;
             align-items: center;
         }
-    
-        .mostrar{
+
+        .mostrar {
             width: 2.6rem;
             height: 2.6rem;
             background-color: transparent;
             border: none;
-        }    
-    
+        }
+
         h1 {
             font-family: 'adam';
             color: white;
             text-align: center;
-            font-size:xx-large;
+            font-size: xx-large;
         }
-    
+
         h2 {
             font-family: 'adam';
             color: white;
             text-align: center;
-            font-size:large;
+            font-size: 1rem;
+            height: 1.5rem;
         }
-    
+
         p {
             font-family: 'adam';
             color: white;
             font-style: normal;
             font-weight: 4rem;
-            font-size:small;
+            font-size: small;
             line-height: 1rem;
             text-align: center;
         }
-    
+
         input {
             width: 22rem;
             height: 3.5rem;
@@ -135,30 +183,74 @@
             padding-left: 1rem;
             font-family: 'poppins';
             outline: none;
-    
-            .logo {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                
-            }
 
-    
-    }
-    
+
+
+        }
+
 
     }
 
-    .astronauta{
-        width: 35rem;
-        height: 42rem;
+    .astronauta {
+        width: 50%;
+        max-width: 35rem;
+        // min-width: 20rem;
         animation: flutuacao 8s ease-in-out infinite;
     }
 
-    
+
     /* Botão de mostrar senha (vô esconder por enquanto)
                 <button className='mostrar' type="checkbox" onClick={mostrarOcultarSenha}><img src='/assets/images/witness.png' height="41.6" width="41.6" /> </button>
     */
+
+    @media(max-width:1000px) {
+        * {
+            // border: 1px green solid;
+        }
+
+        .logar {
+
+            input {
+                width: 100%;
+            }
+
+            .fazer {
+                width: 80%;
+            }
+
+        }
+
+        .astronauta {
+            width: 50%;
+        }
+
+    }
+
+    @media(max-width:950px) {
+        .astronauta {
+            position: absolute;
+            z-index: 1;
+            width: 80%;
+            max-width: none;
+        }
+
+        .logar {
+            z-index: 2;
+            background: #282c3bce;
+
+        }
+    }
+
+    @media(max-width: 550px){
+        * {
+            // border: 1px green solid;
+        }
+
+        .logar{
+            border-radius: 4rem 8rem;
+        }
+        
+    }
 
 
 }

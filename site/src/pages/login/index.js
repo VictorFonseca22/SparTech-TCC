@@ -109,16 +109,16 @@ export default function Login() {
 
 
     return (
-        <main className='Login-page'>
+        <main className='page-Login'>
 
             <LoadingBar color='#41B6E6' ref={ref} />
 
             <section className='logar'>
 
-                <div className='logo'>
+                <div className='logo' >
 
-                    <a href='/'>
-                        <img src='/assets/images/teste final 1.png' />
+                    <a href='/' >
+                        <img src='/assets/images/teste final 1.png'   />
                     </a>
 
                 </div>
