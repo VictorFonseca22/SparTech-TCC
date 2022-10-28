@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivosCliente, ServicosAtivosProfissional, SolicitacoesServicos, concluirServico, ServicoConcluido} from '../repository/servicoRepository.js'
+import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivosCliente, ServicosAtivosProfissional, SolicitacoesServicos, concluirServico, ServicoConcluido, removerServico} from '../repository/servicoRepository.js'
 import server from "./usuarioController.js";
 
 server.post('/cadastrarServico', async (req, resp) => {
@@ -182,6 +182,23 @@ server.get('/conclusoesServicos/:id', async (req, resp) =>{
     catch(err)
     {
         resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.delete('/deletarservico/:id', async (req,resp) =>{
+    try{
+        const {id} = req.params;
+        const resposta = await removerServico(id)
+
+        if(resposta != 1){
+            throw new Error('Serviço não pode ser removido')
+        }
+        resp.status(204).send();
+    } 
+    catch(err){
+        resp.status(404).send({
             erro: err.message
         })
     }

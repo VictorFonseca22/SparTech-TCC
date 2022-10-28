@@ -175,3 +175,14 @@ export async function ServicoConcluido(id) {
     const [linhas] = await con.query(comando, [id]);
     return linhas;
 }
+
+export async function removerServico(id){
+    const comando = 
+    `
+    DELETE FROM tb_servico 
+    WHERE id_servico = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
+}
