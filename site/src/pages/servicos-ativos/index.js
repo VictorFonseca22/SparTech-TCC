@@ -2,11 +2,15 @@ import './index.scss'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { buscarImagem, MostrarPerfil } from '../../api/profissionalApi.js'
-import {ServicosAtivosCliente } from '../../api/servico';
-
+import {deletarServico, ServicosAtivosCliente } from '../../api/servico';
+import {toast, Toaster} from 'react-hot-toast'
+import storage from 'local-storage'
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Serviços() {
     const [infoServico, setInfoServico] = useState([])
+    const [erro, setErro] = useState('');
 
     const navigate = useNavigate()
     const {idParam} = useParams()
@@ -19,10 +23,34 @@ export default function Serviços() {
     function voltar() {
         navigate(`/meus-servicos/${idParam}`)
     }
+    function selecionarServico(id) {
+        const idServ= (
+            {'id': id}
+        )
+        storage.remove('serv-selecionado')
+        storage('serv-selecionado', idServ) 
+        const senha = document.getElementById("faq-titulo-2");
+        if(senha.checked == false) {
+            senha.checked = true;
+        }
+            else {
+            senha.checked = false
+            storage.remove('serv-selecionado')
+            }
+ 
+
+    }
 
     async function carregarServico() {
+        try{
         const resposta = await ServicosAtivosCliente(idParam);
         setInfoServico(resposta)
+        }
+        catch (err) {
+            if (err.response.status == 400) {
+                setErro(err.response.data.erro);
+            }
+        }
     }
 
     useEffect(() => {
@@ -30,9 +58,45 @@ export default function Serviços() {
 
     }, [])
 
+    async function removerServico(profissional) {
+        if(storage('serv-selecionado')) {
+        confirmAlert({
+            title:'Remover cliente',
+            message:`Deseja remover o serviço com ${profissional} ?`,
+            buttons:[
+                {
+                    label:'Sim',
+                    onClick: async () => {
+                    
+                    const id = storage('serv-selecionado').id
+                    const resposta = await deletarServico(id, profissional);
+
+                    toast.loading("Excluindo...")
+
+                    setTimeout(() => {
+                    toast.dismiss();
+                    toast.success(`Você removeu seu serviço com ${profissional}`)
+                    }, 600);
+                    
+                    
+                  
+                }},
+                {
+                    label:'Não'
+                }
+            ]
+
+
+        })
+    }
+    else{
+        toast.error('Você não selecionou um serviço')
+    }
+
+    }
     return (
         <main className='servicos'>
-
+         <Toaster />
             <header className="barra">
 
                 <div>
@@ -55,7 +119,8 @@ export default function Serviços() {
                 <section className="ajuste">
             {infoServico.map(item =>
 
-                    <div className='informacoes'>
+                    <div className='informacoes' onClick={() => selecionarServico(item.id)}>
+                        <input class="trigger-input" id="faq-titulo-2" type="radio"/>
 
                     
                         <div className='mapeamento-perfil'>
@@ -118,10 +183,14 @@ export default function Serviços() {
                             </div>
 
                         </div>
-
                     </div>
+                    
                     )}
-
+                {erro !== undefined && 
+                    <div className="informacoes-err">
+						{<span className="err-message">{erro}</span>}
+							</div>
+                            } 
                     <div className='resumo'>
 
                         <h1>resumo do serviço ativo</h1>
@@ -137,16 +206,18 @@ export default function Serviços() {
 
 
                         <hr />
-
+                        {infoServico.map(item =>
                         <div className="button">
                             <button className='pagar'>
                                 pagar serviço concluído
                             </button>
 
-                            <button className='cancelar'>
+                            <button className='cancelar' onClick={() => removerServico(item.profissional)}>
                                 cancelar serviço
+
                             </button>
                         </div>
+                        )}
                         <h5>A EsparTech, irá dar a garantia de 1 mês
                             sobre o serviço realizado, caso aconteça algum problema, a EsparTech irá mandar um profissional sem necessidade de um novo pagamento. </h5>
 

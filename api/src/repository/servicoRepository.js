@@ -27,7 +27,8 @@ export async function listarPagamentos() {
 
 export async function ServicosAtivosCliente(id) {
     const comando = `
-    select tb_cliente.nm_cliente      cliente, 
+    select tb_servico.id_servico             id,
+    tb_cliente.nm_cliente      cliente, 
     tb_cliente.ds_telefone            tel_cliente,
     tb_profissional.nm_profissional        profissional, 
     tb_profissional.arq_foto            foto,

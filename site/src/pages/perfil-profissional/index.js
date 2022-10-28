@@ -198,6 +198,7 @@ export default function Perfilprofissional() {
 
                                 <div className="avaliacao">
                                     <div className="estrelas">
+                                        
                                         <img src='/assets/images/estrela.png' />
                                         <img src='/assets/images/estrela.png' />
                                         <img src='/assets/images/estrela.png' />

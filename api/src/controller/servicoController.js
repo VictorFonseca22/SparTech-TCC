@@ -77,9 +77,9 @@ server.get('/servicosAtivosCliente/:id', async (req, resp) =>{
         const id = Number(req.params.id);
 
         const resposta = await ServicosAtivosCliente(id);
-
-        if(!resposta)
-            resp.status(404).send([]);
+        if (resposta.length < 1) {
+			throw new Error("Você não tem nenhum serviço ativo ainda!");
+		}
         else
         resp.send(resposta);
     }

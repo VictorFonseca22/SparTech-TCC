@@ -52,15 +52,7 @@ export default function ServicosContratados() {
 
                     </thead>
                     <tbody>
-                    <tr>
-                                <td>jose</td>
-                                <td>limpeza</td>
-                                <td>21/10/2022</td>
-                                <td><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></td>
-                                <td>
-                                    <img src="/assets/images/aceitar.png" className='ok' alt="" />
-                                </td>
-                            </tr>
+                    
                     
                         {servico.map(item =>
                             <tr>
@@ -68,6 +60,7 @@ export default function ServicosContratados() {
                                 <td>{item.tiposerv}</td>
                                 <td>{item.dataserv}</td>
                                 <td>{item.localização}</td>
+                                <td><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></td>
                                 <td>
                                     <img onClick={''}><img src="/assets/images/aceitar.png" alt="" /></img>
                                 </td>
