@@ -22,6 +22,20 @@
     width: 100vw;
     height: 100vh;
 
+
+
+    @keyframes flutuacao {
+
+        0%,
+        100% {
+            transform: translateY(0px)
+        }
+
+        50% {
+            transform: translateY(-60px)
+        }
+    }
+
     .cadastra {
         width: 100%;
         height: 48rem;
@@ -37,7 +51,7 @@
             width: 43% !important;
         }
 
-        
+
 
         .text {
             display: flex;
@@ -47,7 +61,7 @@
             max-width: 35rem;
             gap: 0.6rem;
 
-            label{
+            label {
                 align-self: flex-start;
                 padding-left: 1rem;
             }
@@ -66,8 +80,8 @@
             }
 
         }
-        
-        .text-telefone{
+
+        .text-telefone {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -75,7 +89,7 @@
             max-width: 20rem;
             gap: 0.6rem;
 
-            label{
+            label {
                 align-self: flex-start;
                 padding-left: 1rem;
             }
@@ -132,7 +146,8 @@
 
             }
 
-            .cliente:hover, .profissional:hover{
+            .cliente:hover,
+            .profissional:hover {
                 cursor: pointer;
                 scale: 1.1;
                 transition: 0.3s;
@@ -192,6 +207,7 @@
 
         .informações {
             height: 5rem;
+            font-weight: 100;
         }
 
 
@@ -200,10 +216,12 @@
     .astronauta {
 
 
+
         .ola {
             width: 100%;
             height: 100%;
             max-width: 40rem;
+            animation: flutuacao 8s ease-in-out infinite;
             max-height: 40rem;
         }
 
@@ -215,7 +233,7 @@
 
     }
 
-   
+
 
 
 }
