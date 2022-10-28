@@ -43,12 +43,12 @@ export default function Landing() {
                         <Categoria nome='limpeza e higienização de computadores' number="2" />
                         <Categoria nome='CABEAMENTO DE REDES' number="3" />
                         <Categoria nome='DESENVOLVIMENTO de websites' number="4" />
-                        <Categoria nome='2' number="4" />
-                        <Categoria nome='3' number="4" />
-                        <Categoria nome='4' number="4" />
-                        <Categoria nome='5' number="4" />
-                        <Categoria nome='5' number="4" />
-                        <Categoria nome='6' number="4" />
+                        <Categoria nome='Instalação de sistemas operacionais' number="4" />
+                        <Categoria nome='Aulas particulares' number="4" />
+                        <Categoria nome='Manutenção de servidores' number="4" />
+                        <Categoria nome='Gestão de equipes' number="4" />
+                        <Categoria nome='Configuração de wi-fi' number="4" />
+                        <Categoria nome='Design de sites' number="4" />
 
                     </Carousel>
 
