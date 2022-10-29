@@ -94,6 +94,8 @@ export default function Serviços() {
     }
 
     }
+    
+
     return (
         <main className='servicos'>
          <Toaster />
@@ -188,9 +190,10 @@ export default function Serviços() {
                     )}
                 {erro !== undefined && 
                     <div className="informacoes-err">
-						{<span className="err-message">{erro}</span>}
-							</div>
-                            } 
+						    {erro}
+					</div>
+                    } 
+                    
                     <div className='resumo'>
 
                         <h1>resumo do serviço ativo</h1>

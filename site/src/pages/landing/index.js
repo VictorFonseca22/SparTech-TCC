@@ -4,11 +4,12 @@ import Categoria from '../../components/categoria';
 import Carousel from 'react-elastic-carousel';
 import Item from '../../components/carousel/Item';
 import { useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
 
 
 
 export default function Landing() {
+    const [filtroNome, setFiltroNome] = useState('');
 
     const navigate = useNavigate()
 
@@ -39,16 +40,16 @@ export default function Landing() {
                 <h4>serviços mais solicitados</h4>
                 <div className='categorias'>
                     <Carousel breakPoints={breakPoints}>
-                        <Categoria nome='Montagem e Manutenção de Computadores' number="1" />
-                        <Categoria nome='limpeza e higienização de computadores' number="2" />
-                        <Categoria nome='CABEAMENTO DE REDES' number="3" />
-                        <Categoria nome='DESENVOLVIMENTO de websites' number="4" />
-                        <Categoria nome='Instalação de sistemas operacionais' number="4" />
-                        <Categoria nome='Aulas particulares' number="4" />
-                        <Categoria nome='Manutenção de servidores' number="4" />
-                        <Categoria nome='Gestão de equipes' number="4" />
-                        <Categoria nome='Configuração de wi-fi' number="4" />
-                        <Categoria nome='Design de sites' number="4" />
+                        <Categoria img='/assets/images/montagem.png' nome='Montagem e Manutenção de Computadores' number="1" />
+                        <Categoria img='/assets/images/clean.png' nome='limpeza e higienização de computadores' number="2" />
+                        <Categoria img='/assets/images/rede.png' nome='CABEAMENTO DE REDES' number="3" />
+                        <Categoria img='/assets/images/site.png' nome='DESENVOLVIMENTO de websites' number="4" />
+                        <Categoria img='/assets/images/windows.png' nome='Instalação de sistemas operacionais' number="4" />
+                        <Categoria img='/assets/images/aula.png' nome='Aulas particulares' number="4" />
+                        <Categoria img='/assets/images/serv.png' nome='Manutenção de servidores' number="4" />
+                        <Categoria img='/assets/images/socios.png' nome='Gestão de equipes' number="4" />
+                        <Categoria img='/assets/images/wifi.png' nome='Configuração de wi-fi' number="4" />
+                        <Categoria img='/assets/images/design.png' nome='Design de sites' number="4" />
 
                     </Carousel>
 

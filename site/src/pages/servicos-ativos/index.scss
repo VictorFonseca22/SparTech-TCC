@@ -92,8 +92,9 @@
                 align-items: center;
                 justify-content: center;
             }
+            
             .informacoes-err {
-                background: linear-gradient(180deg, #3a6c8300 0%, #3A6C83 35.94%, #3A6C83 42.19%);
+               
                 border-radius: 1rem;
                 width:70%;
                 max-width: 56rem;
@@ -112,6 +113,7 @@
             .trigger-input{
                 display: none;
             }
+            
             .informacoes {
                 background: linear-gradient(180deg, #3a6c8300 0%, #3A6C83 35.94%, #3A6C83 42.19%);
                 border-radius: 1rem;
@@ -123,7 +125,7 @@
                 justify-content: space-evenly;
                 padding-left: 1rem;
                 cursor: pointer;
-
+                outline: #fff 10px;
                 
 
                 .mapeamento-perfil{
