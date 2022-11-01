@@ -8,6 +8,7 @@ import Editar from '../../components/editar-perfil'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Denunciar from '../../components/denuciar-perfil';
+import Estrelas from '../../components/estrelas';
 
 export default function Perfilprofissional() {
 
@@ -199,11 +200,9 @@ export default function Perfilprofissional() {
                                 <div className="avaliacao">
                                     <div className="estrelas">
                                         
-                                        <img src='/assets/images/estrela.png' />
-                                        <img src='/assets/images/estrela.png' />
-                                        <img src='/assets/images/estrela.png' />
-                                        <img src='/assets/images/estrela.png' />
-                                        <img src='/assets/images/estrela.png' />
+                                    <Estrelas
+                                    avaliacao = {item.avaliacao}
+                                    />
 
                                     </div>
                                     <p>{item.avaliacao}</p>

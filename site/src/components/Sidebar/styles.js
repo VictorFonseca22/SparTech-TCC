@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: #171923;
+  font-family: 'poppins';
   position: fixed;
   height: 100%;
   top: 0px;
@@ -28,6 +29,10 @@ export const Container = styled.div`
       width: 300px;
     }
   }
+  @font-face {
+    font-family: 'poppins';
+    src: url(../../../public/assets/fonts/Poppins-Light.ttf);
+}
 `;
 
 export const Content = styled.div`
