@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ServicoConcluido } from '../../api/servico';
 import './index.scss';
 
 export default function ServicosRealizados() {
@@ -9,8 +10,6 @@ export default function ServicosRealizados() {
     const {idParam} = useParams()
     
 
-   
-
     function home() {
         navigate('/')
     }
@@ -19,7 +18,16 @@ export default function ServicosRealizados() {
         navigate(`/meus-servicos/${idParam}`)
     }
 
-    
+    async function carregarConclusoes() {
+        const resposta = await ServicoConcluido(idParam);
+        setServico(resposta)
+    }    
+
+    useEffect(() => {
+        carregarConclusoes()
+    }, [])
+
+
 
 
     return (
@@ -46,8 +54,8 @@ export default function ServicosRealizados() {
                             <th className="inicio">nome do cliente</th>
                             <th>tipo de serviço</th>
                             <th>data do serviço</th>
-                            <th>chat</th>
-                            <th className="fim">concluído</th>
+                            <th>localização</th>
+                            <th className='fim'>chat</th>
                         </tr>
 
                     </thead>
@@ -56,14 +64,11 @@ export default function ServicosRealizados() {
                     
                         {servico.map(item =>
                             <tr>
-                                <td>{item.nome}</td>
-                                <td>{item.tiposerv}</td>
-                                <td>{item.dataserv}</td>
-                                <td>{item.localização}</td>
-                                <td><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></td>
-                                <td>
-                                    <img onClick={''}><img src="/assets/images/aceitar.png" alt="" /></img>
-                                </td>
+                                <td>{item.cliente}</td>
+                                <td>{item.tipo_servico}</td>
+                                <td>{item.data}</td>
+                                <td>{item.rua + ', ' + item.complemento + '- ' + item.bairro}</td>
+                                <td><a href={'https://wa.me/55' + item.telefone_cliente}><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></a></td>
                             </tr>
                         )}
 

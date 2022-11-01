@@ -1,7 +1,7 @@
 
 import './index.scss'
 import Menu from '../../components/Menu';
-
+import storage from 'local-storage'
 const Header = () => {
   
   return (
@@ -17,11 +17,13 @@ const Header = () => {
                     <img className='jobseeker' src='/assets/images/Job Seeker.png'/>
               </div>
 
-              <div className='a'>
+              <div className='a'> 
                 <a href='/login'>
                 <img className='logo-spartan' src='/assets/images/spartan 5.png'/>
                 <p className='login'>LOGIN</p>
                 </a>
+                
+                
 
                 <Menu />
 

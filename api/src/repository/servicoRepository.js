@@ -27,7 +27,8 @@ export async function listarPagamentos() {
 
 export async function ServicosAtivosCliente(id) {
     const comando = `
-    select tb_cliente.nm_cliente      cliente, 
+    select tb_servico.id_servico             id,
+    tb_cliente.nm_cliente      cliente, 
     tb_cliente.ds_telefone            tel_cliente,
     tb_profissional.nm_profissional        profissional, 
     tb_profissional.arq_foto            foto,
@@ -150,6 +151,7 @@ export async function ServicoConcluido(id) {
     const comando = `
     select tb_servico.id_servico             id,
     tb_cliente.nm_cliente      cliente, 
+    tb_cliente.ds_telefone            telefone_cliente,
     tb_profissional.nm_profissional   profissional, 
     tb_profissional.arq_foto          foto,
     tb_profissional.ar_atuacao        area,
@@ -175,4 +177,15 @@ export async function ServicoConcluido(id) {
 
     const [linhas] = await con.query(comando, [id]);
     return linhas;
+}
+
+export async function removerServico(id){
+    const comando = 
+    `
+    DELETE FROM tb_servico 
+    WHERE id_servico = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
 }

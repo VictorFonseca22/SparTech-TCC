@@ -9,7 +9,7 @@ const Categoria = (props) => {
     <main className='categoria'>
       
         <div>
-          <img  alt="" >{props.img}</img>
+          <img alt="" src={props.img}/>
           <h5>{props.nome}</h5>
         </div>
         

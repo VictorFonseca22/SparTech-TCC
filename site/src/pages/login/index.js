@@ -90,7 +90,14 @@ export default function Login() {
 
     }, [])
 
-
+    function mostrarOcultarSenha(){
+        const senha = document.getElementById("senha");
+        if(senha.type==="password")
+            senha.type = "text";
+        
+        else 
+        senha.type = "password"
+    }
 
     document.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
@@ -102,16 +109,16 @@ export default function Login() {
 
 
     return (
-        <main className='Login-page'>
+        <main className='page-Login'>
 
             <LoadingBar color='#41B6E6' ref={ref} />
 
             <section className='logar'>
 
-                <div className='logo'>
+                <div className='logo' >
 
-                    <a href='/'>
-                        <img src='/assets/images/teste final 1.png' />
+                    <a href='/' >
+                        <img src='/assets/images/teste final 1.png'   />
                     </a>
 
                 </div>
@@ -125,9 +132,10 @@ export default function Login() {
                     </div>
 
                     <div className='senha'>
-                        <input placeholder='Senha' type='password' value={Senha} onChange={e => SetSenha(e.target.value)} />
-                    </div>
+                        <input placeholder='Senha' type='password' id='senha' value={Senha} onChange={e => SetSenha(e.target.value)}/>
 
+                    </div>
+                    
                 </div>
 
                 <div className='entrar'>

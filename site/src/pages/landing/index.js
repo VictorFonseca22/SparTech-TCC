@@ -4,18 +4,20 @@ import Categoria from '../../components/categoria';
 import Carousel from 'react-elastic-carousel';
 import Item from '../../components/carousel/Item';
 import { useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
 
 
 
 export default function Landing() {
-    
+    const [filtroNome, setFiltroNome] = useState('');
+
     const navigate = useNavigate()
 
     const breakPoints = [
-        { width: 1, itemsToShow: 1.4 },
+        { width: 1, itemsToShow: 1 },
+        { width: 480, itemsToShow: 1.4 },
         { width: 750, itemsToShow: 2.4, itemsToScroll: 2 },
-        { width: 850, itemsToShow: 3.4, itemsToScroll: 3 },
+        { width: 1100, itemsToShow: 3.4, itemsToScroll: 3 },
         { width: 1560, itemsToShow: 4.4, itemsToScroll: 4 }
     ];
 
@@ -38,16 +40,16 @@ export default function Landing() {
                 <h4>serviços mais solicitados</h4>
                 <div className='categorias'>
                     <Carousel breakPoints={breakPoints}>
-                        <Categoria nome='Montagem e Manutenção de Computadores' number="1" />
-                        <Categoria nome='limpeza e higienização de computadores' number="2" />
-                        <Categoria nome='CABEAMENTO DE REDES' number="3" />
-                        <Categoria nome='DESENVOLVIMENTO de websites' number="4" />
-                        <Categoria nome='2' number="4" />
-                        <Categoria nome='3' number="4" />
-                        <Categoria nome='4' number="4" />
-                        <Categoria nome='5' number="4" />
-                        <Categoria nome='5' number="4" />
-                        <Categoria nome='6' number="4" />
+                        <Categoria img='/assets/images/montagem.png' nome='Montagem e Manutenção de Computadores' number="1" />
+                        <Categoria img='/assets/images/clean.png' nome='limpeza e higienização de computadores' number="2" />
+                        <Categoria img='/assets/images/rede.png' nome='CABEAMENTO DE REDES' number="3" />
+                        <Categoria img='/assets/images/site.png' nome='DESENVOLVIMENTO de websites' number="4" />
+                        <Categoria img='/assets/images/windows.png' nome='Instalação de sistemas operacionais' number="4" />
+                        <Categoria img='/assets/images/aula.png' nome='Aulas particulares' number="4" />
+                        <Categoria img='/assets/images/serv.png' nome='Manutenção de servidores' number="4" />
+                        <Categoria img='/assets/images/socios.png' nome='Gestão de equipes' number="4" />
+                        <Categoria img='/assets/images/wifi.png' nome='Configuração de wi-fi' number="4" />
+                        <Categoria img='/assets/images/design.png' nome='Design de sites' number="4" />
 
                     </Carousel>
 
@@ -195,26 +197,29 @@ export default function Landing() {
 
                     <h1 className='pagamento'>Formas de pagamento:</h1>
 
-                    <div className="primeiro">
+                    <div className='responsive'>
 
-                        <img src="./assets/images/visa.png" />
-                        <img src="./assets/images/MASTERCARD.png" />
-                        <img src="./assets/images/MERCADO PAGO.png" />
+                        <div className="primeiro">
 
-                    </div>
+                            <img src="./assets/images/visa.png" />
+                            <img src="./assets/images/MASTERCARD.png" />
+                            <img src="./assets/images/MERCADO PAGO.png" />
 
-                    <div className="segundo">
+                        </div>
 
-                        <img src="./assets/images/boleto.png" />
-                        <img src="./assets/images/PIX.png" />
-                        <img src="./assets/images/PIC PAY.png" />
+                        <div className="segundo">
 
-                    </div>
+                            <img src="./assets/images/boleto.png" />
+                            <img src="./assets/images/PIX.png" />
+                            <img src="./assets/images/PIC PAY.png" />
 
-                    <div className="terceiro">
+                        </div>
 
-                        <img src="./assets/images/paypal.png" />
+                        <div className="terceiro">
 
+                            <img src="./assets/images/paypal.png" />
+
+                        </div>
                     </div>
 
                 </div>
@@ -223,7 +228,7 @@ export default function Landing() {
 
                     <div className='contrate'>
                         <h1>contrate já um profissional</h1>
-                        <button onClick={() => [navigate ('/login')]}>login</button>
+                        <button onClick={() => [navigate('/login')]}>login</button>
                     </div>
 
                     <div className="fale">
