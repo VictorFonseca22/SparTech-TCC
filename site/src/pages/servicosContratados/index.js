@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ServicoConcluido } from '../../api/servico';
 import './index.scss';
 
 export default function ServicosContratados() {
@@ -14,6 +15,15 @@ export default function ServicosContratados() {
     function home() {
         navigate('/')
     }
+
+    async function carregarConclusoes() {
+        const resposta = await ServicoConcluido(idParam);
+        setServico(resposta)
+    }
+
+    useEffect(() => {
+        carregarConclusoes()
+    }, [])
 
     function perfil() {
         navigate(`/meus-servicos/${idParam}`)
@@ -56,14 +66,11 @@ export default function ServicosContratados() {
                     
                         {servico.map(item =>
                             <tr>
-                                <td>{item.nome}</td>
-                                <td>{item.tiposerv}</td>
-                                <td>{item.dataserv}</td>
-                                <td>{item.localização}</td>
-                                <td><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></td>
-                                <td>
-                                    <img onClick={''}><img src="/assets/images/aceitar.png" alt="" /></img>
-                                </td>
+                                <td>{item.profissional}</td>
+                                <td>{item.tipo_servico}</td>
+                                <td>{item.data}</td>
+                                <td>{item.rua + ', ' + item.complemento + '- ' + item.bairro}</td>
+                                <td><a href={'https://wa.me/55' + item.telefone_cliente}><button><img src="/assets/images/chat.png" className='chat' alt="" /></button></a></td>
                             </tr>
                         )}
 

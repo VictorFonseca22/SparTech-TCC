@@ -51,6 +51,7 @@ export async function ServicosAtivosCliente(id) {
     inner join tb_tipo_serv on tb_tipo_serv.id_tipo_serv = tb_servico.id_tipo_serv
     where tb_servico.id_cliente = ?
     and srv_aprovado = true
+    and srv_status = false;
     `
 
     const [linhas] = await con.query(comando , [id]);
@@ -90,7 +91,7 @@ export async function ServicosAtivosProfissional(id) {
     return linhas;
 }
 
-<p>teste</p>
+
 
 export async function SolicitacoesServicos(id) {
     const comando = `

@@ -127,7 +127,7 @@ export default function PerfilCliente() {
 
                 <div className="voltar" onClick={voltarLP}>
                     <img src='/assets/images/voltar.png' />
-                    <h1>sair</h1>
+                    <h1>voltar</h1>
                 </div>
 
                 <div className="c">

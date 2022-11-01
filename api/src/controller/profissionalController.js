@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {BuscaProfissional, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil, fazerDenuncia} from '../repository/profissionalRepository.js'
+import {BuscaProfissional, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil, fazerDenuncia, fazerAvaliacao} from '../repository/profissionalRepository.js'
 
 const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
 const server = Router();
@@ -187,6 +187,27 @@ server.post('/denuncia', async (req, resp) => {
             erro:err.message
         })
 
+    }
+})
+server.put('/profissional/avaliacao/:id', async (req, resp) => {
+    try{
+        const avaliacao = req.body
+        const {id} = req.params;
+
+        
+        
+        const resposta =  await fazerAvaliacao(id, avaliacao);
+        
+        if(resposta != 1)
+        throw new Error('Avaliação não pôde ser inserida')
+        else
+        resp.sendStatus(204)
+    } 
+    catch(err){
+        resp.status(400).send({
+            erro:err.message
+        })
+        
     }
 })
 export default server;

@@ -128,5 +128,16 @@ values (?, ?, ?, ?, ?);
     return denuncia;
 }
 
+export async function fazerAvaliacao(id, avaliacao) {
+    const comando = `
+    update tb_avaliacao
+    set   vl_avaliacao = ?
+    where id_profissional = ?;
+    `
+    const [resp] = await con.query(comando, [avaliacao.nota, id]);
+
+    return resp.affectedRows
+}
+
 
 

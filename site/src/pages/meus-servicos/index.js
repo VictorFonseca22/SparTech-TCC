@@ -8,7 +8,7 @@ export default function MeusServicos() {
 
 
     const navigate = useNavigate()
-    const {idParam} = useParams()
+    const { idParam } = useParams()
 
     function home() {
         navigate('/')
@@ -32,7 +32,7 @@ export default function MeusServicos() {
     }
 
     function contratados() {
-        navigate('/servicos-contratados')
+        navigate(`/servicos-contratados/${idParam}`)
     }
 
     function voltar() {
@@ -44,19 +44,29 @@ export default function MeusServicos() {
         <main className='meus-servicos'>
             <header className="barra">
 
+
                 <div>
                     <img onClick={home} className='logo' src='/assets/images/teste final 1.png' />
                 </div>
 
                 <h1 className="meus">meus serviços</h1>
 
-                <div className='volta' onClick={
-                    storage
-                }>
+                {storage('profissional-logado') &&
 
-                    <img className='menu' src='/assets/images/voltar.png' />
-                    <p>voltar</p>
-                </div>
+                    <div className='volta' onClick={() => [navigate(`/perfil-profissional/${idParam}`)]}>
+
+                        <img className='menu' src='/assets/images/voltar.png' />
+                        <p>voltar</p>
+                    </div>
+                }
+                {storage('cliente-logado') &&
+
+                    <div className='volta' onClick={() => [navigate(`/perfil-cliente/${idParam}`)]}>
+
+                        <img className='menu' src='/assets/images/voltar.png' />
+                        <p>voltar</p>
+                    </div>
+                }
 
             </header>
             <section>
@@ -86,7 +96,7 @@ export default function MeusServicos() {
                         </div>
                         <div onClick={contratados}>
                             <img src="/assets/images/cubo.png" alt="" />
-                            <h4>serviços contratados</h4>
+                            <h4>serviços concluídos</h4>
                         </div>
                     </section>
                 }
