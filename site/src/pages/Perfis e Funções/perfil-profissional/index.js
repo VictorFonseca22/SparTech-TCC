@@ -1,14 +1,14 @@
 import './index.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { mostrarComentarios, MostrarPerfil, buscarImagem, inserirComentario } from '../../api/profissionalApi';
+import { mostrarComentarios, MostrarPerfil, buscarImagem, inserirComentario } from '../../../api/profissionalApi';
 import storage from 'local-storage'
 import Modal from 'react-modal'
-import Editar from '../../components/editar-perfil'
+import Editar from '../../../components/editar-perfil'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Denunciar from '../../components/denuciar-perfil';
-import Estrelas from '../../components/estrelas';
+import Denunciar from '../../../components/denuciar-perfil';
+import Estrelas from '../../../components/estrelas';
 
 export default function Perfilprofissional() {
 

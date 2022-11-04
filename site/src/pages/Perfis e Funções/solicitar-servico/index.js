@@ -1,8 +1,8 @@
 import './index.scss';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ListaCategoria } from '../../api/usuarioApi';
-import { buscarImagem, MostrarPerfil } from '../../api/profissionalApi.js'
-import { CadastrarServico, ListaPagamento} from '../../api/servico.js'
+import { ListaCategoria } from '../../../api/usuarioApi';
+import { buscarImagem, MostrarPerfil } from '../../../api/profissionalApi.js'
+import { CadastrarServico, ListaPagamento} from '../../../api/servico.js'
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';

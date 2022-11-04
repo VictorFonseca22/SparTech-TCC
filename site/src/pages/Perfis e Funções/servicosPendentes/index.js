@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './index.scss';
-import Pendente from '../../components/pendentes';
-import { ServicosAtivosProfissional, concluirServico } from '../../api/servico';
+import Pendente from '../../../components/pendentes';
+import { ServicosAtivosProfissional, concluirServico } from '../../../api/servico';
 import { toast, Toaster } from 'react-hot-toast'
 export default function ServicosPendentes() {
     const [servico, setServico] = useState([])

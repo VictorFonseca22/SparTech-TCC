@@ -4,7 +4,7 @@ import { Link} from 'react-router-dom'
 import {toast, Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import InputMask from 'react-input-mask';
-import { CadastrarProfissional, ListaCategoria } from '../../api/usuarioApi';
+import { CadastrarProfissional, ListaCategoria } from '../../../api/usuarioApi';
 
 export default function CadastroProfissional() {
     const [nome, SetNome] = useState('');

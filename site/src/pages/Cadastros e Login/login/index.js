@@ -1,10 +1,10 @@
-import { LogarCliente, LogarProfissional } from '../../api/usuarioApi';
+import { LogarCliente, LogarProfissional } from '../../../api/usuarioApi';
 import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 import { useState, useRef, useEffect } from 'react';
 import './index.scss';
 import storage from 'local-storage'
-import { LogarAdmin } from '../../api/admApi';
+import { LogarAdmin } from '../../../api/admApi';
 export default function Login() {
     const [Email, SetEmail] = useState('');
     const [Senha, SetSenha] = useState('');

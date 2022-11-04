@@ -1,14 +1,13 @@
 import './index.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { buscarImagem, MostrarPerfilCliente } from '../../api/clienteApi';
+import { buscarImagem, MostrarPerfilCliente } from '../../../api/clienteApi';
 import storage from 'local-storage'
 import Modal from 'react-modal'
-import Editar from '../../components/editar-perfil'
+import Editar from '../../../components/editar-perfil'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Denunciar from '../../components/denuciar-perfil';
-import MeusServicos from '../meus-servicos';
+import Denunciar from '../../../components/denuciar-perfil';
 
 export default function PerfilCliente() {
 
