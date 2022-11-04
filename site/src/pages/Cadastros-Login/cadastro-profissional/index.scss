@@ -1,17 +1,17 @@
 @font-face {
     font-family: 'poppins';
-    src: url(../../../public/assets/fonts/Poppins-Light.ttf);
+    src: url('../../../../public/assets/fonts/Poppins-Light.ttf');
 }
 
 @font-face {
     font-family: 'adam';
-    src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+    src: url('../../../../public/assets/fonts/ADAM.CG\ PRO.otf');
 }
 
 
 @font-face {
     font-family: 'League';
-    src: url('../../../public/assets/fonts/LeagueSpartan-Bold.otf');
+    src: url('../../../../public/assets/fonts/LeagueSpartan-Bold.otf');
 }
 
 .page-CadasProf {
@@ -30,7 +30,7 @@
     }
 
     display: flex;
-    background-image: url('../../../public/assets/images/espaço.png');
+    background-image: url('../../../../public/assets/images/espaço.png');
     align-items: center;
     justify-content: center;
     width: 100vw;

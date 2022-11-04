@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'adam';
-    src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
+    src: url('../../../../public/assets/fonts/ADAM.CG\ PRO.otf');
 }
 
 body{
     background-color: #171921;
 }
-.Perfil-Profissional {
+.Perfil-Cliente {
     display: flex;
     flex-direction: column;
     
@@ -123,6 +123,7 @@ body{
                 font-family: 'adam';
                 color: #FFF;
                 font-size: 1.6rem;
+                width: 15rem;
             }
 
             h1:hover{
@@ -268,7 +269,7 @@ body{
                             border:none;
                             display: flex;
                             align-items: center;
-                            width: 25rem;
+                            width: 26rem;
                             margin-right: 2rem;
                             margin-top: 1em;
                         }
@@ -286,10 +287,13 @@ body{
                     font-size: 1.6rem;
                     color: #FFF;
                     word-break:break-all;
-                    
                 }
     
-                
+                img{
+                    width: 3rem;
+                    margin-left: 1em;
+                    
+                }
                 button:hover{
                     scale: 1.02;
                     transition: 0.4s;
@@ -318,26 +322,20 @@ body{
         }
        
         .experiencia{
-            padding: 0rem 0rem 0rem 2rem;
+            padding: 1.5rem 0rem 0rem 2rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
-            height: 35rem;
+            justify-content: flex-start;
+            height: 20rem;
 
 
             .area-de-atuacao{
                 display: flex;
                 flex-direction: column;
-                gap: 1.5rem;                
             
             }
 
-            .licenca{
-                padding-top: 2rem;
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;                
-            }
+            
 
         }
 
