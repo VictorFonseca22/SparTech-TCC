@@ -28,7 +28,7 @@ export default function MeusServicos() {
 
     //O navigate do ativos possivelmente precisa de um endpoint
     function ativos() {
-        navigate('/servicos-ativos/1')
+        navigate(`/servicos-ativos/${idParam}`)
     }
 
     function contratados() {
@@ -77,7 +77,7 @@ export default function MeusServicos() {
                             <h4>solicitações de serviço</h4>
                         </div>
                         <div onClick={pendentes}>
-                            <img src="/assets/images/ampulheta.png" className='ampulheta' alt="" />
+                            <img src="/assets/images/ampulheta.png" alt="" />
                             <h4>serviços pendentes</h4>
                         </div>
                         <div onClick={realizados}>

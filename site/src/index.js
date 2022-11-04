@@ -3,24 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import LandingPage from './pages/landing'
-import Login from './pages/login'
-import CadastraCliente from './pages/cadastro-cliente'
-import CadastraProfissional from './pages/cadastro-profissional'
-import PerfilProfissional from './pages/perfil-profissional'
+import Login from './pages/Cadastros e Login/login'
+import CadastraCliente from './pages/Cadastros e Login/cadastro-cliente'
+import CadastraProfissional from './pages/Cadastros e Login/cadastro-profissional'
+import PerfilProfissional from './pages/Perfis e Funções/perfil-profissional'
 import BuscaProf from './pages/page-busca'
-import ServicosAtivos from './pages/servicos-ativos';
-import SolicitarServ from './pages/solicitar-servico';
-import MeusServicos from './pages/meus-servicos';
-import MenuADM from './pages/menu-adm';
-import RemocaoCli from './pages/remocaoCliente';
-import RemocaoProf from './pages/remocaoProf';
-import DenunCliente from './pages/denuncias-cliente';
-import DenunProfissional from './pages/denuncias-profissional';
-import SolicitacoesServ from './pages/solicitacoesServ';
-import ServicosRealizados from './pages/servicosRealizados';
-import ServicosPendentes from './pages/servicosPendentes';
-import PerfilCliente from './pages/perfil-cliente';
-import ServicosContratados from './pages/servicosContratados';
+import ServicosAtivos from './pages/Perfis e Funções/servicos-ativos';
+import SolicitarServ from './pages/Perfis e Funções/solicitar-servico';
+import MeusServicos from './pages/Perfis e Funções/meus-servicos';
+import MenuADM from './pages/ADM/menu-adm';
+import RemocaoCli from './pages/ADM/remocaoCliente';
+import RemocaoProf from './pages/ADM/remocaoProf';
+import DenunCliente from './pages/ADM/denuncias-cliente';
+import DenunProfissional from './pages/ADM/denuncias-profissional';
+import SolicitacoesServ from './pages/Perfis e Funções/solicitacoesServ';
+import ServicosRealizados from './pages/Perfis e Funções/servicosRealizados';
+import ServicosPendentes from './pages/Perfis e Funções/servicosPendentes';
+import PerfilCliente from './pages/Perfis e Funções/perfil-cliente';
+import ServicosContratados from './pages/Perfis e Funções/servicosContratados';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

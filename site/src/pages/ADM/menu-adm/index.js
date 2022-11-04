@@ -19,7 +19,7 @@ export default function MenuADM() {
         <main className='menuadm'>
             <header className="barra">
 
-                <div>       
+                <div>(
                     <img onClick={() => [navigate('/')]} className='logo' src='/assets/images/teste final 1.png' />
                 </div>
 

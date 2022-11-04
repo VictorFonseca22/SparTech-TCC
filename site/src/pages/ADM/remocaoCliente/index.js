@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
-import { deletarCliente, listarCliente } from '../../api/admApi';
+import { deletarCliente, listarCliente } from '../../../api/admApi';
 import {toast, Toaster } from 'react-hot-toast';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
-import {denunciaProf } from '../../api/admApi.js'
+import {denunciaProf } from '../../../api/admApi.js'
 import Modal from 'react-modal'
-import Denunciar from '../../components/denuciar-perfil';
+import Denunciar from '../../../components/denuciar-perfil';
 
 
 

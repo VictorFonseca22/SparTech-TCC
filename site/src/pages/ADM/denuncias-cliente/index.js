@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { denunciaCli } from '../../api/admApi';
+import { denunciaCli } from '../../../api/admApi';
 import Modal from 'react-modal'
-import Denunciar from '../../components/denuciar-perfil';
+import Denunciar from '../../../components/denuciar-perfil';
 import './index.scss';
 
 

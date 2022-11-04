@@ -1,8 +1,8 @@
 import './index.scss'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { buscarImagem, MostrarPerfil } from '../../api/profissionalApi.js'
-import {deletarServico, ServicosAtivosCliente } from '../../api/servico';
+import { buscarImagem, MostrarPerfil } from '../../../api/profissionalApi.js'
+import {deletarServico, ServicosAtivosCliente } from '../../../api/servico';
 import {toast, Toaster} from 'react-hot-toast'
 import storage from 'local-storage'
 import { confirmAlert } from 'react-confirm-alert'; 

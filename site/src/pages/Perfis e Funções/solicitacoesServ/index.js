@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { aceitarServiço, SolicitacoesServicos } from '../../api/servico';
+import { aceitarServiço, SolicitacoesServicos } from '../../../api/servico';
 import './index.scss';
 import { toast, Toaster } from 'react-hot-toast'
 
