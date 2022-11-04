@@ -21,14 +21,21 @@ export default function Busca() {
     }, []);
 
     async function filtrarPorNome(){
+        if(storage('Categoria')) {
+            const catLP = storage('Categoria').categoria
+            setFiltroNome(catLP)
+            storage.remove('Categoria')
+        }
+        else{
         const resposta = await listarPorNome(filtroNome);
         setProfissional(resposta);
+        }
         
     }
 
     useEffect(() => {
         filtrarPorNome()
-    }, [listarPorNome]);
+    }, [filtroNome]);
 
     function sairClick() {
         navigate('/')

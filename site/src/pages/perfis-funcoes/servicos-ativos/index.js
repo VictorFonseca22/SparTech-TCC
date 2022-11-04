@@ -61,7 +61,7 @@ export default function Serviços() {
     async function removerServico(profissional) {
         if(storage('serv-selecionado')) {
         confirmAlert({
-            title:'Remover cliente',
+            title:'Remover serviço',
             message:`Deseja remover o serviço com ${profissional} ?`,
             buttons:[
                 {

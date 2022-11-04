@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {cadastroCliente, cadastroProfissional, listarCategorias, LoginCliente, LoginProfissional} from '../repository/usuarioRepository.js'
+import {cadastroCliente, cadastroProfissional, comecarAvaliacao, listarCategorias, LoginCliente, LoginProfissional} from '../repository/usuarioRepository.js'
 
 const server = Router();
 // Cadastrar Cliente
@@ -46,7 +46,7 @@ server.post('/cadastrarCliente', async (req, resp) => {
 server.post('/cadastrarProfissional', async (req, resp) => {
     try{
         const novoCadastro = req.body;
-
+        const avaliacaoNota = 5.00;
         if(!novoCadastro.nome){
             throw new Error('Nome é obrigatório!');
         }
@@ -73,6 +73,7 @@ server.post('/cadastrarProfissional', async (req, resp) => {
         
 
         const cadastro =  await cadastroProfissional(novoCadastro);
+        await comecarAvaliacao(cadastro.IdCadastro, avaliacaoNota)
         resp.send(cadastro)
     } 
     catch(err){

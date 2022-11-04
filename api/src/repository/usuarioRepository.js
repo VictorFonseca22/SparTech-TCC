@@ -67,4 +67,12 @@ export async function listarCategorias() {
     return linhas;
 }
 
+export async function comecarAvaliacao(id, nota) {
+    const comando = `
+    insert into tb_avaliacao(id_profissional, vl_avaliacao)
+    values(?,?)
+    `
+    const [resposta] = await con.query (comando, [id, nota])
+    return resposta
+}
 

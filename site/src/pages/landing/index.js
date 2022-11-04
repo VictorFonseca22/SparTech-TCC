@@ -5,10 +5,11 @@ import Carousel from 'react-elastic-carousel';
 import Item from '../../components/carousel/Item';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import storage from 'local-storage'
 
 
 
-export default function Landing() {
+export default function Landing(props) {
     const [filtroNome, setFiltroNome] = useState('');
 
     const navigate = useNavigate()
@@ -20,6 +21,15 @@ export default function Landing() {
         { width: 1100, itemsToShow: 3.4, itemsToScroll: 3 },
         { width: 1560, itemsToShow: 4.4, itemsToScroll: 4 }
     ];
+
+
+function CardsClick(nome){
+    const idCat= (
+        {'categoria': nome}
+    )
+    storage('Categoria', idCat)
+    navigate('/busca-profissional')
+}
 
 
     return (
@@ -40,16 +50,16 @@ export default function Landing() {
                 <h4>serviços mais solicitados</h4>
                 <div className='categorias'>
                     <Carousel breakPoints={breakPoints}>
-                        <Categoria className="componente" img='/assets/images/montagem.png' nome='Montagem e Manutenção de Computadores' number="1" />
-                        <Categoria className="componente" img='/assets/images/clean.png' nome='limpeza e higienização de computadores' number="2" />
-                        <Categoria className="componente" img='/assets/images/rede.png' nome='CABEAMENTO DE REDES' number="3" />
-                        <Categoria className="componente" img='/assets/images/site.png' nome='DESENVOLVIMENTO de websites' number="4" />
-                        <Categoria className="componente" img='/assets/images/windows.png' nome='Instalação de sistemas operacionais' number="4" />
-                        <Categoria className="componente" img='/assets/images/aula.png' nome='Aulas particulares' number="4" />
-                        <Categoria className="componente" img='/assets/images/serv.png' nome='Manutenção de servidores' number="4" />
-                        <Categoria className="componente" img='/assets/images/socios.png' nome='Gestão de equipes' number="4" />
-                        <Categoria className="componente" img='/assets/images/wifi.png' nome='Configuração de wi-fi' number="4" />
-                        <Categoria className="componente" img='/assets/images/design.png' nome='Design de sites' number="4" />
+                        <Categoria className="componente" img='/assets/images/montagem.png' nome='Montagem e manutenção de computadores' number="1" botao={() => CardsClick('Manutenção de Computadores')}/>
+                        <Categoria className="componente" img='/assets/images/clean.png' nome='Limpeza e higienização de computadores' number="2" botao={() => CardsClick('Limpeza e higienização de computadores')}/>
+                        <Categoria className="componente" img='/assets/images/rede.png' nome='Cabeamento de redes' number="3" botao={() => CardsClick('Cabeamento de redes')}/>
+                        <Categoria className="componente" img='/assets/images/site.png' nome='Desenvolvimento de websites' number="4" botao={() => CardsClick('Desenvolvimento de websites')}/>
+                        <Categoria className="componente" img='/assets/images/windows.png' nome='Instalação de sistemas operacionais' number="4" botao={() => CardsClick('Instalação de sistemas operacionais')}/>
+                        <Categoria className="componente" img='/assets/images/aula.png' nome='Aulas particulares' number="4" botao={() => CardsClick('Aulas particulares')}/>
+                        <Categoria className="componente" img='/assets/images/serv.png' nome='Manutenção de servidores' number="4" botao={() => CardsClick('Manutenção de servidores')}/>
+                        <Categoria className="componente" img='/assets/images/socios.png' nome='Gestão de equipes' number="4" botao={() => CardsClick('Gestão de equipes')}/>
+                        <Categoria className="componente" img='/assets/images/wifi.png' nome='Configuração de wi-fi' number="4" botao={() => CardsClick('Configuração de wi-fi')}/>
+                        <Categoria className="componente" img='/assets/images/design.png' nome='Design de sites' number="4" botao={() => CardsClick('Design de sites')}/>
 
                     </Carousel>
 
