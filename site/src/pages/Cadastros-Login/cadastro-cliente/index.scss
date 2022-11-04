@@ -1,28 +1,16 @@
-// @font-face {
-//     font-family: 'poppins';
-//     src: url('../../../../../public/assets/fonts/Poppins-Light.ttf');
-// }
-
-// @font-face {
-//     font-family: 'adam';
-//     src: url('../../../../../public/assets/fonts/ADAM.CG\ PRO.otf');
-// }
-
-
-// @font-face {
-//     font-family: 'League';
-//     src: url('../../../../../public/assets/fonts/LeagueSpartan-Bold.otf');
-// }
-
 .page-CadasCliente {
     display: flex;
     background-image: url('../../../../public/assets/images/espaço.png');
     align-items: center;
     justify-content: center;
-    width: 100vw;
     height: 100vh;
+    padding: 0rem 4rem;
 
-
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        // border: 1px green solid;
+    }
 
     @keyframes flutuacao {
 
@@ -47,6 +35,9 @@
         justify-content: space-around;
         max-width: 43rem;
 
+
+
+
         .a {
             width: 43% !important;
         }
@@ -69,7 +60,7 @@
 
             input,
             select {
-                width: 94%;
+                width: 90%;
                 height: 2rem;
                 background: #D9D9D9;
                 border-radius: 10rem;
@@ -94,17 +85,15 @@
                 padding-left: 1rem;
             }
 
-
-            input,
-            select {
-                width: 94%;
+            input {
+                width: 90%;
                 height: 2rem;
                 background: #D9D9D9;
                 border-radius: 10rem;
                 border: none;
                 padding: 0rem 1rem;
                 outline: none;
-                font-family: 'adam';
+                font-family: 'poppins';
             }
         }
 
@@ -122,7 +111,8 @@
             display: flex;
             align-items: center;
             justify-content: space-evenly;
-            width: 25rem;
+            max-width: 25rem;
+            width: 80%;
 
             .profissional {
                 width: 9rem;
@@ -190,6 +180,18 @@
             justify-content: center;
             align-items: center;
             padding-top: 2rem;
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 80%;
+                    min-width: 10rem;
+                }
+
+            }
         }
 
 
@@ -215,25 +217,154 @@
 
     .astronauta {
 
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 50%;
+        width: 50%;
+        justify-content: space-evenly;
 
         .ola {
             width: 100%;
-            height: 100%;
-            max-width: 40rem;
+            max-width: 35rem;
+            // min-width: 20rem;
             animation: flutuacao 8s ease-in-out infinite;
-            max-height: 40rem;
         }
 
         h1 {
             font-family: 'adam';
             color: white;
+            z-index: 1;
             text-align: center;
         }
 
     }
 
+    @media(max-width:1000px) {
+        * {
+            // border: 1px green solid;
+        }
+
+        .cadastra {
+
+            input {
+                width: 100%;
+            }
+
+            .fazer {
+                width: 80%;
+            }
+
+        }
+
+        .astronauta {
+            width: 50%;
+        }
+
+    }
+
+    @media(max-width:950px) {
+        .astronauta {
+            position: absolute;
+            z-index: 2;
+            width: 80%;
+            max-width: none;
+            height: 100vh;
 
 
+            h1 {
+                position: absolute;
+                top: 4%;
+            }
+
+        }
+
+        .cadastra {
+            z-index: 3;
+            background: #282c3bce;
+
+        }
+    }
+
+    @media(max-width:690px) {
+        .informações {
+            font-size: 1rem;
+            width: 20rem;
+            text-align: center;
+        }
+    }
+
+
+
+
+}
+
+@media(max-width: 550px) {
+    * {
+        // border: 1px green solid;
+    }
+
+    .page-CadasCliente {
+        height: 70rem !important;
+
+
+        .astronauta {
+                
+    
+    
+            h1 {
+                top: -5% !important;
+            }
+
+        }
+        .cadastra {
+            border-radius: 4rem 8rem;
+            height: 60rem;
+
+
+
+            
+
+            .dois {
+                flex-direction: column;
+                height: 8rem;
+
+
+
+            }
+
+            .text,
+            .text-telefone {
+                width: 100%;
+                max-width: 35rem;
+
+                label {
+                    align-self: flex-start;
+                    padding-left: 2rem;
+                }
+
+
+                input,
+                select {
+                    width: 90%;
+                    height: 2rem;
+                    background: #D9D9D9;
+                    border-radius: 10rem;
+                    border: none;
+                    padding: 0rem 1rem;
+                    outline: none;
+                    font-family: 'poppins';
+                }
+
+            }
+
+
+            .tipo {
+                flex-direction: column;
+                height: 10rem;
+            }
+
+        }
+    }
 
 }
