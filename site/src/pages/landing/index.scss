@@ -364,6 +364,8 @@
 
         }
 
+        
+
         .direita {
             background: linear-gradient(180deg, rgba(58, 108, 131, 0) 0%, rgba(58, 108, 131, 0.72) 100%);
             border-radius: 1.6rem;
@@ -1015,7 +1017,7 @@
     @media(max-width:580px) {
         
         *{
-            border: 1px solid green;
+            // border: 1px solid green;
         }
 
         .historia{  

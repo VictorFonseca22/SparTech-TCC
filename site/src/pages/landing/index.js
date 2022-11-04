@@ -24,7 +24,7 @@ export default function Landing() {
 
     return (
         <main className='landing-page'>
-            <Header />
+            <Header className="cabeca" />
 
             <section className='faixa-1'>
 
@@ -40,16 +40,16 @@ export default function Landing() {
                 <h4>serviços mais solicitados</h4>
                 <div className='categorias'>
                     <Carousel breakPoints={breakPoints}>
-                        <Categoria img='/assets/images/montagem.png' nome='Montagem e Manutenção de Computadores' number="1" />
-                        <Categoria img='/assets/images/clean.png' nome='limpeza e higienização de computadores' number="2" />
-                        <Categoria img='/assets/images/rede.png' nome='CABEAMENTO DE REDES' number="3" />
-                        <Categoria img='/assets/images/site.png' nome='DESENVOLVIMENTO de websites' number="4" />
-                        <Categoria img='/assets/images/windows.png' nome='Instalação de sistemas operacionais' number="4" />
-                        <Categoria img='/assets/images/aula.png' nome='Aulas particulares' number="4" />
-                        <Categoria img='/assets/images/serv.png' nome='Manutenção de servidores' number="4" />
-                        <Categoria img='/assets/images/socios.png' nome='Gestão de equipes' number="4" />
-                        <Categoria img='/assets/images/wifi.png' nome='Configuração de wi-fi' number="4" />
-                        <Categoria img='/assets/images/design.png' nome='Design de sites' number="4" />
+                        <Categoria className="componente" img='/assets/images/montagem.png' nome='Montagem e Manutenção de Computadores' number="1" />
+                        <Categoria className="componente" img='/assets/images/clean.png' nome='limpeza e higienização de computadores' number="2" />
+                        <Categoria className="componente" img='/assets/images/rede.png' nome='CABEAMENTO DE REDES' number="3" />
+                        <Categoria className="componente" img='/assets/images/site.png' nome='DESENVOLVIMENTO de websites' number="4" />
+                        <Categoria className="componente" img='/assets/images/windows.png' nome='Instalação de sistemas operacionais' number="4" />
+                        <Categoria className="componente" img='/assets/images/aula.png' nome='Aulas particulares' number="4" />
+                        <Categoria className="componente" img='/assets/images/serv.png' nome='Manutenção de servidores' number="4" />
+                        <Categoria className="componente" img='/assets/images/socios.png' nome='Gestão de equipes' number="4" />
+                        <Categoria className="componente" img='/assets/images/wifi.png' nome='Configuração de wi-fi' number="4" />
+                        <Categoria className="componente" img='/assets/images/design.png' nome='Design de sites' number="4" />
 
                     </Carousel>
 
