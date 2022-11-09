@@ -6,7 +6,9 @@ import { con } from "./connection.js";
 export async function BuscaProfissional(nome) {
     const comando =
         `
-    select p.nm_profissional    nome,
+    select 
+        p.id_profissional    id,
+        p.nm_profissional    nome,
        tb_tipo_serv.nm_servico  serviço,
        p.nr_servicos            n°servicos,
        p.id_profissional        id,

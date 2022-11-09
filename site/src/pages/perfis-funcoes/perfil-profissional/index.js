@@ -209,7 +209,7 @@ export default function Perfilprofissional() {
                                 </div>
                             </div>
                             <div className='editar'>
-                                {storage('profissional-logado') &&
+                                {storage('profissional-logado').id == idParam &&
                                     <div className='botoes-perfil'>
 
                                         <button className='botao-refresh' onClick={recarregarAPagina}>

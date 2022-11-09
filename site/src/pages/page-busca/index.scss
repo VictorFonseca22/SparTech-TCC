@@ -89,8 +89,7 @@
         src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
     }
     .CardProf{
-    
-        width: 100%;
+
         max-width: 24rem;
         border-radius: 1.5rem;
         height: 100%;
@@ -101,7 +100,6 @@
         align-items: center;
         justify-content: space-around;
         cursor: pointer;
-    
         .foto{
             width: 100%;
             max-width: 8rem;
@@ -173,4 +171,8 @@
         
     }
 
+    .ColunaCard{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

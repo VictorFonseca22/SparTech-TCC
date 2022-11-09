@@ -15,6 +15,7 @@ export default function Busca() {
     async function carregarTodosProfissionais(){
         const resposta = await listarTodosProfissionais();
         setProfissional(resposta);
+        
     }
     useEffect(() => {
         carregarTodosProfissionais();
@@ -41,11 +42,7 @@ export default function Busca() {
         navigate('/')
     }
 
-    function clickProfissional () {
-        console.log(profissional)
-        navigate (`/perfil-profissional/${profissional[0].id}`)
-    }
-
+    
     return (
         <main className='Busca-prof'>
 
@@ -83,9 +80,9 @@ export default function Busca() {
             <div className='resultado'>
         {profissional.map(item => 
             
+        <div className='ColunaCard'>
             
-            
-        <div className='CardProf' onClick={clickProfissional}>
+        <div className='CardProf' onClick={() => [navigate (`/perfil-profissional/${item.id}`)]}>
 
             <img className="foto" src={buscarImagem(item.foto)}/>
             <div className='info'>
@@ -115,7 +112,7 @@ export default function Busca() {
                 
 
             </div>
-
+            </div>
         </div>
 )}
 
