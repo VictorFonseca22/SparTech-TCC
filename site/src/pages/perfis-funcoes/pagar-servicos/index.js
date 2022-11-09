@@ -101,20 +101,44 @@ export default function PagarServico() {
 
                             <input type='radio' />
 
-                            <div className='cartão'>
-
-                                <img src="./assets/images/cartão.png"  />
-                                <p>cartão de crédito/debito</p>
-
-                            </div>
+                                <div className='cartão'>
+                                    <img src="./assets/images/cartão.png" />
+                                    <p>cartão de crédito/debito</p>
+                                </div>
 
                             <input type='radio' />
 
-                            <div className='boleto'>
+                                <div className='boleto'>
+                                    <img src='./assets/images/boleto.png' />
+                                    <p>boleto bancário</p>
+                                </div>
 
-                                <img src='' />
-                                <p>boleto bancário</p>
+                            <input type='radio' />
 
+                                <div className='pix'>
+                                    <img src='./assets/images/pix.png' />
+                                    <p>pix</p>
+                                </div>
+
+                            <input type='radio' />
+
+                                <div className='mercado'>
+                                    <img src='./assets/images/mercado pago.png' />
+                                    <p>mercado pago</p>
+                                </div>
+                            
+                            <input type='radio' />
+
+                                <div className='pic'>
+                                    <img src='./assets/images/pic pay.png' />
+                                    <p>pic pay</p>
+                                </div>
+
+                            <input type='radio' />
+                            
+                            <div className='pay'>
+                                <img src='./assets/images/paypal.png' />
+                                <p>pay pal</p>
                             </div>
 
                         </div>
