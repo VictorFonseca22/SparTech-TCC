@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {BuscaProfissional, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil, fazerDenuncia, fazerAvaliacao} from '../repository/profissionalRepository.js'
+import {BuscaProfissional, enviarFotoProfissional, fazerComentario, PerfilProfissional, verComentarios, ConsultarTodos, editarPerfil, fazerDenuncia, fazerAvaliacao, PrecificarServico} from '../repository/profissionalRepository.js'
 
 const uploadProfissional = multer({ dest: 'storage/FotosProfissional'})
 const server = Router();
@@ -75,9 +75,10 @@ server.post('/comentario', async (req, resp) => {
 })
 
 //Ver Comentários
-server.get('/verComentario', async (req, resp) => {
+server.get('/verComentario/:id', async (req, resp) => {
     try{
-        const resposta = await verComentarios();
+        const id = req.params.id
+        const resposta = await verComentarios(id);
         resp.send(resposta)
     }
     catch(err){
@@ -200,6 +201,26 @@ server.put('/profissional/avaliacao/:id', async (req, resp) => {
         
         if(resposta != 1)
         throw new Error('Avaliação não pôde ser inserida')
+        else
+        resp.sendStatus(204)
+    } 
+    catch(err){
+        resp.status(400).send({
+            erro:err.message
+        })
+        
+    }
+})
+server.put('/profissional/preco/:id', async (req, resp) => {
+    try{
+        const {id} = req.params;
+        const preco = req.body
+
+        const resposta =  await PrecificarServico(id, preco);
+        
+        if(!preco.preco){
+            throw new Error('Não é possível aceitar um serviço sem precificar')
+        }
         else
         resp.sendStatus(204)
     } 

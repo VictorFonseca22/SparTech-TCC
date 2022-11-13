@@ -42,7 +42,7 @@ export default function Perfilprofissional() {
 
 
     async function carregarTodosComentarios() {
-        const resposta = await mostrarComentarios();
+        const resposta = await mostrarComentarios(idParam);
         setComentario(resposta);
     }
     useEffect(() => {
@@ -75,10 +75,12 @@ export default function Perfilprofissional() {
     }
 
     async function fazerComentario() {
+        if(storage('cliente-logado')) {
         const IDcliente = storage('cliente-logado').id
         const resposta = await inserirComentario(IDcliente, idParam, comentar)
         setComentar('')
         toast.success('Comentário realizado!')
+        }
     }
 
     function NavegarParaServico() {
@@ -209,22 +211,22 @@ export default function Perfilprofissional() {
                                 </div>
                             </div>
                             <div className='editar'>
-                                {storage('profissional-logado').id == idParam &&
-                                    <div className='botoes-perfil'>
+                            {storage('profissional-logado') &&
+                                <div className='botoes-perfil'>
 
-                                        <button className='botao-refresh' onClick={recarregarAPagina}>
-                                            <h1 className="perfil-refresh">atualizar informações</h1>
-                                            <img class="spinner is-animating" src='/assets/images/atualizar.png' />
-                                        </button>
+                                    <button className='botao-refresh' onClick={recarregarAPagina}>
+                                        <h1 className="perfil-refresh">atualizar informações</h1>
+                                        <img class="spinner is-animating" src='/assets/images/atualizar.png' />
+                                    </button>
 
 
-                                        <button onClick={openModalEditar} className="botao-editar">
-                                            <h1 className="perfil">editar perfil</h1>
-                                            <img className='editar-animation' src='/assets/images/caneta.png' />
-                                        </button>
+                                    <button onClick={openModalEditar} className="botao-editar">
+                                        <h1 className="perfil">editar perfil</h1>
+                                        <img className='editar-animation' src='/assets/images/caneta.png' />
+                                    </button>
 
-                                    </div>
-                                }
+                                </div>
+                            }
                                 {storage('adm-logado') &&
                                     <div className='botoes-perfil'>
 
@@ -320,6 +322,9 @@ export default function Perfilprofissional() {
 
 
                     )}
+                    {comentario.length == 0 &&
+                    <p>Esse profissional não tem comentários.</p>
+                    }
                 </div>
 
             </div>

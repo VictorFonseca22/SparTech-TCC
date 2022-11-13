@@ -75,6 +75,7 @@ export default function ServicosPendentes() {
                         tiposerv={item.tipo_servico} 
                         datalimite={item.data} 
                         localizacao={item.rua + ', ' + item.complemento + '- ' + item.bairro}
+                        preco={item.valor}
                         telefone={item.tel_cliente}
                         profissional={item.profissional}
                         funcao={ConcluiSolicitacao}

@@ -63,3 +63,9 @@ export async function deletarServico(id){
     const resposta = await api.delete(`/deletarservico/${id}`);
     return resposta.status;
 }
+export async function PrecificarServico(id, preco){
+    const resposta = await api.put(`/profissional/preco/${id}`, {
+        preco:preco
+    })
+    return resposta.status;
+}

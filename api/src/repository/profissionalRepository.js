@@ -69,19 +69,19 @@ values (?, ?, ?, sysdate());
     return comentario;
 }
 
-export async function verComentarios() {
+export async function verComentarios(id) {
     const comando = `
     select id_comentario    id,
        nm_cliente       cliente,
-       nm_profissional  profissional,
+       id_profissional  profissional,
        ds_comentario    comentário,
        DATE_FORMAT (dt_comentario,'%d/%m/%Y %H:%i:%S') AS 'data'
     from tb_comentario_prof
     inner join tb_cliente on tb_cliente.id_cliente = tb_comentario_prof.id_cliente
-    inner join tb_profissional on tb_profissional.id_profissional = tb_comentario_prof.id_profissional;
+    where tb_comentario_prof.id_profissional = ?
     `
 
-    const [linhas] = await con.query(comando)
+    const [linhas] = await con.query(comando, [id])
     return linhas
 }
 
@@ -140,6 +140,17 @@ export async function fazerAvaliacao(id, avaliacao) {
 
     return resp.affectedRows
 }
+export async function PrecificarServico(id, preco) {
+    const comando = `
+    update tb_servico
+    set   vl_pagt = ?
+    where id_servico = ?;
+    `
+    const [resp] = await con.query(comando, [preco.preco, id]);
+
+    return resp.affectedRows
+}
+
 
 
 

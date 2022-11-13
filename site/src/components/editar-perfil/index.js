@@ -131,7 +131,7 @@ export default function Editar() {
 
                 {!foto &&
                     <img onClick={EscolherFoto} src='/assets/images/foto.png' />
-
+ 
                 }
 
                 {foto &&

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { aceitarServiço, SolicitacoesServicos } from '../../../api/servico';
+import { aceitarServiço, SolicitacoesServicos, PrecificarServico } from '../../../api/servico';
 import './index.scss';
 import { toast, Toaster } from 'react-hot-toast'
 
 export default function SolicitacoesServ() {
     const [clientes, setClientes] = useState([])
+    const [preco, setPreco] = useState()
 
     const navigate = useNavigate();
     const { idParam } = useParams()
@@ -29,13 +30,16 @@ export default function SolicitacoesServ() {
 
     async function AceitarSolicitacao(id) {
         try {
-            const resposta = await aceitarServiço(id);
+            const precificar = await PrecificarServico(id, preco)
+            console.log(precificar)
+            await aceitarServiço(id);
             toast.loading('Aceitando...');
 
             setTimeout(() => {
                 toast.dismiss();
                 toast.success('Serviço aceito!')
             }, 600);
+            
         }
         catch (err) {
             if (err.response)
@@ -45,10 +49,6 @@ export default function SolicitacoesServ() {
             }
         }
     }
-
-
-
-
 
     return (
         <main className="remocao">
@@ -75,6 +75,7 @@ export default function SolicitacoesServ() {
                             <th>tipo de serviço</th>
                             <th>data do serviço</th>
                             <th>localização</th>
+                            <th>Valor</th>
                             <th className="fim">decisão</th>
                         </tr>
 
@@ -87,6 +88,7 @@ export default function SolicitacoesServ() {
                                 <td>{item.tipo_servico}</td>
                                 <td>{item.data}</td>
                                 <td>{item.rua + ', ' + item.complemento + '- ' + item.bairro}</td>
+                                <td><input type='number' className='setar-preco' value={preco} onChange={e => setPreco(e.target.value)}/></td>
                                 <td>
                                     <button onClick={() => AceitarSolicitacao(item.id)}><img src="/assets/images/aceitar.png" alt="" /></button>
                                     <button onClick={''}><img src="/assets/images/recusar.png" alt="" /></button>

@@ -13,8 +13,8 @@ export async function MostrarPerfil(id) {
 
 
 
-export async function mostrarComentarios(){
-    const resposta = await api.get('/verComentario');
+export async function mostrarComentarios(id){
+    const resposta = await api.get(`/verComentario/${id}`);
     return resposta.data;
 } 
 
