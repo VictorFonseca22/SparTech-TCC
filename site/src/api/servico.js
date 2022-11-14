@@ -69,3 +69,7 @@ export async function PrecificarServico(id, preco){
     })
     return resposta.status;
 }
+export async function ServicoPorId(id){
+    const resposta = await api.get(`/servico/${id}`)
+    return resposta.data;
+}

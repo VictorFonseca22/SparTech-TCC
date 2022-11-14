@@ -2,10 +2,10 @@ import './index.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ListaCategoria } from '../../../api/usuarioApi';
 import { buscarImagem, MostrarPerfil } from '../../../api/profissionalApi.js'
-import { CadastrarServico, ListaPagamento} from '../../../api/servico.js'
+import { CadastrarServico, ListaPagamento } from '../../../api/servico.js'
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import storage from 'local-storage'
 
@@ -22,11 +22,11 @@ export default function SolicitarServ() {
     const [uf, setUf] = useState('');
     const [limite, setLimite] = useState('');
     const [detalhes, setDetalhes] = useState('');
-    
+
     const [pagamento, setPagamento] = useState([]);
     const [idPagamento, setIdPagamento] = useState();
 
-    
+
 
     const { register, handleSubmit, setValue, setFocus } = useForm();
 
@@ -39,10 +39,15 @@ export default function SolicitarServ() {
     async function SalvarServico() {
         try {
             await CadastrarServico(idCliente, idParam, IdServico, idPagamento, rua, complemento, bairro, cidade, uf, limite, detalhes)
-            toast.success('Serviço cadastrado! ✅');
+            toast.loading("Contratando...")
+
+            setTimeout(() => {
+                toast.dismiss();
+                toast.success(`Serviço cadastrado! ✅`)
+            }, 600);
         } catch (err) {
             if (err.response)
-               toast.error(err.response.data.erro);
+                toast.error(err.response.data.erro);
             else {
                 toast.error(err.message)
             }
@@ -113,7 +118,7 @@ export default function SolicitarServ() {
     return (
 
         <main className='page-solicitar'>
-            <ToastContainer/>
+            <Toaster />
 
             <header className='barra'>
 
@@ -152,7 +157,7 @@ export default function SolicitarServ() {
 
                         )}
 
-                        <textarea className='textarea' placeholder='Descreva o serviço a ser feito' type='text' value={detalhes} onChange={e => setDetalhes(e.target.value)}/>
+                        <textarea className='textarea' placeholder='Descreva o serviço a ser feito' type='text' value={detalhes} onChange={e => setDetalhes(e.target.value)} />
 
                     </div>
 
@@ -185,19 +190,19 @@ export default function SolicitarServ() {
 
                                 <div className='linha-tex'>
 
-                                <div className='tex-1'>
+                                    <div className='tex-1'>
                                         <p>Bairro:</p>
 
-                                        <input type='text' placeholder='val-fl...' {...register("neighborhood")}  value={bairro} onChange={e => setBairro(e.target.value)}/>
+                                        <input type='text' placeholder='val-fl...' {...register("neighborhood")} value={bairro} onChange={e => setBairro(e.target.value)} />
                                     </div>
                                     <div className='tex-2'>
                                         <p>complemento:</p>
 
-                                        <input type='text' placeholder='nº/apto...' value={complemento} onChange={e => setComplemento(e.target.value)}/>
+                                        <input type='text' placeholder='nº/apto...' value={complemento} onChange={e => setComplemento(e.target.value)} />
 
                                     </div>
 
-                                    
+
                                 </div>
                                 <div className='linha-tex'>
 
@@ -206,14 +211,14 @@ export default function SolicitarServ() {
 
                                         <p>Cidade:</p>
 
-                                        <input type='text' {...register("city")} placeholder='embú-gua...'  value={cidade} onChange={e => setCidade(e.target.value)}/>
+                                        <input type='text' {...register("city")} placeholder='embú-gua...' value={cidade} onChange={e => setCidade(e.target.value)} />
 
                                     </div>
 
                                     <div className='tex-2'>
                                         <p>Estado:</p>
 
-                                        <input type='text' placeholder='sp' {...register("uf")}  value={uf} onChange={e => setUf(e.target.value)}/>
+                                        <input type='text' placeholder='sp' {...register("uf")} value={uf} onChange={e => setUf(e.target.value)} />
                                     </div>
                                 </div>
                             </form>
@@ -224,7 +229,7 @@ export default function SolicitarServ() {
                                     <p>tipo de serviço:</p>
 
                                     <select value={IdServico} onChange={e => SetIdServico(e.target.value)}>
-                                        <option selected  hidden>Selecione</option>
+                                        <option selected hidden>Selecione</option>
 
                                         {servico.map(item =>
                                             <option value={item.IdCategoria}> {item.servico} </option>
@@ -238,7 +243,7 @@ export default function SolicitarServ() {
 
                                     <p>data limite:</p>
 
-                                    <input type='date' className="data" value={limite} onChange={e => setLimite(e.target.value)}/>
+                                    <input type='date' className="data" value={limite} onChange={e => setLimite(e.target.value)} />
 
                                 </div>
 
@@ -257,12 +262,12 @@ export default function SolicitarServ() {
                                 <p>método de pagamento:</p>
 
                                 <select className="abc" value={idPagamento} onChange={e => setIdPagamento(e.target.value)}>
-                                    <option selected  hidden>Selecione</option>
+                                    <option selected hidden>Selecione</option>
 
                                     {pagamento.map(item =>
-                                <option value={item.idPagamento}> {item.pagamento} </option>
-                            )}
-                                    
+                                        <option value={item.idPagamento}> {item.pagamento} </option>
+                                    )}
+
 
                                 </select>
 
@@ -275,8 +280,8 @@ export default function SolicitarServ() {
                     </div>
                 </div>
                 <div>
-                <button className='botao' onClick={SalvarServico}>contratar serviço</button>
-                <button className='botao' onClick={servicosAtivos}>serviços ativos</button>
+                    <button className='botao' onClick={SalvarServico}>contratar serviço</button>
+                    <button className='botao' onClick={servicosAtivos}>serviços ativos</button>
                 </div>
 
             </div>

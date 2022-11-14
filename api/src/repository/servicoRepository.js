@@ -90,6 +90,38 @@ export async function ServicosAtivosProfissional(id) {
     const [linhas] = await con.query(comando , [id]);
     return linhas;
 }
+export async function ServicosAtivosClienteporId(id) {
+    const comando = `
+    select tb_servico.id_servico             id,
+    tb_cliente.nm_cliente      cliente, 
+    tb_cliente.ds_telefone            tel_cliente,
+    tb_profissional.nm_profissional        profissional, 
+    tb_profissional.arq_foto            foto,
+    tb_profissional.ar_atuacao            area,
+    tb_tipo_serv.nm_servico             tipo_servico, 
+    tb_servico.id_pagamento           tipo_pagamento, 
+    tb_servico.ds_logradouro          rua, 
+    tb_servico.ds_complemento         complemento, 
+    tb_servico.ds_bairro              bairro, 
+    tb_servico.ds_cidade              cidade, 
+    tb_servico.ds_uf                  estado, 
+    DATE_FORMAT (tb_servico.dt_limite,'%d/%m/%Y') AS 'data', 
+    tb_servico.vl_pagt                valor, 
+    tb_servico.ds_detalhes            detalhes, 
+    tb_servico.ds_situacao            situacao               
+
+    from tb_servico
+    inner join tb_cliente on tb_cliente.id_cliente = tb_servico.id_cliente
+    inner join tb_profissional on tb_profissional.id_profissional = tb_servico.id_profissional
+    inner join tb_tipo_serv on tb_tipo_serv.id_tipo_serv = tb_servico.id_tipo_serv
+    where tb_servico.id_servico = ?
+    and srv_aprovado = true
+    and srv_status = false;
+    `
+
+    const [linhas] = await con.query(comando , [id]);
+    return linhas;
+}
 
 
 

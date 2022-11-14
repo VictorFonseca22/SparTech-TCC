@@ -25,7 +25,7 @@ import PagarServico from './pages/perfis-funcoes/pagar-servicos';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LandingPage />} />
@@ -51,11 +51,12 @@ root.render(
         <Route path='/servicos-realizados/:idParam' element={<ServicosRealizados />} />
         <Route path='/servicos-pendentes/:idParam' element={<ServicosPendentes />} />
         <Route path='/servicos-contratados/:idParam' element={<ServicosContratados />} />
-        <Route path='/pagamento' element={<PagarServico />} />
+        <Route path='/pagamento/:idParam' element={<PagarServico />} />
         
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+
+  
 );
 
 

@@ -10,11 +10,12 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Serviços() {
     const [infoServico, setInfoServico] = useState([])
+    const [checked, setChecked] = useState(false)
     const [erro, setErro] = useState('');
 
     const navigate = useNavigate()
     const { idParam } = useParams()
-    
+    const senha = document.getElementById("faq-titulo-2");
 
     function home() {
         navigate('/')
@@ -23,35 +24,29 @@ export default function Serviços() {
     function voltar() {
         navigate(`/meus-servicos/${idParam}`)
     }
-    
-    function selecionarServico(id, preco) {
-       
-        const idServ = (
-            { 'id': id }
-        )
-        const precServ = (
-            { 'preco': preco }
-        )
 
+    function selecionarServico(id, preco, nome) {
         storage.remove('serv-selecionado')
-        storage.remove('prec-selecionado')
-
+        const idServ = (
+            {
+                'id': id,
+                'preco': preco,
+                'nome': nome
+            }
+        )
         storage('serv-selecionado', idServ)
-        storage('prec-selecionado', precServ)
-        const senha = document.getElementById("faq-titulo-2");
+
         if (senha.checked == false) {
             senha.checked = true;
-
         }
         else {
             senha.checked = false
             storage.remove('serv-selecionado')
-            storage.remove('prec-selecionado')
         }
+        setTimeout(() => {
+            setChecked(!checked);
+        }, 150)
         
-        
-
-
     }
 
     async function carregarServico() {
@@ -68,9 +63,12 @@ export default function Serviços() {
 
     useEffect(() => {
         carregarServico();
-       
-       
     }, [])
+
+
+
+
+
 
     async function removerServico(profissional) {
         if (storage('serv-selecionado')) {
@@ -90,6 +88,7 @@ export default function Serviços() {
                             setTimeout(() => {
                                 toast.dismiss();
                                 toast.success(`Você removeu seu serviço com ${profissional}`)
+                                storage.remove('serv-selecionado')
                             }, 600);
 
 
@@ -136,9 +135,8 @@ export default function Serviços() {
                 <section className="ajuste">
                     {infoServico.map(item =>
 
-                        <div className='informacoes' onClick={() => selecionarServico(item.id, item.valor)}>
+                        <div className='informacoes' onClick={() => selecionarServico(item.id, item.valor, item.profissional)}>
                             <input class="trigger-input" id="faq-titulo-2" type="radio" />
-
 
                             <div className='mapeamento-perfil'>
                                 <img src={buscarImagem(item.foto)} />
@@ -220,7 +218,7 @@ export default function Serviços() {
                             <div className='valor'>
                                 <p>valor total do serviço</p>
 
-                                <p>R${storage('prec-selecionado').preco}</p>
+                                <p>R${storage('serv-selecionado').preco}</p>
                             </div>
 
 
@@ -228,7 +226,7 @@ export default function Serviços() {
                             <hr />
                             {infoServico.map(item =>
                                 <div className="button">
-                                    <button className='pagar'>
+                                    <button className='pagar' onClick={() => [navigate(`/pagamento/${item.id}`)]}>
                                         pagar serviço concluído
                                     </button>
 

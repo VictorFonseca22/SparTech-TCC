@@ -1,13 +1,37 @@
 import './index.scss';
-
-
+import { ServicoPorId } from '../../../api/servico';
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { buscarImagem } from '../../../api/profissionalApi.js'
+import { toast, Toaster } from 'react-hot-toast'
+import storage from 'local-storage'
+import Pagamento from '../../../components/metodPagamento';
 export default function PagarServico() {
 
+    const [info, setInfo] = useState([])
+    const [checked, setChecked] = useState("cartao");
+
+    const { idParam } = useParams()
+
+    async function carregarServico() {
+        try {
+            const resposta = await ServicoPorId(idParam);
+            setInfo(resposta)
+        }
+        catch (err) {
+            if (err.response.status == 400) {
+                toast.error(err.response.data.erro);
+            }
+        }
+    }
+    useEffect(() => {
+        carregarServico()
+    }, [])
 
 
     return (
         <main className='page-pagamento'>
-
+            <Toaster />
             <header className="barra">
 
                 <div>
@@ -30,118 +54,173 @@ export default function PagarServico() {
                 <section className="ajuste">
 
                     <section className='pag'>
-
-                        <div className='informacoes' >
-                            <input class="trigger-input" id="faq-titulo-2" type="radio" />
+                        {info.map(item =>
 
 
-                            <div className='mapeamento-perfil'>
-                                <img src='./assets/images/moça.png' />
-                                <div className='ramo'>
-                                    <h1>Maria</h1>
+                            <div className='informacoes' >
+                                <input class="trigger-input" id="faq-titulo-2" type="radio" />
 
-                                    <p>Programação</p>
+
+                                <div className='mapeamento-perfil'>
+                                    <img src={buscarImagem(item.foto)} />
+                                    <div className='ramo'>
+                                        <h1>{item.profissional}</h1>
+
+                                        <p>{item.area}</p>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div className="dois">
+                                    <div className='info'>
+                                        <h2>serviço a realizar</h2>
+
+                                        <p>{item.detalhes}</p>
+                                    </div>
+
+                                    <div className='info'>
+                                        <h2>valor a ser pago</h2>
+
+                                        <p>R${item.valor}</p>
+                                    </div>
+
+                                </div>
+
+                                <div className="dois">
+
+                                    <div className='endeinforeco'>
+                                        <h2>endereço do serviço</h2>
+
+                                        <p>{item.rua}, {item.complemento} - {item.cidade} - {item.estado}</p>
+                                    </div>
+
+                                    <div className='info'>
+                                        <h2>data de entrega marcada</h2>
+
+                                        <p>22-08-2022</p>
+                                    </div>
+
+                                </div>
+
+                                <div className="dois">
+
+                                    <div className='info'>
+                                        <h2>data limite</h2>
+
+                                        <p>{item.data}</p>
+                                    </div>
+
+                                    <div className='info'>
+                                        <h2>situação do serviço</h2>
+
+                                        <p>Pendente</p>
+                                    </div>
+
                                 </div>
                             </div>
+                        )}
+                        <div className='tipo-pag'>
+                            <div className='pagamento'>
 
 
 
-
-
-
-                            <div className="dois">
-                                <div className='info'>
-                                    <h2>serviço a realizar</h2>
-
-                                    <p>fazer um site</p>
+                                <div className='pag-tipo'>
+                                    <input type='radio' name='pag' checked={checked === "cartao"} value="cartao" onChange={(e) => {
+                                        setChecked(e.target.value)
+                                    }} />
+                                    <div className='text-pag'>
+                                        <img src="/assets/images/cartão.png" />
+                                        <p>cartão de crédito/debito</p>
+                                    </div>
                                 </div>
 
-                                <div className='info'>
-                                    <h2>valor a ser pago</h2>
 
-                                    <p>R$500</p>
+
+                                <div className='pag-tipo'>
+                                    <input type='radio' name='pag' checked={checked === "boleto"} value="boleto" onChange={(e) => {
+                                        setChecked(e.target.value)
+                                    }} />
+                                    <div className='text-pag'>
+                                        <img src='/assets/images/boleto.png' />
+                                        <p>boleto bancário</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div className='pag-tipo'>
+                                    <input type='radio' name='pag' checked={checked === "pix"} value="pix" onChange={(e) => {
+                                        setChecked(e.target.value)
+                                    }} />
+                                    <div className='text-pag'>
+                                        <img src='/assets/images/pix.png' />
+                                        <p>pix</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div className='pag-tipo'>
+                                    <input type='radio' name='pag' checked={checked === "mercado-pago"} value="mercado-pago" onChange={(e) => {
+                                        setChecked(e.target.value)
+                                    }} />
+                                    <div className='text-pag'>
+                                        <img src='/assets/images/mercado pago.png' />
+                                        <p>mercado pago</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div className='pag-tipo'>
+                                    <input type='radio' name='pag' checked={checked === "picpay"} value="picpay" onChange={(e) => {
+                                        setChecked(e.target.value)
+                                    }} />
+                                    <div className='text-pag'>
+                                        <img src='/assets/images/pic pay.png' />
+                                        <p>pic pay</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div className='pag-tipo'>
+                                    <input type='radio' name='pag' checked={checked === "paypal"} value="paypal" onChange={(e) => {
+                                        setChecked(e.target.value)
+                                    }} />
+                                    <div className='text-pag'>
+                                        <img src='/assets/images/paypal.png' />
+                                        <p>pay pal</p>
+                                    </div>
                                 </div>
 
                             </div>
-
-                            <div className="dois">
-
-                                <div className='endeinforeco'>
-                                    <h2>endereço do serviço</h2>
-
-                                    <p>Rua rua, 1234 - São Paulo - SP</p>
-                                </div>
-
-                                <div className='info'>
-                                    <h2>data de entrega marcada</h2>
-
-                                    <p>22-08-2022</p>
-                                </div>
-
-                            </div>
-
-                            <div className="dois">
-
-                                <div className='info'>
-                                    <h2>data limite</h2>
-
-                                    <p>20/05/2025</p>
-                                </div>
-
-                                <div className='info'>
-                                    <h2>situação do serviço</h2>
-
-                                    <p>Pendente</p>
-                                </div>
-
+                            <div className='campos-pag'>
+                                {checked === 'cartao' &&
+                                <Pagamento pagt='cartao'/>
+                                }
+                                {checked === 'boleto' &&
+                                <div>BOLETO</div>
+                                }
+                                {checked === 'pix' &&
+                                <Pagamento pagt='pix'/>
+                                }
+                                {checked === 'mercado-pago' &&
+                                <div>MERCADO PAGO</div>
+                                }
+                                {checked === 'picpay' &&
+                                <div>PICPAY</div>
+                                }
+                                {checked === 'paypal' &&
+                               <Pagamento pagt='paypal'/>
+                                }
                             </div>
                         </div>
 
-                        <div className='pagamento'>
-
-                            <input type='radio' />
-
-                                <div className='cartão'>
-                                    <img src="./assets/images/cartão.png" />
-                                    <p>cartão de crédito/debito</p>
-                                </div>
-
-                            <input type='radio' />
-
-                                <div className='boleto'>
-                                    <img src='./assets/images/boleto.png' />
-                                    <p>boleto bancário</p>
-                                </div>
-
-                            <input type='radio' />
-
-                                <div className='pix'>
-                                    <img src='./assets/images/pix.png' />
-                                    <p>pix</p>
-                                </div>
-
-                            <input type='radio' />
-
-                                <div className='mercado'>
-                                    <img src='./assets/images/mercado pago.png' />
-                                    <p>mercado pago</p>
-                                </div>
-                            
-                            <input type='radio' />
-
-                                <div className='pic'>
-                                    <img src='./assets/images/pic pay.png' />
-                                    <p>pic pay</p>
-                                </div>
-
-                            <input type='radio' />
-                            
-                            <div className='pay'>
-                                <img src='./assets/images/paypal.png' />
-                                <p>pay pal</p>
-                            </div>
-
-                        </div>
 
                     </section>
 
@@ -155,7 +234,7 @@ export default function PagarServico() {
                         <div className='valor'>
                             <p>valor total do serviço ativo</p>
 
-                            <p>r$ 150,00</p>
+                            <p>R${storage('serv-selecionado').preco}</p>
 
                         </div>
 
@@ -167,13 +246,9 @@ export default function PagarServico() {
 
                         <div className="button">
                             <button className='pagar'>
-                                pagar serviço concluído
+                                Já paguei!
                             </button>
 
-                            <button className='cancelar'>
-                                cancelar serviço
-
-                            </button>
                         </div>
 
                         <h5>A EsparTech, irá dar a garantia de 1 mês
