@@ -204,7 +204,7 @@ export default function PagarServico() {
                                 <Pagamento pagt='cartao'/>
                                 }
                                 {checked === 'boleto' &&
-                                <div>BOLETO</div>
+                                <Pagamento pagt='boleto' />
                                 }
                                 {checked === 'pix' &&
                                 <Pagamento pagt='pix'/>
@@ -246,7 +246,7 @@ export default function PagarServico() {
 
                         <div className="button">
                             <button className='pagar'>
-                                Já paguei!
+                                Confirmar pagamento
                             </button>
 
                         </div>

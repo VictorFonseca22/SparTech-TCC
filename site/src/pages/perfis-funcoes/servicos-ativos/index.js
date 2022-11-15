@@ -26,7 +26,7 @@ export default function Serviços() {
     }
 
     function selecionarServico(id, preco, nome) {
-        storage.remove('serv-selecionado')
+        
         const idServ = (
             {
                 'id': id,
@@ -34,10 +34,11 @@ export default function Serviços() {
                 'nome': nome
             }
         )
-        storage('serv-selecionado', idServ)
-
+        
+        
         if (senha.checked == false) {
             senha.checked = true;
+            storage('serv-selecionado', idServ)
         }
         else {
             senha.checked = false
@@ -46,6 +47,7 @@ export default function Serviços() {
         setTimeout(() => {
             setChecked(!checked);
         }, 150)
+        
         
     }
 

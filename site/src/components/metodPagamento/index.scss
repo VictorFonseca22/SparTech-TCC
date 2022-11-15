@@ -1,7 +1,22 @@
 .pag-props{
     font-family: 'adam';
+    .img-gif{
+        width: 3em;
+    }
     .bot-paypal{
         margin-top: 1em;
+    }
+    .align-pix-gif {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 2em;
+        h1{
+            margin-bottom: 1em;
+        }
+        
+
     }
     .pix-align{
         .text-pix{
@@ -9,6 +24,79 @@
             margin-top: 1em;
             p{
                 margin-top: 0.3em;
+            }
+        }
+    }
+    .cartao-valid{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .input-cartao{
+            margin-left: 1.6em;
+            padding: 1em; 
+            
+            p{
+                margin-top: 1em;
+                padding-bottom: 0.2em
+            }
+            input{
+                outline: none;
+                border: none;
+                border-radius: 1em;
+                padding: .4em;
+                font-family: 'Poppins';
+            }
+        }
+        
+    }
+    .boleto-div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        button{
+            border: none;
+            outline: none;
+            font-family: 'adam';
+            padding: 1em;
+            border-radius: 2em;
+            
+            background-color: #41B6E6;
+        }
+        button:hover{
+            scale: 1.02;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+        .carregando-boleto{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: 3em;
+            p{
+                margin-bottom: 1em;
+            }
+            
+        }
+        .codigo-boleto{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.2em;
+            margin-right: 3em;
+            margin-top: 1em;
+            img{
+                width: 80%;
+            }
+            .array{
+                background-color: white;
+                color: black;
+                margin-top: 1em;
+                padding: 1em;
+                border-radius: 1em;
             }
         }
     }
