@@ -10,6 +10,9 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Serviços() {
     const [infoServico, setInfoServico] = useState([])
+    
+    const [selecionado, setSelecionado] = useState()
+
     const [checked, setChecked] = useState(false)
     const [erro, setErro] = useState('');
 
@@ -26,7 +29,7 @@ export default function Serviços() {
     }
 
     function selecionarServico(id, preco, nome) {
-        
+        //storage.remove('serv-selecionado')
         const idServ = (
             {
                 'id': id,
@@ -35,14 +38,18 @@ export default function Serviços() {
             }
         )
         
+        if (selecionado)
+            setSelecionado(null);
+        else 
+            setSelecionado(idServ);
         
         if (senha.checked == false) {
             senha.checked = true;
-            storage('serv-selecionado', idServ)
+           // storage('serv-selecionado', idServ)
         }
         else {
             senha.checked = false
-            storage.remove('serv-selecionado')
+          //  storage.remove('serv-selecionado')
         }
         setTimeout(() => {
             setChecked(!checked);
@@ -72,24 +79,25 @@ export default function Serviços() {
 
 
 
-    async function removerServico(profissional) {
+    async function removerServico() {
+        const nome = storage('serv-selecionado').nome
         if (storage('serv-selecionado')) {
             confirmAlert({
                 title: 'Remover serviço',
-                message: `Deseja remover o serviço com ${profissional} ?`,
+                message: `Deseja remover o serviço com ${nome} ?`,
                 buttons: [
                     {
                         label: 'Sim',
                         onClick: async () => {
 
                             const id = storage('serv-selecionado').id
-                            const resposta = await deletarServico(id, profissional);
+                            const resposta = await deletarServico(id);
 
                             toast.loading("Excluindo...")
 
                             setTimeout(() => {
                                 toast.dismiss();
-                                toast.success(`Você removeu seu serviço com ${profissional}`)
+                                toast.success(`Você removeu seu serviço com ${nome}`)
                                 storage.remove('serv-selecionado')
                             }, 600);
 
@@ -209,7 +217,7 @@ export default function Serviços() {
                         </div>
                     }
 
-                    {storage('serv-selecionado') &&
+                    {selecionado &&
 
                         <div className='resumo'>
 
@@ -220,24 +228,24 @@ export default function Serviços() {
                             <div className='valor'>
                                 <p>valor total do serviço</p>
 
-                                <p>R${storage('serv-selecionado').preco}</p>
+                                <p>R${selecionado.preco}</p>
                             </div>
 
 
 
                             <hr />
-                            {infoServico.map(item =>
+                            
                                 <div className="button">
-                                    <button className='pagar' onClick={() => [navigate(`/pagamento/${item.id}`)]}>
+                                    <button className='pagar' onClick={() => { storage('serv-selecionado', selecionado); navigate(`/pagamento/${selecionado.id}`)}}>
                                         pagar serviço concluído
                                     </button>
 
-                                    <button className='cancelar' onClick={() => removerServico(item.profissional)}>
+                                    <button className='cancelar' onClick={removerServico}>
                                         cancelar serviço
 
                                     </button>
                                 </div>
-                            )}
+                            
                             <h5>A EsparTech, irá dar a garantia de 1 mês
                                 sobre o serviço realizado, caso aconteça algum problema, a EsparTech irá mandar um profissional sem necessidade de um novo pagamento. </h5>
 
