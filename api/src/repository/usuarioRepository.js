@@ -76,3 +76,16 @@ export async function comecarAvaliacao(id, nota) {
     return resposta
 }
 
+export async function listarCategoriasProfissional(id) {
+    const comando = `
+        select tb_tipo_serv.id_tipo_serv         as IdCategoria,
+               nm_servico           as servico
+          from tb_tipo_serv
+          inner join tb_profissional on tb_tipo_serv.id_tipo_serv = tb_profissional.id_tipo_serv
+          where id_profissional = ?
+    `
+
+    const [linhas] = await con.query(comando, [id]);
+    return linhas;
+}
+

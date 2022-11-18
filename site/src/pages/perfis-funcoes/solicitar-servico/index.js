@@ -1,6 +1,6 @@
 import './index.scss';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ListaCategoria } from '../../../api/usuarioApi';
+import { ListaCategoria, ListaCategoriaProfissional } from '../../../api/usuarioApi';
 import { buscarImagem, MostrarPerfil } from '../../../api/profissionalApi.js'
 import { CadastrarServico, ListaPagamento } from '../../../api/servico.js'
 import { useEffect, useState } from 'react';
@@ -87,7 +87,7 @@ export default function SolicitarServ() {
     }
 
     async function CarregarServico() {
-        const r = await ListaCategoria();
+        const r = await ListaCategoriaProfissional(idParam);
         SetServico(r);
     }
 

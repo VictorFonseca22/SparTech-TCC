@@ -37,6 +37,10 @@ export async function ListaCategoria() {
     return resp.data;
     
 }
+export async function ListaCategoriaProfissional(id){
+    const resp = await api.get(`/api/profissional/categoria/${id}`)
+    return resp.data
+}
 
 export async function LogarProfissional(email,senha) {
     const Resp = await api.post('/loginProfissional', {

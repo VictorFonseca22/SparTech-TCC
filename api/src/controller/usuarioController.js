@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {cadastroCliente, cadastroProfissional, comecarAvaliacao, listarCategorias, LoginCliente, LoginProfissional} from '../repository/usuarioRepository.js'
+import {cadastroCliente, cadastroProfissional, comecarAvaliacao, listarCategorias, listarCategoriasProfissional, LoginCliente, LoginProfissional} from '../repository/usuarioRepository.js'
 
 const server = Router();
 // Cadastrar Cliente
@@ -133,6 +133,19 @@ server.post('/loginCliente' , async (req,resp) => {
 server.get('/api/categoria', async (req, resp) => {
     try {
         const linhas = await listarCategorias();
+        resp.send(linhas);
+    }
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/api/profissional/categoria/:id', async (req, resp) => {
+    try {
+        const id = req.params.id
+        const linhas = await listarCategoriasProfissional(id);
         resp.send(linhas);
     }
     catch (err) {
