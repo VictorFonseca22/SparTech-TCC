@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { aceitarServiço, SolicitacoesServicos, PrecificarServico } from '../../../api/servico';
+import { aceitarServiço, SolicitacoesServicos, PrecificarServico, deletarServico } from '../../../api/servico';
 import './index.scss';
 import { toast, Toaster } from 'react-hot-toast'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function SolicitacoesServ() {
     const [clientes, setClientes] = useState([])
@@ -24,10 +26,42 @@ export default function SolicitacoesServ() {
         setClientes(resposta)
     }
 
+    
     useEffect(() => {
-        carregarSolicitacoes()
+        carregarSolicitacoes();
     }, [])
+    
+    async function Deletarsolicitacao(id) {
 
+        confirmAlert({
+            title: 'Remover serviço',
+            message: `Deseja recusar o serviço ?`,
+            buttons: [
+                {
+                    label: 'Sim',
+                    onClick: async () => {
+
+                        const negar = await deletarServico(id)
+
+                        toast.loading("Excluindo...")
+
+                        setTimeout(() => {
+                            toast.dismiss();
+                            toast.success(`Serviço Recusado!`)
+                        }, 600);
+
+
+
+                    }
+                },
+                {
+                    label: 'Não'
+                }
+            ]
+
+
+        })
+    }
     async function AceitarSolicitacao(id) {
         try {
             const precificar = await PrecificarServico(id, preco)
@@ -49,6 +83,8 @@ export default function SolicitacoesServ() {
             }
         }
     }
+
+
 
     return (
         <main className="remocao">
@@ -91,7 +127,7 @@ export default function SolicitacoesServ() {
                                 <td><input type='number' className='setar-preco' value={preco} onChange={e => setPreco(e.target.value)}/></td>
                                 <td>
                                     <button onClick={() => AceitarSolicitacao(item.id)}><img src="/assets/images/aceitar.png" alt="" /></button>
-                                    <button onClick={''}><img src="/assets/images/recusar.png" alt="" /></button>
+                                    <button onClick={() => Deletarsolicitacao(item.id)}><img src="/assets/images/recusar.png" alt="" /></button>
                                 </td>
                             </tr>
                         )}
