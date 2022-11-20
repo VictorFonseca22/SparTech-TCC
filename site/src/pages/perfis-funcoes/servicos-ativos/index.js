@@ -10,7 +10,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Serviços() {
     const [infoServico, setInfoServico] = useState([])
-    
+
     const [selecionado, setSelecionado] = useState()
 
     const [checked, setChecked] = useState(false)
@@ -37,25 +37,25 @@ export default function Serviços() {
                 'nome': nome
             }
         )
-        
+
         if (selecionado)
             setSelecionado(null);
-        else 
+        else
             setSelecionado(idServ);
-        
+
         if (senha.checked == false) {
             senha.checked = true;
-           // storage('serv-selecionado', idServ)
+            // storage('serv-selecionado', idServ)
         }
         else {
             senha.checked = false
-          //  storage.remove('serv-selecionado')
+            //  storage.remove('serv-selecionado')
         }
         setTimeout(() => {
             setChecked(!checked);
         }, 150)
-        
-        
+
+
     }
 
     async function carregarServico() {
@@ -143,79 +143,81 @@ export default function Serviços() {
 
 
                 <section className="ajuste">
-                    {infoServico.map(item =>
+                    <div className='servicos'>
+                        {infoServico.map(item =>
 
-                        <div className='informacoes' onClick={() => selecionarServico(item.id, item.valor, item.profissional)}>
-                            <input class="trigger-input" id="faq-titulo-2" type="radio" />
+                            <div className='informacoes' onClick={() => selecionarServico(item.id, item.valor, item.profissional)}>
+                                <input class="trigger-input" id="faq-titulo-2" type="radio" />
 
-                            <div className='mapeamento-perfil'>
-                                <img src={buscarImagem(item.foto)} />
-                                <div className='ramo'>
-                                    <h1>{item.profissional}</h1>
+                                <div className='mapeamento-perfil'>
+                                    <img src={buscarImagem(item.foto)} />
+                                    <div className='ramo'>
+                                        <h1>{item.profissional}</h1>
 
-                                    <p>{item.area}</p>
+                                        <p>{item.area}</p>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div className="dois">
+                                    <div className='info'>
+                                        <h2>serviço a realizar</h2>
+
+                                        <p>{item.detalhes}</p>
+                                    </div>
+
+                                    <div className='info'>
+                                        <h2>valor a ser pago</h2>
+
+                                        <p>R${item.valor}</p>
+                                    </div>
+
+                                </div>
+
+                                <div className="dois">
+
+                                    <div className='endeinforeco'>
+                                        <h2>endereço do serviço</h2>
+
+                                        <p>{item.rua}, {item.complemento} - {item.cidade} - {item.estado}</p>
+                                    </div>
+
+                                    <div className='info'>
+                                        <h2>data de entrega marcada</h2>
+
+                                        <p>22-08-2022</p>
+                                    </div>
+
+                                </div>
+
+                                <div className="dois">
+
+                                    <div className='info'>
+                                        <h2>data limite</h2>
+
+                                        <p>{item.data}</p>
+                                    </div>
+
+                                    <div className='info'>
+                                        <h2>situação do serviço</h2>
+
+                                        <p>Pendente</p>
+                                    </div>
+
                                 </div>
                             </div>
 
-
-
-
-
-
-                            <div className="dois">
-                                <div className='info'>
-                                    <h2>serviço a realizar</h2>
-
-                                    <p>{item.detalhes}</p>
-                                </div>
-
-                                <div className='info'>
-                                    <h2>valor a ser pago</h2>
-
-                                    <p>R${item.valor}</p>
-                                </div>
-
+                        )}
+                        {erro !== undefined &&
+                            <div className="informacoes-err">
+                                {erro}
                             </div>
-
-                            <div className="dois">
-
-                                <div className='endeinforeco'>
-                                    <h2>endereço do serviço</h2>
-
-                                    <p>{item.rua}, {item.complemento} - {item.cidade} - {item.estado}</p>
-                                </div>
-
-                                <div className='info'>
-                                    <h2>data de entrega marcada</h2>
-
-                                    <p>22-08-2022</p>
-                                </div>
-
-                            </div>
-
-                            <div className="dois">
-
-                                <div className='info'>
-                                    <h2>data limite</h2>
-
-                                    <p>{item.data}</p>
-                                </div>
-
-                                <div className='info'>
-                                    <h2>situação do serviço</h2>
-
-                                    <p>Pendente</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    )}
-                    {erro !== undefined &&
-                        <div className="informacoes-err">
-                            {erro}
-                        </div>
-                    }
+                        }
+                    </div>
 
                     {selecionado &&
 
@@ -234,18 +236,18 @@ export default function Serviços() {
 
 
                             <hr />
-                            
-                                <div className="button">
-                                    <button className='pagar' onClick={() => { storage('serv-selecionado', selecionado); navigate(`/pagamento/${selecionado.id}`)}}>
-                                        pagar serviço concluído
-                                    </button>
 
-                                    <button className='cancelar' onClick={removerServico}>
-                                        cancelar serviço
+                            <div className="button">
+                                <button className='pagar' onClick={() => { storage('serv-selecionado', selecionado); navigate(`/pagamento/${selecionado.id}`) }}>
+                                    pagar serviço concluído
+                                </button>
 
-                                    </button>
-                                </div>
-                            
+                                <button className='cancelar' onClick={removerServico}>
+                                    cancelar serviço
+
+                                </button>
+                            </div>
+
                             <h5>A EsparTech, irá dar a garantia de 1 mês
                                 sobre o serviço realizado, caso aconteça algum problema, a EsparTech irá mandar um profissional sem necessidade de um novo pagamento. </h5>
 
