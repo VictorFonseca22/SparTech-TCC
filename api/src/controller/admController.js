@@ -1,7 +1,7 @@
 import { Router } from "express";
 import multer from 'multer'
 import server from "./usuarioController.js";
-import {DenunciasCliente, DenunciasClienteId, DenunciasProfissionalId, LoginAdm, removerProfissional, listarClientes, removerCliente, listarProfissionais, DenunciasProfissionais} from '../repository/admRepository.js'
+import {DenunciasCliente, DenunciasClienteId, DenunciasProfissionalId, LoginAdm, removerProfissional, listarClientes, removerCliente, listarProfissionais, DenunciasProfissionais, removerServicosProf, removerAvaliacaoProf, removerServicosCliente, removerComentarioProfCliente, removerComentarioProfProfissional} from '../repository/admRepository.js'
 
 
 server.post('/loginAdm' , async (req,resp) => {
@@ -123,8 +123,10 @@ server.get('/adm/profissional', async (req, resp) =>{
 server.delete('/adm/profissional/:id', async (req,resp) =>{
     try{
         const {id} = req.params;
+        const comentario = await removerComentarioProfProfissional(id)
+        const servico = await removerServicosProf(id)
+        const avaliacao = await removerAvaliacaoProf(id)
         const resposta = await removerProfissional(id)
-
         if(resposta != 1){
             throw new Error('Profissional não pode ser removido')
         }
@@ -158,6 +160,8 @@ server.get('/adm/cliente', async (req, resp) =>{
 server.delete('/adm/cliente/:id', async (req,resp) =>{
     try{
         const {id} = req.params;
+        const comentario = await removerComentarioProfCliente(id)
+        const servico = await removerServicosCliente(id)
         const resposta = await removerCliente(id)
 
         if(resposta != 1){

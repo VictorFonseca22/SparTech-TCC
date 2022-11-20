@@ -111,6 +111,26 @@ export async function removerProfissional(id){
     const [resposta] = await con.query (comando, [id]);
     return resposta.affectedRows
 }
+export async function removerServicosProf(id){
+    const comando = 
+    `
+    DELETE FROM tb_servico
+    WHERE id_profissional = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
+}
+export async function removerAvaliacaoProf(id){
+    const comando = 
+    `
+    DELETE FROM tb_avaliacao
+    WHERE id_profissional = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
+}
 
 export async function listarClientes (){
 
@@ -137,3 +157,35 @@ export async function removerCliente(id){
     const [resposta] = await con.query (comando, [id]);
     return resposta.affectedRows
 }
+export async function removerServicosCliente(id){
+    const comando = 
+    `
+    DELETE FROM tb_servico
+    WHERE id_cliente = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
+}
+export async function removerComentarioProfCliente(id){
+    const comando = 
+    `
+    DELETE FROM tb_comentario_prof
+    WHERE id_cliente = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
+}
+export async function removerComentarioProfProfissional(id){
+    const comando = 
+    `
+    DELETE FROM tb_comentario_prof
+    WHERE id_profissional = ?;
+    `
+
+    const [resposta] = await con.query (comando, [id]);
+    return resposta.affectedRows
+}
+
+
