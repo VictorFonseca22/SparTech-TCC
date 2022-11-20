@@ -12,26 +12,26 @@ export default function Busca() {
 
     const navigate = useNavigate()
 
-    async function carregarTodosProfissionais(){
+    async function carregarTodosProfissionais() {
         const resposta = await listarTodosProfissionais();
         setProfissional(resposta);
-        
+
     }
     useEffect(() => {
         carregarTodosProfissionais();
     }, []);
 
-    async function filtrarPorNome(){
-        if(storage('Categoria')) {
+    async function filtrarPorNome() {
+        if (storage('Categoria')) {
             const catLP = storage('Categoria').categoria
             setFiltroNome(catLP)
             storage.remove('Categoria')
         }
-        else{
-        const resposta = await listarPorNome(filtroNome);
-        setProfissional(resposta);
+        else {
+            const resposta = await listarPorNome(filtroNome);
+            setProfissional(resposta);
         }
-        
+
     }
 
     useEffect(() => {
@@ -42,7 +42,7 @@ export default function Busca() {
         navigate('/')
     }
 
-    
+
     return (
         <main className='Busca-prof'>
 
@@ -50,13 +50,13 @@ export default function Busca() {
 
 
                 <div>
-                    <img className='logo' src='/assets/images/teste final 1.png' />
+                    <img className='logo' src='/assets/images/teste final 1.png' onClick={sairClick} />
                 </div>
 
                 <div className='buscar'>
-                    <input placeholder='Digite o serviço que busca' type='text' value={filtroNome} onChange={e => setFiltroNome(e.target.value)}/>
+                    <input placeholder='Digite o serviço que busca' type='text' value={filtroNome} onChange={e => setFiltroNome(e.target.value)} />
 
-                    <img className='jobseeker' src='/assets/images/Job Seeker.png' onClick={filtrarPorNome}/>
+                    <img className='jobseeker' src='/assets/images/Job Seeker.png' onClick={filtrarPorNome} />
                 </div>
 
                 <div className='a'>
@@ -66,7 +66,7 @@ export default function Busca() {
 
                     <div className='voltar' onClick={sairClick}>
                         <img className='logo-menu' src='/assets/images/voltar.png' />
-                        <h1>voltar</h1>
+                        <p>voltar</p>
                     </div>
 
                 </div>
@@ -78,43 +78,43 @@ export default function Busca() {
 
 
             <div className='resultado'>
-        {profissional.map(item => 
-            
-        <div className='ColunaCard'>
-            
-        <div className='CardProf' onClick={() => [navigate (`/perfil-profissional/${item.id}`)]}>
+                {profissional.map(item =>
 
-            <img className="foto" src={buscarImagem(item.foto)}/>
-            <div className='info'>
 
-                <h4 className="nome">{item.nome}</h4>
-                <h6 className="servico">{item.serviço}</h6>
-                <div className='avaliacao'>
-                    
-                    <img className='estrela' src='/assets/images/estrela.png'/>
-                    <img className='estrela' src='/assets/images/estrela.png'/>
-                    <img className='estrela' src='/assets/images/estrela.png'/>
-                    <img className='estrela' src='/assets/images/estrela.png'/>
-                    <img className='estrela' src='/assets/images/estrela.png'/>
-                    
-                   <div className='numero-avaliacao'> {item.avaliacao} </div>
+
+                    <div className='CardProf' onClick={() => [navigate(`/perfil-profissional/${item.id}`)]}>
+
+                        <img className="foto" src={buscarImagem(item.foto)} />
+                        <div className='info'>
+
+                            <h4 className="nome">{item.nome}</h4>
+                            <h6 className="servico">{item.serviço}</h6>
+                            <div className='avaliacao'>
+
+                                <img className='estrela' src='/assets/images/estrela.png' />
+                                <img className='estrela' src='/assets/images/estrela.png' />
+                                <img className='estrela' src='/assets/images/estrela.png' />
+                                <img className='estrela' src='/assets/images/estrela.png' />
+                                <img className='estrela' src='/assets/images/estrela.png' />
+
+                                <div className='numero-avaliacao'> {item.avaliacao} </div>
+                            </div>
+                            <h4 className='realizado'> {item.nr_servicos} serviços</h4>
+                            {item.destaque &&
+                                <div className='div-destaque'>
+                                    <img className='estrela-destaque' src='/assets/images/destaque.png' />
+                                    <div className='destaque'>destaque espartech</div>
+                                </div>
+                            }
+                            {!item.destaque
+
+                            }
+
+
+                        </div>
                     </div>
-                <h4 className='realizado'> {item.nr_servicos} serviços</h4>
-                {item.destaque &&
-                <div className='div-destaque'>
-                <img className='estrela-destaque' src='/assets/images/destaque.png'/>
-                <div className='destaque'>destaque espartech</div>
-                </div>
-                }
-                {!item.destaque
 
-                }
-                
-
-            </div>
-            </div>
-        </div>
-)}
+                )}
 
             </div>
 

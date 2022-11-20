@@ -2,14 +2,17 @@
     font-family: 'adam';
     src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
 }
-.Busca-prof{
 
-    *{
+.Busca-prof {
+
+    * {
         box-sizing: border-box;
+        // border: 1px solid green;
         margin: 0;
     }
 
-    .barra{
+
+    .barra {
         background-color: #293040;
         display: flex;
         flex-direction: row;
@@ -17,46 +20,24 @@
         align-items: center;
         justify-content: space-between;
         padding: 0rem 2rem;
-        
-        input{
+        height: 7rem;
+
+        .logo {
+            width: 10rem;
+            height: 4rem;
+            cursor: pointer;
+        }
+
+        input {
             width: 30vw;
             height: 2.2rem;
             font-family: 'Inter', sans-serif;
             border: none;
+            border-radius: 0.5rem;
             outline: none;
         }
 
-        .jobseeker{
-            width: 2rem;
-            height: 2rem;
-            cursor: pointer;
-        }
-
-        .logo-spartan{
-            width: 3rem;
-            height: 4rem;
-            cursor: pointer;
-        }
-
-        .logo{
-            width: 10rem;
-            height: 4rem;
-        }
-
-        .voltar{
-            display: flex;
-            align-items: center;
-            color: #fff;
-            font-family: 'adam';
-            cursor: pointer;
-        }
-
-        .logo-menu{
-            width: 2.5rem;
-            height: 2.5rem;
-        }
-
-        .buscar{
+        .buscar {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -64,9 +45,34 @@
             width: 35vw;
             background-color: #fff;
             border-radius: 0.5rem;
+            padding: 0rem 0.5rem;
         }
 
-        .a{
+        .jobseeker {
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+        }
+
+
+        h1 {
+            font-family: 'adam';
+            color: #41B6E6;
+            font-size: 1.7rem;
+            font-weight: 500;
+        }
+
+        .voltar {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 1.2rem;
+            font-family: 'adam';
+            cursor: pointer;
+
+        }
+
+        .a {
             width: 100%;
             max-width: 18rem;
             display: flex;
@@ -74,65 +80,95 @@
             align-items: center;
             height: 6rem;
         }
+
+        .logo:hover {
+            scale: 1.05;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .voltar:hover {
+            scale: 1.05;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .logo-spartan:hover {
+            scale: 1.05;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
     }
 
-    .resultado{
+    .resultado {
         background-color: #171921;
-        height: 88vh;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        padding-top: 4rem;
+        padding-top: 2rem;
+        flex-wrap: wrap;
     }
+
     @font-face {
         font-family: 'adam';
         src: url('../../../public/assets/fonts/ADAM.CG\ PRO.otf');
     }
-    .CardProf{
+
+    .CardProf:hover{
+        scale: 1.03;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .CardProf {
 
         max-width: 24rem;
         border-radius: 1.5rem;
-        height: 100%;
-        max-height: 10rem;
-        background-color: #41b7eb63;
+        width: 100%;
+        height: 10rem;
+        background: linear-gradient(180deg, #3a6c8300 3.5%, #3A6C83 45.94%);
         display: flex;
+        margin: 2.5rem 1rem;
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        cursor: pointer;
-        .foto{
+
+        .foto {
             width: 100%;
             max-width: 6rem;
             height: 100%;
-            max-height: 7rem;
+            max-height: 6rem;
             border-radius: 10%;
-    
+
         }
-        
-        .info{
-    
-    
-            .nome{
+
+        .info {
+
+
+            .nome {
                 color: #fff;
                 font-family: 'adam';
                 font-size: 1.3rem;
                 font-weight: 500;
             }
-            .servico{
-                color: #707079;
+
+            .servico {
+                color: #A5A5A5;
                 font-family: 'adam';
                 font-size: 0.8rem;
-                font-weight: 500;
+                font-weight: 600;
+                padding-top: 0.5rem;
                 margin-bottom: 9px;
             }
-    
-            .tipo{
+
+            .tipo {
                 font-family: 'adam';
-                color: #707079;
+                color: #A5A5A5;
                 font-size: 1rem;
             }
-    
-            .avaliacao{
+
+            .avaliacao {
                 display: flex;
                 flex-direction: row;
                 font-family: 'adam';
@@ -142,38 +178,38 @@
                 margin-right: 20px;
 
             }
-    
-            .realizado{
+
+            .realizado {
                 font-family: 'adam';
                 font-size: 1rem;
-                color: #707079;
+                font-weight: 100;
+                color: #A5A5A5;
             }
-            
-            .destaque{
+
+            .destaque {
                 color: #fff;
                 font-family: 'adam';
                 margin-left: 5px;
             }
         }
-        
-        .estrela{
+
+        .estrela {
             height: 1.8rem;
         }
-        .numero-avaliacao{
+
+        .numero-avaliacao {
             margin-left: 10px;
             margin-top: 3px;
         }
-        .div-destaque{
+
+        .div-destaque {
             display: flex;
             flex-direction: row;
             margin-top: 8px;
         }
-        
+
     }
 
-    .ColunaCard{
-        display: flex;
-        flex-wrap: wrap;
-    }
     
+
 }
