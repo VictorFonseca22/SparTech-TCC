@@ -1,126 +1,137 @@
 import { Router } from "express";
 import multer from 'multer'
-import {cadastroCliente, cadastroProfissional, comecarAvaliacao, listarCategorias, listarCategoriasProfissional, LoginCliente, LoginProfissional} from '../repository/usuarioRepository.js'
+import { cadastroCliente, cadastroProfissional, comecarAvaliacao, listarCategorias, listarCategoriasProfissional, LoginCliente, LoginProfissional, verificarEmailCliente, verificarEmailProf } from '../repository/usuarioRepository.js'
 
 const server = Router();
 // Cadastrar Cliente
 server.post('/cadastrarCliente', async (req, resp) => {
-    try{
+    try {
         const novoCadastro = req.body;
-
-        if(!novoCadastro.nome){
+        const buscar = await verificarEmailCliente(novoCadastro.email);
+        const buscarcli = await verificarEmailProf(novoCadastro.email);
+        if (buscar || buscarcli) {
+            throw new Error('Email já está em uso, tente logar!')
+        }
+        if (!novoCadastro.nome) {
             throw new Error('Nome é obrigatório!');
         }
-        if(!novoCadastro.email){
+        if (!novoCadastro.email) {
             throw new Error('Email é obrigatório!');
         }
-        if(!novoCadastro.cpf){
+        if (!novoCadastro.cpf) {
             throw new Error('CPF é obrigatório!');
         }
-        
-        if(!novoCadastro.senha){
+
+        if (!novoCadastro.senha) {
             throw new Error('Senha é obrigatória!');
         }
 
-        if(!novoCadastro.nascimento){
+        if (!novoCadastro.nascimento) {
             throw new Error('Data de nascimento é obrigatória!');
         }
 
-        if(!novoCadastro.telefone){
+        if (!novoCadastro.telefone) {
             throw new Error('Telefone é obrigatório!');
         }
 
-        
 
-        const cadastro =  await cadastroCliente(novoCadastro);
+
+        const cadastro = await cadastroCliente(novoCadastro);
         resp.send(cadastro)
-    } 
-    catch(err){
+    }
+    catch (err) {
         resp.status(401).send({
-            erro:err.message
+            erro: err.message
         })
 
     }
 })
 // Cadastrar Profissional
 server.post('/cadastrarProfissional', async (req, resp) => {
-    try{
+    try {
         const novoCadastro = req.body;
         const avaliacaoNota = 5.00;
-        if(!novoCadastro.nome){
+
+        const buscar = await verificarEmailProf(novoCadastro.email);
+        const buscarcli = await verificarEmailCliente(novoCadastro.email);
+        if (buscar || buscarcli) {
+            throw new Error('Email já está em uso, tente logar!')
+        }
+
+        if (!novoCadastro.nome) {
             throw new Error('Nome é obrigatório!');
         }
 
-        if(!novoCadastro.email){
+        if (!novoCadastro.email) {
             throw new Error('Email é obrigatório!');
         }
 
-        if(!novoCadastro.cpf){
+        if (!novoCadastro.cpf) {
             throw new Error('CPF é obrigatório!');
         }
 
-        if(!novoCadastro.senha){
+        if (!novoCadastro.senha) {
             throw new Error('Senha é obrigatória!');
         }
 
-        if(!novoCadastro.nascimento){
+        if (!novoCadastro.nascimento) {
             throw new Error('Data de nascimento é obrigatória!');
         }
-        if(!novoCadastro.telefone){
+        if (!novoCadastro.telefone) {
             throw new Error('Telefone é obrigatório!');
         }
-    
-        
 
-        const cadastro =  await cadastroProfissional(novoCadastro);
+
+
+        const cadastro = await cadastroProfissional(novoCadastro);
         await comecarAvaliacao(cadastro.IdCadastro, avaliacaoNota)
         resp.send(cadastro)
-    } 
-    catch(err){
+    }
+    catch (err) {
         resp.status(401).send({
-            erro:err.message
+            erro: err.message
         })
 
     }
 })
 
 //Login
-server.post('/loginProfissional' , async (req,resp) => {
-    try{
-        const {email, senha} = req.body;
-    
+server.post('/loginProfissional', async (req, resp) => {
+    try {
+        const { email, senha } = req.body;
+
         let resposta = await LoginProfissional(email, senha);
-        
-          if(!resposta){
+
+        if (!resposta) {
             throw new Error('Credenciais Inválidas')
         }
-        
+
         resp.send(resposta)
 
     }
-    catch(err){
+    catch (err) {
         resp.status(401).send({
-            erro:err.message
+            erro: err.message
         })
     }
 })
 
-server.post('/loginCliente' , async (req,resp) => {
-    try{
-        const {email, senha} = req.body;
-    
+server.post('/loginCliente', async (req, resp) => {
+    try {
+        const { email, senha } = req.body;
+
         let resposta = await LoginCliente(email, senha);
-        
-          if(!resposta){
+
+        if (!resposta) {
             throw new Error('Credenciais Inválidas')
         }
-        
+
         resp.status(201).send(resposta)
 
     }
-    catch(err){
+    catch (err) {
         resp.status(401).send({
-            erro:err.message
+            erro: err.message
         })
     }
 })

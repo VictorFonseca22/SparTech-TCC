@@ -73,3 +73,7 @@ export async function ServicoPorId(id){
     const resposta = await api.get(`/servico/${id}`)
     return resposta.data;
 }
+export async function PagarServicoProf(id){
+    const resposta = await api.put(`/pagarServico/${id}`)
+    return resposta.status;
+}

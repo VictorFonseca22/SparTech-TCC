@@ -123,7 +123,7 @@ export async function fazerDenuncia(denuncia) {
     insert into tb_denuncia_cliente (id_profissional, id_cliente, ds_classificacao, ds_detalhes ,dt_ocorrencia)
 values (?, ?, ?, ?, ?);
 `
-    const [resposta] = await con.query(comando, [denuncia.IDcliente, denuncia.IDprofissional, denuncia.classificacao, denuncia.detalhes, denuncia.data]);
+    const [resposta] = await con.query(comando, [denuncia.IDprofissional, denuncia.IDcliente,  denuncia.classificacao, denuncia.detalhes, denuncia.data]);
 
     denuncia.id = resposta.insertId;
 

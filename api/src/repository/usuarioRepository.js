@@ -89,3 +89,26 @@ export async function listarCategoriasProfissional(id) {
     return linhas;
 }
 
+export async function verificarEmailProf(email){
+    const c =
+    `
+    select ds_email email
+    from tb_profissional
+    where ds_email = ? 
+    `;
+    const [resp] = await con.query(c, [email]);
+    return resp[0];
+}
+
+export async function verificarEmailCliente(email){
+    const c =
+    `
+    select ds_email email
+    from tb_cliente
+    where ds_email = ? 
+    `;
+    const [resp] = await con.query(c, [email]);
+    return resp[0];
+}
+
+

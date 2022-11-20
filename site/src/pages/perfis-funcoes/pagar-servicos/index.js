@@ -1,18 +1,19 @@
 import './index.scss';
-import { ServicoPorId } from '../../../api/servico';
+import { ServicoPorId, PagarServicoProf } from '../../../api/servico';
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { buscarImagem } from '../../../api/profissionalApi.js'
 import { toast, Toaster } from 'react-hot-toast'
 import storage from 'local-storage'
 import Pagamento from '../../../components/metodPagamento';
+
 export default function PagarServico() {
 
     const [info, setInfo] = useState([])
     const [checked, setChecked] = useState("cartao");
 
     const { idParam } = useParams()
-
+    const navigate = useNavigate()
     async function carregarServico() {
         try {
             const resposta = await ServicoPorId(idParam);
@@ -27,6 +28,35 @@ export default function PagarServico() {
     useEffect(() => {
         carregarServico()
     }, [])
+
+    async function PagamentoServ() {
+
+
+        const resposta = await PagarServicoProf(idParam)
+        toast.loading('Confirmando pagamento...')
+        if (storage('validado')) {
+            setTimeout(() => {
+                toast.dismiss()
+                toast.success('Serviço pago!')
+                setTimeout(() => {
+                    toast.dismiss()
+                    toast.success('Redirecionando...')
+                    setTimeout(() => {
+                        navigate(`/servicos-ativos/${storage('cliente-logado').id}`)
+                    }, 1000)
+                }, 1000)
+            }, 1500)
+        }
+        else{
+            setTimeout(() => {
+                toast.dismiss()
+                toast.error('Pagamento não pôde ser confirmado!')
+            }, 1500)
+        }
+
+
+    }
+
 
 
     return (
@@ -117,7 +147,7 @@ export default function PagarServico() {
                                     <div className='info'>
                                         <h2>situação do serviço</h2>
 
-                                        <p>Pendente</p>
+                                        <p>{item.situacao}</p>
                                     </div>
 
                                 </div>
@@ -163,31 +193,6 @@ export default function PagarServico() {
                                 </div>
 
 
-
-                                <div className='pag-tipo'>
-                                    <input type='radio' name='pag' checked={checked === "mercado-pago"} value="mercado-pago" onChange={(e) => {
-                                        setChecked(e.target.value)
-                                    }} />
-                                    <div className='text-pag'>
-                                        <img src='/assets/images/mercado pago.png' />
-                                        <p>mercado pago</p>
-                                    </div>
-                                </div>
-
-
-
-                                <div className='pag-tipo'>
-                                    <input type='radio' name='pag' checked={checked === "picpay"} value="picpay" onChange={(e) => {
-                                        setChecked(e.target.value)
-                                    }} />
-                                    <div className='text-pag'>
-                                        <img src='/assets/images/pic pay.png' />
-                                        <p>pic pay</p>
-                                    </div>
-                                </div>
-
-
-
                                 <div className='pag-tipo'>
                                     <input type='radio' name='pag' checked={checked === "paypal"} value="paypal" onChange={(e) => {
                                         setChecked(e.target.value)
@@ -201,22 +206,17 @@ export default function PagarServico() {
                             </div>
                             <div className='campos-pag'>
                                 {checked === 'cartao' &&
-                                <Pagamento pagt='cartao'/>
+                                    <Pagamento pagt='cartao' />
                                 }
                                 {checked === 'boleto' &&
-                                <Pagamento pagt='boleto' />
+                                    <Pagamento pagt='boleto' />
                                 }
                                 {checked === 'pix' &&
-                                <Pagamento pagt='pix'/>
+                                    <Pagamento pagt='pix' />
                                 }
-                                {checked === 'mercado-pago' &&
-                                <div>MERCADO PAGO</div>
-                                }
-                                {checked === 'picpay' &&
-                                <div>PICPAY</div>
-                                }
+
                                 {checked === 'paypal' &&
-                               <Pagamento pagt='paypal'/>
+                                    <Pagamento pagt='paypal' />
                                 }
                             </div>
                         </div>
@@ -245,7 +245,7 @@ export default function PagarServico() {
                         <hr />
 
                         <div className="button">
-                            <button className='pagar'>
+                            <button className='pagar' onClick={PagamentoServ}>
                                 Confirmar pagamento
                             </button>
 

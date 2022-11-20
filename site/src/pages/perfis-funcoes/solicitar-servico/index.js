@@ -43,7 +43,7 @@ export default function SolicitarServ() {
 
             setTimeout(() => {
                 toast.dismiss();
-                toast.success(`Serviço cadastrado! ✅`)
+                toast.success(`Serviço cadastrado!`)
             }, 600);
         } catch (err) {
             if (err.response)
@@ -65,7 +65,7 @@ export default function SolicitarServ() {
         navigate('/')
     }
     function servicosAtivos() {
-        navigate(`/servicos-ativos/${idParam}`)
+        navigate(`/servicos-ativos/${storage('cliente-logado').id}`)
     }
 
 

@@ -35,7 +35,7 @@ function Pagamento(props) {
 
     useEffect(() => {
         const script = document.createElement("script")
-        const id = "AY8Jy6c6KcKH-WMjTtgpTRbwYUZDzJzqQeBmAYT2XvFFja3VmcGxUsOtefILYjy6gy_Lzs0loS60v0Q9"
+        const id = "AarzKG32Ne41BYwZl3BRCJ__oASvPvXFR01AzyUHDLttevQIAUaWkmhrcUn5HaJHUlZLhB19FiC8U6V7"
         script.src = `https://www.paypal.com/sdk/js?currency=BRL&client-id=${id}`
 
         script.addEventListener("load", () => setLoaded(true))
@@ -70,7 +70,7 @@ function Pagamento(props) {
                         .render(paypalRef)
                 })
             }
-            loadButtons();
+            loadButtons()
         }
     })
     //Pix
@@ -83,7 +83,8 @@ function Pagamento(props) {
         }
     }, [])
 
-    //Gerar Boleto
+    //Gerar Boleto]
+    
     const [array, setArray] = useState([])
     const [finishedTimeoutBoleto, setFinishedTimeoutBoleto] = useState(false);
     const [finishedBoleto, setFinishedBoleto] = useState(false);
@@ -91,22 +92,55 @@ function Pagamento(props) {
     let arr = []
 
     function Gerar() {
-        for (let i = 1; i <= 48; i++) {
-            let n = parseInt(Math.random() * 9)
-            arr = [...arr, n]
+        if(props.pagt == 'boleto') {
+            for (let i = 1; i <= 48; i++) {
+                let n = parseInt(Math.random() * 9)
+                arr = [...arr, n]
+            }
+            setFinishedTimeoutBoleto(true)
+            setTimeout(() => {
+                setFinishedTimeoutBoleto(false)
+                setFinishedBoleto(true)
+                setArray(arr)
+                JsBarcode("#barcode", arr)
+            }, 2000)
+            storage('validado', 'ok')
         }
-        setFinishedTimeoutBoleto(true)
-        setTimeout(() => {
-            setFinishedTimeoutBoleto(false)
-            setFinishedBoleto(true)
-            setArray(arr)
-            JsBarcode("#barcode", arr)
-        }, 2000)
-
     }
     
+    function ValidarPagCartao() {
+        
+        if(CCnome != '' && 
+           CCexp != '' && 
+           CCseg != '' && 
+           CCnumero != '') {
+            storage('validado', 'ok')
+        }
+        else{
+            storage.remove('validado')
+        }
+    }
+
+    useEffect(() => {
+    if(props.pagt === 'cartao') {
+        ValidarPagCartao()
+    }
+    }, [CCnome, CCexp, CCnumero, CCseg])
     
-    
+
+
+    useEffect(() => {
+        if(props.pagt === 'paypal') {
+            storage('validado', 'ok')
+        }
+        if(props.pagt === 'boleto') {
+            storage('validado', 'ok')
+        }
+        if(props.pagt === 'pix') {
+            storage('validado', 'ok')
+        }
+    }, [])
+
 
 
 
@@ -149,7 +183,7 @@ function Pagamento(props) {
                 <div>
                     {paid ? (
                         <div>
-                            <h1>Sua compra foi confirmada! Clique em Já Paguei</h1>
+                            <h1>Sua compra foi confirmada! Clique em Confirmar Pagamento</h1>
                         </div>
                     ) : (
                         <>
@@ -195,8 +229,6 @@ function Pagamento(props) {
                                 bgColor="#def"
                                 bgRounded
                                 divider
-
-
                             />
                         </div>
                     }

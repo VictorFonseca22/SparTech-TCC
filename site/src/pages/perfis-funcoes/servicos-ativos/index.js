@@ -29,7 +29,6 @@ export default function Serviços() {
     }
 
     function selecionarServico(id, preco, nome) {
-        //storage.remove('serv-selecionado')
         const idServ = (
             {
                 'id': id,
@@ -38,14 +37,10 @@ export default function Serviços() {
             }
         )
 
-        if (selecionado)
-            setSelecionado(null);
-        else
-            setSelecionado(idServ);
+        setSelecionado(idServ)
 
         if (senha.checked == false) {
             senha.checked = true;
-            // storage('serv-selecionado', idServ)
         }
         else {
             senha.checked = false
@@ -205,7 +200,7 @@ export default function Serviços() {
                                     <div className='info'>
                                         <h2>situação do serviço</h2>
 
-                                        <p>Pendente</p>
+                                        <p>{item.situacao}</p>
                                     </div>
 
                                 </div>
@@ -225,6 +220,7 @@ export default function Serviços() {
 
                             <h1>resumo do serviço selecionado</h1>
 
+                            <h5>profissional: {selecionado.nome}</h5>
                             <hr />
 
                             <div className='valor'>

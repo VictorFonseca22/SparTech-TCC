@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.scss';
 import { CadastrarCliente} from '../../../api/usuarioApi'
-import { ToastContainer, toast } from 'react-toastify';
+import { Toaster, toast} from 'react-hot-toast';
 import InputMask from 'react-input-mask';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -20,7 +19,7 @@ export default function CadastroCliente() {
     async function SalvarPerfil() {
         try {
             const j = await CadastrarCliente(Nome,Email,Cpf,Senha,Idade,Nascimento,Telefone)
-            toast.dark('✅cliente cadastrado');
+            toast.success ('Cliente cadastrado!');
         } catch (err) {
             if(err.response)
             toast.error(err.response.data.erro);
@@ -33,7 +32,7 @@ export default function CadastroCliente() {
 
     return (
         <main className="page-CadasCliente">
-             <ToastContainer />
+             <Toaster />
 
             <section className='cadastra'>
 

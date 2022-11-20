@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from 'multer'
-import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivosCliente, ServicosAtivosProfissional, SolicitacoesServicos, concluirServico, ServicoConcluido, removerServico, ServicosAtivosClienteporId} from '../repository/servicoRepository.js'
+import {aceitarServiço, cadastroServico, listarPagamentos, ServicosAtivosCliente, ServicosAtivosProfissional, SolicitacoesServicos, concluirServico, ServicoConcluido, removerServico, ServicosAtivosClienteporId, pagarServico} from '../repository/servicoRepository.js'
 import server from "./usuarioController.js";
 
 server.post('/cadastrarServico', async (req, resp) => {
@@ -157,6 +157,22 @@ server.put('/concluirServico/:id', async (req, resp) => {
         const resposta = await concluirServico(id);
         if (resposta != 1)
             throw new Error("Serviço não pôde ser concluido!")
+        else
+            resp.status(204).send();
+        
+    } catch (err) {
+        resp.status(400).send({
+            erro:err.message
+        })
+    }
+})
+server.put('/pagarServico/:id', async (req, resp) => {
+    try {
+        const { id } = req.params;
+        
+        const resposta = await pagarServico(id);
+        if (resposta != 1)
+            throw new Error("Pagamento não pôde ser confirmado!")
         else
             resp.status(204).send();
         

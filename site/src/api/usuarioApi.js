@@ -5,7 +5,7 @@ const api = axios.create({
     baseURL: URL
 })
 
-export async function CadastrarCliente(nome, cpf, email, senha,idade, nascimento,telefone) {
+export async function CadastrarCliente(nome, email, cpf,  senha,idade, nascimento,telefone) {
     const Resp = await api.post('/cadastrarCliente', {
         nome: nome,
         cpf:cpf,

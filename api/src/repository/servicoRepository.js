@@ -159,7 +159,8 @@ export async function SolicitacoesServicos(id) {
 export async function aceitarServiço(id) {
     const comando = `
     update tb_servico
-    set   srv_aprovado = true
+    set   srv_aprovado = true,
+          ds_situacao = 'Pendente'
     where id_servico = ?
           
     `
@@ -221,4 +222,17 @@ export async function removerServico(id){
 
     const [resposta] = await con.query (comando, [id]);
     return resposta.affectedRows
+}
+
+export async function pagarServico(id) {
+    const comando = `
+    update tb_servico
+    set ds_situacao = 'Pago',
+        srv_status = true
+    where id_servico = ?
+          
+    `
+    const [resp] = await con.query(comando, [id]);
+
+    return resp.affectedRows;
 }

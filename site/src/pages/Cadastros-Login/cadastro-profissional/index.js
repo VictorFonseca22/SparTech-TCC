@@ -2,7 +2,6 @@ import './index.scss';
 import { useEffect, useState } from 'react'
 import { Link} from 'react-router-dom'
 import {toast, Toaster } from 'react-hot-toast';
-import 'react-toastify/dist/ReactToastify.css';
 import InputMask from 'react-input-mask';
 import { CadastrarProfissional, ListaCategoria } from '../../../api/usuarioApi';
 
@@ -23,7 +22,7 @@ export default function CadastroProfissional() {
         console.log(IdServico)
        try {
             await CadastrarProfissional(nome, email, cpf, senha, nascimento, telefone, IdServico)
-            toast('✅profissional cadastrado');
+            toast.success('Profissional cadastrado!');
         } catch (err) {
             if (err.response)
                 toast.error(err.response.data.erro);
