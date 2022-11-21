@@ -48,6 +48,7 @@ export default function SolicitacoesServ() {
                         setTimeout(() => {
                             toast.dismiss();
                             toast.success(`Serviço Recusado!`)
+                            carregarSolicitacoes()
                         }, 600);
 
 

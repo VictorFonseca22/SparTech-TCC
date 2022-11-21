@@ -1,3 +1,4 @@
+
 .page-solicitar {
     background-color: #171921;
     width: 100vw;
@@ -226,8 +227,21 @@
                     .metodo{
                         height: 3.2rem;
                         display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+
+                        
+                        
+                    }
+                    .icones-pag{
+                        width: 4em;
+                        max-width: 5em;  
+                        margin-top: 2.5em;
+                        
+                    }
+                    .div-pag{
+                        
                     }
 
 

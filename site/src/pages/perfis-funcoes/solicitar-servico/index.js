@@ -8,12 +8,14 @@ import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import storage from 'local-storage'
+import InputMask from 'react-input-mask'
 
 
 export default function SolicitarServ() {
     const [servico, SetServico] = useState([]);
     const [infoperfil, setInfoPerfil] = useState([])
     const [IdServico, SetIdServico] = useState();
+    const [selecionado, setSelecionado] = useState([])
 
     const [rua, setRua] = useState('');
     const [complemento, setComplemento] = useState('');
@@ -27,7 +29,7 @@ export default function SolicitarServ() {
     const [idPagamento, setIdPagamento] = useState();
 
 
-
+    
     const { register, handleSubmit, setValue, setFocus } = useForm();
 
     const { idParam } = useParams();
@@ -38,7 +40,8 @@ export default function SolicitarServ() {
 
     async function SalvarServico() {
         try {
-            await CadastrarServico(idCliente, idParam, IdServico, idPagamento, rua, complemento, bairro, cidade, uf, limite, detalhes)
+            const r = await CadastrarServico(idCliente, idParam, IdServico, idPagamento, rua, complemento, bairro, cidade, uf, limite, detalhes)
+            console.log(r)
             toast.loading("Contratando...")
 
             setTimeout(() => {
@@ -78,12 +81,19 @@ export default function SolicitarServ() {
         console.log(cep);
         fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
             console.log(data);
+            if(data) {
+                document.getElementById('rua').disabled = true;
+                document.getElementById('bairro').disabled = true;
+                document.getElementById('localidade').disabled = true;
+                document.getElementById('uf').disabled = true;
+            }
             // register({ name: 'address', value: data.logradouro });
-            setValue('address', data.logradouro);
-            setValue('neighborhood', data.bairro);
-            setValue('city', data.localidade);
-            setValue('uf', data.uf);
+            setRua(data.logradouro)
+            setBairro(data.bairro)
+            setCidade(data.localidade)
+            setUf(data.uf)
         });
+
     }
 
     async function CarregarServico() {
@@ -106,11 +116,23 @@ export default function SolicitarServ() {
     async function CarregarPagamentos() {
         const r = await ListaPagamento();
         setPagamento(r);
+
+        
+    }
+
+    function paymentType(x){
+        console.log(x)
+        if(x == 'Pix'){
+            return(
+                <div>AAAAAAAAAAAAAA</div>
+            )
+        }
     }
 
     useEffect(() => {
         CarregarPagamentos();
     }, [])
+
 
 
 
@@ -171,19 +193,19 @@ export default function SolicitarServ() {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className='linha-tex'>
 
+                                    <div className='tex-2'>
+                                        <p>CEP:</p>
+
+                                        <InputMask mask='99999-999' type='text' placeholder='00000-000' onBlur={checkCEP} />
+                                    </div>
                                     <div className='tex-1'>
 
                                         <p>endereço do serviço:</p>
 
-                                        <input type='text' {...register("address")} placeholder='rua joa...' value={rua} onChange={e => setRua(e.target.value)} />
+                                        <input type='text' id='rua' placeholder='rua joa...' value={rua} onChange={e => setRua(e.target.value)} />
 
                                     </div>
 
-                                    <div className='tex-2'>
-                                        <p>CEP:</p>
-
-                                        <input type='text' placeholder='00000-000' {...register("cep")} onBlur={checkCEP} />
-                                    </div>
 
 
                                 </div>
@@ -193,12 +215,13 @@ export default function SolicitarServ() {
                                     <div className='tex-1'>
                                         <p>Bairro:</p>
 
-                                        <input type='text' placeholder='val-fl...' {...register("neighborhood")} value={bairro} onChange={e => setBairro(e.target.value)} />
+                                        <input type='text' id='bairro' placeholder='val-fl...' value={bairro} onChange={e => setBairro(e.target.value)} />
                                     </div>
+
                                     <div className='tex-2'>
                                         <p>complemento:</p>
 
-                                        <input type='text' placeholder='nº/apto...' value={complemento} onChange={e => setComplemento(e.target.value)} />
+                                        <input type='text'  placeholder='nº/apto...' value={complemento} onChange={e => setComplemento(e.target.value)} />
 
                                     </div>
 
@@ -211,14 +234,14 @@ export default function SolicitarServ() {
 
                                         <p>Cidade:</p>
 
-                                        <input type='text' {...register("city")} placeholder='embú-gua...' value={cidade} onChange={e => setCidade(e.target.value)} />
+                                        <input type='text' id='localidade' placeholder='embú-gua...' value={cidade} onChange={e => setCidade(e.target.value)} />
 
                                     </div>
 
                                     <div className='tex-2'>
                                         <p>Estado:</p>
 
-                                        <input type='text' placeholder='sp' {...register("uf")} value={uf} onChange={e => setUf(e.target.value)} />
+                                        <input type='text' id='uf' placeholder='sp' value={uf} onChange={e => setUf(e.target.value)} />
                                     </div>
                                 </div>
                             </form>
@@ -229,8 +252,7 @@ export default function SolicitarServ() {
                                     <p>tipo de serviço:</p>
 
                                     <select value={IdServico} onChange={e => SetIdServico(e.target.value)}>
-                                        <option selected hidden>Selecione</option>
-
+                                    <option selected hidden>Selecione</option>
                                         {servico.map(item =>
                                             <option value={item.IdCategoria}> {item.servico} </option>
                                         )}
@@ -254,13 +276,13 @@ export default function SolicitarServ() {
 
                         <div className='pagamento'>
 
-                            <p className="text">entrada necessária para solicitar o serviço valor da entrada: <p className="valor">R$25,00</p></p>
+                            
 
 
                             <div className='metodo'>
-
+                                <div>
                                 <p>método de pagamento:</p>
-
+                                <br/>
                                 <select className="abc" value={idPagamento} onChange={e => setIdPagamento(e.target.value)}>
                                     <option selected hidden>Selecione</option>
 
@@ -270,8 +292,35 @@ export default function SolicitarServ() {
 
 
                                 </select>
+                                </div>
 
+                                <div>
+                                    {idPagamento === '1' &&
+                                    <div className='div-pag'>
+                                    <img className='icones-pag' src='/assets/images/credit-card.png'/>
+                                    </div>
+                                    }
+                                    {idPagamento === '2' &&
+                                    <div className='div-pag'>
+                                    <img className='icones-pag' src='/assets/images/pix.png'/>
+                                    </div>
+                                    }
+                                    {idPagamento === '3' &&
+                                    <div className='div-pag'>
+                                    <img className='icones-pag' src='/assets/images/boleto.png'/>
+                                    </div>
+                                    }
+                                    {idPagamento === '4' &&
+                                    <div className='div-pag'>
+                                    <img className='icones-pag' src='/assets/images/paypal.png'/>
+                                    </div>
+                                    }
+                                </div>
                             </div>
+
+                                
+
+                            
 
                         </div>
 

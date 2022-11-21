@@ -40,8 +40,9 @@ export default function PagarServico() {
                 toast.success('Serviço pago!')
                 setTimeout(() => {
                     toast.dismiss()
-                    toast.success('Redirecionando...')
+                    toast.loading('Redirecionando...')
                     setTimeout(() => {
+                        toast.dismiss()
                         navigate(`/servicos-ativos/${storage('cliente-logado').id}`)
                     }, 1000)
                 }, 1000)

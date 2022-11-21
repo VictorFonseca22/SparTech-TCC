@@ -7,6 +7,7 @@ export const Container = styled.div`
 }
   > .svg {
     width: 40px;
+    height: 40px;
     cursor: pointer;
     
   }
