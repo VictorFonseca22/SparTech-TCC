@@ -295,22 +295,22 @@ export default function SolicitarServ() {
                                 </div>
 
                                 <div>
-                                    {idPagamento === '1' &&
+                                    {idPagamento === '2' &&
                                     <div className='div-pag'>
                                     <img className='icones-pag' src='/assets/images/credit-card.png'/>
                                     </div>
                                     }
-                                    {idPagamento === '2' &&
+                                    {idPagamento === '3' &&
                                     <div className='div-pag'>
                                     <img className='icones-pag' src='/assets/images/pix.png'/>
                                     </div>
                                     }
-                                    {idPagamento === '3' &&
+                                    {idPagamento === '4' &&
                                     <div className='div-pag'>
                                     <img className='icones-pag' src='/assets/images/boleto.png'/>
                                     </div>
                                     }
-                                    {idPagamento === '4' &&
+                                    {idPagamento === '5' &&
                                     <div className='div-pag'>
                                     <img className='icones-pag' src='/assets/images/paypal.png'/>
                                     </div>

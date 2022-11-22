@@ -99,7 +99,7 @@ export default function Busca() {
 
                                 <div className='numero-avaliacao'> {item.avaliacao} </div>
                             </div>
-                            <h4 className='realizado'> {item.nr_servicos} serviços</h4>
+                            
                             {item.destaque &&
                                 <div className='div-destaque'>
                                     <img className='estrela-destaque' src='/assets/images/destaque.png' />

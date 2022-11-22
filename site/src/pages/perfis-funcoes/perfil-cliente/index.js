@@ -258,40 +258,7 @@ export default function PerfilCliente() {
                  )}
             {/* )} */}
 
-            <div className='informacoes'>
-                <hr />
-                <div className="comentes">
-                    {storage('profissional-logado') &&
-                        <h1>comentários sobre você</h1>
-                    }
-                    {storage('adm-logado') &&
-                        <h1>comentários sobre esse profissional</h1>
-                    }
-
-
-
-
-                    {comentario.map(item =>
-
-
-
-                        <div className='comentario'>
-                            <p className='nome-cliente'>{item.cliente}
-                            </p>
-                            <div class="v-line">
-                            </div>
-                            <p className='desc-comentario'>{item.comentário}</p>
-                            <p className='data-comentario'>{item.data}</p>
-
-
-                        </div>
-
-
-                    )}
-                </div>
-
-            </div>
-
+            
 
 
 

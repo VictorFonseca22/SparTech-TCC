@@ -149,11 +149,10 @@ export default function Denunciar() {
                         {storage('adm-logado') &&
                             <select className='sele' value={classificacao} disabled onChange={e => setClassificacao(e.target.value)}>
                                 <option selected hidden>Selecione</option>
-                                <option>assédio</option>
-                                <option>serviço mal feito</option>
-                                <option>estrupo</option>
-                                <option>palavras feias</option>
-                                <option>pagamento invalido</option>
+                                <option>Serviço mal feito</option>
+                                <option>Desrespeito</option>
+                                <option>Assédio</option>
+                                <option>Erro no pagamento</option>
                             </select>
                         }
                     </div>
